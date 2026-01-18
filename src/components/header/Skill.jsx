@@ -1,5 +1,5 @@
 import React from "react";
-import { Skills } from "./skills";
+import { Skills } from "./Skills";
 import FloatingIcons from "../assets/animtion/FloatingIcons";
 import {
   FaReact,
