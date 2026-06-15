@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   FaFacebook,
@@ -16,6 +17,7 @@ const Footer = () => {
     { name: "Home", path: "#home" },
     { name: "About Me", path: "#about" },
     { name: "Experience", path: "#experience" },
+    { name: "Project", path: "#project" },
     { name: "Skill", path: "#skill" },
     { name: "Contact", path: "tel:+855969923931" },
   ];
@@ -36,41 +38,52 @@ const Footer = () => {
       icon: <FaFacebookMessenger />,
       url: "https://m.me/dara.nhim.865637",
     },
-    {
-      name: "Twitter",
-      icon: <FaTwitter />,
-      url: "https://x.com/william57378",
-    },
+    { name: "Twitter", icon: <FaTwitter />, url: "https://x.com/william57378" },
   ];
 
   return (
-    <footer className="relative bg-gray-950 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-12 md:py-16">
+    <footer className="relative bg-gray-950 text-white overflow-hidden">
+      {/* Top gradient border accent */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
+
+      {/* Ambient glow */}
+      <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-96 h-64 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Stay Connected Section */}
-          <div className="space-y-4">
+          <div className="space-y-4 scroll-fade-in">
             <div>
-              <h3 className="text-xl md:text-2xl font-bold mb-2">Stay Connected</h3>
-              <div className="w-12 h-1 bg-cyan-400 mb-4"></div>
+              <h3 className="text-xl md:text-2xl font-bold mb-2">
+                Stay Connected
+              </h3>
+              <div className="w-12 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mb-4 rounded-full"></div>
             </div>
             <p className="text-gray-400 text-sm md:text-base leading-relaxed">
-              Open to new opportunities, collaborations, or friendly chats. Reach out anytime via email or social platforms.
+              Open to new opportunities, collaborations, or friendly chats.
+              Reach out anytime via email or social platforms.
             </p>
           </div>
 
           {/* Quick Links Section */}
-          <div className="space-y-4">
+          <div
+            className="space-y-4 scroll-fade-in"
+            style={{ transitionDelay: "0.1s" }}
+          >
             <div>
-              <h3 className="text-xl md:text-2xl font-bold mb-2">Quick Links</h3>
-              <div className="w-12 h-1 bg-cyan-400 mb-4"></div>
+              <h3 className="text-xl md:text-2xl font-bold mb-2">
+                Quick Links
+              </h3>
+              <div className="w-12 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mb-4 rounded-full"></div>
             </div>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.path}
-                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm md:text-base"
+                    className="group flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm md:text-base"
                   >
+                    <span className="w-0 h-px bg-cyan-400 group-hover:w-3 transition-all duration-300"></span>
                     {link.name}
                   </a>
                 </li>
@@ -79,18 +92,25 @@ const Footer = () => {
           </div>
 
           {/* Contact Info Section */}
-          <div className="space-y-4">
+          <div
+            className="space-y-4 scroll-fade-in"
+            style={{ transitionDelay: "0.2s" }}
+          >
             <div>
-              <h3 className="text-xl md:text-2xl font-bold mb-2">Contact Info</h3>
-              <div className="w-12 h-1 bg-cyan-400 mb-4"></div>
+              <h3 className="text-xl md:text-2xl font-bold mb-2">
+                Contact Info
+              </h3>
+              <div className="w-12 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mb-4 rounded-full"></div>
             </div>
             <div className="space-y-3">
-              <div className="flex items-start gap-3 text-gray-400">
-                <FaMapMarkerAlt className="text-cyan-400 mt-1 flex-shrink-0" />
-                <span className="text-sm md:text-base">Phnom Penh, Cambodia</span>
+              <div className="flex items-start gap-3 text-gray-400 group hover:text-cyan-400 transition-colors">
+                <FaMapMarkerAlt className="text-cyan-400 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="text-sm md:text-base">
+                  Phnom Penh, Cambodia
+                </span>
               </div>
-              <div className="flex items-center gap-3 text-gray-400">
-                <FaPhone className="text-cyan-400 flex-shrink-0" />
+              <div className="flex items-center gap-3 text-gray-400 group">
+                <FaPhone className="text-cyan-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
                 <a
                   href="tel:+855969923931"
                   className="hover:text-cyan-400 transition-colors text-sm md:text-base"
@@ -98,8 +118,8 @@ const Footer = () => {
                   (+855) 96 992 3931
                 </a>
               </div>
-              <div className="flex items-center gap-3 text-gray-400">
-                <FaEnvelope className="text-cyan-400 flex-shrink-0" />
+              <div className="flex items-center gap-3 text-gray-400 group">
+                <FaEnvelope className="text-cyan-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
                 <a
                   href="mailto:daracombodia54@gmail.com"
                   className="hover:text-cyan-400 transition-colors text-sm md:text-base break-all"
@@ -111,10 +131,13 @@ const Footer = () => {
           </div>
 
           {/* Social Section */}
-          <div className="space-y-4">
+          <div
+            className="space-y-4 scroll-fade-in"
+            style={{ transitionDelay: "0.3s" }}
+          >
             <div>
               <h3 className="text-xl md:text-2xl font-bold mb-2">Social</h3>
-              <div className="w-12 h-1 bg-cyan-400 mb-4"></div>
+              <div className="w-12 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mb-4 rounded-full"></div>
             </div>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
@@ -123,7 +146,7 @@ const Footer = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 text-lg md:text-xl"
+                  className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-purple-500 hover:text-gray-900 hover:scale-110 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 text-lg md:text-xl"
                   aria-label={social.name}
                 >
                   {social.icon}
@@ -137,7 +160,8 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-12 pt-8 text-center">
           <p className="text-gray-400 text-sm md:text-base">
             © {currentYear}{" "}
-            <span className="text-cyan-400 font-semibold">Nhim Dara</span>. All Rights Reserved.
+            <span className="text-cyan-400 font-semibold">Nhim Dara</span>. All
+            Rights Reserved.
           </p>
         </div>
       </div>

@@ -51,20 +51,36 @@ const Skill = () => {
   };
 
   return (
-    <div className="bg-gray-900 min-h-screen pt-10">
+    <div className="bg-gray-900 min-h-screen pt-10 relative overflow-hidden">
       {/* Floating Background Icons */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <FloatingIcons />
       </div>
 
+      {/* Ambient glow */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div
+          className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl animate-pulse-slow"
+          style={{ animationDelay: "2.5s" }}
+        ></div>
+      </div>
+
       <div className="relative">
         <section className="mb-5 scroll-reveal">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-            Technology <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Stack</span>
+            Technology{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 animate-gradient-shift">
+              Stack
+            </span>
           </h2>
-          
+
           {/* Animated Tech Stack Slider */}
           <div className="relative overflow-hidden py-8">
+            {/* Edge fade masks */}
+            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none"></div>
+
             {/* Top Row - Scroll Left */}
             <div className="flex overflow-hidden mb-8">
               <div className="flex animate-scroll-left whitespace-nowrap">
@@ -73,7 +89,9 @@ const Skill = () => {
                     key={`left-${idx}`}
                     className="flex flex-col items-center mx-6 md:mx-10 group"
                   >
-                    <div className={`text-5xl md:text-7xl ${tech.color} transition-all duration-300 group-hover:scale-125 group-hover:drop-shadow-[0_0_15px_rgba(0,255,255,0.5)]`}>
+                    <div
+                      className={`text-5xl md:text-7xl ${tech.color} transition-all duration-300 group-hover:scale-125 group-hover:-translate-y-2 group-hover:drop-shadow-[0_0_15px_rgba(0,255,255,0.6)]`}
+                    >
                       {tech.icon}
                     </div>
                     <span className="text-gray-400 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -92,7 +110,9 @@ const Skill = () => {
                     key={`right-${idx}`}
                     className="flex flex-col items-center mx-6 md:mx-10 group"
                   >
-                    <div className={`text-5xl md:text-7xl ${tech.color} transition-all duration-300 group-hover:scale-125 group-hover:drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]`}>
+                    <div
+                      className={`text-5xl md:text-7xl ${tech.color} transition-all duration-300 group-hover:scale-125 group-hover:-translate-y-2 group-hover:drop-shadow-[0_0_15px_rgba(168,85,247,0.6)]`}
+                    >
                       {tech.icon}
                     </div>
                     <span className="text-gray-400 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -111,26 +131,30 @@ const Skill = () => {
         {/* Skills Section */}
         <section className="scroll-reveal">
           <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-12">
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Skills</span>
+            My{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 animate-gradient-shift">
+              Skills
+            </span>
           </h2>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {Skills.map((skill) => (
+            {Skills.map((skill, i) => (
               <div
                 key={skill.id}
-                className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 p-6 rounded-3xl hover:border-cyan-400/50 transition-all duration-300 group hover:scale-[1.02] hover:shadow-2xl hover:shadow-cyan-500/10"
+                className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 p-6 rounded-3xl hover:border-cyan-400/50 transition-all duration-300 group hover:scale-[1.03] hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/20 scroll-fade-in"
+                style={{ transitionDelay: `${i * 0.05}s` }}
               >
                 <div className="flex justify-center mb-6">
                   <div className="relative">
                     <img
                       src={skill.image}
                       alt={skill.title}
-                      className="h-16 w-16 object-contain group-hover:scale-110 transition-transform duration-300"
+                      className="h-16 w-16 object-contain group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 </div>
-                
+
                 <h3 className="text-xl font-bold text-white text-center mb-4 group-hover:text-cyan-300 transition-colors">
                   {skill.title}
                 </h3>
@@ -139,12 +163,14 @@ const Skill = () => {
                 <div className="mb-2">
                   <div className="w-full bg-gray-700/50 h-3 rounded-full overflow-hidden">
                     <div
-                      className="bg-gradient-to-r from-cyan-500 to-purple-500 h-full rounded-full transition-all duration-1000 ease-out group-hover:shadow-[0_0_15px_rgba(6,182,212,0.5)]"
+                      className="bg-gradient-to-r from-cyan-500 to-purple-500 h-full rounded-full transition-all duration-1000 ease-out group-hover:shadow-[0_0_15px_rgba(6,182,212,0.6)] relative overflow-hidden"
                       style={{ width: skill.percent }}
-                    />
+                    >
+                      <div className="absolute inset-0 bg-white/20 animate-shimmer"></div>
+                    </div>
                   </div>
                 </div>
-                
+
                 {/* Skill Info */}
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-gray-400 group-hover:text-gray-300 transition-colors">
@@ -154,8 +180,7 @@ const Skill = () => {
                     {skill.percent}
                   </span>
                 </div>
-                
-                {/* Hidden description on hover */}
+
                 {skill.description && (
                   <div className="mt-4 pt-4 border-t border-gray-700/50">
                     <p className="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -169,30 +194,41 @@ const Skill = () => {
         </section>
 
         {/* Skills Summary Section */}
-        <section className="mt-20">
-          <div className="bg-gradient-to-br from-gray-800/30 to-gray-900/50 border border-gray-700 rounded-3xl p-8 md:p-12">
+        <section className="mt-20 scroll-scale">
+          <div className="bg-gradient-to-br from-gray-800/30 to-gray-900/50 border border-gray-700 rounded-3xl p-8 md:p-12 hover:border-cyan-500/30 transition-colors duration-500">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 text-center">
               Skill <span className="text-cyan-400">Summary</span>
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center p-6 bg-gray-800/30 rounded-2xl">
-                <div className="text-4xl font-bold text-cyan-400 mb-2">
-                  {Skills.filter(s => parseInt(s.percent) >= 80).length}+
+              {[
+                {
+                  value: `${Skills.filter((s) => parseInt(s.percent) >= 80).length}+`,
+                  label: "Advanced Skills",
+                  color: "text-cyan-400",
+                },
+                {
+                  value: techStack.length,
+                  label: "Technologies",
+                  color: "text-purple-400",
+                },
+                {
+                  value: Skills.length,
+                  label: "Total Skills",
+                  color: "text-green-400",
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="text-center p-6 bg-gray-800/30 rounded-2xl hover:bg-gray-800/60 hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div
+                    className={`text-4xl font-bold mb-2 ${item.color} animate-count-pop`}
+                  >
+                    {item.value}
+                  </div>
+                  <p className="text-gray-300">{item.label}</p>
                 </div>
-                <p className="text-gray-300">Advanced Skills</p>
-              </div>
-              <div className="text-center p-6 bg-gray-800/30 rounded-2xl">
-                <div className="text-4xl font-bold text-purple-400 mb-2">
-                  {techStack.length}
-                </div>
-                <p className="text-gray-300">Technologies</p>
-              </div>
-              <div className="text-center p-6 bg-gray-800/30 rounded-2xl">
-                <div className="text-4xl font-bold text-green-400 mb-2">
-                  {Skills.length}
-                </div>
-                <p className="text-gray-300">Total Skills</p>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -215,6 +251,44 @@ const Skill = () => {
             transform: translateX(0);
           }
         }
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+        @keyframes pulse-slow {
+          0%,
+          100% {
+            opacity: 0.1;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.2;
+            transform: scale(1.1);
+          }
+        }
+        @keyframes gradient-shift {
+          0%,
+          100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+        @keyframes count-pop {
+          0% {
+            transform: scale(0.5);
+            opacity: 0;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
         .animate-scroll-left {
           animation: scroll-left 30s linear infinite;
         }
@@ -224,6 +298,19 @@ const Skill = () => {
         .animate-scroll-left:hover,
         .animate-scroll-right:hover {
           animation-play-state: paused;
+        }
+        .animate-shimmer {
+          animation: shimmer 2s ease-in-out infinite;
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 6s ease-in-out infinite;
+        }
+        .animate-gradient-shift {
+          background-size: 200% auto;
+          animation: gradient-shift 4s ease-in-out infinite;
+        }
+        .animate-count-pop {
+          animation: count-pop 0.6s ease-out;
         }
       `}</style>
     </div>
