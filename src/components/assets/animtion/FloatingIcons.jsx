@@ -91,11 +91,11 @@ const FloatingIcons = ({ mode = "background" }) => {
   const icons = generateIcons();
 
   return (
-    <div className={`fixed inset-0 w-full h-full overflow-hidden ${
+    <div className={`floating-icons-background fixed inset-0 w-full h-full overflow-hidden ${
       mode === "background" ? "-z-10" : "z-0"
     }`}>
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900" />
+      <div className="floating-icons-gradient absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900" />
       
       {/* Grid overlay */}
       <div className="absolute inset-0 opacity-10 bg-gradient-to-r from-transparent via-cyan-500/5 to-transparent" />

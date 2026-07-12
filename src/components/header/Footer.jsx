@@ -9,6 +9,7 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
 } from "react-icons/fa";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -51,6 +52,16 @@ const Footer = () => {
       <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-96 h-64 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="relative mx-auto max-w-6xl px-5 py-12 sm:px-6 md:py-16">
+        <div className="mb-14 overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-cyan-500/10 via-blue-500/[0.06] to-purple-500/10 p-6 shadow-2xl shadow-black/20 md:flex md:items-center md:justify-between md:p-9">
+          <div>
+            <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300"><Sparkles size={14} /> Have a project in mind?</p>
+            <h2 className="text-2xl font-black text-white md:text-4xl">Let&apos;s build something meaningful.</h2>
+            <p className="mt-2 max-w-2xl text-sm text-gray-400 md:text-base">I&apos;m open to internships, freelance projects, and development collaborations.</p>
+          </div>
+          <a href="mailto:daracombodia54@gmail.com" className="group mt-6 inline-flex shrink-0 items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 px-6 py-3.5 font-bold text-white shadow-lg shadow-cyan-950/40 transition-all hover:-translate-y-1 hover:shadow-cyan-500/25 md:mt-0">
+            Start a conversation <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Stay Connected Section */}
           <div className="space-y-4 scroll-fade-in">

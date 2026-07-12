@@ -1,7 +1,7 @@
 import React from "react";
 import myPic from "../assets/image/myPicture.jpg";
 import TextType from "../assets/animtion/TextType";
-import { Share2, ArrowDown } from "lucide-react";
+import { Share2, ArrowDown, MapPin, Code2 } from "lucide-react";
 
 import {
   FaFacebook,
@@ -44,21 +44,37 @@ const Home = () => {
 
         {/* Hero Section */}
         <section
-          id="home"
           className="relative z-10 flex min-h-[calc(100vh-72px)] items-center px-5 py-16 sm:px-6 lg:px-8 lg:py-20"
         >
           <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-12 lg:flex-row lg:gap-16">
             {/* Left Content */}
-            <div className="text-white w-full lg:w-1/2 space-y-4 md:space-y-6 scroll-reveal">
-              <h1 className="text-lg sm:text-xl md:text-2xl font-medium animate-fade-in-down opacity-0" style={{ animationDelay: "0.1s" }}>
-                Hello, I&apos;m
+            <div className="relative w-full text-white lg:w-1/2 scroll-reveal">
+              <div className="hero-content-panel absolute -inset-6 -z-10 rounded-[2rem] border border-white/[0.06] bg-white/[0.025] backdrop-blur-[2px] sm:-inset-8"></div>
+
+              <div className="mb-6 flex flex-wrap items-center gap-3 animate-fade-in-down opacity-0" style={{ animationDelay: "0.1s" }}>
+                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70"></span>
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+                  </span>
+                  Available for work
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-xs text-slate-400 sm:text-sm">
+                  <MapPin size={14} className="text-cyan-400" /> Phnom Penh, Cambodia
+                </span>
+              </div>
+
+              <h1 className="mb-2 text-base font-medium text-slate-300 sm:text-lg animate-fade-in-down opacity-0" style={{ animationDelay: "0.18s" }}>
+                Hello, I&apos;m <span className="text-cyan-400">—</span>
               </h1>
-              <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in-up opacity-0 bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent" style={{ animationDelay: "0.25s" }}>
-                Nhim Dara
+              <h2 className="mb-5 text-5xl font-black leading-[0.95] tracking-[-0.045em] sm:text-6xl md:text-7xl lg:text-8xl animate-fade-in-up opacity-0" style={{ animationDelay: "0.25s" }}>
+                <span className="bg-gradient-to-br from-white via-cyan-50 to-cyan-300 bg-clip-text text-transparent">Nhim Dara</span>
+                <span className="ml-2 inline-block h-3 w-3 rounded-full bg-cyan-400 shadow-[0_0_24px_rgba(34,211,238,.9)] sm:h-4 sm:w-4"></span>
               </h2>
 
-              <div className="text-lg sm:text-2xl md:text-3xl font-bold animate-fade-in-up opacity-0" style={{ animationDelay: "0.4s" }}>
-                And I'm a{" "}
+              <div className="mb-5 flex items-center gap-2 text-xl font-bold sm:text-2xl md:text-3xl animate-fade-in-up opacity-0" style={{ animationDelay: "0.4s" }}>
+                <Code2 className="hidden shrink-0 text-purple-400 sm:block" size={28} />
+                <span>I'm a</span>{" "}
                 <span className="text-cyan-400 inline-block ml-1 relative">
                   <TextType
                     text={[
@@ -73,30 +89,39 @@ const Home = () => {
                 </span>
               </div>
 
-              <p className="text-gray-300 leading-relaxed max-w-xl text-sm sm:text-base md:text-lg animate-fade-in-up opacity-0" style={{ animationDelay: "0.55s" }}>
+              <p className="max-w-xl border-l-2 border-cyan-400/50 pl-4 text-sm leading-relaxed text-slate-300 sm:text-base md:text-lg animate-fade-in-up opacity-0" style={{ animationDelay: "0.55s" }}>
                 A full-stack developer trained at ETEC Center with hands-on
                 experience across React, Laravel, PHP, and MySQL. I build
                 responsive interfaces, reliable APIs, and complete web
                 applications from concept to deployment.
               </p>
 
+              <div className="mt-5 flex flex-wrap gap-2 animate-fade-in-up opacity-0" style={{ animationDelay: "0.62s" }}>
+                {["React", "Laravel", "PHP", "MySQL"].map((tech) => (
+                  <span key={tech} className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-cyan-400/40 hover:text-cyan-300">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
               {/* Social Links */}
               <div
-                className="flex gap-3 md:gap-4 pt-2 animate-fade-in-up opacity-0"
+                className="mt-6 flex gap-3 md:gap-4 animate-fade-in-up opacity-0"
                 style={{ animationDelay: "0.7s" }}
               >
                 {[
-                  { icon: <FaFacebook />, url: "https://facebook.com/dara.nhim.865637" },
-                  { icon: <FaTelegramPlane />, url: "https://t.me/dara_nhim" },
-                  { icon: <FaInstagram />, url: "https://instagram.com/ra_zee109" },
-                  { icon: <FaTwitter />, url: "https://x.com/william57378" },
+                  { name: "Facebook", icon: <FaFacebook />, url: "https://facebook.com/dara.nhim.865637" },
+                  { name: "Telegram", icon: <FaTelegramPlane />, url: "https://t.me/dara_nhim" },
+                  { name: "Instagram", icon: <FaInstagram />, url: "https://instagram.com/ra_zee109" },
+                  { name: "Twitter", icon: <FaTwitter />, url: "https://x.com/william57378" },
                 ].map((social, i) => (
                   <a
                     key={i}
                     href={social.url}
+                    aria-label={social.name}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full border-2 border-cyan-400 flex items-center justify-center hover:bg-cyan-400 hover:scale-110 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 group cursor-pointer"
+                    className="group flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/40 bg-cyan-400/[0.06] transition-all duration-300 hover:-translate-y-1 hover:rotate-3 hover:border-cyan-300 hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-400/30 md:h-12 md:w-12"
                   >
                     <span className="text-cyan-400 group-hover:text-gray-900 text-base sm:text-lg md:text-xl transition-colors">
                       {social.icon}
@@ -106,10 +131,10 @@ const Home = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col xs:flex-row sm:flex-row gap-3 sm:gap-4 pt-4 animate-fade-in-up opacity-0" style={{ animationDelay: "0.85s" }}>
+              <div className="flex flex-col gap-3 pt-7 sm:flex-row sm:gap-4 animate-fade-in-up opacity-0" style={{ animationDelay: "0.85s" }}>
                 <button
                   onClick={handleLetstalk}
-                  className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gray-900 text-white font-bold rounded-full border-2 border-white/20 hover:border-cyan-400/60 transition-all duration-300 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/50 hover:scale-105 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base cursor-pointer overflow-hidden"
+                  className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-xl border border-white/15 bg-white/[0.05] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/60 hover:shadow-cyan-500/20 sm:text-base"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/20 to-purple-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
                   <span className="relative z-10">Let's Talk</span>
@@ -121,10 +146,10 @@ const Home = () => {
 
                 <button
                   onClick={handleDownloadCV}
-                  className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-600 to-purple-600 text-white font-bold rounded-full border-2 border-transparent transition-all duration-300 shadow-lg shadow-purple-500/20 hover:shadow-purple-500/50 hover:scale-105 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base cursor-pointer"
+                  className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-cyan-500/25 transition-all duration-300 before:absolute before:inset-0 before:bg-white/0 before:transition-colors hover:-translate-y-1 hover:shadow-cyan-500/40 hover:before:bg-white/10 sm:text-base"
                 >
-                  <span>Download CV</span>
-                  <ArrowDown size={18} className="group-hover:translate-y-1 transition-transform" />
+                  <span className="relative z-10">Download CV</span>
+                  <ArrowDown size={18} className="relative z-10 transition-transform group-hover:translate-y-1" />
                 </button>
               </div>
             </div>

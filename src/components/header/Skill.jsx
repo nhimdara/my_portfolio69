@@ -1,5 +1,5 @@
 import React from "react";
-import { Code2, Server, Wrench } from "lucide-react";
+import { Code2, Server, Wrench, TrendingUp } from "lucide-react";
 import { Skills } from "./Skills";
 import FloatingIcons from "../assets/animtion/FloatingIcons";
 import {
@@ -61,34 +61,115 @@ const Skill = () => {
     return "Beginner";
   };
 
+  // Deterministic pseudo-random walk so each skill's sparkline is stable across renders
+  // but still looks organic, trending up toward its final percent value.
+  const buildSparkline = (seed, targetPercent) => {
+    const points = 10;
+    let value = 20 + (seed % 15);
+    const target = targetPercent;
+    const series = [value];
+    for (let i = 1; i < points; i++) {
+      const pseudo = Math.sin(seed * 12.9898 + i * 78.233) * 43758.5453;
+      const noise = (pseudo - Math.floor(pseudo)) * 18 - 9;
+      const pull = (target - value) * 0.18;
+      value = Math.max(8, Math.min(96, value + pull + noise));
+      series.push(value);
+    }
+    series[points - 1] = target;
+    return series;
+  };
+
+  const sparklinePath = (series, width = 100, height = 28) => {
+    const max = 100;
+    const step = width / (series.length - 1);
+    return series
+      .map(
+        (v, i) =>
+          `${i === 0 ? "M" : "L"}${(i * step).toFixed(1)},${(height - (v / max) * height).toFixed(1)}`,
+      )
+      .join(" ");
+  };
+
   const skillGroups = [
     {
       title: "Frontend Development",
-      description: "Responsive, accessible interfaces and modern component-based applications.",
+      description:
+        "Responsive, accessible interfaces and modern component-based applications.",
       icon: Code2,
       accent: "cyan",
-      className: "lg:col-span-2 lg:row-span-2",
+      ticker: "FE",
       skills: Skills.filter((skill) =>
-        ["HTML", "CSS", "Bootstrap", "JavaScript", "React.js", "Tailwind CSS", "Vue.js"].includes(skill.title),
+        [
+          "HTML",
+          "CSS",
+          "Bootstrap",
+          "JavaScript",
+          "TypeScript",
+          "React.js",
+          "Tailwind CSS",
+          "Vue.js",
+        ].includes(skill.title),
       ),
     },
     {
       title: "Backend Development",
-      description: "Server-side applications, databases, and maintainable business logic.",
+      description:
+        "Server-side applications, databases, and maintainable business logic.",
       icon: Server,
       accent: "purple",
-      className: "lg:col-span-1",
-      skills: Skills.filter((skill) => ["PHP", "Laravel", "MySQL"].includes(skill.title)),
+      ticker: "BE",
+      skills: Skills.filter((skill) =>
+        [
+          "PHP",
+          "Laravel",
+          "MySQL",
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+        ].includes(skill.title),
+      ),
     },
     {
       title: "Development Tools",
-      description: "Tools used to build, manage, and run development environments.",
+      description:
+        "Design, version control, build, and local development tools.",
       icon: Wrench,
       accent: "emerald",
-      className: "lg:col-span-1",
-      skills: Skills.filter((skill) => ["GitHub", "XAMPP"].includes(skill.title)),
+      ticker: "DT",
+      skills: Skills.filter((skill) =>
+        ["Git", "GitHub", "Figma", "Vite", "npm", "XAMPP"].includes(
+          skill.title,
+        ),
+      ),
     },
   ];
+
+  const accentClasses = {
+    cyan: {
+      text: "text-cyan-300",
+      stroke: "stroke-cyan-400",
+      fill: "fill-cyan-400",
+      badgeBg: "bg-cyan-400/10",
+      badgeBorder: "border-cyan-400/25",
+      ring: "hover:border-cyan-400/30",
+    },
+    purple: {
+      text: "text-purple-300",
+      stroke: "stroke-purple-400",
+      fill: "fill-purple-400",
+      badgeBg: "bg-purple-400/10",
+      badgeBorder: "border-purple-400/25",
+      ring: "hover:border-purple-400/30",
+    },
+    emerald: {
+      text: "text-emerald-300",
+      stroke: "stroke-emerald-400",
+      fill: "fill-emerald-400",
+      badgeBg: "bg-emerald-400/10",
+      badgeBorder: "border-emerald-400/25",
+      ring: "hover:border-emerald-400/30",
+    },
+  };
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gray-950 pt-16 md:pt-20">
@@ -118,8 +199,8 @@ const Skill = () => {
           {/* Animated Tech Stack Slider */}
           <div className="relative overflow-hidden py-8">
             {/* Edge fade masks */}
-            <div className="absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-gray-950 to-transparent pointer-events-none"></div>
-            <div className="absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-gray-950 to-transparent pointer-events-none"></div>
+            <div className="skill-edge-fade skill-edge-fade-left absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-gray-950 to-transparent pointer-events-none"></div>
+            <div className="skill-edge-fade skill-edge-fade-right absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-gray-950 to-transparent pointer-events-none"></div>
 
             {/* Top Row - Scroll Left */}
             <div className="flex overflow-hidden mb-8">
@@ -166,11 +247,10 @@ const Skill = () => {
         </section>
       </div>
 
-      {/* Skills Section */}
-      <div className="relative z-10 mx-auto max-w-6xl px-5 py-10 md:py-12">
+      {/* Skills Section — redesigned as a trading-terminal watchlist */}
+      <div className="relative z-10 mx-auto max-w-6xl px-5 py-10 md:py-16">
         <section className="scroll-reveal">
-          <div className="mb-12 text-center">
-
+          <div className="mb-14 text-center">
             <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">
               My{" "}
               <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
@@ -178,64 +258,116 @@ const Skill = () => {
               </span>
             </h2>
             <p className="mx-auto max-w-2xl leading-relaxed text-gray-400">
-              A practical toolkit for designing, developing, and delivering complete web applications.
+              A practical toolkit for designing, developing, and delivering
+              complete web applications.
             </p>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div className="grid items-start gap-6 lg:grid-cols-3">
             {skillGroups.map((group) => {
               const GroupIcon = group.icon;
-              const accentClasses = {
-                cyan: "border-cyan-400/20 bg-cyan-400/10 text-cyan-300",
-                purple: "border-purple-400/20 bg-purple-400/10 text-purple-300",
-                emerald: "border-emerald-400/20 bg-emerald-400/10 text-emerald-300",
-              };
+              const a = accentClasses[group.accent];
+              const avg = Math.round(
+                group.skills.reduce((sum, s) => sum + parseInt(s.percent), 0) /
+                  group.skills.length,
+              );
 
               return (
                 <article
                   key={group.title}
-                  className={`rounded-2xl border border-gray-700/80 bg-gray-900/75 p-6 shadow-xl backdrop-blur-sm transition-all duration-300 hover:border-gray-600 ${group.className}`}
+                  className={`skill-card overflow-hidden rounded-lg border border-gray-800 bg-[#0b0f14] shadow-2xl transition-colors duration-300 ${a.ring}`}
                 >
-                  <div className="mb-6 flex items-start gap-4 border-b border-gray-700/70 pb-5">
-                    <span className={`rounded-xl border p-3 ${accentClasses[group.accent]}`}>
-                      <GroupIcon size={23} />
+                  {/* Ticker header */}
+                  <div className="skill-card-header flex items-center gap-3 border-b border-gray-800 bg-[#111720] px-5 py-4">
+                    <span
+                      className={`grid h-9 w-9 shrink-0 place-items-center rounded border ${a.badgeBorder} ${a.badgeBg} font-mono text-xs font-bold ${a.text}`}
+                    >
+                      {group.ticker}
                     </span>
-                    <div>
-                      <h3 className="text-xl font-bold text-white">{group.title}</h3>
-                      <p className="mt-1 text-sm leading-relaxed text-gray-400">{group.description}</p>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="truncate text-sm font-semibold text-white">
+                        {group.title}
+                      </h3>
+                      <p className="mt-0.5 truncate text-[11px] text-gray-500">
+                        {group.description}
+                      </p>
+                    </div>
+                    <div className="flex shrink-0 items-center gap-1 font-mono">
+                      <TrendingUp size={13} className={a.text} />
+                      <span
+                        className={`text-sm font-bold tabular-nums ${a.text}`}
+                      >
+                        {avg}%
+                      </span>
                     </div>
                   </div>
 
-                  <div className={`grid gap-3 ${group.skills.length > 3 ? "sm:grid-cols-2" : "grid-cols-1"}`}>
-                    {group.skills.map((skill) => (
-                      <div
-                        key={skill.id}
-                        className="group/skill rounded-xl border border-white/5 bg-white/[0.035] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-400/25 hover:bg-white/[0.06]"
-                      >
-                        <div className="mb-3 flex items-center gap-3">
-                          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-gray-950/80">
+                  {/* Watchlist rows */}
+                  <div className="divide-y divide-gray-800/70">
+                    {group.skills.map((skill, i) => {
+                      const value = parseInt(skill.percent);
+                      const series = buildSparkline(i * 7 + value, value);
+                      const path = sparklinePath(series);
+                      return (
+                        <div
+                          key={skill.id}
+                          className="flex items-center gap-3 px-5 py-2.5 transition-colors duration-150 hover:bg-white/[0.03]"
+                        >
+                          <span className="skill-row-icon grid h-7 w-7 shrink-0 place-items-center rounded bg-gray-950/70">
                             {skill.image ? (
-                              <img src={skill.image} alt="" className="h-7 w-7 object-contain" />
+                              <img
+                                src={skill.image}
+                                alt=""
+                                className="h-4 w-4 object-contain"
+                              />
                             ) : (
-                              <span className={`text-2xl ${skill.color}`} aria-hidden="true">{skill.icon}</span>
+                              <span
+                                className={`text-sm ${skill.color}`}
+                                aria-hidden="true"
+                              >
+                                {skill.icon}
+                              </span>
                             )}
                           </span>
+
                           <div className="min-w-0 flex-1">
-                            <div className="flex items-center justify-between gap-2">
-                              <h4 className="truncate font-semibold text-gray-100">{skill.title}</h4>
-                              <span className="text-xs font-semibold text-cyan-400">{skill.percent}</span>
-                            </div>
-                            <p className="text-xs text-gray-500">{getSkillLevel(skill.percent)}</p>
+                            <p className="truncate text-[13px] font-medium text-gray-200">
+                              {skill.title}
+                            </p>
+                            <p className="text-[10px] uppercase tracking-wide text-gray-600">
+                              {getSkillLevel(skill.percent)}
+                            </p>
                           </div>
+
+                          <svg
+                            viewBox="0 0 100 28"
+                            className="h-6 w-16 shrink-0"
+                            preserveAspectRatio="none"
+                          >
+                            <path
+                              d={path}
+                              fill="none"
+                              className={a.stroke}
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <circle
+                              cx="100"
+                              cy={(28 - (value / 100) * 28).toFixed(1)}
+                              r="2"
+                              className={a.fill}
+                            />
+                          </svg>
+
+                          <span
+                            className={`w-9 shrink-0 text-right font-mono text-xs font-bold tabular-nums ${a.text}`}
+                          >
+                            {skill.percent}
+                          </span>
                         </div>
-                        <div className="h-1.5 overflow-hidden rounded-full bg-gray-800">
-                          <div
-                            className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 transition-all duration-700"
-                            style={{ width: skill.percent }}
-                          />
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </article>
               );

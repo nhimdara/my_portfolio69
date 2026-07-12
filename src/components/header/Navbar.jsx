@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, Moon, Phone, Sun, X } from "lucide-react";
 import profilePicture from "../assets/image/myPicture1.jpg";
 
 const navItems = [
@@ -15,6 +15,19 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [theme, setTheme] = useState(
+    () => document.documentElement.dataset.theme || "dark",
+  );
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    localStorage.setItem("portfolio-theme", theme);
+    document.querySelector('meta[name="theme-color"]')?.setAttribute(
+      "content",
+      theme === "light" ? "#f8fafc" : "#030712",
+    );
+  }, [theme]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -106,7 +119,16 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-2 lg:flex">
+          <button
+            type="button"
+            onClick={() => setTheme((current) => current === "dark" ? "light" : "dark")}
+            className="theme-toggle grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/5 text-gray-300 transition-all hover:-translate-y-0.5 hover:border-cyan-400/40 hover:text-cyan-300"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          >
+            {theme === "dark" ? <Sun size={19} /> : <Moon size={19} />}
+          </button>
           <a
             href="tel:+855969923931"
             className="group/contact relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-cyan-950/40 transition-all hover:-translate-y-0.5 hover:shadow-cyan-500/20"
@@ -116,6 +138,15 @@ const Navbar = () => {
           </a>
         </div>
 
+        <div className="flex items-center gap-2 lg:hidden">
+        <button
+          type="button"
+          onClick={() => setTheme((current) => current === "dark" ? "light" : "dark")}
+          className="theme-toggle rounded-xl border border-white/10 bg-white/5 p-2.5 text-gray-300 transition-colors hover:border-cyan-400/40 hover:text-cyan-300"
+          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+        >
+          {theme === "dark" ? <Sun size={22} /> : <Moon size={22} />}
+        </button>
         <button
           type="button"
           onClick={() => setIsOpen((open) => !open)}
@@ -126,6 +157,7 @@ const Navbar = () => {
         >
           {isOpen ? <X size={23} /> : <Menu size={23} />}
         </button>
+        </div>
       </div>
 
       <div

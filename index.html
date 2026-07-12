@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#030712" />
     <meta name="description" content="Nhim Dara — Full-Stack Developer portfolio featuring projects, skills, education, and professional certificates." />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("portfolio-theme");
+        const preferred = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        document.documentElement.dataset.theme = saved || preferred;
+      })();
+    </script>
     <title>Nhim Dara | Full-Stack Developer</title>
   </head>
   <body>

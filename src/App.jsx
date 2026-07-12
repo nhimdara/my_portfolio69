@@ -14,18 +14,14 @@ const App = () => {
   // Handle smooth scrolling
   useEffect(() => {
     const handleHashLinks = (e) => {
-      if (
-        e.target.tagName === "A" &&
-        e.target.getAttribute("href")?.startsWith("#")
-      ) {
+      const link = e.target.closest("a[href^='#']");
+      if (link) {
         e.preventDefault();
-        const id = e.target.getAttribute("href").substring(1);
+        const id = link.getAttribute("href").substring(1);
         const element = document.getElementById(id);
         if (element) {
-          window.scrollTo({
-            top: element.offsetTop - 70,
-            behavior: "smooth",
-          });
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+          window.history.replaceState(null, "", `#${id}`);
         }
       }
     };
@@ -35,7 +31,13 @@ const App = () => {
   }, []);
 
   return (
-    <div className="app bg-gray-900">
+    <div className="app bg-gray-950">
+      <a
+        href="#home"
+        className="fixed left-4 top-3 z-[100] -translate-y-20 rounded-lg bg-cyan-400 px-4 py-2 font-semibold text-gray-950 transition-transform focus:translate-y-0"
+      >
+        Skip to content
+      </a>
       <ScrollEffects />
       <Navbar />
       <ContactFAB />

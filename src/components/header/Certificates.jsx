@@ -6,6 +6,7 @@ import {
   ExternalLink,
   GraduationCap,
   X,
+  Sparkles,
 } from "lucide-react";
 import FloatingIcons from "../assets/animtion/FloatingIcons";
 import moeysCertificate from "../assets/image/certificates/moeys-edtech-recognition.jpg";
@@ -78,7 +79,10 @@ const Certificates = () => {
       <main className="relative z-10 px-5 py-16 md:py-20">
         <div className="mx-auto max-w-6xl">
           <header className="mb-12 text-center scroll-reveal">
-            <h2 className="mb-4 text-4xl font-bold tracking-tight text-white md:text-5xl">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-400/[0.07] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+              <Sparkles size={14} /> Verified milestones
+            </div>
+            <h2 className="mb-4 text-4xl font-black tracking-tight text-white md:text-6xl">
               Certificates &amp;{" "}
               <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
                 Achievements
@@ -93,7 +97,7 @@ const Certificates = () => {
             {certificates.map((certificate) => (
               <article
                 key={certificate.title}
-                className="group flex overflow-hidden rounded-2xl border border-gray-700/80 bg-gray-900/80 shadow-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/50 hover:shadow-[0_20px_45px_rgba(6,182,212,0.12)]"
+                className="certificate-card group flex overflow-hidden rounded-2xl border border-gray-700/80 bg-gray-900/80 shadow-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/50 hover:shadow-[0_20px_45px_rgba(6,182,212,0.12)]"
               >
                 <div className="flex w-full flex-col">
                   <button
@@ -108,7 +112,7 @@ const Certificates = () => {
                       className="h-full w-full object-contain p-3 transition-transform duration-500 ease-out group-hover:scale-[1.025]"
                       loading="lazy"
                     />
-                    <span className="absolute inset-0 flex items-center justify-center bg-gray-950/0 transition-colors duration-300 group-hover:bg-gray-950/45">
+                    <span className="certificate-image-overlay absolute inset-0 flex items-center justify-center bg-gray-950/0 transition-colors duration-300 group-hover:bg-gray-950/45">
                       <span className="flex translate-y-2 items-center gap-2 rounded-lg border border-white/10 bg-gray-900/95 px-4 py-2.5 text-sm font-semibold text-white opacity-0 shadow-xl transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                         <ExternalLink size={16} /> View document
                       </span>
@@ -165,6 +169,7 @@ const Certificates = () => {
           </div>
           <button
             type="button"
+            autoFocus
             onClick={() => setSelected(null)}
             className="absolute right-4 top-4 rounded-full border border-gray-700 bg-gray-900 p-3 text-white transition-colors hover:border-cyan-400 hover:text-cyan-300 md:right-7 md:top-7"
             aria-label="Close certificate preview"

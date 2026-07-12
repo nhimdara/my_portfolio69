@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import myPicture from "../assets/image/myPicture1.jpg";
 import {
   Calendar,
@@ -7,6 +7,7 @@ import {
   Code,
   Users,
   Target,
+  Sparkles,
 } from "lucide-react";
 
 const FloatingIcons = () => (
@@ -24,10 +25,6 @@ const FloatingIcons = () => (
 );
 
 const About = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const interests = [
     {
       icon: <Code className="w-6 h-6" />,
@@ -77,10 +74,7 @@ const About = () => {
                     src={myPicture}
                     alt="Nhim Dara"
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                    onError={(e) => {
-                      e.currentTarget.src =
-                        "https://via.placeholder.com/400?text=Photo+Not+Found";
-                    }}
+                    loading="lazy"
                   />
                 </div>
 
@@ -91,7 +85,10 @@ const About = () => {
 
               {/* Text content */}
               <div className="space-y-6 text-center lg:text-left">
-                <h1 className="text-4xl md:text-5xl font-bold">
+                <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/[0.07] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">
+                  <Sparkles size={14} /> Behind the code
+                </div>
+                <h1 className="text-4xl font-black tracking-tight md:text-6xl">
                   About{" "}
                   <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent animate-gradient-shift">
                     Me
@@ -126,10 +123,10 @@ const About = () => {
                       label: "Focus",
                       value: "Full-Stack Development",
                     },
-                  ].map((item, i) => (
+                  ].map((item) => (
                     <div
-                      key={i}
-                      className="flex items-center gap-4 p-4 bg-gray-800/40 rounded-xl border border-gray-700/50 hover:bg-gray-800/60 hover:border-cyan-500/40 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-900/30 transition-all duration-300"
+                      key={item.label}
+                      className="about-detail-card group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.035] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/40 hover:bg-cyan-400/[0.05] hover:shadow-lg hover:shadow-cyan-900/30"
                     >
                       <item.icon className="w-6 h-6 text-cyan-400 group-hover:scale-110 transition-transform" />
                       <div>
@@ -151,7 +148,8 @@ const About = () => {
 
           {/* Interests */}
           <section className="scroll-reveal">
-            <h2 className="text-4xl font-bold text-center mb-12">
+            <p className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">What drives me</p>
+            <h2 className="mb-12 text-center text-4xl font-black tracking-tight md:text-5xl">
               My{" "}
               <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent animate-gradient-shift">
                 Interests
@@ -161,9 +159,10 @@ const About = () => {
             <div className="grid md:grid-cols-3 gap-8">
               {interests.map((item, i) => (
                 <div
-                  key={i}
-                  className="group bg-gray-800/40 border border-gray-700 p-8 rounded-2xl transition-all duration-300 hover:border-cyan-500/60 hover:shadow-xl hover:shadow-cyan-900/30 hover:-translate-y-2 relative overflow-hidden"
+                  key={item.title}
+                  className="interest-card group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0b111b]/80 p-8 transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500/60 hover:shadow-[0_24px_60px_rgba(6,182,212,.12)]"
                 >
+                  <span className="absolute right-5 top-4 font-mono text-4xl font-black text-white/[0.04]">0{i + 1}</span>
                   <div className="absolute -top-10 -right-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-colors"></div>
                   <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-6 group-hover:rotate-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-purple-900/30">
                     {item.icon}

@@ -5,8 +5,23 @@ import js from "../assets/image/Js.png";
 import react from "../assets/image/React.png";
 import tailwind from "../assets/image/Tainwind.png";
 import git from "../assets/image/Github.png";
-import { FaPhp, FaVuejs } from "react-icons/fa";
-import { SiLaravel, SiMysql, SiXampp } from "react-icons/si";
+import {
+  FaFigma,
+  FaGitAlt,
+  FaNodeJs,
+  FaNpm,
+  FaPhp,
+  FaVuejs,
+} from "react-icons/fa";
+import {
+  SiExpress,
+  SiLaravel,
+  SiMongodb,
+  SiMysql,
+  SiTypescript,
+  SiVite,
+  SiXampp,
+} from "react-icons/si";
 
 
 export const Skills = [
@@ -85,6 +100,62 @@ export const Skills = [
     title: "XAMPP",
     icon: <SiXampp />,
     color: "text-orange-500",
+    percent: "75%",
+  },
+  {
+    id: 13,
+    title: "TypeScript",
+    icon: <SiTypescript />,
+    color: "text-blue-500",
+    percent: "65%",
+  },
+  {
+    id: 14,
+    title: "Node.js",
+    icon: <FaNodeJs />,
+    color: "text-green-500",
+    percent: "65%",
+  },
+  {
+    id: 15,
+    title: "Express.js",
+    icon: <SiExpress />,
+    color: "text-gray-300",
+    percent: "65%",
+  },
+  {
+    id: 16,
+    title: "MongoDB",
+    icon: <SiMongodb />,
+    color: "text-green-400",
+    percent: "60%",
+  },
+  {
+    id: 17,
+    title: "Git",
+    icon: <FaGitAlt />,
+    color: "text-orange-500",
+    percent: "70%",
+  },
+  {
+    id: 18,
+    title: "Figma",
+    icon: <FaFigma />,
+    color: "text-pink-400",
+    percent: "65%",
+  },
+  {
+    id: 19,
+    title: "Vite",
+    icon: <SiVite />,
+    color: "text-purple-400",
+    percent: "75%",
+  },
+  {
+    id: 20,
+    title: "npm",
+    icon: <FaNpm />,
+    color: "text-red-500",
     percent: "75%",
   },
 ];
