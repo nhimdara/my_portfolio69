@@ -10,10 +10,18 @@ const Experience1 = () => {
       description: "Specializing in software engineering and web technologies",
     },
     {
-      year: "2025",
-      degree: "Frontend Development Studying",
+      year: "2025 - January 2026",
+      degree: "Frontend Development",
       institution: "ETEC Center",
-      description: "Completed intensive React.js and modern web development course",
+      description:
+        "Completed hands-on training in HTML, CSS, Bootstrap, JavaScript, React.js, and frontend project development.",
+    },
+    {
+      year: "January - June 2026",
+      degree: "Backend Development",
+      institution: "ETEC Center",
+      description:
+        "Completed practical training in PHP, object-oriented programming, MySQL, Laravel, and backend project development.",
     },
   ];
 
@@ -27,7 +35,7 @@ const Experience1 = () => {
     },
     {
       year: "2024 - 2025",
-      role: "DataEntry",
+      role: "Data Entry Volunteer",
       company: "MoEYS Edtech (Volunteer)",
       description:
         "Managed high-volume, confidential data entry and systematic record-keeping using Excel and various databases to ensure accuracy and efficient workflow.",
@@ -35,13 +43,13 @@ const Experience1 = () => {
   ];
 
   return (
-    <div className="bg-gray-900 min-h-screen scroll-gradient">
+    <div className="min-h-screen bg-gray-950 scroll-gradient">
       <section className="relative py-16 px-4">
         {/* Background Elements */}
         <div className="absolute top-1/4 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
 
-        <div className="max-w-7xl mx-auto relative z-10 scroll-reveal">
+        <div className="relative z-10 mx-auto max-w-6xl scroll-reveal">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Education */}
             <div className="relative">

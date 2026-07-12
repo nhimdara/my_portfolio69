@@ -22,16 +22,16 @@ const ContactFAB = () => {
           : "opacity-0 translate-y-8 scale-90 pointer-events-none"
       }`}
     >
-      <div className="relative flex items-center">
+      <span className="relative flex items-center">
         {/* Pulse ring */}
         <span className="absolute inset-0 rounded-full bg-cyan-400/40 animate-ping-slow"></span>
 
         {/* Button */}
-        <button className="relative flex items-center gap-2 px-5 py-3 md:px-6 md:py-4 rounded-full font-bold bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/40 hover:shadow-cyan-500/70 hover:scale-105 active:scale-95 transition-all duration-300">
+        <span className="relative flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-3 font-semibold text-white shadow-lg shadow-cyan-950/50 transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/30 active:scale-95 md:px-6 md:py-4">
           <IoCall className="text-lg md:text-xl animate-wiggle" />
           <span className="hidden sm:inline">Contact Me</span>
-        </button>
-      </div>
+        </span>
+      </span>
 
       <style jsx>{`
         @keyframes ping-slow {

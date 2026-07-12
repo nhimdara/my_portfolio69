@@ -61,32 +61,34 @@ const FloatingIcons = ({ mode = "background" }) => {
     { icon: <FaAndroid />, color: "text-green-400" },
   ];
 
-  // Generate more icons for full coverage
+  // Generate stable icon positions so re-renders do not make the background jump.
   const generateIcons = () => {
     const icons = [];
-    const count = isMobile ? 40 : 80; // More icons on desktop
+    const count = isMobile ? 20 : 40;
+
+    const seededValue = (index, salt) => {
+      const value = Math.sin(index * 12.9898 + salt * 78.233) * 43758.5453;
+      return value - Math.floor(value);
+    };
     
     for (let i = 0; i < count; i++) {
       const tech = techIcons[i % techIcons.length];
       icons.push({
         ...tech,
         id: i,
-        size: Math.random() * 4 + 2, // Random size between 2rem and 6rem
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        delay: `${Math.random() * 10}s`,
-        duration: `${Math.random() * 15 + 10}s`,
-        orbit: Math.random() > 0.5,
+        size: seededValue(i, 1) * 3 + 2,
+        x: seededValue(i, 2) * 100,
+        y: seededValue(i, 3) * 100,
+        delay: `${seededValue(i, 4) * -12}s`,
+        duration: `${seededValue(i, 5) * 12 + 16}s`,
+        orbit: seededValue(i, 6) > 0.72,
+        opacity: 0.1 + seededValue(i, 7) * 0.14,
       });
     }
     return icons;
   };
 
-  const [icons, setIcons] = useState([]);
-  
-  useEffect(() => {
-    setIcons(generateIcons());
-  }, [isMobile]);
+  const icons = generateIcons();
 
   return (
     <div className={`fixed inset-0 w-full h-full overflow-hidden ${
@@ -113,10 +115,11 @@ const FloatingIcons = ({ mode = "background" }) => {
           }}
         >
           <div
-            className={`${tech.color} transition-all duration-700 hover:scale-150 hover:opacity-100 hover:rotate-45 cursor-pointer`}
+            className={`${tech.color} transition-transform duration-500 ease-out hover:scale-125 hover:rotate-12`}
             style={{
-              opacity: 0.1 + Math.random() * 0.15,
+              opacity: tech.opacity,
               filter: "drop-shadow(0 0 4px currentColor)",
+              willChange: "transform",
             }}
           >
             {tech.icon}
@@ -127,16 +130,16 @@ const FloatingIcons = ({ mode = "background" }) => {
       <style jsx>{`
         @keyframes float {
           0%, 100% {
-            transform: translate(0, 0) rotate(0deg);
+            transform: translate3d(0, 0, 0) rotate(0deg);
           }
           25% {
-            transform: translate(2vw, -3vh) rotate(90deg);
+            transform: translate3d(2vw, -3vh, 0) rotate(90deg);
           }
           50% {
-            transform: translate(-1.5vw, 2vh) rotate(180deg);
+            transform: translate3d(-1.5vw, 2vh, 0) rotate(180deg);
           }
           75% {
-            transform: translate(3vw, 1vh) rotate(270deg);
+            transform: translate3d(3vw, 1vh, 0) rotate(270deg);
           }
         }
 
@@ -188,6 +191,13 @@ const FloatingIcons = ({ mode = "background" }) => {
         /* Parallax effect on scroll */
         .parallax {
           will-change: transform;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          div {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+          }
         }
       `}</style>
     </div>

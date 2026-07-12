@@ -60,7 +60,7 @@ const Project = () => {
       : Projects.filter((project) => project.category === activeFilter);
 
   return (
-    <div className="relative min-h-screen scroll-gradient">
+    <div className="relative min-h-screen bg-gray-950 scroll-gradient">
       {/* Floating Background Icons */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <FloatingIcons />
@@ -77,7 +77,7 @@ const Project = () => {
           {/* Header */}
           <section className="text-center mb-12 scroll-reveal">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              My{" "}
+              Selected{" "}
               <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
                 Projects
               </span>

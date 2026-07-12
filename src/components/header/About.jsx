@@ -102,10 +102,10 @@ const About = () => {
                   I'm a passionate IT Engineering student at RUPP with a strong
                   focus on{" "}
                   <strong className="text-cyan-300">
-                    frontend development
+                    full-stack development
                   </strong>
                   . My journey combines academic knowledge with hands-on
-                  experience gained through intensive training at ETAC Center.
+                  experience gained through intensive training at ETEC Center.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-4">
@@ -124,7 +124,7 @@ const About = () => {
                     {
                       icon: Code,
                       label: "Focus",
-                      value: "Frontend Development",
+                      value: "Full-Stack Development",
                     },
                   ].map((item, i) => (
                     <div

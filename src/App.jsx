@@ -8,6 +8,8 @@ import Experience1 from "./components/header/Experience1";
 import ScrollEffects from "./components/assets/animtion/ScrollEffects";
 import Project from "./components/header/Project";
 import ContactFAB from "./components/header/ContactFAB";
+import Certificates from "./components/header/Certificates";
+
 const App = () => {
   // Handle smooth scrolling
   useEffect(() => {
@@ -37,19 +39,22 @@ const App = () => {
       <ScrollEffects />
       <Navbar />
       <ContactFAB />
-      <section id="home">
+      <section id="home" aria-label="Introduction">
         <Home />
       </section>
-      <section id="about">
+      <section id="about" aria-label="About me">
         <About />
       </section>
-      <section id="experience">
+      <section id="experience" aria-label="Education and experience">
         <Experience1 />
       </section>
-      <section id="project">
+      <section id="project" aria-label="Projects">
         <Project />
       </section>
-      <section id="skill">
+      <section id="certificates" aria-label="Certificates and achievements">
+        <Certificates />
+      </section>
+      <section id="skill" aria-label="Technical skills">
         <Skill />
       </section>
       <Footer />

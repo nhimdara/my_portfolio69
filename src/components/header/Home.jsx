@@ -28,7 +28,7 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-gray-900 min-h-screen scroll-gradient">
+    <div className="min-h-screen bg-gray-950 scroll-gradient">
       <div className="relative overflow-hidden">
         {/* Floating Animated Background */}
         <div className="absolute inset-0 z-0 pointer-events-none">
@@ -45,13 +45,13 @@ const Home = () => {
         {/* Hero Section */}
         <section
           id="home"
-          className="relative z-10 px-4 sm:px-6 md:px-10 lg:px-20 py-8 sm:py-12 lg:py-24"
+          className="relative z-10 flex min-h-[calc(100vh-72px)] items-center px-5 py-16 sm:px-6 lg:px-8 lg:py-20"
         >
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-12 max-w-7xl mx-auto">
+          <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-12 lg:flex-row lg:gap-16">
             {/* Left Content */}
             <div className="text-white w-full lg:w-1/2 space-y-4 md:space-y-6 scroll-reveal">
               <h1 className="text-lg sm:text-xl md:text-2xl font-medium animate-fade-in-down opacity-0" style={{ animationDelay: "0.1s" }}>
-                Hello, It's Me
+                Hello, I&apos;m
               </h1>
               <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in-up opacity-0 bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent" style={{ animationDelay: "0.25s" }}>
                 Nhim Dara
@@ -62,9 +62,9 @@ const Home = () => {
                 <span className="text-cyan-400 inline-block ml-1 relative">
                   <TextType
                     text={[
-                      "Frontend Developer",
+                      "Full-Stack Developer",
                       "React Specialist",
-                      "UI Designer",
+                      "Laravel Developer",
                     ]}
                     typingSpeed={75}
                     pauseDuration={1500}
@@ -74,10 +74,10 @@ const Home = () => {
               </div>
 
               <p className="text-gray-300 leading-relaxed max-w-xl text-sm sm:text-base md:text-lg animate-fade-in-up opacity-0" style={{ animationDelay: "0.55s" }}>
-                A frontend developer trained at ETAC Center, gaining hands-on
-                experience in modern web technologies. I build scalable
-                interfaces and turn design concepts into functional, accessible
-                web applications.
+                A full-stack developer trained at ETEC Center with hands-on
+                experience across React, Laravel, PHP, and MySQL. I build
+                responsive interfaces, reliable APIs, and complete web
+                applications from concept to deployment.
               </p>
 
               {/* Social Links */}
@@ -95,7 +95,7 @@ const Home = () => {
                     key={i}
                     href={social.url}
                     target="_blank"
-                    // rel="noopener noreferrer"
+                    rel="noopener noreferrer"
                     className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full border-2 border-cyan-400 flex items-center justify-center hover:bg-cyan-400 hover:scale-110 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 group cursor-pointer"
                   >
                     <span className="text-cyan-400 group-hover:text-gray-900 text-base sm:text-lg md:text-xl transition-colors">
@@ -143,7 +143,7 @@ const Home = () => {
 
                 {/* Floating badge */}
                 <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-blue-600 to-purple-600 px-5 py-2.5 rounded-full font-semibold shadow-lg text-white text-sm md:text-base animate-float-badge">
-                  🚀 Available for hire
+                  Available for opportunities
                 </div>
               </div>
             </div>

@@ -17,8 +17,9 @@ const Footer = () => {
     { name: "Home", path: "#home" },
     { name: "About Me", path: "#about" },
     { name: "Experience", path: "#experience" },
-    { name: "Project", path: "#project" },
-    { name: "Skill", path: "#skill" },
+    { name: "Projects", path: "#project" },
+    { name: "Certificates", path: "#certificates" },
+    { name: "Skills", path: "#skill" },
     { name: "Contact", path: "tel:+855969923931" },
   ];
 
@@ -49,7 +50,7 @@ const Footer = () => {
       {/* Ambient glow */}
       <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-96 h-64 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-12 md:py-16">
+      <div className="relative mx-auto max-w-6xl px-5 py-12 sm:px-6 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Stay Connected Section */}
           <div className="space-y-4 scroll-fade-in">

@@ -5,7 +5,8 @@ import js from "../assets/image/Js.png";
 import react from "../assets/image/React.png";
 import tailwind from "../assets/image/Tainwind.png";
 import git from "../assets/image/Github.png";
-import xd from "../assets/image/XD.png";
+import { FaPhp, FaVuejs } from "react-icons/fa";
+import { SiLaravel, SiMysql, SiXampp } from "react-icons/si";
 
 
 export const Skills = [
@@ -35,26 +36,55 @@ export const Skills = [
   },
   {
     id: 5,
-    title: "React Js",
+    title: "React.js",
     image: react,
     percent: "65%",
   },
   {
     id: 6,
-    title: "TailwindCSS",
+    title: "Tailwind CSS",
     image: tailwind,
     percent: "90%",
   },
   {
     id: 7,
-    title: "githup",
+    title: "GitHub",
     image: git,
     percent: "40%",
   },
   {
     id: 8,
-    title: "Xd",
-    image: xd,
-    percent: "50%",
+    title: "Vue.js",
+    icon: <FaVuejs />,
+    color: "text-emerald-400",
+    percent: "65%",
+  },
+  {
+    id: 9,
+    title: "Laravel",
+    icon: <SiLaravel />,
+    color: "text-red-500",
+    percent: "70%",
+  },
+  {
+    id: 10,
+    title: "PHP",
+    icon: <FaPhp />,
+    color: "text-indigo-400",
+    percent: "75%",
+  },
+  {
+    id: 11,
+    title: "MySQL",
+    icon: <SiMysql />,
+    color: "text-blue-400",
+    percent: "70%",
+  },
+  {
+    id: 12,
+    title: "XAMPP",
+    icon: <SiXampp />,
+    color: "text-orange-500",
+    percent: "75%",
   },
 ];

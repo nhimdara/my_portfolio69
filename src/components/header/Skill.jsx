@@ -1,4 +1,5 @@
 import React from "react";
+import { Code2, Server, Wrench } from "lucide-react";
 import { Skills } from "./Skills";
 import FloatingIcons from "../assets/animtion/FloatingIcons";
 import {
@@ -11,6 +12,8 @@ import {
   FaFigma,
   FaBootstrap,
   FaNpm,
+  FaPhp,
+  FaVuejs,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -20,6 +23,9 @@ import {
   SiRedux,
   SiNextdotjs,
   SiVite,
+  SiLaravel,
+  SiMysql,
+  SiXampp,
 } from "react-icons/si";
 
 const Skill = () => {
@@ -40,6 +46,11 @@ const Skill = () => {
     { icon: <FaFigma />, name: "Figma", color: "text-pink-500" },
     { icon: <SiVite />, name: "Vite", color: "text-purple-400" },
     { icon: <FaNpm />, name: "NPM", color: "text-red-600" },
+    { icon: <FaVuejs />, name: "Vue.js", color: "text-emerald-400" },
+    { icon: <SiLaravel />, name: "Laravel", color: "text-red-500" },
+    { icon: <FaPhp />, name: "PHP", color: "text-indigo-400" },
+    { icon: <SiMysql />, name: "MySQL", color: "text-blue-400" },
+    { icon: <SiXampp />, name: "XAMPP", color: "text-orange-500" },
   ];
 
   const getSkillLevel = (percent) => {
@@ -50,8 +61,37 @@ const Skill = () => {
     return "Beginner";
   };
 
+  const skillGroups = [
+    {
+      title: "Frontend Development",
+      description: "Responsive, accessible interfaces and modern component-based applications.",
+      icon: Code2,
+      accent: "cyan",
+      className: "lg:col-span-2 lg:row-span-2",
+      skills: Skills.filter((skill) =>
+        ["HTML", "CSS", "Bootstrap", "JavaScript", "React.js", "Tailwind CSS", "Vue.js"].includes(skill.title),
+      ),
+    },
+    {
+      title: "Backend Development",
+      description: "Server-side applications, databases, and maintainable business logic.",
+      icon: Server,
+      accent: "purple",
+      className: "lg:col-span-1",
+      skills: Skills.filter((skill) => ["PHP", "Laravel", "MySQL"].includes(skill.title)),
+    },
+    {
+      title: "Development Tools",
+      description: "Tools used to build, manage, and run development environments.",
+      icon: Wrench,
+      accent: "emerald",
+      className: "lg:col-span-1",
+      skills: Skills.filter((skill) => ["GitHub", "XAMPP"].includes(skill.title)),
+    },
+  ];
+
   return (
-    <div className="bg-gray-900 min-h-screen pt-10 relative overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-gray-950 pt-16 md:pt-20">
       {/* Floating Background Icons */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <FloatingIcons />
@@ -78,8 +118,8 @@ const Skill = () => {
           {/* Animated Tech Stack Slider */}
           <div className="relative overflow-hidden py-8">
             {/* Edge fade masks */}
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-gray-950 to-transparent pointer-events-none"></div>
+            <div className="absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-gray-950 to-transparent pointer-events-none"></div>
 
             {/* Top Row - Scroll Left */}
             <div className="flex overflow-hidden mb-8">
@@ -126,110 +166,80 @@ const Skill = () => {
         </section>
       </div>
 
-      {/* Technology Stack Section */}
-      <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8 py-5">
-        {/* Skills Section */}
+      {/* Skills Section */}
+      <div className="relative z-10 mx-auto max-w-6xl px-5 py-10 md:py-12">
         <section className="scroll-reveal">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-12">
-            My{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 animate-gradient-shift">
-              Skills
-            </span>
-          </h2>
+          <div className="mb-12 text-center">
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {Skills.map((skill, i) => (
-              <div
-                key={skill.id}
-                className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 p-6 rounded-3xl hover:border-cyan-400/50 transition-all duration-300 group hover:scale-[1.03] hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/20 scroll-fade-in"
-                style={{ transitionDelay: `${i * 0.05}s` }}
-              >
-                <div className="flex justify-center mb-6">
-                  <div className="relative">
-                    <img
-                      src={skill.image}
-                      alt={skill.title}
-                      className="h-16 w-16 object-contain group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                </div>
+            <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">
+              My{" "}
+              <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                Skills
+              </span>
+            </h2>
+            <p className="mx-auto max-w-2xl leading-relaxed text-gray-400">
+              A practical toolkit for designing, developing, and delivering complete web applications.
+            </p>
+          </div>
 
-                <h3 className="text-xl font-bold text-white text-center mb-4 group-hover:text-cyan-300 transition-colors">
-                  {skill.title}
-                </h3>
+          <div className="grid gap-6 lg:grid-cols-3">
+            {skillGroups.map((group) => {
+              const GroupIcon = group.icon;
+              const accentClasses = {
+                cyan: "border-cyan-400/20 bg-cyan-400/10 text-cyan-300",
+                purple: "border-purple-400/20 bg-purple-400/10 text-purple-300",
+                emerald: "border-emerald-400/20 bg-emerald-400/10 text-emerald-300",
+              };
 
-                {/* Skill Progress Bar */}
-                <div className="mb-2">
-                  <div className="w-full bg-gray-700/50 h-3 rounded-full overflow-hidden">
-                    <div
-                      className="bg-gradient-to-r from-cyan-500 to-purple-500 h-full rounded-full transition-all duration-1000 ease-out group-hover:shadow-[0_0_15px_rgba(6,182,212,0.6)] relative overflow-hidden"
-                      style={{ width: skill.percent }}
-                    >
-                      <div className="absolute inset-0 bg-white/20 animate-shimmer"></div>
+              return (
+                <article
+                  key={group.title}
+                  className={`rounded-2xl border border-gray-700/80 bg-gray-900/75 p-6 shadow-xl backdrop-blur-sm transition-all duration-300 hover:border-gray-600 ${group.className}`}
+                >
+                  <div className="mb-6 flex items-start gap-4 border-b border-gray-700/70 pb-5">
+                    <span className={`rounded-xl border p-3 ${accentClasses[group.accent]}`}>
+                      <GroupIcon size={23} />
+                    </span>
+                    <div>
+                      <h3 className="text-xl font-bold text-white">{group.title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-gray-400">{group.description}</p>
                     </div>
                   </div>
-                </div>
 
-                {/* Skill Info */}
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                    {getSkillLevel(skill.percent)}
-                  </span>
-                  <span className="text-cyan-400 font-bold group-hover:text-white transition-colors">
-                    {skill.percent}
-                  </span>
-                </div>
-
-                {skill.description && (
-                  <div className="mt-4 pt-4 border-t border-gray-700/50">
-                    <p className="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {skill.description}
-                    </p>
+                  <div className={`grid gap-3 ${group.skills.length > 3 ? "sm:grid-cols-2" : "grid-cols-1"}`}>
+                    {group.skills.map((skill) => (
+                      <div
+                        key={skill.id}
+                        className="group/skill rounded-xl border border-white/5 bg-white/[0.035] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-400/25 hover:bg-white/[0.06]"
+                      >
+                        <div className="mb-3 flex items-center gap-3">
+                          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-gray-950/80">
+                            {skill.image ? (
+                              <img src={skill.image} alt="" className="h-7 w-7 object-contain" />
+                            ) : (
+                              <span className={`text-2xl ${skill.color}`} aria-hidden="true">{skill.icon}</span>
+                            )}
+                          </span>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center justify-between gap-2">
+                              <h4 className="truncate font-semibold text-gray-100">{skill.title}</h4>
+                              <span className="text-xs font-semibold text-cyan-400">{skill.percent}</span>
+                            </div>
+                            <p className="text-xs text-gray-500">{getSkillLevel(skill.percent)}</p>
+                          </div>
+                        </div>
+                        <div className="h-1.5 overflow-hidden rounded-full bg-gray-800">
+                          <div
+                            className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 transition-all duration-700"
+                            style={{ width: skill.percent }}
+                          />
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Skills Summary Section */}
-        <section className="mt-20 scroll-scale">
-          <div className="bg-gradient-to-br from-gray-800/30 to-gray-900/50 border border-gray-700 rounded-3xl p-8 md:p-12 hover:border-cyan-500/30 transition-colors duration-500">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 text-center">
-              Skill <span className="text-cyan-400">Summary</span>
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  value: `${Skills.filter((s) => parseInt(s.percent) >= 80).length}+`,
-                  label: "Advanced Skills",
-                  color: "text-cyan-400",
-                },
-                {
-                  value: techStack.length,
-                  label: "Technologies",
-                  color: "text-purple-400",
-                },
-                {
-                  value: Skills.length,
-                  label: "Total Skills",
-                  color: "text-green-400",
-                },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="text-center p-6 bg-gray-800/30 rounded-2xl hover:bg-gray-800/60 hover:-translate-y-1 transition-all duration-300"
-                >
-                  <div
-                    className={`text-4xl font-bold mb-2 ${item.color} animate-count-pop`}
-                  >
-                    {item.value}
-                  </div>
-                  <p className="text-gray-300">{item.label}</p>
-                </div>
-              ))}
-            </div>
+                </article>
+              );
+            })}
           </div>
         </section>
       </div>
