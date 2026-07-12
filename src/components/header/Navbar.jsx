@@ -36,22 +36,39 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActiveSection(visible.target.id);
-      },
-      { rootMargin: "-20% 0px -65%", threshold: [0, 0.1, 0.25] },
-    );
+    let animationFrame;
 
-    navItems.forEach(({ id }) => {
-      const section = document.getElementById(id);
-      if (section) observer.observe(section);
-    });
+    const updateActiveSection = () => {
+      // Activate a section when its top reaches the area just below the
+      // sticky navbar. This prevents the following section from becoming
+      // active while the current one still fills the viewport.
+      const activationPoint = 72 + window.innerHeight * 0.15;
+      let currentSection = navItems[0].id;
 
-    return () => observer.disconnect();
+      navItems.forEach(({ id }) => {
+        const section = document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= activationPoint) {
+          currentSection = id;
+        }
+      });
+
+      setActiveSection(currentSection);
+    };
+
+    const onSectionScroll = () => {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = requestAnimationFrame(updateActiveSection);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", onSectionScroll, { passive: true });
+    window.addEventListener("resize", onSectionScroll);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      window.removeEventListener("scroll", onSectionScroll);
+      window.removeEventListener("resize", onSectionScroll);
+    };
   }, []);
 
   useEffect(() => {
