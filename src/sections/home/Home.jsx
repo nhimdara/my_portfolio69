@@ -1,6 +1,6 @@
 import React from "react";
-import myPic from "../assets/image/myPicture.jpg";
-import TextType from "../assets/animtion/TextType";
+import myPic from "../../assets/images/myPicture.jpg";
+import TextType from "../../components/ui/TextType";
 import { Share2, ArrowDown, MapPin, Code2 } from "lucide-react";
 
 import {
@@ -9,7 +9,7 @@ import {
   FaTelegramPlane,
   FaTwitter,
 } from "react-icons/fa";
-import FloatingIcons from "../assets/animtion/FloatingIcons";
+import FloatingIcons from "../../components/ui/FloatingIcons";
 
 const Home = () => {
   const handleDownloadCV = () => {

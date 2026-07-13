@@ -1,10 +1,10 @@
-import html from "../assets/image/Html.png";
-import css from "../assets/image/CSS.png";
-import bootstrap from "../assets/image/Bootsrap.png";
-import js from "../assets/image/Js.png";
-import react from "../assets/image/React.png";
-import tailwind from "../assets/image/Tainwind.png";
-import git from "../assets/image/Github.png";
+import html from "../../assets/images/Html.png";
+import css from "../../assets/images/CSS.png";
+import bootstrap from "../../assets/images/Bootsrap.png";
+import js from "../../assets/images/Js.png";
+import react from "../../assets/images/React.png";
+import tailwind from "../../assets/images/Tainwind.png";
+import git from "../../assets/images/Github.png";
 import {
   FaFigma,
   FaGitAlt,
@@ -24,7 +24,7 @@ import {
 } from "react-icons/si";
 
 
-export const Skills = [
+export const skills = [
   {
     id: 1,
     title: "HTML",

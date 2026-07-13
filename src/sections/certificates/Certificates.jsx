@@ -8,11 +8,11 @@ import {
   X,
   Sparkles,
 } from "lucide-react";
-import FloatingIcons from "../assets/animtion/FloatingIcons";
-import moeysCertificate from "../assets/image/certificates/moeys-edtech-recognition.jpg";
-import frontendCertificate from "../assets/image/certificates/frontend-development.jpg";
-import transcript from "../assets/image/certificates/rupp-transcript.jpg";
-import backendCertificate from "../assets/image/certificates/backend-development.jpg";
+import FloatingIcons from "../../components/ui/FloatingIcons";
+import moeysCertificate from "../../assets/images/certificates/moeys-edtech-recognition.jpg";
+import frontendCertificate from "../../assets/images/certificates/frontend-development.jpg";
+import transcript from "../../assets/images/certificates/rupp-transcript.jpg";
+import backendCertificate from "../../assets/images/certificates/backend-development.jpg";
 
 const certificates = [
   {

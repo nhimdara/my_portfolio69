@@ -1,7 +1,7 @@
 import React from "react";
 import { Code2, Server, Wrench, TrendingUp } from "lucide-react";
-import { Skills } from "./Skills";
-import FloatingIcons from "../assets/animtion/FloatingIcons";
+import { skills } from "./skillsData";
+import FloatingIcons from "../../components/ui/FloatingIcons";
 import {
   FaReact,
   FaHtml5,
@@ -28,7 +28,7 @@ import {
   SiXampp,
 } from "react-icons/si";
 
-const Skill = () => {
+const SkillsSection = () => {
   const techStack = [
     { icon: <FaReact />, name: "React", color: "text-cyan-400" },
     { icon: <FaHtml5 />, name: "HTML5", color: "text-orange-600" },
@@ -98,7 +98,7 @@ const Skill = () => {
       icon: Code2,
       accent: "cyan",
       ticker: "FE",
-      skills: Skills.filter((skill) =>
+      skills: skills.filter((skill) =>
         [
           "HTML",
           "CSS",
@@ -118,7 +118,7 @@ const Skill = () => {
       icon: Server,
       accent: "purple",
       ticker: "BE",
-      skills: Skills.filter((skill) =>
+      skills: skills.filter((skill) =>
         [
           "PHP",
           "Laravel",
@@ -136,7 +136,7 @@ const Skill = () => {
       icon: Wrench,
       accent: "emerald",
       ticker: "DT",
-      skills: Skills.filter((skill) =>
+      skills: skills.filter((skill) =>
         ["Git", "GitHub", "Figma", "Vite", "npm", "XAMPP"].includes(
           skill.title,
         ),
@@ -459,4 +459,4 @@ const Skill = () => {
   );
 };
 
-export default Skill;
+export default SkillsSection;
