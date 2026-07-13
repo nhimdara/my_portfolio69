@@ -2,7 +2,14 @@
 
 :root {
   color-scheme: dark;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   color: #e5e7eb;
   background: #030712;
   font-synthesis: none;
@@ -33,8 +40,16 @@ img {
 
 .scroll-gradient {
   background:
-    radial-gradient(circle at 12% 18%, rgba(6, 182, 212, 0.07), transparent 28rem),
-    radial-gradient(circle at 88% 74%, rgba(139, 92, 246, 0.07), transparent 30rem),
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(6, 182, 212, 0.07),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 88% 74%,
+      rgba(139, 92, 246, 0.07),
+      transparent 30rem
+    ),
     #030712;
 }
 
@@ -115,7 +130,6 @@ section {
   transform: translate(0, 0) scale(1) !important;
 }
 
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
@@ -141,8 +155,8 @@ section {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* Light theme overrides for the existing utility-driven design. */
@@ -160,8 +174,16 @@ html[data-theme="light"] [class*="bg-gray-950"] {
 
 html[data-theme="light"] .scroll-gradient {
   background:
-    radial-gradient(circle at 12% 18%, rgba(6, 182, 212, 0.11), transparent 28rem),
-    radial-gradient(circle at 88% 74%, rgba(139, 92, 246, 0.1), transparent 30rem),
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(6, 182, 212, 0.11),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 88% 74%,
+      rgba(139, 92, 246, 0.1),
+      transparent 30rem
+    ),
     #f8fafc !important;
 }
 
@@ -170,7 +192,12 @@ html[data-theme="light"] .floating-icons-background {
 }
 
 html[data-theme="light"] .floating-icons-gradient {
-  background: linear-gradient(135deg, #f8fafc 0%, #eef6ff 50%, #f5f3ff 100%) !important;
+  background: linear-gradient(
+    135deg,
+    #f8fafc 0%,
+    #eef6ff 50%,
+    #f5f3ff 100%
+  ) !important;
 }
 
 html[data-theme="light"] .floating-icons-background > div:nth-child(2) {
@@ -253,7 +280,12 @@ html[data-theme="light"] [class*="text-amber-300"] {
 }
 
 html[data-theme="light"] .bg-clip-text[class*="from-white"] {
-  background-image: linear-gradient(135deg, #0f172a 0%, #155e75 55%, #7c3aed 100%) !important;
+  background-image: linear-gradient(
+    135deg,
+    #0f172a 0%,
+    #155e75 55%,
+    #7c3aed 100%
+  ) !important;
   color: transparent !important;
 }
 
@@ -303,27 +335,51 @@ html[data-theme="light"] ::-webkit-scrollbar-track {
 
 /* Section-specific light surfaces keep the portfolio bright without feeling flat. */
 html[data-theme="light"] #home {
-  background: radial-gradient(circle at 72% 32%, rgba(34, 211, 238, 0.14), transparent 28rem);
+  background: radial-gradient(
+    circle at 72% 32%,
+    rgba(34, 211, 238, 0.14),
+    transparent 28rem
+  );
 }
 
 html[data-theme="light"] #about {
-  background: linear-gradient(180deg, rgba(236, 254, 255, 0.6), rgba(248, 250, 252, 0.25));
+  background: linear-gradient(
+    180deg,
+    rgba(236, 254, 255, 0.6),
+    rgba(248, 250, 252, 0.25)
+  );
 }
 
 html[data-theme="light"] #experience {
-  background: radial-gradient(circle at 18% 45%, rgba(59, 130, 246, 0.09), transparent 30rem);
+  background: radial-gradient(
+    circle at 18% 45%,
+    rgba(59, 130, 246, 0.09),
+    transparent 30rem
+  );
 }
 
 html[data-theme="light"] #project {
-  background: linear-gradient(180deg, rgba(245, 243, 255, 0.58), rgba(248, 250, 252, 0.3));
+  background: linear-gradient(
+    180deg,
+    rgba(245, 243, 255, 0.58),
+    rgba(248, 250, 252, 0.3)
+  );
 }
 
 html[data-theme="light"] #certificates {
-  background: radial-gradient(circle at 80% 30%, rgba(251, 191, 36, 0.08), transparent 28rem);
+  background: radial-gradient(
+    circle at 80% 30%,
+    rgba(251, 191, 36, 0.08),
+    transparent 28rem
+  );
 }
 
 html[data-theme="light"] #skill {
-  background: linear-gradient(180deg, rgba(236, 254, 255, 0.45), rgba(245, 243, 255, 0.45));
+  background: linear-gradient(
+    180deg,
+    rgba(236, 254, 255, 0.45),
+    rgba(245, 243, 255, 0.45)
+  );
 }
 
 html[data-theme="light"] .hero-content-panel {
@@ -355,7 +411,11 @@ html[data-theme="light"] .certificate-card:hover {
 
 html[data-theme="light"] .app > footer {
   background:
-    radial-gradient(circle at 50% 100%, rgba(6, 182, 212, 0.12), transparent 30rem),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(6, 182, 212, 0.12),
+      transparent 30rem
+    ),
     #f1f5f9 !important;
 }
 

@@ -97,7 +97,7 @@ const SkillsSection = () => {
         "Responsive, accessible interfaces and modern component-based applications.",
       icon: Code2,
       accent: "cyan",
-      ticker: "FE",
+      ticker: "FD",
       skills: skills.filter((skill) =>
         [
           "HTML",
@@ -117,7 +117,7 @@ const SkillsSection = () => {
         "Server-side applications, databases, and maintainable business logic.",
       icon: Server,
       accent: "purple",
-      ticker: "BE",
+      ticker: "BD",
       skills: skills.filter((skill) =>
         [
           "PHP",
