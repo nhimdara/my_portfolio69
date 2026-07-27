@@ -13,6 +13,7 @@ import moeysCertificate from "../assets/image/certificates/moeys-edtech-recognit
 import frontendCertificate from "../assets/image/certificates/frontend-development.jpg";
 import transcript from "../assets/image/certificates/rupp-transcript.jpg";
 import backendCertificate from "../assets/image/certificates/backend-development.jpg";
+import frontendInternshipCertificate from "../assets/image/certificates/frontend-internship-completion.jpg";
 
 const certificates = [
   {
@@ -30,6 +31,14 @@ const certificates = [
     date: "June 2026",
     image: backendCertificate,
     description: "PHP, object-oriented programming, MySQL, Laravel and project development.",
+  },
+  {
+    title: "Frontend Development Internship",
+    type: "Internship Certificate",
+    issuer: "KRU IT Solution & ETEC Center",
+    date: "July 15, 2026",
+    image: frontendInternshipCertificate,
+    description: "Completed a frontend development internship, demonstrating dedication, teamwork, and commitment to professional growth.",
   },
   {
     title: "MoEYS EdTech Recognition",
