@@ -1,7 +1,7 @@
 import React from "react";
 import { BriefcaseBusiness, GraduationCap, Route } from "lucide-react";
 
-const Experience1 = () => {
+const Experience = () => {
   const education = [
     {
       year: "2024 - Present",
@@ -142,4 +142,4 @@ const Experience1 = () => {
   );
 };
 
-export default Experience1;
+export default Experience;

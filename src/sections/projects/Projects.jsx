@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FloatingIcons from "../assets/animtion/FloatingIcons";
+import FloatingIcons from "../../components/ui/FloatingIcons";
 import {
   ArrowUpRight,
   ExternalLink,
@@ -8,13 +8,13 @@ import {
   Sparkles,
   Star,
 } from "lucide-react";
-import Elearing from "../assets/image/ProjectElearning.png";
-import Ecommerce from "../assets/image/Ecommerce.png";
-import Portfolio from "../assets/image/Portfolio.png";
-const Project = () => {
+import Elearing from "../../assets/images/ProjectElearning.png";
+import Ecommerce from "../../assets/images/Ecommerce.png";
+import Portfolio from "../../assets/images/Portfolio.png";
+const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const Projects = [
+  const projects = [
     {
       id: 1,
       title: "LearnFlow E-Learning Platform",
@@ -57,13 +57,13 @@ const Project = () => {
   ];
   const categories = [
     "All",
-    ...new Set(Projects.map((project) => project.category)),
+    ...new Set(projects.map((project) => project.category)),
   ];
 
   const filteredProjects =
     activeFilter === "All"
-      ? Projects
-      : Projects.filter((project) => project.category === activeFilter);
+      ? projects
+      : projects.filter((project) => project.category === activeFilter);
 
   return (
     <div className="relative min-h-screen bg-gray-950 scroll-gradient">
@@ -236,4 +236,4 @@ const Project = () => {
   );
 };
 
-export default Project;
+export default Projects;

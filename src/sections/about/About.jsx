@@ -1,5 +1,5 @@
 import React from "react";
-import myPicture from "../assets/image/myPicture1.jpg";
+import myPicture from "../../assets/images/myPicture1.jpg";
 import {
   Calendar,
   MapPin,

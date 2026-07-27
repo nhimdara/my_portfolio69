@@ -7,6 +7,8 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react(), tailwindcss()],
-    base: env.VITE_BASE_PATH || '/my_portfolio69/',
+    // The Cloudflare Worker serves the site from the domain root. A subpath can
+    // still be supplied explicitly (for example, for GitHub Pages).
+    base: env.VITE_BASE_PATH || '/',
   }
 })

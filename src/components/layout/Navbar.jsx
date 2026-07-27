@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Menu, Moon, Phone, Sun, X } from "lucide-react";
-import profilePicture from "../assets/image/myPicture1.jpg";
+import profilePicture from "../../assets/images/myPicture1.jpg";
 
 const navItems = [
   { id: "home", label: "Home" },
