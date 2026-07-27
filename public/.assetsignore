@@ -1,0 +1,3 @@
+# Cloudflare Workers assets are limited to 25 MiB. The APK is served from
+# GitHub instead so it remains downloadable without blocking deployment.
+apk/woods-cambodia.apk
