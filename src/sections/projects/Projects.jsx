@@ -2,15 +2,22 @@ import React, { useState } from "react";
 import FloatingIcons from "../../components/ui/FloatingIcons";
 import {
   ArrowUpRight,
+  Download,
   ExternalLink,
   Github,
   Layers3,
+  Server,
   Sparkles,
   Star,
 } from "lucide-react";
 import Elearing from "../../assets/images/ProjectElearning.png";
 import Ecommerce from "../../assets/images/Ecommerce.png";
 import Portfolio from "../../assets/images/Portfolio.png";
+import CulinaryAdminPOS from "../../assets/images/CulinaryAdminPOS.png";
+import CineVault from "../../assets/images/CineVault.webp";
+import TelegramShop from "../../assets/images/TelegramShop.png";
+import StayEasyHotel from "../../assets/images/StayEasyHotel.png";
+import WoodsAndroid from "../../assets/images/WoodsAndroid.png";
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
 
@@ -24,8 +31,14 @@ const Projects = () => {
       tech: ["React", "Express", "MySQL", "Tailwind CSS", "JWT"],
       category: "Full Stack",
       year: "2026",
-      liveUrl: "https://pp-deploy-zeta.vercel.app/",
-      githubUrl: "https://github.com/nhimdara/PP_deploy/tree/main/Frontend",
+      liveUrl: "https://frontend-project-practicum-e-learni.vercel.app/",
+      backendUrl:
+        "https://backend-project-practicum-elearning.onrender.com/api",
+      githubUrl:
+        "https://github.com/nhimdara/Frontend-Project-Practicum-ELearning",
+      githubLabel: "Frontend",
+      backendGithubUrl:
+        "https://github.com/nhimdara/Backend-Project-Practicum-ELearning",
       featured: true,
     },
     {
@@ -43,6 +56,79 @@ const Projects = () => {
     },
     {
       id: 3,
+      title: "Culinary Admin POS",
+      image: CulinaryAdminPOS,
+      description:
+        "A full-stack restaurant management portal with operational dashboards for sales, orders, inventory, tables, products, categories, and payments.",
+      tech: ["POS Dashboard", "Admin Portal", "REST API"],
+      category: "Full Stack",
+      year: "2026",
+      liveUrl: "https://mpos-seven.vercel.app/",
+      backendUrl: "https://g2-sun-11-mpos-back-gjyx.onrender.com/",
+      githubUrl: "https://github.com/NalenSrin123/G2_SUN_11_MPOS",
+      featured: true,
+    },
+    {
+      id: 4,
+      title: "CineVault Movie Website",
+      image: CineVault,
+      description:
+        "A responsive movie discovery website with search, genre filters, catalogue sorting, persistent favourites and watchlists, demo authentication, and light and dark themes.",
+      tech: ["React 19", "Vite", "Modular CSS"],
+      category: "Frontend",
+      year: "2026",
+      liveUrl: null,
+      githubUrl: "https://github.com/nhimdara/Movie-Website-WCT",
+      featured: false,
+    },
+    {
+      id: 5,
+      title: "Telegram Shop Mini App",
+      image: TelegramShop,
+      description:
+        "A full-stack Telegram Mini App storefront with verified Telegram authentication, product browsing, user carts, stock-aware orders, and Bakong KHQR and ABA PayWay payment flows.",
+      tech: ["React 19", "Telegram SDK", "Laravel 12", "PostgreSQL"],
+      category: "Full Stack",
+      year: "2026",
+      liveUrl: "https://t.me/my_shop67_bot/shop_nw",
+      githubUrl: "https://github.com/nhimdara/bot-telegram-test-website",
+      githubLabel: "Frontend",
+      backendGithubUrl:
+        "https://github.com/nhimdara/bot-telegram-test-website-backend",
+      featured: true,
+    },
+    {
+      id: 6,
+      title: "StayEasy Hotel Booking",
+      image: StayEasyHotel,
+      description:
+        "A full-stack hotel booking platform with destination and date search, wishlists, room reservations, secure payments, and role-based hotel and booking management.",
+      tech: ["Vue 3", "Tailwind CSS", "Laravel 10", "Sanctum"],
+      category: "Full Stack",
+      year: "2026",
+      liveUrl: "https://frontend-hotel-booking-ten.vercel.app/",
+      backendUrl: "https://backend-hotel-booking-5.onrender.com/api",
+      githubUrl: "https://github.com/nhimdara/Frontend_Hotel_Booking",
+      githubLabel: "Frontend",
+      backendGithubUrl: "https://github.com/nhimdara/Backend_Hotel_Booking",
+      featured: true,
+    },
+    {
+      id: 7,
+      title: "WOOD'S Cambodia Android App",
+      image: WoodsAndroid,
+      description:
+        "An Android product-catalog application for WOOD'S Cambodia, featuring branded product discovery, responsive navigation, company information, and direct social contact links.",
+      tech: ["Android Studio", "React 18", "Capacitor", "Tailwind CSS"],
+      category: "Mobile",
+      year: "2026",
+      liveUrl: null,
+      apkUrl: "/apk/woods-cambodia.apk",
+      githubUrl: "https://github.com/nhimdara/Wood-s",
+      featured: true,
+    },
+    {
+      id: 8,
       title: "Portfolio Website",
       image: Portfolio,
       description:
@@ -118,7 +204,7 @@ const Projects = () => {
 
           {/* Projects Grid */}
           <section className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 scroll-reveal">
-            {filteredProjects.map((project, index) => (
+            {filteredProjects.map((project) => (
               <article
                 key={project.id}
                 className="project-card group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0b111b]/90 shadow-xl shadow-black/20 transition-all duration-500 hover:-translate-y-2 hover:border-cyan-400/50 hover:shadow-[0_24px_70px_rgba(6,182,212,0.14)]"
@@ -134,17 +220,37 @@ const Projects = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b111b] via-transparent to-gray-950/20"></div>
 
-                  <span className="absolute bottom-3 left-4 font-mono text-4xl font-black text-white/20 transition-colors group-hover:text-cyan-300/50">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
                   <div className="absolute bottom-3 right-4 flex translate-y-3 gap-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} live demo`} className="grid h-10 w-10 place-items-center rounded-xl border border-white/15 bg-gray-950/85 text-cyan-300 backdrop-blur-md transition-colors hover:bg-cyan-400 hover:text-gray-950">
-                      <ArrowUpRight size={18} />
-                    </a>
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} source code`} className="grid h-10 w-10 place-items-center rounded-xl border border-white/15 bg-gray-950/85 text-white backdrop-blur-md transition-colors hover:bg-white hover:text-gray-950">
-                      <Github size={17} />
-                    </a>
+                    {project.liveUrl && (
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} live demo`} className="grid h-10 w-10 place-items-center rounded-xl border border-white/15 bg-gray-950/85 text-cyan-300 backdrop-blur-md transition-colors hover:bg-cyan-400 hover:text-gray-950">
+                        <ArrowUpRight size={18} />
+                      </a>
+                    )}
+                    {project.apkUrl && (
+                      <a
+                        href={project.apkUrl}
+                        download
+                        aria-label={`Download ${project.title} APK`}
+                        className="grid h-10 w-10 place-items-center rounded-xl border border-white/15 bg-gray-950/85 text-cyan-300 backdrop-blur-md transition-colors hover:bg-cyan-400 hover:text-gray-950"
+                      >
+                        <Download size={18} />
+                      </a>
+                    )}
+                    {(project.githubUrl || project.backendUrl) && (
+                      <a
+                        href={project.githubUrl || project.backendUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={
+                          project.githubUrl
+                            ? `Open ${project.title} source code`
+                            : `Open ${project.title} backend API`
+                        }
+                        className="grid h-10 w-10 place-items-center rounded-xl border border-white/15 bg-gray-950/85 text-white backdrop-blur-md transition-colors hover:bg-white hover:text-gray-950"
+                      >
+                        {project.githubUrl ? <Github size={17} /> : <Server size={17} />}
+                      </a>
+                    )}
                   </div>
 
                   {project.featured && (
@@ -186,7 +292,16 @@ const Projects = () => {
 
                   {/* Links */}
                   <div className="flex flex-wrap gap-x-4 gap-y-2 border-t border-gray-700/50 pt-4">
-                    {project.liveUrl ? (
+                    {project.apkUrl ? (
+                      <a
+                        href={project.apkUrl}
+                        download
+                        className="flex items-center gap-2 text-sm font-semibold text-cyan-400 transition-colors hover:text-cyan-300"
+                      >
+                        <Download size={16} />
+                        Download APK
+                      </a>
+                    ) : project.liveUrl ? (
                       <a
                         href={project.liveUrl}
                         target="_blank"
@@ -211,13 +326,37 @@ const Projects = () => {
                         className="flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-purple-300 transition-colors"
                       >
                         <Github size={16} />
-                        Source Code
+                        {project.githubLabel || "Source Code"}
                       </a>
-                    ) : (
+                    ) : !project.backendUrl ? (
                       <span className="flex items-center gap-2 text-sm font-semibold text-gray-600 cursor-not-allowed">
                         <Github size={16} />
                         Source Code
                       </span>
+                    ) : null}
+
+                    {project.backendGithubUrl && (
+                      <a
+                        href={project.backendGithubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-semibold text-gray-300 transition-colors hover:text-purple-300"
+                      >
+                        <Server size={16} />
+                        Backend
+                      </a>
+                    )}
+
+                    {project.backendUrl && (
+                      <a
+                        href={project.backendUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-semibold text-gray-300 transition-colors hover:text-purple-300"
+                      >
+                        <Server size={16} />
+                        API
+                      </a>
                     )}
                   </div>
                 </div>
