@@ -124,7 +124,7 @@ const Projects = () => {
       year: "2026",
       liveUrl: null,
       apkUrl:
-        "https://raw.githubusercontent.com/nhimdara/my_portfolio69/main/public/apk/woods-cambodia.apk",
+        "https://raw.githubusercontent.com/nhimdara/my_portfolio69/main/downloads/woods-cambodia.apk",
       githubUrl: "https://github.com/nhimdara/Wood-s",
       featured: true,
     },
