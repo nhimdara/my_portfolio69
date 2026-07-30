@@ -238,7 +238,7 @@ const Projects = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b111b] via-transparent to-gray-950/20"></div>
 
-                  <div className="absolute bottom-3 right-4 flex translate-y-3 gap-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                  <div className="project-quick-actions absolute bottom-3 right-4 flex translate-y-3 gap-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                     {project.liveUrl && (
                       <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} live demo`} className="grid h-10 w-10 place-items-center rounded-xl border border-white/15 bg-gray-950/85 text-cyan-300 backdrop-blur-md transition-colors hover:bg-cyan-400 hover:text-gray-950">
                         <ArrowUpRight size={18} />

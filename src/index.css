@@ -167,6 +167,13 @@ a:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  .scroll-reveal,
+  .scroll-fade-in,
+  .scroll-scale {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 section {
@@ -187,6 +194,77 @@ section {
 }
 
 /* ===== Scroll Reveal Animations ===== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+
+.scroll-fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.scroll-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+
+.scroll-reveal.visible,
+.scroll-fade-in.visible,
+.scroll-scale.visible {
+  opacity: 1;
+  transform: none;
+}
+
+#scroll-progress {
+  width: 100%;
+  will-change: transform;
+}
+
+nav {
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    backdrop-filter 0.3s ease;
+}
+
+nav.nav-scrolled {
+  background-color: rgba(17, 24, 39, 0.95) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .project-card:active,
+  .certificate-card:active,
+  .interest-card:active,
+  .about-detail-card:active,
+  .journey-card:active {
+    transform: scale(0.985);
+  }
+
+  .project-quick-actions {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .certificate-image-overlay {
+    background-color: rgba(3, 7, 18, 0.18);
+  }
+
+  .certificate-image-overlay > span {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(40px);
