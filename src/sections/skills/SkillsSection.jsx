@@ -376,7 +376,7 @@ const SkillsSection = () => {
         </section>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes scroll-left {
           0% {
             transform: translateX(0);

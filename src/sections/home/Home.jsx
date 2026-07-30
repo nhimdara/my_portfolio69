@@ -184,7 +184,7 @@ const Home = () => {
         </section>
       </div>
 
-      <style jsx global>{`
+      <style>{`
         @keyframes fade-in-down {
           from { opacity: 0; transform: translateY(-20px); }
           to { opacity: 1; transform: translateY(0); }

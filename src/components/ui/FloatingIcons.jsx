@@ -127,7 +127,7 @@ const FloatingIcons = ({ mode = "background" }) => {
         </div>
       ))}
 
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%, 100% {
             transform: translate3d(0, 0, 0) rotate(0deg);

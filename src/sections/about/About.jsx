@@ -181,7 +181,7 @@ const About = () => {
       </main>
 
       {/* Required animations */}
-      <style jsx global>{`
+      <style>{`
         @keyframes float {
           0%,
           100% {

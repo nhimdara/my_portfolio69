@@ -18,6 +18,7 @@ import CineVault from "../../assets/images/CineVault.webp";
 import TelegramShop from "../../assets/images/TelegramShop.png";
 import StayEasyHotel from "../../assets/images/StayEasyHotel.png";
 import WoodsAndroid from "../../assets/images/WoodsAndroid.png";
+import IronManPortfolio from "../../assets/images/IronManPortfolio.jpg";
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
 
@@ -77,7 +78,7 @@ const Projects = () => {
       tech: ["React 19", "Vite", "Modular CSS"],
       category: "Frontend",
       year: "2026",
-      liveUrl: null,
+      liveUrl: "https://movie-website-wct.vercel.app/",
       githubUrl: "https://github.com/nhimdara/Movie-Website-WCT",
       featured: false,
     },
@@ -141,6 +142,19 @@ const Projects = () => {
       githubUrl: "https://github.com/nhimdara/my_portfolio69",
       featured: false,
     },
+    {
+      id: 9,
+      title: "Iron Man Interactive Portfolio",
+      image: IronManPortfolio,
+      description:
+        "A cinematic Iron Man-inspired developer portfolio with immersive scrolling, fluid motion, and responsive sections for projects, skills, experience, and credentials.",
+      tech: ["React", "Framer Motion", "Lenis", "Tailwind CSS"],
+      category: "Frontend",
+      year: "2026",
+      liveUrl: "https://daranhimportfolio.vercel.app/",
+      githubUrl: "https://github.com/nhimdara/IRON-MAN",
+      featured: true,
+    },
   ];
   const categories = [
     "All",
@@ -183,23 +197,26 @@ const Projects = () => {
           </section>
 
           {/* Filter Tabs */}
-          <section className="mb-12 flex justify-center scroll-reveal" aria-label="Project filters">
-            <div className="flex flex-wrap justify-center gap-1.5 rounded-2xl border border-white/10 bg-gray-900/70 p-1.5 shadow-xl shadow-black/20 backdrop-blur-xl">
-            {categories.map((category) => (
-              <button
-                type="button"
-                key={category}
-                onClick={() => setActiveFilter(category)}
-                aria-pressed={activeFilter === category}
-                className={`cursor-pointer rounded-xl border px-5 py-2 text-sm font-semibold transition-all duration-300 ${
-                  activeFilter === category
-                    ? "border-transparent bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-lg shadow-cyan-900/30"
-                    : "border-transparent text-gray-400 hover:bg-white/5 hover:text-cyan-300"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+          <section
+            className="mb-12 flex justify-center scroll-reveal"
+            aria-label="Project filters"
+          >
+            <div className="grid w-full max-w-2xl grid-cols-2 gap-1 rounded-2xl border border-white/10 bg-[#0b111b]/90 p-1.5 shadow-xl shadow-black/20 backdrop-blur-xl sm:grid-cols-4">
+              {categories.map((category) => (
+                <button
+                  type="button"
+                  key={category}
+                  onClick={() => setActiveFilter(category)}
+                  aria-pressed={activeFilter === category}
+                  className={`relative min-h-10 cursor-pointer rounded-xl px-3 py-2 text-center text-sm font-semibold transition-all duration-300 ${
+                    activeFilter === category
+                      ? "bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-[0_8px_24px_rgba(6,182,212,.2)]"
+                      : "text-gray-400 hover:bg-white/[0.06] hover:text-white"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
             </div>
           </section>
 

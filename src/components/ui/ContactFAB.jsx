@@ -33,7 +33,7 @@ const ContactFAB = () => {
         </span>
       </span>
 
-      <style jsx>{`
+      <style>{`
         @keyframes ping-slow {
           0% {
             transform: scale(1);

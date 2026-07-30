@@ -16,6 +16,72 @@
   text-rendering: optimizeLegibility;
 }
 
+.hero-shell {
+  isolation: isolate;
+}
+
+.hero-grid {
+  opacity: 0.42;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, black, transparent 92%);
+}
+
+.hero-amber-glow {
+  background: rgba(245, 158, 11, 0.1);
+  filter: blur(100px);
+}
+
+.hero-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #f59e0b;
+  text-shadow: 0 0 45px rgba(245, 158, 11, 0.08);
+}
+
+.hero-social {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  color: #9ca3af;
+  transition: 220ms ease;
+}
+
+.hero-social:hover {
+  color: #0a0b0d;
+  border-color: #fbbf24;
+  background: #fbbf24;
+  transform: translateY(-3px);
+}
+
+.hero-enter {
+  opacity: 1;
+  visibility: visible;
+  animation: hero-enter 0.8s both;
+}
+
+.hero-enter:nth-child(2) { animation-delay: 0.08s; }
+.hero-enter:nth-child(3) { animation-delay: 0.16s; }
+.hero-enter:nth-child(4) { animation-delay: 0.24s; }
+.hero-enter:nth-child(5) { animation-delay: 0.32s; }
+
+.profile-orbit {
+  animation: orbit-spin 18s linear infinite;
+}
+
+@keyframes hero-enter {
+  from { transform: translateY(24px); }
+  to { transform: translateY(0); }
+}
+
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -31,6 +97,26 @@ body {
   background: #030712;
   overflow-x: hidden;
   line-height: 1.5;
+}
+
+.app {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(6, 182, 212, 0.045), transparent 32rem),
+    radial-gradient(circle at 85% 55%, rgba(245, 158, 11, 0.035), transparent 34rem),
+    #07090c;
+}
+
+.app > section {
+  position: relative;
+}
+
+.app > section::after {
+  content: "";
+  position: absolute;
+  inset: auto 6vw 0;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
 }
 
 img {
