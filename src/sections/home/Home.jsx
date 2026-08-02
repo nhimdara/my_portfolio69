@@ -12,16 +12,7 @@ import {
 import FloatingIcons from "../../components/ui/FloatingIcons";
 
 const Home = () => {
-  const handleDownloadCV = () => {
-    const cvUrl = "cv/CV Nhim Dara.pdf";
-    const link = document.createElement("a");
-    link.href = cvUrl;
-    link.download = "CV-Nhim-Dara.pdf";
-    link.target = "_blank";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  const cvUrl = `${import.meta.env.BASE_URL}cv/CV-Nhim-Dara.pdf`;
 
   const handleLetstalk = () => {
     window.open("https://t.me/dara_nhim", "_blank");
@@ -144,13 +135,14 @@ const Home = () => {
                   />
                 </button>
 
-                <button
-                  onClick={handleDownloadCV}
+                <a
+                  href={cvUrl}
+                  download="CV-Nhim-Dara.pdf"
                   className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-cyan-500/25 transition-all duration-300 before:absolute before:inset-0 before:bg-white/0 before:transition-colors hover:-translate-y-1 hover:shadow-cyan-500/40 hover:before:bg-white/10 sm:text-base"
                 >
                   <span className="relative z-10">Download CV</span>
                   <ArrowDown size={18} className="relative z-10 transition-transform group-hover:translate-y-1" />
-                </button>
+                </a>
               </div>
             </div>
 
