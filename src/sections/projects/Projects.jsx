@@ -19,6 +19,7 @@ import TelegramShop from "../../assets/images/TelegramShop.png";
 import StayEasyHotel from "../../assets/images/StayEasyHotel.png";
 import WoodsAndroid from "../../assets/images/WoodsAndroid.png";
 import IronManPortfolio from "../../assets/images/IronManPortfolio.jpg";
+import CampusStudentManagement from "../../assets/images/CampusStudentManagement.png";
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
 
@@ -153,6 +154,20 @@ const Projects = () => {
       year: "2026",
       liveUrl: "https://daranhimportfolio.vercel.app/",
       githubUrl: "https://github.com/nhimdara/IRON-MAN",
+      featured: true,
+    },
+    {
+      id: 10,
+      title: "Campus Student Management System",
+      image: CampusStudentManagement,
+      description:
+        "A student information system for managing students, courses, enrollment, scores, and academic performance through dedicated admin, teacher, student, and parent experiences.",
+      tech: ["Python", "FastAPI", "SQLAlchemy", "SQLite"],
+      category: "Full Stack",
+      year: "2026",
+      liveUrl: "https://student-management-system-kjf6.onrender.com/",
+      githubUrl:
+        "https://github.com/nhimdara/Final-Project-DSA-RUPP-ITE-Management-",
       featured: true,
     },
   ];
