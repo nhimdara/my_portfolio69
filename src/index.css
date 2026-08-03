@@ -176,6 +176,38 @@ a:focus-visible {
   }
 }
 
+/* Visitors can also turn motion down manually from the navigation bar. */
+html[data-motion="reduced"] {
+  scroll-behavior: auto;
+}
+
+html[data-motion="reduced"] *,
+html[data-motion="reduced"] *::before,
+html[data-motion="reduced"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 120ms !important;
+  scroll-behavior: auto !important;
+}
+
+html[data-motion="reduced"] .scroll-reveal,
+html[data-motion="reduced"] .scroll-fade-in,
+html[data-motion="reduced"] .scroll-scale,
+html[data-motion="reduced"] .reveal,
+html[data-motion="reduced"] .reveal-left,
+html[data-motion="reduced"] .reveal-right,
+html[data-motion="reduced"] .reveal-scale,
+html[data-motion="reduced"] [class*="animate-fade"] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+html[data-motion="reduced"] .motion-toggle {
+  border-color: rgba(34, 211, 238, 0.45) !important;
+  background: rgba(34, 211, 238, 0.12) !important;
+  color: #67e8f9 !important;
+}
+
 section {
   scroll-margin-top: 72px;
 }
@@ -485,6 +517,17 @@ html[data-theme="light"] .theme-toggle {
   border-color: rgba(14, 116, 144, 0.22) !important;
   background: rgba(255, 255, 255, 0.85) !important;
   color: #0e7490 !important;
+}
+
+html[data-theme="light"] .motion-toggle {
+  border-color: rgba(14, 116, 144, 0.22) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+  color: #0e7490 !important;
+}
+
+html[data-theme="light"][data-motion="reduced"] .motion-toggle {
+  border-color: rgba(8, 145, 178, 0.55) !important;
+  background: rgba(6, 182, 212, 0.13) !important;
 }
 
 html[data-theme="light"] #about,

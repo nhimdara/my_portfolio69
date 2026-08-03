@@ -12,7 +12,8 @@ const useSmoothScroll = () => {
       if (!target) return;
 
       event.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      const reduceMotion = document.documentElement.dataset.motion === "reduced";
+      target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
       window.history.replaceState(null, "", link.hash);
     };
 

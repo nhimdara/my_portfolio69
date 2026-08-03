@@ -11,6 +11,9 @@
         const saved = localStorage.getItem("portfolio-theme");
         const preferred = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
         document.documentElement.dataset.theme = saved || preferred;
+        const savedMotion = localStorage.getItem("portfolio-motion");
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        document.documentElement.dataset.motion = savedMotion || (reduceMotion ? "reduced" : "standard");
       })();
     </script>
     <title>Nhim Dara | Full-Stack Developer</title>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Menu, Moon, Phone, Sun, X } from "lucide-react";
+import { Gauge, Menu, Moon, Phone, Sun, X } from "lucide-react";
 import profilePicture from "../../assets/images/myPicture1.jpg";
 
 const navItems = [
@@ -18,6 +18,9 @@ const Navbar = () => {
   const [theme, setTheme] = useState(
     () => document.documentElement.dataset.theme || "dark",
   );
+  const [motion, setMotion] = useState(
+    () => document.documentElement.dataset.motion || "standard",
+  );
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -28,6 +31,11 @@ const Navbar = () => {
       theme === "light" ? "#f8fafc" : "#030712",
     );
   }, [theme]);
+
+  useEffect(() => {
+    document.documentElement.dataset.motion = motion;
+    localStorage.setItem("portfolio-motion", motion);
+  }, [motion]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -104,7 +112,7 @@ const Navbar = () => {
             </span>
             <span className="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full border-[3px] border-gray-950 bg-emerald-400" aria-label="Available" />
           </span>
-          <span>
+          <span className="max-[430px]:hidden">
             <span className="block bg-gradient-to-r from-white via-white to-cyan-300 bg-clip-text text-base font-bold leading-none text-transparent">
               Nhim Dara
             </span>
@@ -140,11 +148,23 @@ const Navbar = () => {
           <button
             type="button"
             onClick={() => setTheme((current) => current === "dark" ? "light" : "dark")}
-            className="theme-toggle grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/5 text-gray-300 transition-all hover:-translate-y-0.5 hover:border-cyan-400/40 hover:text-cyan-300"
+            className="theme-toggle inline-flex h-10 items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 text-sm font-medium text-gray-300 transition-colors hover:border-cyan-400/40 hover:text-cyan-300"
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
             title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           >
-            {theme === "dark" ? <Sun size={19} /> : <Moon size={19} />}
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            <span>{theme === "dark" ? "Light" : "Dark"}</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setMotion((current) => current === "reduced" ? "standard" : "reduced")}
+            className="motion-toggle inline-flex h-10 items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 text-sm font-medium text-gray-300 transition-colors hover:border-cyan-400/40 hover:text-cyan-300"
+            aria-pressed={motion === "reduced"}
+            aria-label={`${motion === "reduced" ? "Enable" : "Reduce"} animations`}
+            title={`${motion === "reduced" ? "Enable" : "Reduce"} animations`}
+          >
+            <Gauge size={19} />
+            <span>{motion === "reduced" ? "Motion off" : "Reduce motion"}</span>
           </button>
           <a
             href="tel:+855969923931"
@@ -159,10 +179,21 @@ const Navbar = () => {
         <button
           type="button"
           onClick={() => setTheme((current) => current === "dark" ? "light" : "dark")}
-          className="theme-toggle rounded-xl border border-white/10 bg-white/5 p-2.5 text-gray-300 transition-colors hover:border-cyan-400/40 hover:text-cyan-300"
+          className="theme-toggle inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-2.5 py-2 text-xs font-medium text-gray-300 transition-colors hover:border-cyan-400/40 hover:text-cyan-300"
           aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
         >
           {theme === "dark" ? <Sun size={22} /> : <Moon size={22} />}
+          <span>{theme === "dark" ? "Light" : "Dark"}</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setMotion((current) => current === "reduced" ? "standard" : "reduced")}
+          className="motion-toggle inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-2.5 py-2 text-xs font-medium text-gray-300 transition-colors hover:border-cyan-400/40 hover:text-cyan-300"
+          aria-pressed={motion === "reduced"}
+          aria-label={`${motion === "reduced" ? "Enable" : "Reduce"} animations`}
+        >
+          <Gauge size={22} />
+          <span>Motion</span>
         </button>
         <button
           type="button"
