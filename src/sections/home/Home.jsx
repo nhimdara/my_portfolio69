@@ -13,7 +13,7 @@ import FloatingIcons from "../../components/ui/FloatingIcons";
 
 const Home = () => {
   const handleDownloadCV = () => {
-    const cvUrl = "cv/CV Nhim Dara.pdf";
+    const cvUrl = "/cv/CV-Nhim-Dara.pdf";
     const link = document.createElement("a");
     link.href = cvUrl;
     link.download = "CV-Nhim-Dara.pdf";
