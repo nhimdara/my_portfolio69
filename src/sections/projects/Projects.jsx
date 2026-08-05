@@ -194,17 +194,17 @@ const Projects = () => {
         <div className="absolute -bottom-40 -right-40 w-96 h-96  rounded-full blur-3xl"></div>
       </div>
 
-      <main className="relative z-10 px-5 py-16 md:py-20">
+      <main className="relative z-10 px-4 py-14 sm:px-6 sm:py-16 md:py-20 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {/* Header */}
-          <section className="mb-10 text-center scroll-reveal">
-            <h1 className="mb-4 text-4xl font-black tracking-tight text-white md:text-6xl">
+          <section className="mb-8 text-center scroll-reveal sm:mb-10">
+            <h1 className="mb-4 text-3xl font-black tracking-tight text-white sm:text-4xl md:text-6xl">
               Selected{" "}
               <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
                 Projects
               </span>
             </h1>
-            <p className="mx-auto max-w-2xl leading-relaxed text-gray-400">
+            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-gray-400 sm:text-base">
               A collection of things I've built while learning, training, and
               solving real problems &mdash; from full-stack platforms to focused
               tools.
@@ -213,7 +213,7 @@ const Projects = () => {
 
           {/* Filter Tabs */}
           <section
-            className="mb-12 flex justify-center scroll-reveal"
+            className="mb-8 flex justify-center scroll-reveal sm:mb-12"
             aria-label="Project filters"
           >
             <div className="grid w-full max-w-2xl grid-cols-2 gap-1 rounded-2xl border border-white/10 bg-[#0b111b]/90 p-1.5 shadow-xl shadow-black/20 backdrop-blur-xl sm:grid-cols-4">
@@ -236,7 +236,7 @@ const Projects = () => {
           </section>
 
           {/* Projects Grid */}
-          <section className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 scroll-reveal">
+          <section className="grid grid-cols-1 gap-5 scroll-reveal sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
             {filteredProjects.map((project) => (
               <article
                 key={project.id}
@@ -244,7 +244,7 @@ const Projects = () => {
               >
                 <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/80 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 {/* Image */}
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative h-48 overflow-hidden sm:h-52">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -253,7 +253,7 @@ const Projects = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b111b] via-transparent to-gray-950/20"></div>
 
-                  <div className="project-quick-actions absolute bottom-3 right-4 flex translate-y-3 gap-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                  <div className="project-quick-actions absolute bottom-3 right-3 flex translate-y-3 gap-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:right-4">
                     {project.liveUrl && (
                       <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} live demo`} className="grid h-10 w-10 place-items-center rounded-xl border border-white/15 bg-gray-950/85 text-cyan-300 backdrop-blur-md transition-colors hover:bg-cyan-400 hover:text-gray-950">
                         <ArrowUpRight size={18} />
@@ -287,24 +287,24 @@ const Projects = () => {
                   </div>
 
                   {project.featured && (
-                    <span className="absolute top-3 left-3 flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-cyan-500 to-purple-500 text-white text-xs font-semibold rounded-full shadow-lg">
+                    <span className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 px-2.5 py-1 text-[11px] font-semibold text-white shadow-lg sm:px-3 sm:text-xs">
                       <Star size={12} className="fill-current" />
                       Featured
                     </span>
                   )}
 
-                  <span className="absolute top-3 right-3 flex items-center gap-1 rounded-full border border-gray-700 bg-gray-900/80 px-3 py-1 text-xs font-semibold text-cyan-300 backdrop-blur-md">
+                  <span className="absolute right-3 top-3 flex max-w-[48%] items-center gap-1 truncate rounded-full border border-gray-700 bg-gray-900/80 px-2.5 py-1 text-[11px] font-semibold text-cyan-300 backdrop-blur-md sm:max-w-none sm:px-3 sm:text-xs">
                     <Layers3 size={12} />
                     {project.category}
                   </span>
                 </div>
 
                 {/* Content */}
-                <div className="flex flex-1 flex-col p-6">
+                <div className="flex flex-1 flex-col p-4 sm:p-6">
                   <div className="mb-3 flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.16em] text-gray-500">
                     <span>Case study</span><span>{project.year}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                  <h3 className="mb-2 text-lg font-bold text-white transition-colors group-hover:text-cyan-300 sm:text-xl">
                     {project.title}
                   </h3>
                   <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1">
@@ -324,7 +324,7 @@ const Projects = () => {
                   </div>
 
                   {/* Links */}
-                  <div className="flex flex-wrap gap-x-4 gap-y-2 border-t border-gray-700/50 pt-4">
+                  <div className="flex flex-wrap gap-x-3 gap-y-3 border-t border-gray-700/50 pt-4 sm:gap-x-4">
                     {project.apkUrl ? (
                       <a
                         href={project.apkUrl}

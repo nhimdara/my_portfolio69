@@ -122,7 +122,7 @@ const Navbar = () => {
           </span>
         </a>
 
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden items-center gap-1 xl:flex">
           {navItems.map((item) => (
             <li key={item.id}>
               <a
@@ -144,7 +144,7 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="hidden items-center gap-2 xl:flex">
           <button
             type="button"
             onClick={() => setTheme((current) => current === "dark" ? "light" : "dark")}
@@ -175,7 +175,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2 xl:hidden">
         <button
           type="button"
           onClick={() => setTheme((current) => current === "dark" ? "light" : "dark")}
@@ -198,7 +198,7 @@ const Navbar = () => {
         <button
           type="button"
           onClick={() => setIsOpen((open) => !open)}
-          className="rounded-xl border border-white/10 bg-white/5 p-2.5 text-white transition-colors hover:border-cyan-400/40 hover:text-cyan-300 lg:hidden"
+          className="rounded-xl border border-white/10 bg-white/5 p-2.5 text-white transition-colors hover:border-cyan-400/40 hover:text-cyan-300 xl:hidden"
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
@@ -210,7 +210,7 @@ const Navbar = () => {
 
       <div
         id="mobile-menu"
-        className={`absolute inset-x-0 top-[72px] border-b border-white/10 bg-gray-950/95 px-5 py-5 shadow-2xl backdrop-blur-xl transition-all duration-300 lg:hidden ${
+        className={`absolute inset-x-0 top-[72px] border-b border-white/10 bg-gray-950/95 px-5 py-5 shadow-2xl backdrop-blur-xl transition-all duration-300 xl:hidden ${
           isOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-3 opacity-0"
         }`}
       >
