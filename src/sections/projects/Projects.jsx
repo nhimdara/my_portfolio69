@@ -12,7 +12,7 @@ import {
   Calendar,
 } from "lucide-react";
 import LiquidCard from "../../components/ui/LiquidCard";
-
+import Aichatbot from "../../assets/images/aichatbot.webp";
 import Elearing from "../../assets/images/ProjectElearning.webp";
 import Ecommerce from "../../assets/images/Ecommerce.webp";
 import Portfolio from "../../assets/images/Portfolio.webp";
@@ -54,7 +54,13 @@ const Projects = () => {
       image: TelegramShop,
       description:
         "A full-stack Telegram Mini App storefront featuring instant Telegram OAuth verification, real-time product catalogs, cart state, inventory-checked orders, and live Bakong KHQR & ABA PayWay checkout integrations.",
-      tech: ["React 19", "Telegram SDK", "Laravel 12", "PostgreSQL", "Tailwind"],
+      tech: [
+        "React 19",
+        "Telegram SDK",
+        "Laravel 12",
+        "PostgreSQL",
+        "Tailwind",
+      ],
       category: "Full Stack",
       year: "2026",
       liveUrl: "https://t.me/my_shop67_bot/shop_nw",
@@ -200,6 +206,20 @@ const Projects = () => {
       featured: false,
       glow: "cyan",
     },
+    {
+      id: 12,
+      title: "AI Chat Bot in Telegram",
+      image: Aichatbot,
+      description:
+        "An AI-powered Telegram chatbot delivering conversational responses, context-aware replies, and interactive command handling directly inside Telegram.",
+      tech: ["Node.js", "Telegram Bot API", "OpenAI API"],
+      category: "Backend",
+      year: "2026",
+      liveUrl: "https://t.me/DaraAIChatBot",
+      githubUrl: "https://github.com/nhimdara/chatbotai.git",
+      featured: false,
+      glow: "blue",
+    },
   ];
 
   const categories = ["All", "Full Stack", "Frontend", "Backend", "Mobile"];
@@ -228,11 +248,11 @@ const Projects = () => {
             <span>Featured Portfolio</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
-            Selected{" "}
-            <span className="liquid-shimmer-text">Projects</span>
+            Selected <span className="liquid-shimmer-text">Projects</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base text-slate-400">
-            A curated collection of full-stack platforms, client storefronts, REST APIs, and responsive web applications.
+            A curated collection of full-stack platforms, client storefronts,
+            REST APIs, and responsive web applications.
           </p>
         </div>
 
@@ -299,7 +319,10 @@ const Projects = () => {
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
                   {project.featured ? (
                     <span className="liquid-glass-pill inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold text-amber-300 border-amber-400/30">
-                      <Star size={11} className="fill-amber-400 text-amber-400" />
+                      <Star
+                        size={11}
+                        className="fill-amber-400 text-amber-400"
+                      />
                       Featured
                     </span>
                   ) : (
