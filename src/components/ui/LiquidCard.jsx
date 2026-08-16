@@ -1,0 +1,91 @@
+import React, { useRef, useState } from "react";
+
+export const LiquidCard = ({
+  children,
+  className = "",
+  glowColor = "cyan",
+  interactive = true,
+  onClick,
+  ...props
+}) => {
+  const cardRef = useRef(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0, active: false });
+
+  const handleMouseMove = (e) => {
+    if (!interactive || !cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+      active: true,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos((prev) => ({ ...prev, active: false }));
+  };
+
+  const glowGradients = {
+    cyan: "radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(6, 182, 212, 0.18), transparent 80%)",
+    purple: "radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(168, 85, 247, 0.18), transparent 80%)",
+    emerald: "radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(16, 185, 129, 0.18), transparent 80%)",
+    amber: "radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(245, 158, 11, 0.18), transparent 80%)",
+    blue: "radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.18), transparent 80%)",
+  };
+
+  const borderGradients = {
+    cyan: "radial-gradient(280px circle at var(--mouse-x) var(--mouse-y), rgba(34, 211, 238, 0.6), transparent 70%)",
+    purple: "radial-gradient(280px circle at var(--mouse-x) var(--mouse-y), rgba(192, 132, 252, 0.6), transparent 70%)",
+    emerald: "radial-gradient(280px circle at var(--mouse-x) var(--mouse-y), rgba(52, 211, 153, 0.6), transparent 70%)",
+    amber: "radial-gradient(280px circle at var(--mouse-x) var(--mouse-y), rgba(251, 191, 36, 0.6), transparent 70%)",
+    blue: "radial-gradient(280px circle at var(--mouse-x) var(--mouse-y), rgba(96, 165, 250, 0.6), transparent 70%)",
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onClick={onClick}
+      style={{
+        "--mouse-x": `${mousePos.x}px`,
+        "--mouse-y": `${mousePos.y}px`,
+      }}
+      className={`liquid-glass-card group relative overflow-hidden rounded-2xl transition-all duration-500 ${className}`}
+      {...props}
+    >
+      {/* Specular Edge Highlight on Mouse Position */}
+      {interactive && (
+        <div
+          className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{
+            background: borderGradients[glowColor] || borderGradients.cyan,
+            maskImage: "linear-gradient(black, black) content-box, linear-gradient(black, black)",
+            WebkitMaskImage: "linear-gradient(black, black) content-box, linear-gradient(black, black)",
+            maskComposite: "exclude",
+            WebkitMaskComposite: "xor",
+            padding: "1.2px",
+          }}
+        />
+      )}
+
+      {/* Internal Liquid Glass Spotlight */}
+      {interactive && (
+        <div
+          className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          style={{
+            background: glowGradients[glowColor] || glowGradients.cyan,
+          }}
+        />
+      )}
+
+      {/* Top Specular Bevel Line */}
+      <div className="pointer-events-none absolute inset-x-4 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+
+      {/* Content */}
+      <div className="relative z-10 h-full w-full">{children}</div>
+    </div>
+  );
+};
+
+export default LiquidCard;
