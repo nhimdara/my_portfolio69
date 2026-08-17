@@ -267,18 +267,15 @@ const Projects = () => {
                   key={category}
                   onClick={() => setActiveFilter(category)}
                   aria-pressed={isActive}
-                  className={`relative flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold transition-all duration-300 whitespace-nowrap ${
+                  className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold transition-all duration-300 whitespace-nowrap ${
                     isActive
-                      ? "text-white shadow-lg"
+                      ? "bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white shadow-md shadow-cyan-500/30 border border-white/30"
                       : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
                   }`}
                 >
-                  {isActive && (
-                    <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 border border-white/30 shadow-[0_2px_14px_rgba(6,182,212,0.4)]" />
-                  )}
-                  <span className="relative z-10">{category}</span>
+                  <span>{category}</span>
                   <span
-                    className={`relative z-10 rounded-full px-1.5 py-0.2 text-[10px] font-extrabold ${
+                    className={`rounded-full px-1.5 py-0.5 text-[10px] font-extrabold transition-colors ${
                       isActive
                         ? "bg-white/25 text-white"
                         : "bg-white/10 text-slate-400"

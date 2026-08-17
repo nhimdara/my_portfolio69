@@ -15,7 +15,7 @@ const App = () => {
   useSmoothScroll();
 
   return (
-    <div className="app relative min-h-screen text-slate-100 overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="app relative min-h-screen text-slate-100 overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200 pt-20 sm:pt-24">
       <LiquidBackground />
       <ScrollEffects />
       <Navbar />

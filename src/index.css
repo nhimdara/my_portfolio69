@@ -30,6 +30,7 @@ code, pre, .font-mono {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
   background: #030712;
 }
 

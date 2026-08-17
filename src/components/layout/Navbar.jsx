@@ -89,12 +89,16 @@ const Navbar = () => {
   }, [isOpen]);
 
   return (
-    <header className="sticky top-0 z-50 px-3 py-3 sm:px-6 transition-all duration-300">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "py-1.5 px-3 sm:py-2 sm:px-6" : "py-3 px-3 sm:px-6"
+      }`}
+    >
       <nav
-        className={`mx-auto max-w-7xl rounded-2xl transition-all duration-500 ${
+        className={`mx-auto max-w-7xl rounded-2xl transition-all duration-300 ${
           scrolled
-            ? "liquid-glass-elevated py-2.5 px-4 sm:px-6 shadow-2xl"
-            : "liquid-glass py-3 px-4 sm:px-6"
+            ? "liquid-glass-elevated py-1.5 px-3.5 sm:py-2 sm:px-5 shadow-2xl backdrop-blur-xl"
+            : "liquid-glass py-2.5 px-4 sm:py-3 sm:px-6"
         }`}
         aria-label="Main navigation"
       >
@@ -102,13 +106,17 @@ const Navbar = () => {
           {/* Brand Logo / Avatar */}
           <a
             href="#home"
-            className="group flex items-center gap-3.5"
+            className="group flex items-center gap-2.5 sm:gap-3.5"
             onClick={() => setIsOpen(false)}
           >
             <div className="relative">
               {/* Liquid glowing ring */}
               <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 opacity-70 blur-[5px] transition-opacity duration-300 group-hover:opacity-100 animate-pulse" />
-              <div className="relative h-11 w-11 rounded-full p-[2px] bg-gradient-to-br from-cyan-400/80 via-white/50 to-purple-500/80">
+              <div
+                className={`relative rounded-full p-[2px] bg-gradient-to-br from-cyan-400/80 via-white/50 to-purple-500/80 transition-all duration-300 ${
+                  scrolled ? "h-9 w-9" : "h-10 w-10 sm:h-11 sm:w-11"
+                }`}
+              >
                 <img
                   src={profilePicture}
                   alt="Nhim Dara"
@@ -117,14 +125,18 @@ const Navbar = () => {
               </div>
               {/* Online status indicator */}
               <span
-                className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-slate-900 bg-emerald-400 shadow-[0_0_8px_#34d399]"
+                className="absolute bottom-0 right-0 h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full border-2 border-slate-900 bg-emerald-400 shadow-[0_0_8px_#34d399]"
                 aria-label="Available for work"
                 title="Available for opportunities"
               />
             </div>
 
             <div className="flex flex-col">
-              <span className="liquid-shimmer-text text-base sm:text-lg font-extrabold tracking-tight">
+              <span
+                className={`liquid-shimmer-text font-extrabold tracking-tight transition-all duration-300 ${
+                  scrolled ? "text-sm sm:text-base" : "text-base sm:text-lg"
+                }`}
+              >
                 Nhim Dara
               </span>
               <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-400/90 group-hover:text-cyan-300 transition-colors">
@@ -139,23 +151,17 @@ const Navbar = () => {
               {navItems.map((item) => {
                 const isActive = activeSection === item.id;
                 return (
-                  <li key={item.id} className="relative">
+                  <li key={item.id}>
                     <a
                       href={`#${item.id}`}
-                      className={`relative z-10 block rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-all duration-300 ${
+                      className={`block rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-all duration-300 ${
                         isActive
-                          ? "text-white shadow-sm"
-                          : "text-slate-400 hover:text-slate-100"
+                          ? "bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white shadow-md shadow-cyan-500/30 border border-white/30"
+                          : "text-slate-400 hover:text-slate-100 hover:bg-white/5"
                       }`}
                     >
                       {item.label}
                     </a>
-                    {isActive && (
-                      <span
-                        className="absolute inset-0 z-0 rounded-full bg-gradient-to-r from-cyan-500/80 via-blue-500/80 to-purple-600/80 shadow-[0_2px_12px_rgba(6,182,212,0.5)] border border-white/30 transition-all duration-300"
-                        aria-hidden="true"
-                      />
-                    )}
                   </li>
                 );
               })}
