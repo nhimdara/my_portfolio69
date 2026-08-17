@@ -24,24 +24,24 @@ const ContactFAB = () => {
     >
       {/* Expanded Quick Contact Floating Dock */}
       {expanded && (
-        <div className="absolute bottom-16 right-0 mb-2 flex flex-col gap-2 min-w-[190px] liquid-glass-elevated p-2.5 rounded-2xl shadow-2xl border border-white/20 animate-fade-in">
+        <div className="absolute bottom-16 right-0 mb-2 flex flex-col gap-1.5 min-w-[225px] liquid-glass-elevated p-2.5 rounded-2xl shadow-2xl border border-white/20 animate-fade-in whitespace-nowrap">
           <a
             href="https://t.me/dara_nhim"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2.5 rounded-xl px-3.5 py-2 text-xs font-bold text-slate-200 hover:bg-cyan-500/20 hover:text-cyan-300 transition-colors"
+            className="flex items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-xs font-bold text-slate-200 hover:bg-cyan-500/20 hover:text-cyan-300 transition-colors whitespace-nowrap"
             onClick={() => setExpanded(false)}
           >
-            <FaTelegramPlane className="text-cyan-400 text-sm" />
+            <FaTelegramPlane className="text-cyan-400 text-sm shrink-0" />
             <span>Chat on Telegram</span>
           </a>
 
           <a
             href="tel:+855969923931"
-            className="flex items-center gap-2.5 rounded-xl px-3.5 py-2 text-xs font-bold text-slate-200 hover:bg-purple-500/20 hover:text-purple-300 transition-colors"
+            className="flex items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-xs font-bold text-slate-200 hover:bg-purple-500/20 hover:text-purple-300 transition-colors whitespace-nowrap"
             onClick={() => setExpanded(false)}
           >
-            <Phone size={14} className="text-purple-400" />
+            <Phone size={14} className="text-purple-400 shrink-0" />
             <span>Call (+855) 96 992 3931</span>
           </a>
         </div>

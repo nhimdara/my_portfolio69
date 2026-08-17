@@ -137,19 +137,19 @@ const SkillsSection = () => {
         </div>
 
         {/* 3 Domain Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 scroll-reveal">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 scroll-reveal items-stretch">
           {skillDomains.map((domain, idx) => {
             const Icon = domain.icon;
             return (
               <LiquidCard
                 key={idx}
                 glowColor={domain.glow}
-                className="p-6 sm:p-7 flex flex-col justify-between"
+                className="p-6 sm:p-7 flex flex-col justify-between h-full rounded-2xl"
               >
-                <div>
+                <div className="flex flex-col flex-1">
                   {/* Domain Header */}
                   <div className="flex items-center gap-3.5 mb-4">
-                    <div className="grid h-12 w-12 place-items-center rounded-2xl liquid-glass-pill text-cyan-300 shadow-inner border border-white/20">
+                    <div className="grid h-12 w-12 place-items-center rounded-2xl liquid-glass-pill text-cyan-300 shadow-inner border border-white/20 shrink-0">
                       <Icon size={22} />
                     </div>
                     <div>
@@ -162,12 +162,12 @@ const SkillsSection = () => {
                     </div>
                   </div>
 
-                  <p className="text-xs sm:text-sm leading-relaxed text-slate-400 mb-6">
+                  <p className="text-xs sm:text-sm leading-relaxed text-slate-400 mb-6 min-h-[4.25rem] flex items-start">
                     {domain.description}
                   </p>
 
                   {/* Skills Progress Meters */}
-                  <div className="space-y-4">
+                  <div className="space-y-4 mb-6">
                     {domain.skills.map((skill, sIdx) => (
                       <div key={sIdx} className="space-y-1.5">
                         <div className="flex items-center justify-between text-xs">
@@ -187,7 +187,7 @@ const SkillsSection = () => {
                           />
                         </div>
 
-                        <p className="text-[10px] text-slate-500 font-medium">
+                        <p className="text-[10px] text-slate-500 font-medium min-h-[1rem]">
                           {skill.note}
                         </p>
                       </div>
@@ -196,7 +196,7 @@ const SkillsSection = () => {
                 </div>
 
                 {/* Bottom Verification Note */}
-                <div className="mt-6 pt-4 border-t border-white/10 flex items-center gap-2 text-[11px] font-semibold text-emerald-400">
+                <div className="mt-auto pt-4 border-t border-white/10 flex items-center gap-2 text-[11px] font-semibold text-emerald-400">
                   <CheckCircle size={13} />
                   <span>Applied in 11+ production projects</span>
                 </div>

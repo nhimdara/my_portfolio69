@@ -385,7 +385,7 @@ const Projects = () => {
 
               {/* Card Body */}
               <div className="flex flex-1 flex-col p-5 sm:p-6 justify-between">
-                <div>
+                <div className="flex flex-col flex-1">
                   <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2">
                     <span>Release</span>
                     <span className="flex items-center gap-1">
@@ -393,20 +393,20 @@ const Projects = () => {
                     </span>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors leading-snug">
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors leading-snug line-clamp-2 min-h-[2.75rem] flex items-center">
                     {project.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm leading-relaxed text-slate-400 mb-4 line-clamp-3">
+                  <p className="text-xs sm:text-sm leading-relaxed text-slate-400 mb-4 line-clamp-3 min-h-[3.75rem]">
                     {project.description}
                   </p>
 
                   {/* Tech stack chips */}
-                  <div className="flex flex-wrap gap-1.5 mb-5">
+                  <div className="flex flex-wrap content-start gap-1.5 mb-5 min-h-[3.5rem] sm:min-h-[3.75rem]">
                     {project.tech.map((t, idx) => (
                       <span
                         key={idx}
-                        className="rounded-md bg-white/[0.04] border border-white/10 px-2 py-0.5 text-[11px] font-medium text-slate-300"
+                        className="rounded-md bg-white/[0.04] border border-white/10 px-2 py-0.5 text-[11px] font-medium text-slate-300 h-fit"
                       >
                         {t}
                       </span>
@@ -415,7 +415,7 @@ const Projects = () => {
                 </div>
 
                 {/* Bottom Links Row */}
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-semibold">
+                <div className="mt-auto pt-4 border-t border-white/10 flex items-center justify-between text-xs font-semibold">
                   {project.apkUrl ? (
                     <a
                       href={project.apkUrl}

@@ -105,11 +105,11 @@ const Footer = () => {
         </div>
 
         {/* Footer Navigation & Brand Row */}
-        <div className="liquid-glass rounded-3xl p-8 sm:p-10 mb-8 border border-white/10 shadow-xl">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div className="liquid-glass rounded-3xl p-6 sm:p-8 lg:p-10 mb-8 border border-white/10 shadow-xl">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
             {/* Brand Column */}
-            <div className="md:col-span-5 flex items-center gap-4">
-              <div className="relative h-14 w-14 shrink-0 rounded-2xl p-[2px] bg-gradient-to-br from-cyan-400 via-purple-500 to-emerald-400 shadow-lg">
+            <div className="flex items-center gap-4 shrink-0">
+              <div className="relative h-13 w-13 shrink-0 rounded-2xl p-[2px] bg-gradient-to-br from-cyan-400 via-purple-500 to-emerald-400 shadow-lg">
                 <img
                   src={profilePicture}
                   alt="Nhim Dara"
@@ -131,8 +131,11 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Quick Links */}
-            <div className="md:col-span-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-bold text-slate-400">
+            {/* Quick Links in ONE line */}
+            <nav
+              aria-label="Footer navigation"
+              className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-3.5 sm:gap-5 md:gap-6 text-xs sm:text-sm font-bold text-slate-400 whitespace-nowrap"
+            >
               <a href="#home" className="hover:text-cyan-300 transition-colors">
                 Home
               </a>
@@ -160,10 +163,10 @@ const Footer = () => {
               <a href="#skill" className="hover:text-cyan-300 transition-colors">
                 Skills
               </a>
-            </div>
+            </nav>
 
             {/* Social Icons */}
-            <div className="md:col-span-3 flex items-center md:justify-end gap-2">
+            <div className="flex items-center gap-2 shrink-0">
               {socialLinks.map((s) => (
                 <a
                   key={s.name}

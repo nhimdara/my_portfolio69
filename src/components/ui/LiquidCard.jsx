@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 export const LiquidCard = ({
   children,
   className = "",
+  contentClassName = "",
   glowColor = "cyan",
   interactive = true,
   onClick,
@@ -83,7 +84,13 @@ export const LiquidCard = ({
       <div className="pointer-events-none absolute inset-x-4 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 h-full w-full">{children}</div>
+      <div
+        className={`relative z-10 h-full w-full ${
+          className.includes("flex-col") ? "flex flex-col flex-1" : ""
+        } ${contentClassName}`}
+      >
+        {children}
+      </div>
     </div>
   );
 };

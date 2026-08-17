@@ -149,9 +149,9 @@ const Certificates = () => {
 
               {/* Certificate Details */}
               <div className="flex flex-1 flex-col p-5 sm:p-6 justify-between">
-                <div>
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">
+                <div className="flex flex-col flex-1">
+                  <div className="flex items-start justify-between gap-2 mb-2 min-h-[2.75rem]">
+                    <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug line-clamp-2">
                       {cert.title}
                     </h3>
                     <CheckCircle2
@@ -165,12 +165,12 @@ const Certificates = () => {
                     {cert.issuer}
                   </p>
 
-                  <p className="text-xs sm:text-sm leading-relaxed text-slate-400 mb-4 line-clamp-3">
+                  <p className="text-xs sm:text-sm leading-relaxed text-slate-400 mb-4 line-clamp-3 min-h-[3.75rem]">
                     {cert.description}
                   </p>
                 </div>
 
-                <div className="pt-3.5 border-t border-white/10 flex items-center justify-between text-xs">
+                <div className="mt-auto pt-3.5 border-t border-white/10 flex items-center justify-between text-xs">
                   <span className="flex items-center gap-1.5 font-medium text-slate-400">
                     <CalendarDays size={13} className="text-purple-400" />
                     {cert.date}

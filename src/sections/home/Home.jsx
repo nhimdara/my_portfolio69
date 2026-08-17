@@ -86,14 +86,14 @@ const Home = () => {
         {/* Main Hero Glass Stage */}
         <div className="liquid-glass rounded-3xl p-6 sm:p-10 lg:p-14 shadow-2xl relative overflow-hidden">
           {/* Specular shine across top */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-300/40 to-purple-300/40" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-300/50 to-purple-300/50" />
 
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
             {/* Left Content Column */}
             <div className="lg:col-span-7 flex flex-col space-y-6 scroll-reveal">
               {/* Badges row */}
               <div className="flex flex-wrap items-center gap-3">
-                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-emerald-300 backdrop-blur-md shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/35 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-emerald-300 backdrop-blur-md shadow-[0_0_15px_rgba(16,185,129,0.25)]">
                   <span className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
@@ -109,7 +109,7 @@ const Home = () => {
 
               {/* Greeting & Name */}
               <div className="space-y-2">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400/90">
+                <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
                   Software Engineer &amp; Full-Stack Developer
                 </p>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05]">
@@ -120,7 +120,7 @@ const Home = () => {
 
               {/* Typing Specialty */}
               <div className="flex items-center gap-3 text-lg sm:text-2xl font-bold text-slate-200">
-                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-purple-500/15 border border-purple-400/30 text-purple-400 shadow-[0_0_12px_rgba(168,85,247,0.2)]">
+                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-purple-500/15 border border-purple-400/30 text-purple-400 shadow-[0_0_12px_rgba(168,85,247,0.25)]">
                   <Code2 size={20} />
                 </div>
                 <div className="flex items-center gap-2">
@@ -129,7 +129,7 @@ const Home = () => {
                     <TextType
                       text={[
                         "Full-Stack Web Apps",
-                        "React & Modern UI",
+                        "React 19 & Next.js",
                         "Laravel & REST APIs",
                         "High Performance Systems",
                       ]}
@@ -142,17 +142,16 @@ const Home = () => {
               </div>
 
               {/* Bio description */}
-              <p className="max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed text-slate-300/90 border-l-2 border-cyan-400/50 pl-4">
-                IT Engineering student at RUPP and practical full-stack developer
-                trained at ETEC Center. I design and engineer responsive web applications,
-                secure backends, and sleek fluid interfaces with clean architecture and modern tooling.
+              <p className="max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed text-slate-300/90 border-l-2 border-cyan-400/60 pl-4">
+                IT Engineering student at RUPP and full-stack developer trained at ETEC Center.
+                I design and build responsive web applications, secure database backends, and fluid interfaces with clean architecture and modern engineering standards.
               </p>
 
               {/* Tech Pills */}
               <div className="flex flex-wrap gap-2 pt-1">
                 {[
                   { name: "React 19", color: "hover:border-cyan-400/60 hover:text-cyan-300" },
-                  { name: "Laravel", color: "hover:border-red-400/60 hover:text-red-300" },
+                  { name: "Laravel 12", color: "hover:border-red-400/60 hover:text-red-300" },
                   { name: "TypeScript", color: "hover:border-blue-400/60 hover:text-blue-300" },
                   { name: "PHP & MySQL", color: "hover:border-indigo-400/60 hover:text-indigo-300" },
                   { name: "Tailwind CSS", color: "hover:border-cyan-400/60 hover:text-cyan-300" },
@@ -160,7 +159,7 @@ const Home = () => {
                 ].map((tech) => (
                   <span
                     key={tech.name}
-                    className={`liquid-glass-pill rounded-lg px-3 py-1.5 text-xs font-semibold text-slate-300 transition-all duration-300 cursor-default ${tech.color}`}
+                    className={`liquid-glass-pill rounded-xl px-3.5 py-1.5 text-xs font-bold text-slate-300 transition-all duration-300 cursor-default ${tech.color}`}
                   >
                     {tech.name}
                   </span>
@@ -182,11 +181,12 @@ const Home = () => {
 
                 {/* Secondary CTA */}
                 <button
+                  type="button"
                   onClick={handleLetstalk}
                   className="liquid-btn-secondary flex items-center justify-center gap-2.5 rounded-2xl px-6 py-3.5 text-sm font-bold text-slate-200 hover:text-white"
                 >
                   <Share2 size={16} />
-                  <span>Let&apos;s Talk on Telegram</span>
+                  <span>Message on Telegram</span>
                 </button>
 
                 {/* Social icons pill */}
