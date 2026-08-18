@@ -118,11 +118,12 @@ export const Certificates = () => {
             <LiquidCard
               key={index}
               glowColor={cert.glow}
-              className="p-4 sm:p-5 flex flex-col justify-between"
+              className="p-4 sm:p-5 h-full flex flex-col justify-between"
+              contentClassName="flex flex-col justify-between h-full"
             >
-              <div>
+              <div className="flex flex-col flex-1">
                 {/* Clean Header Badges Above Image */}
-                <div className="flex items-center justify-between gap-2 mb-3">
+                <div className="flex items-center justify-between gap-2 mb-3 shrink-0">
                   <span className="rounded-lg bg-amber-500/15 border border-amber-400/30 px-2.5 py-1 text-[11px] font-bold font-mono uppercase tracking-wider text-amber-300">
                     {cert.type}
                   </span>
@@ -134,7 +135,7 @@ export const Certificates = () => {
                 {/* Certificate Preview Thumbnail Frame */}
                 <div
                   onClick={() => setSelected(cert)}
-                  className="relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-950/20 border border-white/10 cursor-pointer group/thumb shadow-md mb-4"
+                  className="relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-950/20 border border-white/10 cursor-pointer group/thumb shadow-md mb-4 shrink-0"
                 >
                   <img
                     src={cert.image}
@@ -151,25 +152,25 @@ export const Certificates = () => {
                   </div>
                 </div>
 
-                {/* Body Content */}
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-semibold">
+                {/* Body Content with Uniform Heights */}
+                <div className="flex flex-col flex-1 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-semibold shrink-0">
                     <ShieldCheck size={14} className="text-emerald-400 shrink-0" />
                     <span>{cert.issuer}</span>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug">
+                  <h3 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug min-h-[2.75rem] flex items-center">
                     {cert.title}
                   </h3>
 
-                  <p className="text-xs leading-relaxed text-slate-400 line-clamp-3">
+                  <p className="text-xs leading-relaxed text-slate-400 line-clamp-3 min-h-[3.25rem]">
                     {cert.description}
                   </p>
                 </div>
               </div>
 
               {/* Card Footer */}
-              <div className="pt-4 border-t border-white/10 mt-4 flex items-center justify-between">
+              <div className="pt-4 border-t border-white/10 mt-4 flex items-center justify-between shrink-0">
                 <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold flex items-center gap-1">
                   <CheckCircle2 size={13} /> Verified Credential
                 </span>

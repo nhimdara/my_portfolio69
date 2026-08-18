@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   ArrowUpRight,
+  Download,
   ExternalLink,
   Github,
   Layers,
@@ -157,7 +158,7 @@ export const Projects = () => {
       title: "CineVault Movie Discovery Platform",
       image: CineVault,
       description:
-        "High-performance cinematic web portal consuming TMDB live REST API with dynamic genre filtering, debounce search, video trailer embeds, watchlists, and responsive mobile-first UI.",
+        "Modern cinematic movie discovery web app with real-time search, multi-genre filtering, watchlist persistence, trailer modals, responsive layout, and theme toggling.",
       highlights: [
         "TMDB live REST API integration with infinite scroll & search",
         "Interactive YouTube trailer modal and movie cast gallery",
@@ -165,68 +166,70 @@ export const Projects = () => {
       ],
       tech: ["React 19", "TMDB API", "Tailwind CSS", "Framer Motion"],
       category: "Frontend",
-      year: "2025",
-      liveUrl: "https://cinevault-movies.vercel.app/",
-      githubUrl: "https://github.com/nhimdara/movie-website",
+      year: "2026",
+      liveUrl: "https://movie-website-wct.vercel.app/",
+      githubUrl: "https://github.com/nhimdara/Movie-Website-WCT",
       githubLabel: "GitHub Repo",
       featured: false,
       glow: "rose",
     },
     {
       id: 7,
-      title: "Woods Android Hotel Booking App",
+      title: "WOOD'S Cambodia Android App",
       image: WoodsAndroid,
       description:
-        "Native Android mobile application for luxury hotel reservations featuring material design layouts, date picker booking engines, room tier comparisons, and local SQLite data caching.",
+        "Native Android mobile product catalog application for WOOD'S Cambodia, featuring branded luxury product collections, responsive navigation, company information, and direct social order routing.",
       highlights: [
-        "Native Android SDK architecture built with Java & XML",
-        "Custom booking calendar picker and room tier selector",
-        "Offline-capable SQLite caching and smooth transitions",
+        "Native Android APK application with responsive mobile layouts",
+        "Product catalog with high-resolution image preview & specifications",
+        "Direct Telegram / Facebook order dispatch and company information",
       ],
-      tech: ["Java", "XML", "Android SDK", "SQLite", "Material Design"],
+      tech: ["Android Studio", "React 18", "Capacitor", "Tailwind CSS"],
       category: "Mobile",
-      year: "2025",
-      githubUrl: "https://github.com/nhimdara/Android-Woods-Hotel-Booking",
+      year: "2026",
+      apkUrl:
+        "https://raw.githubusercontent.com/nhimdara/my_portfolio69/main/downloads/woods-cambodia.apk",
+      githubUrl: "https://github.com/nhimdara/Wood-s",
       githubLabel: "Android Repo",
       featured: false,
       glow: "emerald",
     },
     {
       id: 8,
-      title: "IronMan Interactive Cinematic Showcase",
+      title: "Iron Man Cinematic Portfolio",
       image: IronManPortfolio,
       description:
-        "Immersive interactive web experience featuring custom keyframe animations, audio visualizers, suit progression archives, and tactile sound design.",
+        "A cinematic superhero-themed developer showcase with immersive inertial scrolling, HUD liquid glass overlays, responsive credentials, and interactive micro-interactions.",
       highlights: [
         "Custom CSS keyframe choreography and sound triggers",
         "Interactive Mark suit archive and technical HUD overlays",
         "Cinematic dark mode with neon arc-reactor accents",
       ],
-      tech: ["HTML5", "CSS3", "JavaScript", "Audio API"],
+      tech: ["React", "Framer Motion", "Tailwind CSS"],
       category: "AI & UI/UX",
-      year: "2025",
-      liveUrl: "https://ironman-interactive.vercel.app/",
-      githubUrl: "https://github.com/nhimdara/IronMan-Cinematic",
+      year: "2026",
+      liveUrl: "https://daranhimportfolio.vercel.app/",
+      githubUrl: "https://github.com/nhimdara/IRON-MAN",
       githubLabel: "GitHub Repo",
       featured: false,
       glow: "amber",
     },
     {
       id: 9,
-      title: "Multi-Vendor E-Commerce Platform",
+      title: "Tech Haven Computer Shop",
       image: Ecommerce,
       description:
-        "Modern multi-category online store with live shopping cart management, product filtering by price and rating, discount vouchers, and responsive checkout flows.",
+        "Feature-rich computer hardware ecommerce store featuring category navigation, live cart calculations, product specification drawers, and responsive cross-device shopping design.",
       highlights: [
         "Complex cart state management and instant quantity adjustments",
         "Faceted category and price range filtering system",
         "Clean responsive product gallery with modal previews",
       ],
-      tech: ["React.js", "Redux", "Tailwind CSS", "Vite"],
+      tech: ["React.js", "Tailwind CSS", "Bootstrap", "Vite"],
       category: "Frontend",
       year: "2025",
-      liveUrl: "https://ecommerce-store-preview.vercel.app/",
-      githubUrl: "https://github.com/nhimdara/ecommerce-store",
+      liveUrl: "https://computer-shop-murex.vercel.app/",
+      githubUrl: "https://github.com/nhimdara/ComputerShop",
       githubLabel: "GitHub Repo",
       featured: false,
       glow: "blue",
@@ -236,35 +239,38 @@ export const Projects = () => {
       title: "Campus Student Management Portal",
       image: CampusStudentManagement,
       description:
-        "Educational administrative portal managing student enrollments, academic grades, attendance tracking, and printable transcript reports.",
+        "Layered Python FastAPI student management system with role-based JWT authentication, full student & course CRUD, enrollment workflows, GPA calculation engines, and interactive Swagger API documentation.",
       highlights: [
-        "CRUD operations for student records and course registrations",
-        "Role-based teacher and administrator authorization levels",
-        "Exportable PDF report cards and attendance analytics",
+        "Full student & course CRUD with role-based JWT authentication",
+        "Enrollment workflows and automatic GPA calculation engine",
+        "Interactive Swagger UI API documentation and testing portal",
       ],
-      tech: ["PHP 8", "MySQL", "Bootstrap 5", "Chart.js"],
+      tech: ["FastAPI", "Python", "SQLAlchemy", "SQLite", "Swagger"],
       category: "Full Stack",
-      year: "2024",
-      githubUrl: "https://github.com/nhimdara/student-management-system",
+      year: "2026",
+      liveUrl: "https://student-management-system-kjf6.onrender.com/",
+      backendUrl: "https://student-management-system-kjf6.onrender.com/docs",
+      githubUrl:
+        "https://github.com/nhimdara/Final-Project-DSA-RUPP-ITE-Management-",
       githubLabel: "GitHub Repo",
-      featured: false,
-      glow: "purple",
+      featured: true,
+      glow: "blue",
     },
     {
       id: 11,
-      title: "Minimal Glass Portfolio v1",
+      title: "Liquid Glass Portfolio",
       image: Portfolio,
       description:
-        "First iteration portfolio website experimenting with glassmorphism, responsive navigation grids, and smooth scroll interactions.",
+        "Personal developer portfolio built with modern responsive architecture, interactive Command Palette (⌘K), and tactile glass card design systems.",
       highlights: [
-        "Lightweight component architecture with modern styling",
-        "Interactive project filter and smooth section anchors",
+        "Fast interactive Command Palette (⌘K) keyboard search",
+        "Deep inspection project drawers and verified certificate lightboxes",
       ],
-      tech: ["React", "Tailwind CSS", "Framer Motion"],
+      tech: ["React 19", "Tailwind CSS", "Vite", "Framer Motion"],
       category: "AI & UI/UX",
-      year: "2025",
-      liveUrl: "https://nhimdara-portfolio-v1.vercel.app/",
-      githubUrl: "https://github.com/nhimdara/portfolio-v1",
+      year: "2026",
+      liveUrl: "https://my-portfolio69.vercel.app/",
+      githubUrl: "https://github.com/nhimdara/my_portfolio69",
       githubLabel: "GitHub Repo",
       featured: false,
       glow: "cyan",
@@ -354,11 +360,12 @@ export const Projects = () => {
             <LiquidCard
               key={project.id}
               glowColor={project.glow || "cyan"}
-              className="p-4 sm:p-5 flex flex-col justify-between"
+              className="p-4 sm:p-5 h-full flex flex-col justify-between"
+              contentClassName="flex flex-col justify-between h-full"
             >
-              <div>
+              <div className="flex flex-col flex-1">
                 {/* Clean Header Badges Above Image */}
-                <div className="flex items-center justify-between gap-2 mb-3">
+                <div className="flex items-center justify-between gap-2 mb-3 shrink-0">
                   <span className="rounded-lg bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-1 text-[11px] font-bold font-mono uppercase tracking-wider text-cyan-300">
                     {project.category}
                   </span>
@@ -370,7 +377,7 @@ export const Projects = () => {
                 {/* Thumbnail Preview with Aspect Ratio & Action overlay */}
                 <div
                   onClick={() => setSelectedProject(project)}
-                  className="relative aspect-[16/10] overflow-hidden rounded-xl bg-slate-950/20 border border-white/10 group/img cursor-pointer shadow-md mb-4"
+                  className="relative aspect-[16/10] overflow-hidden rounded-xl bg-slate-950/20 border border-white/10 group/img cursor-pointer shadow-md mb-4 shrink-0"
                 >
                   <img
                     src={project.image}
@@ -387,17 +394,18 @@ export const Projects = () => {
                   </div>
                 </div>
 
-                {/* Body Content */}
-                <div className="space-y-2 mb-4">
-                  <h3 className="text-lg font-bold text-white tracking-tight leading-snug group-hover:text-cyan-400 transition-colors">
+                {/* Body Content with Uniform Heights */}
+                <div className="flex flex-col flex-1 space-y-2">
+                  <h3 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug group-hover:text-cyan-400 transition-colors line-clamp-2 min-h-[3rem] flex items-center">
                     {project.title}
                   </h3>
-                  <p className="text-xs leading-relaxed text-slate-400 line-clamp-3">
+                  
+                  <p className="text-xs leading-relaxed text-slate-400 line-clamp-3 min-h-[3.25rem]">
                     {project.description}
                   </p>
 
-                  {/* Tech Tags */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
+                  {/* Tech Tags with Uniform Min Height */}
+                  <div className="flex flex-wrap gap-1.5 pt-1 min-h-[2.5rem] content-start">
                     {project.tech.map((t) => (
                       <span
                         key={t}
@@ -410,15 +418,26 @@ export const Projects = () => {
                 </div>
               </div>
 
-              {/* Card Footer Actions */}
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
+              {/* Card Footer Actions with No Wrapping and Perfect Alignment */}
+              <div className="pt-4 border-t border-white/10 mt-3 flex items-center justify-between gap-2 shrink-0">
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  {project.apkUrl && (
+                    <a
+                      href={project.apkUrl}
+                      download="woods-cambodia.apk"
+                      className="inline-flex items-center gap-1 rounded-lg bg-emerald-500/20 border border-emerald-400/40 px-2.5 py-1.5 text-xs font-bold text-emerald-400 hover:bg-emerald-500/30 transition-all shadow-sm whitespace-nowrap"
+                    >
+                      <Download size={13} />
+                      <span>APK</span>
+                    </a>
+                  )}
+
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-lg bg-cyan-500/15 border border-cyan-400/30 px-3 py-1.5 text-xs font-bold text-cyan-300 hover:bg-cyan-500/25 transition-all shadow-sm"
+                      className="inline-flex items-center gap-1 rounded-lg bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-1.5 text-xs font-bold text-cyan-300 hover:bg-cyan-500/25 transition-all shadow-sm whitespace-nowrap"
                     >
                       <span>Live Demo</span>
                       <ArrowUpRight size={13} />
@@ -430,11 +449,11 @@ export const Projects = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg bg-white/5 border border-white/10 px-2.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+                      className="inline-flex items-center gap-1 rounded-lg bg-white/5 border border-white/10 px-2 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap"
                       title={project.githubLabel || "GitHub Repo"}
                     >
                       <Github size={13} />
-                      <span className="hidden sm:inline text-[11px]">
+                      <span className="text-[11px]">
                         {project.backendGithubUrl ? "Frontend" : "Code"}
                       </span>
                     </a>
@@ -445,11 +464,11 @@ export const Projects = () => {
                       href={project.backendGithubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg bg-white/5 border border-white/10 px-2.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+                      className="inline-flex items-center gap-1 rounded-lg bg-white/5 border border-white/10 px-2 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap"
                       title={project.backendGithubLabel || "Backend Repo"}
                     >
                       <Server size={13} className="text-purple-400" />
-                      <span className="hidden sm:inline text-[11px]">Backend</span>
+                      <span className="text-[11px]">Backend</span>
                     </a>
                   )}
                 </div>
@@ -457,7 +476,7 @@ export const Projects = () => {
                 <button
                   type="button"
                   onClick={() => setSelectedProject(project)}
-                  className="text-xs text-slate-400 hover:text-cyan-300 font-mono flex items-center gap-1 cursor-pointer"
+                  className="text-xs text-slate-400 hover:text-cyan-300 font-mono flex items-center gap-1 cursor-pointer shrink-0 whitespace-nowrap ml-auto"
                 >
                   <span>Details</span>
                   <ArrowUpRight size={12} />
@@ -563,6 +582,17 @@ export const Projects = () => {
 
             {/* Modal Actions */}
             <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-3">
+              {selectedProject.apkUrl && (
+                <a
+                  href={selectedProject.apkUrl}
+                  download="woods-cambodia.apk"
+                  className="refero-btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg"
+                >
+                  <Download size={14} />
+                  <span>Download Android APK</span>
+                </a>
+              )}
+
               {selectedProject.liveUrl && (
                 <a
                   href={selectedProject.liveUrl}
@@ -572,6 +602,18 @@ export const Projects = () => {
                 >
                   <ExternalLink size={14} />
                   <span>Launch Live Platform</span>
+                </a>
+              )}
+
+              {selectedProject.backendUrl && (
+                <a
+                  href={selectedProject.backendUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="refero-btn-secondary inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-amber-300 hover:text-amber-200"
+                >
+                  <Server size={14} />
+                  <span>API Docs / Swagger</span>
                 </a>
               )}
 
