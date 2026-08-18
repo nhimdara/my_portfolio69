@@ -36,7 +36,7 @@ const certificates = [
     date: "June 2026",
     image: backendCertificate,
     description:
-      "Certified expertise in PHP, Object-Oriented Programming, MySQL relational databases, Laravel framework, authentication, and REST API development.",
+      "Certified expertise in PHP 8, Object-Oriented Programming, MySQL relational databases, Laravel framework, authentication, and REST API development.",
     glow: "purple",
   },
   {
@@ -71,7 +71,7 @@ const certificates = [
   },
 ];
 
-const Certificates = () => {
+export const Certificates = () => {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
@@ -92,155 +92,145 @@ const Certificates = () => {
 
   return (
     <div className="relative py-20 px-4 sm:px-6 lg:px-8">
-      {/* Ambient background glows */}
-      <div className="pointer-events-none absolute top-1/3 left-10 h-80 w-80 rounded-full bg-amber-500/10 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-10 right-10 h-80 w-80 rounded-full bg-cyan-500/10 blur-[120px]" />
+      {/* Background ambient lighting */}
+      <div className="pointer-events-none absolute top-1/3 -right-20 h-96 w-96 rounded-full bg-cyan-500/10 blur-[130px]" />
+      <div className="pointer-events-none absolute bottom-1/4 -left-20 h-96 w-96 rounded-full bg-purple-600/10 blur-[130px]" />
 
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="mb-14 text-center scroll-reveal">
-          <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-amber-300 backdrop-blur-md mb-4 shadow-[0_0_15px_rgba(245,158,11,0.15)]">
-            <ShieldCheck size={14} />
-            <span>Verified Credentials</span>
+        <div className="mb-14 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-amber-300 backdrop-blur-md mb-4 shadow-[0_0_15px_rgba(245,158,11,0.15)] font-mono">
+            <Award size={14} />
+            <span>VERIFIED CREDENTIALS</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
-            Certificates &amp;{" "}
-            <span className="liquid-shimmer-text">Achievements</span>
+            Certifications &amp;{" "}
+            <span className="refero-text-accent">Honors</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base text-slate-400">
-            Validated milestones, academic records, and industry certifications reflecting continuous learning and technical rigor.
+            Officially verified credentials from ETEC Center and the Royal University of Phnom Penh.
           </p>
         </div>
 
         {/* Certificates Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 scroll-reveal">
-          {certificates.map((cert, idx) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {certificates.map((cert, index) => (
             <LiquidCard
-              key={idx}
+              key={index}
               glowColor={cert.glow}
-              className="flex flex-col h-full rounded-2xl cursor-pointer"
-              onClick={() => setSelected(cert)}
+              className="flex flex-col justify-between"
             >
-              {/* Document Image Showcase */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-slate-950/90 border-b border-white/10 p-3 flex items-center justify-center">
-                <img
-                  src={cert.image}
-                  alt={cert.title}
-                  className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
+              <div>
+                {/* Certificate Preview Thumbnail */}
+                <div
+                  onClick={() => setSelected(cert)}
+                  className="relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-950 border border-white/10 cursor-pointer group/thumb"
+                >
+                  <img
+                    src={cert.image}
+                    alt={cert.title}
+                    className="h-full w-full object-cover object-center transition-transform duration-500 group-hover/thumb:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
 
-                {/* Floating Type Pill */}
-                <div className="absolute top-3 left-3">
-                  <span className="liquid-glass-pill inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold text-cyan-300">
-                    <Award size={11} />
-                    {cert.type}
-                  </span>
-                </div>
-
-                {/* Zoom Overlay on Hover */}
-                <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-                  <span className="liquid-glass-pill inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold text-white shadow-xl">
-                    <ZoomIn size={15} />
-                    <span>Click to Inspect</span>
-                  </span>
-                </div>
-              </div>
-
-              {/* Certificate Details */}
-              <div className="flex flex-1 flex-col p-5 sm:p-6 justify-between">
-                <div className="flex flex-col flex-1">
-                  <div className="flex items-start justify-between gap-2 mb-2 min-h-[2.75rem]">
-                    <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug line-clamp-2">
-                      {cert.title}
-                    </h3>
-                    <CheckCircle2
-                      size={18}
-                      className="text-emerald-400 shrink-0 mt-0.5"
-                    />
+                  {/* Issuer & Date Badges */}
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                    <span className="rounded-lg bg-slate-950/80 backdrop-blur-md border border-white/15 px-2.5 py-0.5 text-[10px] font-bold font-mono uppercase tracking-wider text-amber-300">
+                      {cert.type}
+                    </span>
+                    <span className="rounded-lg bg-slate-950/80 backdrop-blur-md border border-white/15 px-2 py-0.5 text-[10px] font-mono text-slate-300">
+                      {cert.date}
+                    </span>
                   </div>
 
-                  <p className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-cyan-400 mb-3">
-                    <GraduationCap size={15} />
-                    {cert.issuer}
-                  </p>
+                  {/* Zoom Overlay Trigger */}
+                  <div className="absolute bottom-3 right-3 rounded-lg bg-slate-900/90 text-white p-2 text-xs font-semibold backdrop-blur-md border border-white/20 opacity-0 group-hover/thumb:opacity-100 transition-opacity flex items-center gap-1">
+                    <ZoomIn size={13} />
+                    <span>View Certificate</span>
+                  </div>
+                </div>
 
-                  <p className="text-xs sm:text-sm leading-relaxed text-slate-400 mb-4 line-clamp-3 min-h-[3.75rem]">
+                {/* Body Content */}
+                <div className="p-5">
+                  <div className="flex items-center gap-2 mb-2 text-xs font-mono text-cyan-400">
+                    <ShieldCheck size={14} className="text-emerald-400" />
+                    <span>{cert.issuer}</span>
+                  </div>
+
+                  <h3 className="text-base sm:text-lg font-bold text-white tracking-tight mb-2">
+                    {cert.title}
+                  </h3>
+
+                  <p className="text-xs leading-relaxed text-slate-400">
                     {cert.description}
                   </p>
                 </div>
+              </div>
 
-                <div className="mt-auto pt-3.5 border-t border-white/10 flex items-center justify-between text-xs">
-                  <span className="flex items-center gap-1.5 font-medium text-slate-400">
-                    <CalendarDays size={13} className="text-purple-400" />
-                    {cert.date}
-                  </span>
-                  <span className="font-bold text-cyan-300 group-hover:underline">
-                    View Full Doc &rarr;
-                  </span>
-                </div>
+              {/* Card Footer */}
+              <div className="p-5 pt-0 border-t border-white/10 mt-2 flex items-center justify-between">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold flex items-center gap-1">
+                  <CheckCircle2 size={12} /> Verified
+                </span>
+
+                <button
+                  type="button"
+                  onClick={() => setSelected(cert)}
+                  className="text-xs text-slate-300 hover:text-cyan-300 font-mono flex items-center gap-1 cursor-pointer"
+                >
+                  <span>Inspect</span>
+                  <ZoomIn size={12} />
+                </button>
               </div>
             </LiquidCard>
           ))}
         </div>
       </div>
 
-      {/* Full-Screen Liquid Glass Lightbox Modal */}
+      {/* Lightbox Zoom Modal */}
       {selected && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-slate-950/90 backdrop-blur-2xl animate-fade-in"
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setSelected(null)}
-        >
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
           <div
-            className="liquid-glass-elevated relative max-w-4xl w-full max-h-[90vh] rounded-3xl p-6 sm:p-8 flex flex-col overflow-hidden shadow-2xl border border-white/20"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header */}
-            <div className="flex items-start justify-between gap-4 pb-4 border-b border-white/10">
-              <div>
-                <span className="liquid-glass-pill inline-block rounded-full px-3 py-1 text-xs font-bold text-cyan-300 mb-1">
+            className="fixed inset-0 bg-slate-950/85 backdrop-blur-md animate-in fade-in"
+            onClick={() => setSelected(null)}
+          />
+
+          <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl refero-card-elevated p-6 sm:p-8 shadow-2xl border border-white/20 animate-in zoom-in-95 duration-200">
+            <button
+              onClick={() => setSelected(null)}
+              className="absolute top-5 right-5 grid h-9 w-9 place-items-center rounded-xl bg-white/10 text-slate-300 hover:text-white hover:bg-white/20 transition-all cursor-pointer z-10"
+            >
+              <X size={18} />
+            </button>
+
+            <div className="mb-4">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="rounded-lg bg-amber-500/15 border border-amber-400/30 px-2.5 py-0.5 text-xs font-mono font-bold text-amber-300">
                   {selected.type}
                 </span>
-                <h3 className="text-xl sm:text-2xl font-black text-white">
-                  {selected.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-cyan-400 font-semibold mt-0.5">
-                  Issued by {selected.issuer} &bull; {selected.date}
-                </p>
+                <span className="text-xs font-mono text-slate-400">
+                  Issued: {selected.date}
+                </span>
               </div>
-
-              <button
-                type="button"
-                onClick={() => setSelected(null)}
-                className="liquid-btn-secondary grid h-10 w-10 place-items-center rounded-full text-slate-200 hover:text-white"
-                aria-label="Close document modal"
-              >
-                <X size={20} />
-              </button>
+              <h3 className="text-xl sm:text-2xl font-black text-white">
+                {selected.title}
+              </h3>
+              <p className="text-xs font-mono text-cyan-300 mt-0.5">
+                Authority: {selected.issuer}
+              </p>
             </div>
 
-            {/* Modal Document Image Preview */}
-            <div className="flex-1 overflow-auto my-4 flex items-center justify-center p-2 rounded-2xl bg-black/40 border border-white/5">
+            <div className="w-full overflow-hidden rounded-2xl bg-slate-950 border border-white/15 mb-4">
               <img
                 src={selected.image}
                 alt={selected.title}
-                className="max-h-[60vh] max-w-full object-contain rounded-lg shadow-2xl"
+                className="w-full h-auto object-contain max-h-[60vh] mx-auto"
               />
             </div>
 
-            {/* Modal Footer */}
-            <div className="pt-3 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-300">
-              <p className="line-clamp-2 max-w-xl">{selected.description}</p>
-              <button
-                type="button"
-                onClick={() => setSelected(null)}
-                className="liquid-btn-primary rounded-xl px-5 py-2.5 font-bold text-white shrink-0"
-              >
-                Close Preview
-              </button>
-            </div>
+            <p className="text-xs sm:text-sm leading-relaxed text-slate-300 border-l-2 border-cyan-400/60 pl-3">
+              {selected.description}
+            </p>
           </div>
         </div>
       )}

@@ -5,16 +5,19 @@ import {
   MapPin,
   GraduationCap,
   Code,
-  Users,
   Target,
   Sparkles,
-  HeartHandshake,
   Cpu,
   Compass,
+  CheckCircle2,
+  Terminal,
+  FileText,
+  ExternalLink,
+  Layers,
 } from "lucide-react";
 import LiquidCard from "../../components/ui/LiquidCard";
 
-const About = () => {
+export const About = () => {
   const details = [
     {
       icon: Calendar,
@@ -37,31 +40,31 @@ const About = () => {
     {
       icon: Code,
       label: "Primary Focus",
-      value: "Full-Stack Development",
+      value: "Full-Stack Web Engineering",
       glow: "blue",
     },
   ];
 
-  const interests = [
+  const pillars = [
     {
-      icon: <Cpu className="w-6 h-6 text-cyan-300" />,
+      icon: <Cpu className="w-5 h-5 text-cyan-300" />,
       title: "Full-Stack Engineering",
       description:
-        "Architecting resilient web applications from high-performance React frontends to robust Laravel & Express REST APIs.",
+        "Architecting resilient applications from modular React & Next.js frontends to secure Laravel & Express REST API services.",
       glow: "cyan",
     },
     {
-      icon: <Sparkles className="w-6 h-6 text-purple-300" />,
-      title: "Modern UI/UX & Glass Craft",
+      icon: <Sparkles className="w-5 h-5 text-purple-300" />,
+      title: "Modern UI/UX & High Craft",
       description:
-        "Building tactile, accessible, and delightful digital experiences with meticulous attention to motion, typography, and visual depth.",
+        "Building tactile, responsive digital experiences with meticulous attention to motion, typography, accessibility, and visual depth.",
       glow: "purple",
     },
     {
-      icon: <Target className="w-6 h-6 text-emerald-300" />,
-      title: "Problem Solving & Systems",
+      icon: <Target className="w-5 h-5 text-emerald-300" />,
+      title: "Database & Clean Architecture",
       description:
-        "Translating complex real-world requirements into clean, scalable database models, efficient algorithms, and reliable workflows.",
+        "Designing scalable relational database schemas (MySQL, PostgreSQL), normalized queries, authentication pipelines, and robust workflows.",
       glow: "emerald",
     },
   ];
@@ -69,158 +72,143 @@ const About = () => {
   return (
     <div className="relative py-20 px-4 sm:px-6 lg:px-8">
       {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute top-1/2 left-10 h-80 w-80 rounded-full bg-cyan-500/10 blur-[100px]" />
-      <div className="pointer-events-none absolute bottom-10 right-10 h-80 w-80 rounded-full bg-purple-500/10 blur-[100px]" />
+      <div className="pointer-events-none absolute top-1/2 left-10 h-80 w-80 rounded-full bg-cyan-500/10 blur-[110px]" />
+      <div className="pointer-events-none absolute bottom-10 right-10 h-80 w-80 rounded-full bg-purple-500/10 blur-[110px]" />
 
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="mb-14 text-center scroll-reveal">
-          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-md mb-4 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+        <div className="mb-14 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-md mb-4 shadow-[0_0_15px_rgba(6,182,212,0.15)] font-mono">
             <Compass size={14} className="animate-spin-slow" />
-            <span>Behind The Code</span>
+            <span>ABOUT &amp; DNA</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
-            About{" "}
-            <span className="liquid-shimmer-text">Me</span>
+            Engineering Foundations &amp;{" "}
+            <span className="refero-text-accent">Vision</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base text-slate-400">
-            Blending rigorous IT engineering foundations with practical modern web development.
+            Combining rigorous IT engineering principles from university with industry-standard web development practices.
           </p>
         </div>
 
-        {/* Main Bento Profile & Narrative */}
-        <div className="grid lg:grid-cols-12 gap-8 items-center mb-16">
-          {/* Avatar Glass Showcase */}
-          <div className="lg:col-span-6 flex justify-center scroll-reveal">
-            <div className="relative group w-full max-w-[420px] sm:max-w-[520px]">
-              {/* Refraction ring glow */}
-              <div className="absolute -inset-3 rounded-[2.5rem] bg-gradient-to-tr from-cyan-400/25 via-blue-500/20 to-purple-600/25 blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-500" />
-
-              <div className="liquid-glass-elevated relative rounded-[2.2rem] p-3 shadow-2xl border border-white/20">
-                <div className="relative aspect-square rounded-[1.8rem] overflow-hidden bg-slate-950">
+        {/* Asymmetric Refero Bento Grid */}
+        <div className="grid lg:grid-cols-12 gap-6 mb-12">
+          {/* Bento Card 1: Visual Identity & Key Bio (7 cols) */}
+          <LiquidCard glowColor="cyan" className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
+            <div className="flex flex-col sm:flex-row gap-6 items-start">
+              <div className="relative shrink-0 group">
+                <div className="relative h-28 w-28 sm:h-36 sm:w-36 rounded-2xl overflow-hidden ring-2 ring-cyan-400/30 bg-slate-950">
                   <img
                     src={myPicture}
                     alt="Nhim Dara"
-                    className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
                 </div>
+                <span className="absolute -bottom-2 -right-2 rounded-lg bg-cyan-500 text-slate-950 px-2 py-0.5 text-[10px] font-extrabold font-mono uppercase tracking-wider shadow-lg">
+                  RUPP &apos;28
+                </span>
+              </div>
 
-                {/* Floating pill badge */}
-                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 liquid-glass-pill rounded-full px-5 py-2 flex items-center gap-2 border border-cyan-400/40 shadow-xl whitespace-nowrap">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
-                  <span className="text-xs font-extrabold text-white">
-                    IT Engineer Trainee
+              <div className="space-y-3 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className="refero-tagline text-cyan-400 text-xs">
+                    BACKGROUND &amp; PHILOSOPHY
                   </span>
                 </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  Hi, I&apos;m <span className="refero-text-cyan">Nhim Dara</span>
+                </h3>
+                <p className="text-xs sm:text-sm leading-relaxed text-slate-300">
+                  A software developer and 2nd-year Information Technology Engineering student at the 
+                  <strong> Royal University of Phnom Penh (RUPP)</strong>. Trained in full-stack web development at 
+                  <strong> ETEC Center</strong>, I focus on turning complex product concepts into clean, accessible, and high-performance digital systems.
+                </p>
               </div>
             </div>
-          </div>
 
-          {/* Narrative & Info Bento */}
-          <div className="lg:col-span-6 space-y-6 scroll-reveal">
-            <div className="liquid-glass rounded-3xl p-6 sm:p-8 relative overflow-hidden">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
-                Building solutions that connect design, speed, and usability.
+            {/* Micro Coordinates Grid */}
+            <div className="mt-6 pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {details.map((d, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-xl p-3 bg-white/[0.03] border border-white/[0.06] hover:border-cyan-400/30 transition-colors"
+                >
+                  <div className="flex items-center gap-1.5 text-slate-400 mb-1">
+                    <d.icon size={13} className="text-cyan-400" />
+                    <span className="text-[10px] font-mono uppercase tracking-wider">{d.label}</span>
+                  </div>
+                  <p className="text-xs font-bold text-white truncate">{d.value}</p>
+                </div>
+              ))}
+            </div>
+          </LiquidCard>
+
+          {/* Bento Card 2: Academic Credential & University Focus (5 cols) */}
+          <LiquidCard glowColor="purple" className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-2 mb-4">
+                <div className="flex items-center gap-2">
+                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-purple-500/20 text-purple-400">
+                    <GraduationCap size={18} />
+                  </div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-purple-300 font-bold">
+                    University Degree
+                  </span>
+                </div>
+                <span className="rounded-full bg-purple-500/15 border border-purple-400/30 px-2.5 py-0.5 text-[10px] font-mono text-purple-300">
+                  2024 - 2028
+                </span>
+              </div>
+
+              <h3 className="text-lg font-bold text-white mb-2">
+                Bachelor of IT Engineering
               </h3>
-              <p className="text-sm sm:text-base leading-relaxed text-slate-300/90 mb-4">
-                I am a dedicated IT Engineering student at the{" "}
-                <strong className="text-cyan-300 font-semibold">
-                  Royal University of Phnom Penh (RUPP)
-                </strong>
-                . Through structured academic coursework and intensive hands-on
-                training at{" "}
-                <strong className="text-purple-300 font-semibold">
-                  ETEC Center
-                </strong>
-                , I have built real-world full-stack web applications, REST APIs, and responsive mobile interfaces.
+              <p className="text-xs text-purple-200/80 mb-4 font-medium">
+                Royal University of Phnom Penh (RUPP) — Department of ITE
               </p>
-              <p className="text-sm sm:text-base leading-relaxed text-slate-300/90">
-                My approach combines strong fundamentals in database architecture and object-oriented programming with cutting-edge UI engineering in React and Tailwind CSS.
+              <p className="text-xs leading-relaxed text-slate-300 mb-4">
+                Core coursework encompasses Data Structures &amp; Algorithms, Object-Oriented Software Design, Relational Database Management Systems (RDBMS), Computer Networks, and Cloud Systems.
               </p>
+            </div>
 
-              {/* Quote Glass Callout */}
-              <div className="mt-6 rounded-2xl liquid-glass-pill p-4 sm:p-5 border-l-4 border-cyan-400 border-t border-r border-b border-white/10">
-                <p className="text-xs sm:text-sm italic text-slate-200">
-                  &ldquo;Every line of code is an opportunity to craft an experience that is both functionally solid and visually inspiring.&rdquo;
-                </p>
-                <p className="mt-2 text-right text-xs font-bold text-cyan-400">
-                  — Nhim Dara
-                </p>
+            <div className="space-y-2 pt-4 border-t border-white/10">
+              <div className="flex items-center gap-2 text-xs text-slate-300">
+                <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
+                <span>Practicum Leader in Full-Stack E-Learning Project</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-slate-300">
+                <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
+                <span>Consistent high academic standing across math &amp; engineering</span>
               </div>
             </div>
-
-            {/* Quick Details 4-Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              {details.map((item, idx) => {
-                const Icon = item.icon;
-                return (
-                  <LiquidCard
-                    key={idx}
-                    glowColor={item.glow}
-                    className="p-4 flex items-center gap-3.5"
-                  >
-                    <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl liquid-glass-pill text-cyan-300">
-                      <Icon size={18} />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-xs font-semibold text-slate-400">
-                        {item.label}
-                      </p>
-                      <p className="text-sm font-bold text-white truncate">
-                        {item.value}
-                      </p>
-                    </div>
-                  </LiquidCard>
-                );
-              })}
-            </div>
-          </div>
+          </LiquidCard>
         </div>
 
-        {/* Interests & Core Pillars */}
-        <div className="scroll-reveal">
-          <div className="text-center mb-8">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-400">
-              Core Pillars
-            </p>
-            <h3 className="text-2xl sm:text-3xl font-black text-white mt-1">
-              What Drives My Work
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {interests.map((interest, idx) => (
-              <LiquidCard
-                key={idx}
-                glowColor={interest.glow}
-                className="p-6 sm:p-7 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="grid h-12 w-12 place-items-center rounded-2xl liquid-glass-pill shadow-inner border border-white/20">
-                      {interest.icon}
-                    </div>
-                    <span className="font-mono text-xs font-bold text-slate-500">
-                      0{idx + 1}
-                    </span>
+        {/* Three Core Engineering Pillars */}
+        <div className="grid sm:grid-cols-3 gap-6">
+          {pillars.map((p, idx) => (
+            <LiquidCard key={idx} glowColor={p.glow} className="p-6">
+              <div className="flex flex-col h-full justify-between space-y-4">
+                <div className="space-y-3">
+                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.05] border border-white/10">
+                    {p.icon}
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
-                    {interest.title}
+                  <h4 className="text-base font-bold text-white tracking-tight">
+                    {p.title}
                   </h4>
-                  <p className="text-xs sm:text-sm leading-relaxed text-slate-400 group-hover:text-slate-300 transition-colors">
-                    {interest.description}
+                  <p className="text-xs leading-relaxed text-slate-400">
+                    {p.description}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-cyan-400">
-                  <span>Explore in Projects</span>
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-500">
+                  <span>CORE PILLAR</span>
+                  <span className="text-cyan-400 font-semibold">ACTIVE</span>
                 </div>
-              </LiquidCard>
-            ))}
-          </div>
+              </div>
+            </LiquidCard>
+          ))}
         </div>
       </div>
     </div>

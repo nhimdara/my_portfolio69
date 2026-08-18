@@ -1,25 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { Gauge, Menu, Moon, Phone, Sun, X, Sparkles } from "lucide-react";
+import {
+  Menu,
+  Moon,
+  Sun,
+  X,
+  Sparkles,
+  Command,
+  Search,
+  Send,
+  Gauge,
+  Activity,
+} from "lucide-react";
 import profilePicture from "../../assets/images/myPicture1.webp";
 
 const navItems = [
-  { id: "home", label: "Home" },
+  { id: "home", label: "Overview" },
   { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
+  { id: "experience", label: "Journey" },
   { id: "project", label: "Projects" },
   { id: "certificates", label: "Certificates" },
   { id: "skill", label: "Skills" },
 ];
 
-const Navbar = () => {
+export const Navbar = ({ onOpenCommandPalette }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [theme, setTheme] = useState(
-    () => document.documentElement.dataset.theme || "dark",
+    () => document.documentElement.dataset.theme || "dark"
   );
   const [motion, setMotion] = useState(
-    () => document.documentElement.dataset.motion || "reduced",
+    () => document.documentElement.dataset.motion || "reduced"
   );
 
   useEffect(() => {
@@ -28,7 +39,7 @@ const Navbar = () => {
     localStorage.setItem("portfolio-theme", theme);
     document.querySelector('meta[name="theme-color"]')?.setAttribute(
       "content",
-      theme === "light" ? "#f8fafc" : "#030712",
+      theme === "light" ? "#f8fafc" : "#07080d"
     );
   }, [theme]);
 
@@ -36,6 +47,14 @@ const Navbar = () => {
     document.documentElement.dataset.motion = motion;
     localStorage.setItem("portfolio-motion", motion);
   }, [motion]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
+
+  const toggleMotion = () => {
+    setMotion((prev) => (prev === "reduced" ? "full" : "reduced"));
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -47,7 +66,7 @@ const Navbar = () => {
     let animationFrame;
 
     const updateActiveSection = () => {
-      const activationPoint = 80 + window.innerHeight * 0.15;
+      const activationPoint = 90 + window.innerHeight * 0.15;
       let currentSection = navItems[0].id;
 
       navItems.forEach(({ id }) => {
@@ -90,221 +109,204 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "py-1.5 px-3 sm:py-2 sm:px-6" : "py-3 px-3 sm:px-6"
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        scrolled ? "py-2 px-3 sm:py-3 sm:px-6" : "py-4 px-3 sm:px-6"
       }`}
     >
       <nav
         className={`mx-auto max-w-7xl rounded-2xl transition-all duration-300 ${
           scrolled
-            ? "liquid-glass-elevated py-1.5 px-3.5 sm:py-2 sm:px-5 shadow-2xl backdrop-blur-xl"
-            : "liquid-glass py-2.5 px-4 sm:py-3 sm:px-6"
+            ? "refero-card-elevated py-2 px-4 sm:py-2.5 sm:px-6 shadow-2xl backdrop-blur-2xl"
+            : "refero-card py-2.5 px-4 sm:py-3 sm:px-6 backdrop-blur-xl"
         }`}
-        aria-label="Main navigation"
       >
-        <div className="flex items-center justify-between gap-4">
-          {/* Brand Logo / Avatar */}
+        <div className="flex items-center justify-between gap-3">
+          {/* Logo & Status Badge */}
           <a
             href="#home"
-            className="group flex items-center gap-2.5 sm:gap-3.5"
-            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 group shrink-0 focus:outline-none"
           >
             <div className="relative">
-              {/* Liquid glowing ring */}
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 opacity-70 blur-[5px] transition-opacity duration-300 group-hover:opacity-100 animate-pulse" />
-              <div
-                className={`relative rounded-full p-[2px] bg-gradient-to-br from-cyan-400/80 via-white/50 to-purple-500/80 transition-all duration-300 ${
-                  scrolled ? "h-9 w-9" : "h-10 w-10 sm:h-11 sm:w-11"
-                }`}
-              >
-                <img
-                  src={profilePicture}
-                  alt="Nhim Dara"
-                  className="h-full w-full rounded-full object-cover object-top"
-                />
-              </div>
-              {/* Online status indicator */}
-              <span
-                className="absolute bottom-0 right-0 h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full border-2 border-slate-900 bg-emerald-400 shadow-[0_0_8px_#34d399]"
-                aria-label="Available for work"
-                title="Available for opportunities"
+              <img
+                src={profilePicture}
+                alt="Nhim Dara"
+                className="h-9 w-9 rounded-xl object-cover ring-1 ring-white/20 transition-transform group-hover:scale-105"
               />
+              <span className="absolute -bottom-0.5 -right-0.5 flex h-3 w-3">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500 ring-2 ring-slate-950" />
+              </span>
             </div>
 
-            <div className="flex flex-col">
-              <span
-                className={`liquid-shimmer-text font-extrabold tracking-tight transition-all duration-300 ${
-                  scrolled ? "text-sm sm:text-base" : "text-base sm:text-lg"
-                }`}
-              >
+            <div className="hidden sm:block text-left">
+              <span className="text-sm font-bold text-white tracking-tight flex items-center gap-1.5">
                 Nhim Dara
+                <span className="text-[10px] font-mono text-cyan-400 font-normal">
+                  / DEV
+                </span>
               </span>
-              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-400/90 group-hover:text-cyan-300 transition-colors">
-                Full-Stack Dev
-              </span>
+              <p className="text-[10px] text-slate-400 font-mono tracking-wider">
+                FULL-STACK ENGINEER
+              </p>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden items-center lg:flex">
-            <ul className="flex items-center gap-1 rounded-full p-1.5 liquid-glass-pill">
-              {navItems.map((item) => {
-                const isActive = activeSection === item.id;
-                return (
-                  <li key={item.id}>
-                    <a
-                      href={`#${item.id}`}
-                      className={`block rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-all duration-300 ${
-                        isActive
-                          ? "bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white shadow-md shadow-cyan-500/30 border border-white/30"
-                          : "text-slate-400 hover:text-slate-100 hover:bg-white/5"
-                      }`}
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
+          <div className="hidden md:flex items-center gap-1 rounded-xl p-1 bg-white/[0.03] border border-white/[0.06]">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={`relative px-3.5 py-1.5 text-xs font-medium transition-all duration-200 rounded-lg ${
+                    isActive
+                      ? "text-cyan-300 bg-cyan-500/15 font-semibold shadow-inner border border-cyan-400/20"
+                      : "text-slate-400 hover:text-slate-200 hover:bg-white/[0.04]"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </div>
 
-          {/* Action Buttons & Quick Controls */}
-          <div className="hidden items-center gap-2.5 lg:flex">
-            {/* Theme Toggle */}
+          {/* Right Controls: Command Trigger + Motion Toggle + Theme Toggle + Contact CTA */}
+          <div className="flex items-center gap-2">
+            {/* Search / Command Trigger Button */}
             <button
               type="button"
-              onClick={() => setTheme((c) => (c === "dark" ? "light" : "dark"))}
-              className="liquid-btn-secondary inline-flex h-9 items-center gap-1.5 rounded-full px-3 text-xs font-semibold text-slate-300 hover:text-cyan-300"
-              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              onClick={onOpenCommandPalette}
+              aria-label="Open Command Palette"
+              className="refero-pill flex items-center gap-2 rounded-xl px-3 py-1.5 text-xs text-slate-300 hover:text-white transition-all cursor-pointer"
+            >
+              <Search size={14} className="text-cyan-400" />
+              <span className="hidden lg:inline text-[11px] text-slate-400">Search</span>
+              <kbd className="inline-flex items-center gap-0.5 rounded bg-white/10 px-1.5 py-0.5 font-mono text-[10px] text-slate-300">
+                ⌘K
+              </kbd>
+            </button>
+
+            {/* Reduce Animation (Motion) Toggle Button */}
+            <button
+              type="button"
+              onClick={toggleMotion}
+              title={`Motion: ${motion === "reduced" ? "Reduced" : "Full Animation"}`}
+              aria-label="Toggle reduced motion"
+              className={`refero-pill grid h-8 w-8 place-items-center rounded-xl transition-all cursor-pointer ${
+                motion === "reduced"
+                  ? "text-amber-400 border-amber-400/30 bg-amber-500/10"
+                  : "text-slate-300 hover:text-white"
+              }`}
+            >
+              <Gauge size={15} />
+            </button>
+
+            {/* Light / Dark Mode Toggle Button */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              title={`Switch to ${theme === "dark" ? "Light" : "Dark"} Mode`}
+              aria-label="Toggle light and dark theme"
+              className="refero-pill grid h-8 w-8 place-items-center rounded-xl text-slate-300 hover:text-white transition-all cursor-pointer"
             >
               {theme === "dark" ? (
                 <Sun size={15} className="text-amber-300" />
               ) : (
-                <Moon size={15} className="text-cyan-600" />
+                <Moon size={15} className="text-indigo-400" />
               )}
-              <span>{theme === "dark" ? "Light" : "Dark"}</span>
             </button>
 
-            {/* Motion Toggle */}
-            <button
-              type="button"
-              onClick={() => setMotion((c) => (c === "reduced" ? "standard" : "reduced"))}
-              className={`liquid-btn-secondary inline-flex h-9 items-center gap-1.5 rounded-full px-3 text-xs font-semibold transition-colors ${
-                motion === "standard"
-                  ? "border-cyan-400/50 text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.25)]"
-                  : "text-slate-400"
-              }`}
-              aria-pressed={motion === "standard"}
-              aria-label="Toggle animations"
-              title={motion === "reduced" ? "Enable full fluid animations" : "Reduce motion"}
-            >
-              <Gauge size={15} />
-              <span>{motion === "standard" ? "Motion on" : "Smooth"}</span>
-            </button>
-
-            {/* Let's Talk CTA */}
+            {/* Direct Telegram Chat Pill */}
             <a
-              href="tel:+855969923931"
-              className="liquid-btn-primary inline-flex h-9 items-center gap-2 rounded-full px-4 text-xs font-bold text-white"
+              href="https://t.me/dara_nhim"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden xl:inline-flex items-center gap-1.5 rounded-xl bg-cyan-500/10 border border-cyan-400/30 px-3 py-1.5 text-xs font-semibold text-cyan-300 hover:bg-cyan-500/20 transition-all shadow-sm"
             >
-              <Phone size={13} className="animate-pulse" />
-              <span>Let&apos;s talk</span>
+              <Send size={13} />
+              <span>Let&apos;s Talk</span>
             </a>
-          </div>
 
-          {/* Mobile Right Controls */}
-          <div className="flex items-center gap-2 lg:hidden">
+            {/* Mobile Menu Toggle Button */}
             <button
               type="button"
-              onClick={() => setTheme((c) => (c === "dark" ? "light" : "dark"))}
-              className="liquid-btn-secondary h-9 w-9 rounded-full grid place-items-center text-slate-200"
-              aria-label="Toggle theme"
-              title="Toggle light / dark mode"
-            >
-              {theme === "dark" ? (
-                <Sun size={16} className="text-amber-300" />
-              ) : (
-                <Moon size={16} className="text-cyan-600" />
-              )}
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setMotion((c) => (c === "reduced" ? "standard" : "reduced"))}
-              className={`liquid-btn-secondary h-9 w-9 rounded-full grid place-items-center transition-colors ${
-                motion === "standard"
-                  ? "text-cyan-300 border-cyan-400/50 shadow-[0_0_10px_rgba(6,182,212,0.2)]"
-                  : "text-slate-200"
-              }`}
-              aria-pressed={motion === "standard"}
-              aria-label={motion === "reduced" ? "Enable full animations" : "Reduce motion"}
-              title={motion === "reduced" ? "Enable full fluid animations" : "Reduce motion"}
-            >
-              <Gauge size={16} />
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setIsOpen((open) => !open)}
-              className="liquid-btn-secondary h-9 w-9 rounded-full grid place-items-center text-slate-200"
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isOpen}
+              onClick={() => setIsOpen((prev) => !prev)}
+              aria-label="Toggle navigation menu"
+              className="md:hidden refero-pill grid h-9 w-9 place-items-center rounded-xl text-slate-300 hover:text-white cursor-pointer"
             >
               {isOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile Dropdown Menu with Liquid Glass styling */}
-        <div
-          id="mobile-menu"
-          className={`overflow-hidden transition-all duration-500 lg:hidden ${
-            isOpen ? "max-h-[480px] mt-4 pt-3 border-t border-white/10 opacity-100" : "max-h-0 opacity-0 pointer-events-none"
-          }`}
-        >
-          <ul className="grid gap-1.5 pb-2">
+      {/* Mobile Drawer */}
+      {isOpen && (
+        <div className="md:hidden fixed inset-x-3 top-20 z-50 rounded-2xl refero-card-elevated p-5 shadow-2xl border border-white/15 animate-in fade-in slide-in-from-top-4 duration-200">
+          <div className="flex flex-col space-y-1">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
-                <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
-                    onClick={() => setIsOpen(false)}
-                    className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
-                      isActive
-                        ? "bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-300 border border-cyan-400/30"
-                        : "text-slate-300 hover:bg-white/5 hover:text-white"
-                    }`}
-                  >
-                    <span>{item.label}</span>
-                    {isActive && <Sparkles size={14} className="text-cyan-400" />}
-                  </a>
-                </li>
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={() => setIsOpen(false)}
+                  className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-all ${
+                    isActive
+                      ? "bg-cyan-500/15 text-cyan-300 border border-cyan-400/30 font-semibold"
+                      : "text-slate-300 hover:bg-white/5"
+                  }`}
+                >
+                  <span>{item.label}</span>
+                </a>
               );
             })}
-          </ul>
+          </div>
 
-          <div className="flex items-center gap-2 pt-2 border-t border-white/10">
+          {/* Mobile Theme & Motion Toggles Row */}
+          <div className="mt-4 pt-4 border-t border-white/10 grid grid-cols-2 gap-2">
             <button
-              type="button"
-              onClick={() => setMotion((c) => (c === "reduced" ? "standard" : "reduced"))}
-              className="liquid-btn-secondary flex-1 flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold text-slate-200"
+              onClick={toggleTheme}
+              className="refero-btn-secondary flex items-center justify-center gap-2 rounded-xl py-2 text-xs font-semibold text-slate-200"
             >
-              <Gauge size={14} />
-              <span>{motion === "standard" ? "Motion: Full" : "Motion: Reduced"}</span>
+              {theme === "dark" ? <Sun size={14} className="text-amber-300" /> : <Moon size={14} className="text-indigo-400" />}
+              <span>{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
+            </button>
+
+            <button
+              onClick={toggleMotion}
+              className="refero-btn-secondary flex items-center justify-center gap-2 rounded-xl py-2 text-xs font-semibold text-slate-200"
+            >
+              <Gauge size={14} className={motion === "reduced" ? "text-amber-400" : "text-cyan-400"} />
+              <span>{motion === "reduced" ? "Motion: Off" : "Motion: On"}</span>
+            </button>
+          </div>
+
+          <div className="mt-3 flex flex-col gap-2">
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                if (onOpenCommandPalette) onOpenCommandPalette();
+              }}
+              className="refero-btn-secondary flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold text-slate-200"
+            >
+              <Search size={14} className="text-cyan-400" />
+              <span>Search &amp; Commands (⌘K)</span>
             </button>
 
             <a
-              href="tel:+855969923931"
-              className="liquid-btn-primary flex-1 flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-bold text-white"
+              href="https://t.me/dara_nhim"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="refero-btn-primary flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-bold text-white"
             >
-              <Phone size={14} />
-              <span>Contact</span>
+              <Send size={14} />
+              <span>Message on Telegram</span>
             </a>
           </div>
         </div>
-      </nav>
+      )}
     </header>
   );
 };
