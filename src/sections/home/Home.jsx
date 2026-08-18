@@ -176,7 +176,7 @@ export const Home = ({ onCopyEmail }) => {
               </div>
 
               {/* Bio summary */}
-              <p className="max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed text-slate-300/90 border-l-2 border-cyan-400/60 pl-4">
+              <p className="max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed text-slate-100 font-medium border-l-2 border-cyan-400 pl-4">
                 IT Engineering student at Royal University of Phnom Penh (RUPP) and certified full-stack developer from ETEC Center.
                 I engineer resilient web applications, performant REST backends, and fluid user interfaces with clean architecture and modern standards.
               </p>

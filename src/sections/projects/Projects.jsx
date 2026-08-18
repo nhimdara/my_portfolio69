@@ -354,51 +354,50 @@ export const Projects = () => {
             <LiquidCard
               key={project.id}
               glowColor={project.glow || "cyan"}
-              className="flex flex-col justify-between"
+              className="p-4 sm:p-5 flex flex-col justify-between"
             >
               <div>
+                {/* Clean Header Badges Above Image */}
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="rounded-lg bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-1 text-[11px] font-bold font-mono uppercase tracking-wider text-cyan-300">
+                    {project.category}
+                  </span>
+                  <span className="rounded-lg bg-white/5 border border-white/10 px-2.5 py-1 text-[11px] font-mono text-slate-300">
+                    {project.year}
+                  </span>
+                </div>
+
                 {/* Thumbnail Preview with Aspect Ratio & Action overlay */}
-                <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-slate-950 border border-white/10 group/img">
+                <div
+                  onClick={() => setSelectedProject(project)}
+                  className="relative aspect-[16/10] overflow-hidden rounded-xl bg-slate-950/20 border border-white/10 group/img cursor-pointer shadow-md mb-4"
+                >
                   <img
                     src={project.image}
                     alt={project.title}
                     className="h-full w-full object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
 
-                  {/* Category & Year Badges */}
-                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                    <span className="rounded-lg bg-slate-950/80 backdrop-blur-md border border-white/15 px-2.5 py-1 text-[10px] font-bold font-mono uppercase tracking-wider text-cyan-300">
-                      {project.category}
-                    </span>
-                    <span className="rounded-lg bg-slate-950/80 backdrop-blur-md border border-white/15 px-2.5 py-1 text-[10px] font-mono text-slate-300">
-                      {project.year}
-                    </span>
+                  {/* Quick View Button Overlay */}
+                  <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[2px] opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="rounded-xl bg-cyan-500 text-slate-950 px-3.5 py-2 text-xs font-bold shadow-xl flex items-center gap-1.5 transform translate-y-2 group-hover/img:translate-y-0 transition-transform">
+                      <Maximize2 size={14} />
+                      <span>Inspect Project</span>
+                    </div>
                   </div>
-
-                  {/* Quick View Button */}
-                  <button
-                    type="button"
-                    onClick={() => setSelectedProject(project)}
-                    className="absolute bottom-3 right-3 rounded-lg bg-slate-900/90 hover:bg-cyan-500 text-slate-200 hover:text-slate-950 p-2 text-xs font-semibold backdrop-blur-md border border-white/20 transition-all opacity-0 group-hover/img:opacity-100 flex items-center gap-1 shadow-lg cursor-pointer"
-                    title="Inspect details"
-                  >
-                    <Maximize2 size={13} />
-                    <span>Quick View</span>
-                  </button>
                 </div>
 
                 {/* Body Content */}
-                <div className="p-5">
-                  <h3 className="text-lg font-bold text-white tracking-tight mb-2 flex items-center justify-between group-hover:text-cyan-300 transition-colors">
-                    <span>{project.title}</span>
+                <div className="space-y-2 mb-4">
+                  <h3 className="text-lg font-bold text-white tracking-tight leading-snug group-hover:text-cyan-400 transition-colors">
+                    {project.title}
                   </h3>
-                  <p className="text-xs leading-relaxed text-slate-400 line-clamp-3 mb-4">
+                  <p className="text-xs leading-relaxed text-slate-400 line-clamp-3">
                     {project.description}
                   </p>
 
                   {/* Tech Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-2">
+                  <div className="flex flex-wrap gap-1.5 pt-1">
                     {project.tech.map((t) => (
                       <span
                         key={t}
@@ -412,7 +411,7 @@ export const Projects = () => {
               </div>
 
               {/* Card Footer Actions */}
-              <div className="p-5 pt-0 border-t border-white/10 mt-2 flex items-center justify-between gap-2">
+              <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
                   {project.liveUrl && (
                     <a

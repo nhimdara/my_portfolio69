@@ -118,68 +118,69 @@ export const Certificates = () => {
             <LiquidCard
               key={index}
               glowColor={cert.glow}
-              className="flex flex-col justify-between"
+              className="p-4 sm:p-5 flex flex-col justify-between"
             >
               <div>
-                {/* Certificate Preview Thumbnail */}
+                {/* Clean Header Badges Above Image */}
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="rounded-lg bg-amber-500/15 border border-amber-400/30 px-2.5 py-1 text-[11px] font-bold font-mono uppercase tracking-wider text-amber-300">
+                    {cert.type}
+                  </span>
+                  <span className="rounded-lg bg-white/5 border border-white/10 px-2.5 py-1 text-[11px] font-mono text-slate-300">
+                    {cert.date}
+                  </span>
+                </div>
+
+                {/* Certificate Preview Thumbnail Frame */}
                 <div
                   onClick={() => setSelected(cert)}
-                  className="relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-950 border border-white/10 cursor-pointer group/thumb"
+                  className="relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-950/20 border border-white/10 cursor-pointer group/thumb shadow-md mb-4"
                 >
                   <img
                     src={cert.image}
                     alt={cert.title}
                     className="h-full w-full object-cover object-center transition-transform duration-500 group-hover/thumb:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
-
-                  {/* Issuer & Date Badges */}
-                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                    <span className="rounded-lg bg-slate-950/80 backdrop-blur-md border border-white/15 px-2.5 py-0.5 text-[10px] font-bold font-mono uppercase tracking-wider text-amber-300">
-                      {cert.type}
-                    </span>
-                    <span className="rounded-lg bg-slate-950/80 backdrop-blur-md border border-white/15 px-2 py-0.5 text-[10px] font-mono text-slate-300">
-                      {cert.date}
-                    </span>
-                  </div>
 
                   {/* Zoom Overlay Trigger */}
-                  <div className="absolute bottom-3 right-3 rounded-lg bg-slate-900/90 text-white p-2 text-xs font-semibold backdrop-blur-md border border-white/20 opacity-0 group-hover/thumb:opacity-100 transition-opacity flex items-center gap-1">
-                    <ZoomIn size={13} />
-                    <span>View Certificate</span>
+                  <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[2px] opacity-0 group-hover/thumb:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="rounded-xl bg-cyan-500 text-slate-950 px-3.5 py-2 text-xs font-bold shadow-xl flex items-center gap-1.5 transform translate-y-2 group-hover/thumb:translate-y-0 transition-transform">
+                      <ZoomIn size={14} />
+                      <span>Inspect Certificate</span>
+                    </div>
                   </div>
                 </div>
 
                 {/* Body Content */}
-                <div className="p-5">
-                  <div className="flex items-center gap-2 mb-2 text-xs font-mono text-cyan-400">
-                    <ShieldCheck size={14} className="text-emerald-400" />
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-semibold">
+                    <ShieldCheck size={14} className="text-emerald-400 shrink-0" />
                     <span>{cert.issuer}</span>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold text-white tracking-tight mb-2">
+                  <h3 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug">
                     {cert.title}
                   </h3>
 
-                  <p className="text-xs leading-relaxed text-slate-400">
+                  <p className="text-xs leading-relaxed text-slate-400 line-clamp-3">
                     {cert.description}
                   </p>
                 </div>
               </div>
 
               {/* Card Footer */}
-              <div className="p-5 pt-0 border-t border-white/10 mt-2 flex items-center justify-between">
+              <div className="pt-4 border-t border-white/10 mt-4 flex items-center justify-between">
                 <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold flex items-center gap-1">
-                  <CheckCircle2 size={12} /> Verified
+                  <CheckCircle2 size={13} /> Verified Credential
                 </span>
 
                 <button
                   type="button"
                   onClick={() => setSelected(cert)}
-                  className="text-xs text-slate-300 hover:text-cyan-300 font-mono flex items-center gap-1 cursor-pointer"
+                  className="text-xs text-cyan-400 hover:text-cyan-300 font-mono font-semibold flex items-center gap-1 cursor-pointer"
                 >
-                  <span>Inspect</span>
-                  <ZoomIn size={12} />
+                  <span>View</span>
+                  <ZoomIn size={13} />
                 </button>
               </div>
             </LiquidCard>
@@ -220,7 +221,7 @@ export const Certificates = () => {
               </p>
             </div>
 
-            <div className="w-full overflow-hidden rounded-2xl bg-slate-950 border border-white/15 mb-4">
+            <div className="w-full overflow-hidden rounded-2xl bg-slate-950 border border-white/15 mb-4 shadow-xl">
               <img
                 src={selected.image}
                 alt={selected.title}
