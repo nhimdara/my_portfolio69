@@ -1,13 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   Search,
-  Command,
   ArrowRight,
-  ExternalLink,
   Download,
   Copy,
-  Check,
-  Code2,
   FolderGit2,
   Send,
   Sparkles,
@@ -16,18 +12,63 @@ import {
   Award,
   Terminal,
   X,
+  Code2,
 } from "lucide-react";
+
+function applyTheme(next) {
+  if (typeof document !== "undefined") {
+    document.documentElement.dataset.theme = next;
+    document.documentElement.style.colorScheme = next;
+    try {
+      localStorage.setItem("portfolio-theme", next);
+    } catch {
+      // ignore
+    }
+  }
+}
+
+function applyMotion(next) {
+  if (typeof document !== "undefined") {
+    document.documentElement.dataset.motion = next;
+    try {
+      localStorage.setItem("portfolio-motion", next);
+    } catch {
+      // ignore
+    }
+  }
+}
 
 export const CommandPalette = ({
   isOpen,
   onClose,
-  onSelectProject,
   onCopyEmail,
 }) => {
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef(null);
   const cvUrl = `${import.meta.env.BASE_URL}cv/CV-Nhim-Dara.pdf`;
+
+  const handleClose = () => {
+    setQuery("");
+    setSelectedIndex(0);
+    onClose();
+  };
+
+  const handleToggleTheme = () => {
+    const current = document.documentElement.dataset.theme || "dark";
+    const next = current === "dark" ? "light" : "dark";
+    applyTheme(next);
+    if (onCopyEmail) onCopyEmail(`Switched to ${next} mode`);
+    handleClose();
+  };
+
+  const handleToggleMotion = () => {
+    const current = document.documentElement.dataset.motion || "reduced";
+    const next = current === "reduced" ? "full" : "reduced";
+    applyMotion(next);
+    if (onCopyEmail) onCopyEmail(`Motion set to ${next}`);
+    handleClose();
+  };
 
   const commands = [
     // Navigation
@@ -38,7 +79,7 @@ export const CommandPalette = ({
       icon: <Terminal size={16} className="text-cyan-400" />,
       action: () => {
         document.getElementById("home")?.scrollIntoView({ behavior: "smooth" });
-        onClose();
+        handleClose();
       },
     },
     {
@@ -48,7 +89,7 @@ export const CommandPalette = ({
       icon: <Sparkles size={16} className="text-purple-400" />,
       action: () => {
         document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-        onClose();
+        handleClose();
       },
     },
     {
@@ -58,7 +99,7 @@ export const CommandPalette = ({
       icon: <GraduationCap size={16} className="text-emerald-400" />,
       action: () => {
         document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" });
-        onClose();
+        handleClose();
       },
     },
     {
@@ -68,7 +109,7 @@ export const CommandPalette = ({
       icon: <Layers size={16} className="text-blue-400" />,
       action: () => {
         document.getElementById("project")?.scrollIntoView({ behavior: "smooth" });
-        onClose();
+        handleClose();
       },
     },
     {
@@ -78,7 +119,7 @@ export const CommandPalette = ({
       icon: <Award size={16} className="text-amber-400" />,
       action: () => {
         document.getElementById("certificates")?.scrollIntoView({ behavior: "smooth" });
-        onClose();
+        handleClose();
       },
     },
     {
@@ -88,7 +129,7 @@ export const CommandPalette = ({
       icon: <Code2 size={16} className="text-pink-400" />,
       action: () => {
         document.getElementById("skill")?.scrollIntoView({ behavior: "smooth" });
-        onClose();
+        handleClose();
       },
     },
     // Quick Actions
@@ -97,29 +138,14 @@ export const CommandPalette = ({
       title: "Toggle Light / Dark Mode",
       category: "Quick Actions",
       icon: <Sparkles size={16} className="text-amber-300" />,
-      action: () => {
-        const current = document.documentElement.dataset.theme || "dark";
-        const next = current === "dark" ? "light" : "dark";
-        document.documentElement.dataset.theme = next;
-        document.documentElement.style.colorScheme = next;
-        localStorage.setItem("portfolio-theme", next);
-        if (onCopyEmail) onCopyEmail(`Switched to ${next} mode`);
-        onClose();
-      },
+      action: handleToggleTheme,
     },
     {
       id: "act-toggle-motion",
       title: "Toggle Reduce Animation / Motion",
       category: "Quick Actions",
       icon: <Sparkles size={16} className="text-cyan-300" />,
-      action: () => {
-        const current = document.documentElement.dataset.motion || "reduced";
-        const next = current === "reduced" ? "full" : "reduced";
-        document.documentElement.dataset.motion = next;
-        localStorage.setItem("portfolio-motion", next);
-        if (onCopyEmail) onCopyEmail(`Motion set to ${next}`);
-        onClose();
-      },
+      action: handleToggleMotion,
     },
     {
       id: "act-copy-email",
@@ -128,7 +154,7 @@ export const CommandPalette = ({
       icon: <Copy size={16} className="text-cyan-300" />,
       action: () => {
         if (onCopyEmail) onCopyEmail("Email address copied to clipboard!");
-        onClose();
+        handleClose();
       },
     },
     {
@@ -141,7 +167,7 @@ export const CommandPalette = ({
         link.href = cvUrl;
         link.download = "CV-Nhim-Dara.pdf";
         link.click();
-        onClose();
+        handleClose();
       },
     },
     {
@@ -151,7 +177,7 @@ export const CommandPalette = ({
       icon: <Send size={16} className="text-sky-400" />,
       action: () => {
         window.open("https://t.me/dara_nhim", "_blank");
-        onClose();
+        handleClose();
       },
     },
     {
@@ -161,7 +187,7 @@ export const CommandPalette = ({
       icon: <FolderGit2 size={16} className="text-slate-300" />,
       action: () => {
         window.open("https://github.com/nhimdara", "_blank");
-        onClose();
+        handleClose();
       },
     },
   ];
@@ -175,14 +201,20 @@ export const CommandPalette = ({
       );
 
   useEffect(() => {
-    if (isOpen) {
-      setQuery("");
-      setSelectedIndex(0);
-      setTimeout(() => inputRef.current?.focus(), 50);
-      document.body.style.overflow = "hidden";
-    } else {
+    if (!isOpen) {
       document.body.style.overflow = "";
+      return;
     }
+
+    document.body.style.overflow = "hidden";
+    const timer = setTimeout(() => {
+      inputRef.current?.focus();
+    }, 50);
+
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   useEffect(() => {

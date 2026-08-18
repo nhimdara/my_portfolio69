@@ -7,6 +7,11 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react(), tailwindcss()],
+    server: {
+      watch: {
+        ignored: ['**/*.apk', '**/downloads/**'],
+      },
+    },
     // The Cloudflare Worker serves the site from the domain root. A subpath can
     // still be supplied explicitly (for example, for GitHub Pages).
     base: env.VITE_BASE_PATH || '/',

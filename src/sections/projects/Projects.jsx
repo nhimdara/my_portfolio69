@@ -187,8 +187,7 @@ export const Projects = () => {
       tech: ["Android Studio", "React 18", "Capacitor", "Tailwind CSS"],
       category: "Mobile",
       year: "2026",
-      apkUrl:
-        "https://raw.githubusercontent.com/nhimdara/my_portfolio69/main/downloads/woods-cambodia.apk",
+      apkUrl: `${import.meta.env.BASE_URL}downloads/woods-cambodia.apk`,
       githubUrl: "https://github.com/nhimdara/Wood-s",
       githubLabel: "Android Repo",
       featured: false,

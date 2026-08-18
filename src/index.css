@@ -136,6 +136,23 @@ body[data-theme="light"] {
   font-weight: 700 !important;
 }
 
+[data-theme="light"] input,
+[data-theme="light"] textarea {
+  background-color: #ffffff !important;
+  color: #020617 !important;
+  border-color: rgba(15, 23, 42, 0.2) !important;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #64748b !important;
+}
+
+[data-theme="light"] label {
+  color: #1e293b !important;
+  font-weight: 600 !important;
+}
+
 [data-theme="light"] .text-emerald-400,
 [data-theme="light"] .text-emerald-300 {
   color: #059669 !important;

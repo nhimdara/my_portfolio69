@@ -171,10 +171,10 @@ export const Footer = ({ onCopyEmail }) => {
 
             {/* Right Column: Quick Interactive Message Box */}
             <div className="lg:col-span-6">
-              <div className="rounded-2xl bg-slate-950/60 p-6 border border-white/10">
+              <div className="rounded-2xl p-6 border transition-colors bg-white/[0.03] border-white/10 [data-theme=light]:bg-slate-100/90 [data-theme=light]:border-slate-200 shadow-inner">
                 <div className="flex items-center gap-2 mb-4">
                   <MessageSquare size={16} className="text-cyan-400" />
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-100 [data-theme=light]:text-slate-900">
                     Direct Dispatch to Telegram
                   </span>
                 </div>
@@ -184,13 +184,13 @@ export const Footer = ({ onCopyEmail }) => {
                     <div className="inline-grid h-12 w-12 place-items-center rounded-full bg-emerald-500/20 text-emerald-400 mx-auto">
                       <Check size={24} />
                     </div>
-                    <p className="text-sm font-bold text-white">Opening Telegram chat...</p>
-                    <p className="text-xs text-slate-400">Thank you for reaching out!</p>
+                    <p className="text-sm font-bold text-white [data-theme=light]:text-slate-900">Opening Telegram chat...</p>
+                    <p className="text-xs text-slate-400 [data-theme=light]:text-slate-600">Thank you for reaching out!</p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-3">
+                  <form onSubmit={handleSubmit} className="space-y-3.5">
                     <div>
-                      <label className="block text-[11px] font-mono text-slate-400 mb-1">
+                      <label className="block text-[11px] font-mono font-semibold text-slate-300 [data-theme=light]:text-slate-700 mb-1">
                         Your Name
                       </label>
                       <input
@@ -199,12 +199,12 @@ export const Footer = ({ onCopyEmail }) => {
                         value={formState.name}
                         onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                         placeholder="John Doe"
-                        className="w-full rounded-xl bg-white/[0.04] border border-white/10 px-3.5 py-2 text-xs text-white placeholder:text-slate-600 focus:border-cyan-400/50 focus:outline-none"
+                        className="w-full rounded-xl px-3.5 py-2.5 text-xs text-slate-100 [data-theme=light]:text-slate-900 bg-white/[0.06] border border-white/15 [data-theme=light]:bg-white [data-theme=light]:border-slate-300 placeholder:text-slate-500 [data-theme=light]:placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none [data-theme=light]:shadow-sm transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[11px] font-mono text-slate-400 mb-1">
+                      <label className="block text-[11px] font-mono font-semibold text-slate-300 [data-theme=light]:text-slate-700 mb-1">
                         Your Email or Contact Handle
                       </label>
                       <input
@@ -212,12 +212,12 @@ export const Footer = ({ onCopyEmail }) => {
                         value={formState.email}
                         onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                         placeholder="johndoe@example.com / @telegram"
-                        className="w-full rounded-xl bg-white/[0.04] border border-white/10 px-3.5 py-2 text-xs text-white placeholder:text-slate-600 focus:border-cyan-400/50 focus:outline-none"
+                        className="w-full rounded-xl px-3.5 py-2.5 text-xs text-slate-100 [data-theme=light]:text-slate-900 bg-white/[0.06] border border-white/15 [data-theme=light]:bg-white [data-theme=light]:border-slate-300 placeholder:text-slate-500 [data-theme=light]:placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none [data-theme=light]:shadow-sm transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[11px] font-mono text-slate-400 mb-1">
+                      <label className="block text-[11px] font-mono font-semibold text-slate-300 [data-theme=light]:text-slate-700 mb-1">
                         Message / Project Brief
                       </label>
                       <textarea
@@ -226,15 +226,15 @@ export const Footer = ({ onCopyEmail }) => {
                         value={formState.message}
                         onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                         placeholder="Hi Dara, I would like to discuss a web development project..."
-                        className="w-full rounded-xl bg-white/[0.04] border border-white/10 px-3.5 py-2 text-xs text-white placeholder:text-slate-600 focus:border-cyan-400/50 focus:outline-none resize-none"
+                        className="w-full rounded-xl px-3.5 py-2.5 text-xs text-slate-100 [data-theme=light]:text-slate-900 bg-white/[0.06] border border-white/15 [data-theme=light]:bg-white [data-theme=light]:border-slate-300 placeholder:text-slate-500 [data-theme=light]:placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none resize-none [data-theme=light]:shadow-sm transition-colors"
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full refero-btn-primary rounded-xl py-2.5 text-xs font-bold text-white flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full refero-btn-primary rounded-xl py-3 text-xs font-bold text-white flex items-center justify-center gap-2 cursor-pointer shadow-lg mt-2"
                     >
-                      <Send size={13} />
+                      <Send size={14} />
                       <span>Send Direct Message</span>
                     </button>
                   </form>
