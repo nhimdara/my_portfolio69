@@ -79,11 +79,11 @@ body[data-theme="light"] {
   color: #0f172a;
   background-image:
     radial-gradient(circle at 12% 12%, rgba(6, 182, 212, 0.12), transparent 30rem),
-    radial-gradient(circle at 88% 30%, rgba(147, 51, 234, 0.09), transparent 32rem),
-    radial-gradient(circle at 45% 70%, rgba(59, 130, 246, 0.08), transparent 35rem);
+    radial-gradient(circle at 88% 30%, rgba(147, 51, 234, 0.08), transparent 32rem),
+    radial-gradient(circle at 45% 70%, rgba(59, 130, 246, 0.07), transparent 35rem);
 }
 
-/* Subtle architectural grid pattern characteristic of Refero / Linear */
+/* Subtle architectural grid pattern */
 .refero-grid-pattern {
   background-size: 40px 40px;
   background-image:
@@ -91,9 +91,10 @@ body[data-theme="light"] {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
 }
 
-.refero-dot-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
+[data-theme="light"] .refero-grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
 }
 
 /* ==========================================================================
@@ -112,11 +113,13 @@ body[data-theme="light"] {
 }
 
 [data-theme="light"] .refero-card {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
-    0 12px 36px -8px rgba(15, 23, 42, 0.08);
+    inset 0 1px 0 0 rgba(255, 255, 255, 1),
+    0 12px 32px -8px rgba(15, 23, 42, 0.06);
   color: #0f172a;
 }
 
@@ -128,10 +131,10 @@ body[data-theme="light"] {
 }
 
 [data-theme="light"] .refero-card:hover {
-  border-color: rgba(6, 182, 212, 0.3);
+  border-color: rgba(6, 182, 212, 0.35);
   box-shadow:
     inset 0 1px 0 0 rgba(255, 255, 255, 1),
-    0 16px 40px -8px rgba(15, 23, 42, 0.12);
+    0 18px 40px -8px rgba(15, 23, 42, 0.1);
 }
 
 .refero-card-elevated {
@@ -145,11 +148,13 @@ body[data-theme="light"] {
 }
 
 [data-theme="light"] .refero-card-elevated {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(15, 23, 42, 0.1);
   box-shadow:
     inset 0 1px 0 0 rgba(255, 255, 255, 1),
-    0 20px 50px -10px rgba(15, 23, 42, 0.1);
+    0 20px 50px -10px rgba(15, 23, 42, 0.08);
   color: #0f172a;
 }
 
@@ -165,7 +170,7 @@ body[data-theme="light"] {
 [data-theme="light"] .refero-pill {
   background: rgba(15, 23, 42, 0.04);
   border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
   color: #1e293b;
 }
 
@@ -177,6 +182,7 @@ body[data-theme="light"] {
 [data-theme="light"] .refero-pill:hover {
   background: rgba(15, 23, 42, 0.08);
   border-color: rgba(6, 182, 212, 0.4);
+  color: #0f172a;
 }
 
 .refero-pill-active {
@@ -186,6 +192,12 @@ body[data-theme="light"] {
   box-shadow:
     inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
     0 0 20px rgba(6, 182, 212, 0.2);
+}
+
+[data-theme="light"] .refero-pill-active {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: rgba(8, 145, 178, 0.5);
+  color: #0e7490;
 }
 
 /* Refero Monospaced Tagline */
@@ -208,7 +220,7 @@ body[data-theme="light"] {
 }
 
 [data-theme="light"] .refero-text-gradient {
-  background: linear-gradient(135deg, #0f172a 20%, #334155 60%, #475569 100%);
+  background: linear-gradient(135deg, #0f172a 20%, #1e293b 60%, #334155 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -219,8 +231,20 @@ body[data-theme="light"] {
   -webkit-text-fill-color: transparent;
 }
 
+[data-theme="light"] .refero-text-accent {
+  background: linear-gradient(135deg, #0891b2 0%, #7c3aed 50%, #db2777 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .refero-text-cyan {
   background: linear-gradient(135deg, #67e8f9 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .refero-text-cyan {
+  background: linear-gradient(135deg, #0891b2 0%, #0284c7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -234,6 +258,7 @@ body[data-theme="light"] {
     inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
     0 8px 24px -4px rgba(6, 182, 212, 0.4);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #ffffff !important;
 }
 
 .refero-btn-primary:hover {
@@ -258,8 +283,8 @@ body[data-theme="light"] {
 
 [data-theme="light"] .refero-btn-secondary {
   background: rgba(15, 23, 42, 0.04);
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  color: #0f172a;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: #0f172a !important;
 }
 
 .refero-btn-secondary:hover {
@@ -268,8 +293,72 @@ body[data-theme="light"] {
   transform: translateY(-2px);
 }
 
+[data-theme="light"] .refero-btn-secondary:hover {
+  background: rgba(15, 23, 42, 0.08);
+  border-color: rgba(15, 23, 42, 0.2);
+}
+
 .refero-btn-secondary:active {
   transform: translateY(0);
+}
+
+/* ==========================================================================
+   LIGHT MODE TEXT & ELEMENT CONTRAST OVERRIDES
+   ========================================================================== */
+
+[data-theme="light"] .text-white {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .text-slate-100 {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .text-slate-200 {
+  color: #1e293b !important;
+}
+
+[data-theme="light"] .text-slate-300,
+[data-theme="light"] .text-slate-300\/90,
+[data-theme="light"] .text-slate-300\/80 {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .text-slate-400 {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .text-slate-500 {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .border-white\/10,
+[data-theme="light"] .border-white\/15,
+[data-theme="light"] .border-white\/20,
+[data-theme="light"] .border-white\/\[0\.06\],
+[data-theme="light"] .border-white\/\[0\.08\] {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+[data-theme="light"] .bg-white\/5,
+[data-theme="light"] .bg-white\/10,
+[data-theme="light"] .bg-white\/\[0\.03\],
+[data-theme="light"] .bg-white\/\[0\.04\],
+[data-theme="light"] .bg-white\/\[0\.05\] {
+  background-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+[data-theme="light"] .bg-slate-950,
+[data-theme="light"] .bg-slate-900 {
+  background-color: #f1f5f9 !important;
+}
+
+[data-theme="light"] .bg-slate-950\/60,
+[data-theme="light"] .bg-slate-950\/80,
+[data-theme="light"] .bg-slate-950\/85,
+[data-theme="light"] .bg-slate-900\/90,
+[data-theme="light"] .bg-slate-900\/95 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Backward compatibility classes */
@@ -284,9 +373,9 @@ body[data-theme="light"] {
 }
 
 [data-theme="light"] .liquid-glass {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 12px 36px -8px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 12px 36px -8px rgba(15, 23, 42, 0.06);
 }
 
 .liquid-glass-elevated {
@@ -300,9 +389,9 @@ body[data-theme="light"] {
 }
 
 [data-theme="light"] .liquid-glass-elevated {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.98);
   border: 1px solid rgba(15, 23, 42, 0.1);
-  box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.08);
 }
 
 .liquid-glass-pill {
@@ -331,9 +420,9 @@ body[data-theme="light"] {
 }
 
 [data-theme="light"] .liquid-glass-card {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 12px 36px -8px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 12px 36px -8px rgba(15, 23, 42, 0.06);
 }
 
 .liquid-shimmer-text {
@@ -343,7 +432,7 @@ body[data-theme="light"] {
 }
 
 [data-theme="light"] .liquid-shimmer-text {
-  background: linear-gradient(135deg, #0f172a 20%, #334155 60%, #475569 100%);
+  background: linear-gradient(135deg, #0f172a 20%, #1e293b 60%, #334155 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -356,6 +445,7 @@ body[data-theme="light"] {
     inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
     0 8px 24px -4px rgba(6, 182, 212, 0.4);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #ffffff !important;
 }
 
 .liquid-btn-secondary {
@@ -365,6 +455,12 @@ body[data-theme="light"] {
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] .liquid-btn-secondary {
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: #0f172a !important;
 }
 
 /* Custom modern scrollbar */
