@@ -147,7 +147,7 @@ export const Projects = () => {
       tech: ["React.js", "Node.js", "Gemini API", "Tailwind CSS", "Express"],
       category: "AI & UI/UX",
       year: "2026",
-      liveUrl: "https://ai-chatbot-frontend-kappa.vercel.app/",
+      liveUrl: "https://t.me/DaraAIChatBot",
       githubUrl: "https://github.com/nhimdara/Ai-chatbot-frontend",
       githubLabel: "GitHub Repo",
       featured: false,
@@ -308,7 +308,8 @@ export const Projects = () => {
             <span className="refero-text-accent">Systems</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base text-slate-400">
-            A curated showcase of full-stack platforms, Telegram mini-apps, REST APIs, and responsive web applications.
+            A curated showcase of full-stack platforms, Telegram mini-apps, REST
+            APIs, and responsive web applications.
           </p>
         </div>
 
@@ -334,7 +335,10 @@ export const Projects = () => {
 
           {/* Search Box */}
           <div className="relative w-full md:w-72">
-            <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            <Search
+              size={15}
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
+            />
             <input
               type="text"
               value={searchQuery}
@@ -398,7 +402,7 @@ export const Projects = () => {
                   <h3 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug group-hover:text-cyan-400 transition-colors line-clamp-2 min-h-[3rem] flex items-center">
                     {project.title}
                   </h3>
-                  
+
                   <p className="text-xs leading-relaxed text-slate-400 line-clamp-3 min-h-[3.25rem]">
                     {project.description}
                   </p>
@@ -553,8 +557,14 @@ export const Projects = () => {
                     Key Features &amp; Engineering Highlights:
                   </h5>
                   {selectedProject.highlights.map((h, i) => (
-                    <div key={i} className="flex items-start gap-2 text-xs text-slate-300">
-                      <CheckCircle2 size={15} className="text-emerald-400 shrink-0 mt-0.5" />
+                    <div
+                      key={i}
+                      className="flex items-start gap-2 text-xs text-slate-300"
+                    >
+                      <CheckCircle2
+                        size={15}
+                        className="text-emerald-400 shrink-0 mt-0.5"
+                      />
                       <span>{h}</span>
                     </div>
                   ))}
@@ -624,7 +634,9 @@ export const Projects = () => {
                   className="refero-btn-secondary inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-slate-200 hover:text-white"
                 >
                   <Github size={14} />
-                  <span>{selectedProject.githubLabel || "View Frontend Source"}</span>
+                  <span>
+                    {selectedProject.githubLabel || "View Frontend Source"}
+                  </span>
                 </a>
               )}
 
@@ -636,7 +648,10 @@ export const Projects = () => {
                   className="refero-btn-secondary inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-purple-300 hover:text-purple-200"
                 >
                   <Server size={14} />
-                  <span>{selectedProject.backendGithubLabel || "View Backend Source"}</span>
+                  <span>
+                    {selectedProject.backendGithubLabel ||
+                      "View Backend Source"}
+                  </span>
                 </a>
               )}
             </div>
