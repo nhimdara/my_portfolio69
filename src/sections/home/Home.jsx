@@ -78,7 +78,7 @@ export const Home = ({ onCopyEmail }) => {
   const metrics = [
     {
       icon: <Layers size={18} className="text-cyan-400" />,
-      value: "11+",
+      value: "12+",
       label: "Production Projects",
       detail: "Full-Stack & APIs",
       glow: "cyan",

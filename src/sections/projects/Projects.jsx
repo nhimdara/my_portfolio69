@@ -14,6 +14,7 @@ import {
   Server,
   Maximize2,
   CheckCircle2,
+  Smartphone,
 } from "lucide-react";
 import LiquidCard from "../../components/ui/LiquidCard";
 import Aichatbot from "../../assets/images/aichatbot.webp";
@@ -27,7 +28,7 @@ import StayEasyHotel from "../../assets/images/StayEasyHotel.webp";
 import WoodsAndroid from "../../assets/images/WoodsAndroid.webp";
 import IronManPortfolio from "../../assets/images/IronManPortfolio.webp";
 import CampusStudentManagement from "../../assets/images/CampusStudentManagement.webp";
-
+import roomfinder from "../../assets/images/roomfinder.webp";
 export const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -274,18 +275,51 @@ export const Projects = () => {
       featured: false,
       glow: "cyan",
     },
+    {
+      id: 12,
+      title: "RoomFinder - Student Housing Platform",
+      image: roomfinder,
+      description:
+        "A student housing platform to explore verified, affordable student rooms, studios, and shared flats near university campuses with zero booking fees and direct landlord contact.",
+      highlights: [
+        "Verified student housing listings with direct landlord contact and zero booking fees",
+        "Multi-platform experience with React web app and Expo React Native mobile client",
+        "Interactive room filters, price search, and intuitive mobile UI",
+      ],
+      tech: [
+        "React.js",
+        "React Native",
+        "Expo",
+        "Tailwind CSS",
+      ],
+      category: "Mobile",
+      year: "2026",
+      liveUrl: "https://room-finder-frontend-cyan.vercel.app/",
+      backendUrl: "https://roomfinder-backend-ezp3.onrender.com/",
+      mobileUrl:
+        "https://expo.dev/accounts/nhimdara/projects/roomfinder-mobile/builds/b514a4fe-dd07-4fdc-8c34-a8b8dbb38110",
+      githubUrl: "https://github.com/nhimdara",
+      githubLabel: "Source Code",
+      featured: true,
+      glow: "cyan",
+    },
   ];
 
   const categories = ["All", "Full Stack", "Frontend", "Mobile", "AI & UI/UX"];
 
   const filteredProjects = projects.filter((p) => {
     const matchesCategory =
-      activeFilter === "All" || p.category === activeFilter;
+      activeFilter === "All" ||
+      p.category === activeFilter ||
+      p.category?.toLowerCase().includes(activeFilter.toLowerCase()) ||
+      (activeFilter === "Mobile" && (p.mobileUrl || p.apkUrl || p.tech?.includes("React Native")));
     const matchesSearch =
       searchQuery.trim() === "" ||
-      p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.tech.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase()));
+      (p.title && p.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (p.description &&
+        p.description.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (p.tech &&
+        p.tech.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase())));
 
     return matchesCategory && matchesSearch;
   });
@@ -322,11 +356,10 @@ export const Projects = () => {
                 key={cat}
                 type="button"
                 onClick={() => setActiveFilter(cat)}
-                className={`rounded-xl px-4 py-2 text-xs font-bold transition-all duration-200 cursor-pointer ${
-                  activeFilter === cat
-                    ? "bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]"
-                    : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
-                }`}
+                className={`rounded-xl px-4 py-2 text-xs font-bold transition-all duration-200 cursor-pointer ${activeFilter === cat
+                  ? "bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]"
+                  : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
+                  }`}
               >
                 {cat}
               </button>
@@ -409,7 +442,7 @@ export const Projects = () => {
 
                   {/* Tech Tags with Uniform Min Height */}
                   <div className="flex flex-wrap gap-1.5 pt-1 min-h-[2.5rem] content-start">
-                    {project.tech.map((t) => (
+                    {(project.tech || []).map((t) => (
                       <span
                         key={t}
                         className="rounded-md bg-white/[0.04] border border-white/[0.08] px-2 py-0.5 text-[10px] font-mono text-slate-300"
@@ -444,6 +477,19 @@ export const Projects = () => {
                     >
                       <span>Live Demo</span>
                       <ArrowUpRight size={13} />
+                    </a>
+                  )}
+
+                  {project.mobileUrl && (
+                    <a
+                      href={project.mobileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 rounded-lg bg-indigo-500/15 border border-indigo-400/30 px-2 py-1.5 text-xs font-medium text-indigo-300 hover:text-white hover:bg-indigo-500/25 transition-all whitespace-nowrap"
+                      title="Expo / Mobile App"
+                    >
+                      <Smartphone size={13} />
+                      <span className="text-[11px]">Mobile</span>
                     </a>
                   )}
 
@@ -578,7 +624,7 @@ export const Projects = () => {
                 Technologies Used
               </h4>
               <div className="flex flex-wrap gap-2">
-                {selectedProject.tech.map((t) => (
+                {(selectedProject.tech || []).map((t) => (
                   <span
                     key={t}
                     className="rounded-lg bg-white/5 border border-white/10 px-3 py-1 text-xs font-mono text-cyan-200"
@@ -611,6 +657,18 @@ export const Projects = () => {
                 >
                   <ExternalLink size={14} />
                   <span>Launch Live Platform</span>
+                </a>
+              )}
+
+              {selectedProject.mobileUrl && (
+                <a
+                  href={selectedProject.mobileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="refero-btn-secondary inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-indigo-300 hover:text-indigo-200 border-indigo-400/30 bg-indigo-500/10"
+                >
+                  <Smartphone size={14} />
+                  <span>Launch Expo Mobile</span>
                 </a>
               )}
 
