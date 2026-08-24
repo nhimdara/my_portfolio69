@@ -5,12 +5,8 @@ import {
   ExternalLink,
   Github,
   Layers,
-  Sparkles,
   Search,
   X,
-  Code2,
-  Calendar,
-  Layers3,
   Server,
   Maximize2,
   CheckCircle2,
@@ -29,6 +25,7 @@ import WoodsAndroid from "../../assets/images/WoodsAndroid.webp";
 import IronManPortfolio from "../../assets/images/IronManPortfolio.webp";
 import CampusStudentManagement from "../../assets/images/CampusStudentManagement.webp";
 import roomfinder from "../../assets/images/roomfinder.webp";
+
 export const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -40,7 +37,7 @@ export const Projects = () => {
       title: "LearnFlow E-Learning Platform",
       image: Elearing,
       description:
-        "A comprehensive full-stack e-learning platform for university students across multiple majors (ITE, IT, Math), featuring role-based dashboards for students, teachers, and admins with interactive quizzes and course material management.",
+        "A comprehensive full-stack e-learning platform for university students featuring role-based dashboards, interactive quizzes, and course material management.",
       highlights: [
         "Role-based access control (Student, Teacher, Admin)",
         "Interactive quiz engines and course submission workflows",
@@ -54,10 +51,10 @@ export const Projects = () => {
         "https://backend-project-practicum-elearning.onrender.com/api",
       githubUrl:
         "https://github.com/nhimdara/Frontend-Project-Practicum-ELearning",
-      githubLabel: "Frontend Repo",
+      githubLabel: "Frontend",
       backendGithubUrl:
         "https://github.com/nhimdara/Backend-Project-Practicum-ELearning",
-      backendGithubLabel: "Backend Repo",
+      backendGithubLabel: "Backend",
       featured: true,
       glow: "cyan",
     },
@@ -66,27 +63,21 @@ export const Projects = () => {
       title: "Telegram Shop Mini App",
       image: TelegramShop,
       description:
-        "A full-stack Telegram Mini App storefront featuring instant Telegram OAuth verification, real-time product catalogs, cart state, inventory-checked orders, and live Bakong KHQR & ABA PayWay checkout integrations.",
+        "A full-stack Telegram Mini App storefront featuring instant Telegram OAuth verification, product catalogs, cart state, and live KHQR payments.",
       highlights: [
         "Native Telegram WebApp integration & OAuth authentication",
         "Bakong KHQR and ABA PayWay payment gateway integrations",
         "Laravel 12 REST API backend with PostgreSQL database",
       ],
-      tech: [
-        "React 19",
-        "Telegram SDK",
-        "Laravel 12",
-        "PostgreSQL",
-        "Tailwind",
-      ],
+      tech: ["React 19", "Telegram SDK", "Laravel 12", "PostgreSQL", "Tailwind"],
       category: "Full Stack",
       year: "2026",
       liveUrl: "https://t.me/my_shop67_bot/shop_nw",
       githubUrl: "https://github.com/nhimdara/bot-telegram-test-website",
-      githubLabel: "Frontend Repo",
+      githubLabel: "Frontend",
       backendGithubUrl:
         "https://github.com/nhimdara/bot-telegram-test-website-backend",
-      backendGithubLabel: "Backend Repo",
+      backendGithubLabel: "Backend",
       featured: true,
       glow: "purple",
     },
@@ -95,7 +86,7 @@ export const Projects = () => {
       title: "Culinary Admin POS & Inventory",
       image: CulinaryAdminPOS,
       description:
-        "Full-stack restaurant management portal with real-time analytics dashboards for kitchen orders, table reservations, inventory tracking, categorized menus, and multi-method cashier billing.",
+        "Full-stack restaurant management portal with real-time analytics dashboards for kitchen orders, table reservations, and cashier billing.",
       highlights: [
         "Live POS cashier checkout and kitchen order routing",
         "Table reservation management & real-time inventory alerts",
@@ -107,7 +98,7 @@ export const Projects = () => {
       liveUrl: "https://mpos-seven.vercel.app/",
       backendUrl: "https://g2-sun-11-mpos-back-gjyx.onrender.com/",
       githubUrl: "https://github.com/NalenSrin123/G2_SUN_11_MPOS",
-      githubLabel: "GitHub Repo",
+      githubLabel: "GitHub",
       featured: true,
       glow: "amber",
     },
@@ -116,7 +107,7 @@ export const Projects = () => {
       title: "StayEasy Hotel Booking Platform",
       image: StayEasyHotel,
       description:
-        "Full-stack hospitality booking system featuring real-time room availability search, destination filters, persistent customer wishlists, reservation workflows, and hotel manager administration panels.",
+        "Full-stack hospitality booking system featuring real-time room availability search, destination filters, wishlists, and manager panels.",
       highlights: [
         "Instant room search with dates, capacity, and price filters",
         "Laravel Sanctum session-based authentication & permissions",
@@ -128,9 +119,9 @@ export const Projects = () => {
       liveUrl: "https://frontend-hotel-booking-ten.vercel.app/",
       backendUrl: "https://backend-hotel-booking-5.onrender.com/api",
       githubUrl: "https://github.com/nhimdara/Frontend_Hotel_Booking",
-      githubLabel: "Frontend Repo",
+      githubLabel: "Frontend",
       backendGithubUrl: "https://github.com/nhimdara/backend-hotel-booking",
-      backendGithubLabel: "Backend Repo",
+      backendGithubLabel: "Backend",
       featured: true,
       glow: "emerald",
     },
@@ -139,7 +130,7 @@ export const Projects = () => {
       title: "AI Chatbot Intelligent Assistant",
       image: Aichatbot,
       description:
-        "Full-stack intelligent conversational assistant interface powered by Gemini API, featuring multi-turn conversation memory, code snippet syntax highlighting, prompt templates, and streaming responses.",
+        "Conversational assistant powered by Gemini API, featuring multi-turn memory, code syntax highlighting, prompt templates, and streaming.",
       highlights: [
         "Google Gemini API integration with context retention",
         "Live markdown & syntax-highlighted code generation",
@@ -150,7 +141,7 @@ export const Projects = () => {
       year: "2026",
       liveUrl: "https://t.me/DaraAIChatBot",
       githubUrl: "https://github.com/nhimdara/Ai-chatbot-frontend",
-      githubLabel: "GitHub Repo",
+      githubLabel: "GitHub",
       featured: false,
       glow: "cyan",
     },
@@ -159,7 +150,7 @@ export const Projects = () => {
       title: "CineVault Movie Discovery Platform",
       image: CineVault,
       description:
-        "Modern cinematic movie discovery web app with real-time search, multi-genre filtering, watchlist persistence, trailer modals, responsive layout, and theme toggling.",
+        "Cinematic movie discovery web app with real-time TMDB search, multi-genre filtering, watchlist persistence, trailer modals, and responsive layout.",
       highlights: [
         "TMDB live REST API integration with infinite scroll & search",
         "Interactive YouTube trailer modal and movie cast gallery",
@@ -170,7 +161,7 @@ export const Projects = () => {
       year: "2026",
       liveUrl: "https://movie-website-wct.vercel.app/",
       githubUrl: "https://github.com/nhimdara/Movie-Website-WCT",
-      githubLabel: "GitHub Repo",
+      githubLabel: "GitHub",
       featured: false,
       glow: "rose",
     },
@@ -179,7 +170,7 @@ export const Projects = () => {
       title: "WOOD'S Cambodia Android App",
       image: WoodsAndroid,
       description:
-        "Native Android mobile product catalog application for WOOD'S Cambodia, featuring branded luxury product collections, responsive navigation, company information, and direct social order routing.",
+        "Native Android mobile product catalog application featuring luxury product collections, responsive navigation, and direct social order routing.",
       highlights: [
         "Native Android APK application with responsive mobile layouts",
         "Product catalog with high-resolution image preview & specifications",
@@ -190,7 +181,7 @@ export const Projects = () => {
       year: "2026",
       apkUrl: `${import.meta.env.BASE_URL}downloads/woods-cambodia.apk`,
       githubUrl: "https://github.com/nhimdara/Wood-s",
-      githubLabel: "Android Repo",
+      githubLabel: "Android",
       featured: false,
       glow: "emerald",
     },
@@ -199,7 +190,7 @@ export const Projects = () => {
       title: "Iron Man Cinematic Portfolio",
       image: IronManPortfolio,
       description:
-        "A cinematic superhero-themed developer showcase with immersive inertial scrolling, HUD liquid glass overlays, responsive credentials, and interactive micro-interactions.",
+        "A superhero-themed developer showcase with immersive inertial scrolling, HUD liquid glass overlays, responsive credentials, and micro-interactions.",
       highlights: [
         "Custom CSS keyframe choreography and sound triggers",
         "Interactive Mark suit archive and technical HUD overlays",
@@ -210,7 +201,7 @@ export const Projects = () => {
       year: "2026",
       liveUrl: "https://daranhimportfolio.vercel.app/",
       githubUrl: "https://github.com/nhimdara/IRON-MAN",
-      githubLabel: "GitHub Repo",
+      githubLabel: "GitHub",
       featured: false,
       glow: "amber",
     },
@@ -219,7 +210,7 @@ export const Projects = () => {
       title: "Tech Haven Computer Shop",
       image: Ecommerce,
       description:
-        "Feature-rich computer hardware ecommerce store featuring category navigation, live cart calculations, product specification drawers, and responsive cross-device shopping design.",
+        "Feature-rich computer hardware ecommerce store featuring category navigation, live cart calculations, product drawers, and responsive design.",
       highlights: [
         "Complex cart state management and instant quantity adjustments",
         "Faceted category and price range filtering system",
@@ -230,7 +221,7 @@ export const Projects = () => {
       year: "2025",
       liveUrl: "https://computer-shop-murex.vercel.app/",
       githubUrl: "https://github.com/nhimdara/ComputerShop",
-      githubLabel: "GitHub Repo",
+      githubLabel: "GitHub",
       featured: false,
       glow: "blue",
     },
@@ -239,7 +230,7 @@ export const Projects = () => {
       title: "Campus Student Management Portal",
       image: CampusStudentManagement,
       description:
-        "Layered Python FastAPI student management system with role-based JWT authentication, full student & course CRUD, enrollment workflows, GPA calculation engines, and interactive Swagger API documentation.",
+        "FastAPI student management system with role-based JWT auth, student & course CRUD, enrollment workflows, and interactive Swagger documentation.",
       highlights: [
         "Full student & course CRUD with role-based JWT authentication",
         "Enrollment workflows and automatic GPA calculation engine",
@@ -252,7 +243,7 @@ export const Projects = () => {
       backendUrl: "https://student-management-system-kjf6.onrender.com/docs",
       githubUrl:
         "https://github.com/nhimdara/Final-Project-DSA-RUPP-ITE-Management-",
-      githubLabel: "GitHub Repo",
+      githubLabel: "GitHub",
       featured: true,
       glow: "blue",
     },
@@ -271,7 +262,7 @@ export const Projects = () => {
       year: "2026",
       liveUrl: "https://my-portfolio69.vercel.app/",
       githubUrl: "https://github.com/nhimdara/my_portfolio69",
-      githubLabel: "GitHub Repo",
+      githubLabel: "GitHub",
       featured: false,
       glow: "cyan",
     },
@@ -280,26 +271,21 @@ export const Projects = () => {
       title: "RoomFinder - Student Housing Platform",
       image: roomfinder,
       description:
-        "A student housing platform to explore verified, affordable student rooms, studios, and shared flats near university campuses with zero booking fees and direct landlord contact.",
+        "A student housing platform to explore verified, affordable student rooms near campuses with zero booking fees and direct landlord contact.",
       highlights: [
-        "Verified student housing listings with direct landlord contact and zero booking fees",
-        "Multi-platform experience with React web app and Expo React Native mobile client",
-        "Interactive room filters, price search, and intuitive mobile UI",
+        "Verified student housing listings with direct landlord contact",
+        "Multi-platform architecture with React web client & Expo mobile app",
+        "Laravel REST API backend hosted on Render with PostgreSQL database",
       ],
-      tech: [
-        "React.js",
-        "React Native",
-        "Expo",
-        "Tailwind CSS",
-      ],
-      category: "Mobile",
+      tech: ["React.js", "Laravel", "React Native", "PostgreSQL"],
+      category: "Full Stack",
       year: "2026",
       liveUrl: "https://room-finder-frontend-cyan.vercel.app/",
       backendUrl: "https://roomfinder-backend-ezp3.onrender.com/",
       mobileUrl:
         "https://expo.dev/accounts/nhimdara/projects/roomfinder-mobile/builds/b514a4fe-dd07-4fdc-8c34-a8b8dbb38110",
       githubUrl: "https://github.com/nhimdara",
-      githubLabel: "Source Code",
+      githubLabel: "Frontend",
       featured: true,
       glow: "cyan",
     },
@@ -312,34 +298,39 @@ export const Projects = () => {
       activeFilter === "All" ||
       p.category === activeFilter ||
       p.category?.toLowerCase().includes(activeFilter.toLowerCase()) ||
-      (activeFilter === "Mobile" && (p.mobileUrl || p.apkUrl || p.tech?.includes("React Native")));
+      (activeFilter === "Mobile" &&
+        (p.mobileUrl || p.apkUrl || p.tech?.includes("React Native")));
     const matchesSearch =
       searchQuery.trim() === "" ||
       (p.title && p.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
       (p.description &&
         p.description.toLowerCase().includes(searchQuery.toLowerCase())) ||
       (p.tech &&
-        p.tech.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase())));
+        p.tech.some((t) =>
+          t.toLowerCase().includes(searchQuery.toLowerCase())
+        ));
 
     return matchesCategory && matchesSearch;
   });
 
   return (
-    <div className="relative py-20 px-4 sm:px-6 lg:px-8">
+    <div className="relative py-20 px-4 sm:px-6 lg:px-8 bg-slate-950 min-h-screen">
       {/* Ambient background glows */}
       <div className="pointer-events-none absolute top-1/4 -right-20 h-96 w-96 rounded-full bg-cyan-500/10 blur-[130px]" />
       <div className="pointer-events-none absolute bottom-1/3 -left-20 h-96 w-96 rounded-full bg-purple-600/10 blur-[130px]" />
 
       <div className="mx-auto max-w-7xl">
-        {/* Section Header */}
+        {/* Header */}
         <div className="mb-14 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-blue-300 backdrop-blur-md mb-4 shadow-[0_0_15px_rgba(59,130,246,0.15)] font-mono">
+          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-md mb-4 shadow-[0_0_15px_rgba(6,182,212,0.15)] font-mono">
             <Layers size={14} />
             <span>FEATURED WORK</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
             Engineered Projects &amp;{" "}
-            <span className="refero-text-accent">Systems</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+              Systems
+            </span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base text-slate-400">
             A curated showcase of full-stack platforms, Telegram mini-apps, REST
@@ -347,18 +338,17 @@ export const Projects = () => {
           </p>
         </div>
 
-        {/* Filter Bar & Search Input */}
+        {/* Search & Filter Bar */}
         <div className="mb-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl refero-card border border-white/10 w-full md:w-auto justify-center md:justify-start">
+          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-white/[0.03] border border-white/10 w-full md:w-auto justify-center md:justify-start backdrop-blur-md">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setActiveFilter(cat)}
                 className={`rounded-xl px-4 py-2 text-xs font-bold transition-all duration-200 cursor-pointer ${activeFilter === cat
-                  ? "bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
+                    ? "bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]"
+                    : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
                   }`}
               >
                 {cat}
@@ -366,8 +356,7 @@ export const Projects = () => {
             ))}
           </div>
 
-          {/* Search Box */}
-          <div className="relative w-full md:w-72">
+          <div className="relative w-full md:w-80">
             <Search
               size={15}
               className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
@@ -377,119 +366,96 @@ export const Projects = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by title, tech..."
-              className="w-full rounded-xl bg-white/[0.04] border border-white/10 pl-9 pr-8 py-2 text-xs text-slate-200 placeholder:text-slate-500 focus:border-cyan-400/50 focus:outline-none transition-colors"
+              className="w-full rounded-xl bg-white/[0.04] border border-white/10 pl-9 pr-8 py-2.5 text-sm text-slate-200 placeholder:text-slate-500 focus:border-cyan-400/50 focus:outline-none transition-colors"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200"
               >
-                <X size={13} />
+                <X size={14} />
               </button>
             )}
           </div>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Uniform Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {filteredProjects.map((project) => (
             <LiquidCard
               key={project.id}
               glowColor={project.glow || "cyan"}
-              className="p-4 sm:p-5 h-full flex flex-col justify-between"
-              contentClassName="flex flex-col justify-between h-full"
+              className="p-0 h-full overflow-hidden border border-white/10 bg-slate-900/60 backdrop-blur-md rounded-2xl shadow-xl hover:border-white/20 transition-all duration-300 flex flex-col"
+              contentClassName="flex flex-col h-full"
             >
-              <div className="flex flex-col flex-1">
-                {/* Clean Header Badges Above Image */}
-                <div className="flex items-center justify-between gap-2 mb-3 shrink-0">
-                  <span className="rounded-lg bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-1 text-[11px] font-bold font-mono uppercase tracking-wider text-cyan-300">
+              <div className="flex flex-col flex-1 p-5 sm:p-6">
+                {/* Header Badges */}
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="rounded-lg bg-cyan-500/10 border border-cyan-400/30 px-2.5 py-1 text-[11px] font-bold font-mono uppercase tracking-wider text-cyan-300">
                     {project.category}
                   </span>
-                  <span className="rounded-lg bg-white/5 border border-white/10 px-2.5 py-1 text-[11px] font-mono text-slate-300">
+                  <span className="rounded-lg bg-white/5 border border-white/10 px-2.5 py-1 text-[11px] font-mono text-slate-400">
                     {project.year}
                   </span>
                 </div>
 
-                {/* Thumbnail Preview with Aspect Ratio & Action overlay */}
+                {/* Fixed Aspect Image Box */}
                 <div
                   onClick={() => setSelectedProject(project)}
-                  className="relative aspect-[16/10] overflow-hidden rounded-xl bg-slate-950/20 border border-white/10 group/img cursor-pointer shadow-md mb-4 shrink-0"
+                  className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-slate-950 border border-white/10 group/img cursor-pointer shadow-md mb-4"
                 >
                   <img
                     src={project.image}
                     alt={project.title}
                     className="h-full w-full object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
                   />
-
-                  {/* Quick View Button Overlay */}
-                  <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[2px] opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="rounded-xl bg-cyan-500 text-slate-950 px-3.5 py-2 text-xs font-bold shadow-xl flex items-center gap-1.5 transform translate-y-2 group-hover/img:translate-y-0 transition-transform">
+                  <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] opacity-0 group-hover/img:opacity-100 transition-all duration-300 flex items-center justify-center">
+                    <div className="rounded-xl bg-cyan-400 text-slate-950 px-4 py-2 text-xs font-bold shadow-xl flex items-center gap-2 transform translate-y-2 group-hover/img:translate-y-0 transition-transform duration-300">
                       <Maximize2 size={14} />
-                      <span>Inspect Project</span>
+                      <span>Quick View</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Body Content with Uniform Heights */}
-                <div className="flex flex-col flex-1 space-y-2">
-                  <h3 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug group-hover:text-cyan-400 transition-colors line-clamp-2 min-h-[3rem] flex items-center">
-                    {project.title}
-                  </h3>
+                {/* Title & Description with Fixed Lines */}
+                <h3 className="text-lg font-bold text-white tracking-tight leading-snug hover:text-cyan-400 transition-colors duration-200 line-clamp-1 mb-2">
+                  {project.title}
+                </h3>
 
-                  <p className="text-xs leading-relaxed text-slate-400 line-clamp-3 min-h-[3.25rem]">
-                    {project.description}
-                  </p>
+                <p className="text-xs leading-relaxed text-slate-400 line-clamp-2 mb-4 h-9">
+                  {project.description}
+                </p>
 
-                  {/* Tech Tags with Uniform Min Height */}
-                  <div className="flex flex-wrap gap-1.5 pt-1 min-h-[2.5rem] content-start">
-                    {(project.tech || []).map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-md bg-white/[0.04] border border-white/[0.08] px-2 py-0.5 text-[10px] font-mono text-slate-300"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+                {/* Tech Pills (Fixed Height Container) */}
+                <div className="flex flex-wrap gap-1.5 mt-auto h-12 items-start overflow-hidden">
+                  {(project.tech || []).slice(0, 4).map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-md bg-white/[0.05] border border-white/10 px-2.5 py-1 text-[10px] font-mono text-slate-300 whitespace-nowrap"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                  {(project.tech || []).length > 4 && (
+                    <span className="rounded-md bg-white/[0.05] border border-white/10 px-2 py-1 text-[10px] font-mono text-slate-400">
+                      +{(project.tech || []).length - 4}
+                    </span>
+                  )}
                 </div>
               </div>
 
-              {/* Card Footer Actions with No Wrapping and Perfect Alignment */}
-              <div className="pt-4 border-t border-white/10 mt-3 flex items-center justify-between gap-2 shrink-0">
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  {project.apkUrl && (
-                    <a
-                      href={project.apkUrl}
-                      download="woods-cambodia.apk"
-                      className="inline-flex items-center gap-1 rounded-lg bg-emerald-500/20 border border-emerald-400/40 px-2.5 py-1.5 text-xs font-bold text-emerald-400 hover:bg-emerald-500/30 transition-all shadow-sm whitespace-nowrap"
-                    >
-                      <Download size={13} />
-                      <span>APK</span>
-                    </a>
-                  )}
-
+              {/* Card Footer */}
+              <div className="px-5 sm:px-6 py-3.5 border-t border-white/10 bg-slate-950/40 mt-auto flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1.5">
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-1.5 text-xs font-bold text-cyan-300 hover:bg-cyan-500/25 transition-all shadow-sm whitespace-nowrap"
+                      className="inline-flex items-center gap-1 rounded-lg bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-1.5 text-[11px] font-bold text-cyan-300 hover:bg-cyan-500/25 transition-all shadow-sm"
                     >
                       <span>Live Demo</span>
-                      <ArrowUpRight size={13} />
-                    </a>
-                  )}
-
-                  {project.mobileUrl && (
-                    <a
-                      href={project.mobileUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg bg-indigo-500/15 border border-indigo-400/30 px-2 py-1.5 text-xs font-medium text-indigo-300 hover:text-white hover:bg-indigo-500/25 transition-all whitespace-nowrap"
-                      title="Expo / Mobile App"
-                    >
-                      <Smartphone size={13} />
-                      <span className="text-[11px]">Mobile</span>
+                      <ArrowUpRight size={11} />
                     </a>
                   )}
 
@@ -498,26 +464,34 @@ export const Projects = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg bg-white/5 border border-white/10 px-2 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap"
+                      className="p-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
                       title={project.githubLabel || "GitHub Repo"}
                     >
                       <Github size={13} />
-                      <span className="text-[11px]">
-                        {project.backendGithubUrl ? "Frontend" : "Code"}
-                      </span>
                     </a>
                   )}
 
-                  {project.backendGithubUrl && (
+                  {(project.backendGithubUrl || project.backendUrl) && (
                     <a
-                      href={project.backendGithubUrl}
+                      href={project.backendGithubUrl || project.backendUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg bg-white/5 border border-white/10 px-2 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap"
-                      title={project.backendGithubLabel || "Backend Repo"}
+                      className="p-1.5 rounded-lg bg-purple-500/10 border border-purple-400/20 text-purple-300 hover:bg-purple-500/20 transition-colors"
+                      title={project.backendGithubLabel || "Backend API"}
                     >
-                      <Server size={13} className="text-purple-400" />
-                      <span className="text-[11px]">Backend</span>
+                      <Server size={13} />
+                    </a>
+                  )}
+
+                  {project.mobileUrl && (
+                    <a
+                      href={project.mobileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-1.5 rounded-lg bg-indigo-500/10 border border-indigo-400/20 text-indigo-300 hover:bg-indigo-500/20 transition-colors"
+                      title="Expo Mobile App"
+                    >
+                      <Smartphone size={13} />
                     </a>
                   )}
                 </div>
@@ -525,10 +499,13 @@ export const Projects = () => {
                 <button
                   type="button"
                   onClick={() => setSelectedProject(project)}
-                  className="text-xs text-slate-400 hover:text-cyan-300 font-mono flex items-center gap-1 cursor-pointer shrink-0 whitespace-nowrap ml-auto"
+                  className="text-xs font-bold text-slate-400 hover:text-cyan-300 flex items-center gap-1 cursor-pointer transition-colors group/btn"
                 >
                   <span>Details</span>
-                  <ArrowUpRight size={12} />
+                  <ArrowUpRight
+                    size={12}
+                    className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+                  />
                 </button>
               </div>
             </LiquidCard>
@@ -544,18 +521,15 @@ export const Projects = () => {
         )}
       </div>
 
-      {/* Project Deep Inspection Modal */}
+      {/* Detail Inspection Modal */}
       {selectedProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
-          {/* Backdrop */}
           <div
             className="fixed inset-0 bg-slate-950/80 backdrop-blur-md animate-in fade-in"
             onClick={() => setSelectedProject(null)}
           />
 
-          {/* Modal Content */}
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl refero-card-elevated p-6 sm:p-8 shadow-2xl border border-white/20 animate-in zoom-in-95 duration-200">
-            {/* Close Button */}
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-slate-900 border border-white/20 p-6 sm:p-8 shadow-2xl animate-in zoom-in-95 duration-200">
             <button
               onClick={() => setSelectedProject(null)}
               className="absolute top-5 right-5 grid h-9 w-9 place-items-center rounded-xl bg-white/10 text-slate-300 hover:text-white hover:bg-white/20 transition-all cursor-pointer z-10"
@@ -563,7 +537,6 @@ export const Projects = () => {
               <X size={18} />
             </button>
 
-            {/* Header info */}
             <div className="mb-4">
               <div className="flex items-center gap-2 mb-2">
                 <span className="rounded-lg bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-0.5 text-xs font-mono font-bold text-cyan-300">
@@ -578,7 +551,6 @@ export const Projects = () => {
               </h3>
             </div>
 
-            {/* Image Preview */}
             <div className="aspect-[16/9] w-full overflow-hidden rounded-2xl bg-slate-950 border border-white/10 mb-6">
               <img
                 src={selectedProject.image}
@@ -587,7 +559,6 @@ export const Projects = () => {
               />
             </div>
 
-            {/* Description */}
             <div className="space-y-4 mb-6">
               <h4 className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">
                 Project Overview &amp; Architecture
@@ -596,7 +567,6 @@ export const Projects = () => {
                 {selectedProject.description}
               </p>
 
-              {/* Key Highlights */}
               {selectedProject.highlights && (
                 <div className="space-y-2 pt-2">
                   <h5 className="text-xs font-mono text-slate-400 uppercase tracking-wider">
@@ -618,7 +588,6 @@ export const Projects = () => {
               )}
             </div>
 
-            {/* Tech Stack Matrix */}
             <div className="mb-6">
               <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold mb-2">
                 Technologies Used
@@ -635,13 +604,12 @@ export const Projects = () => {
               </div>
             </div>
 
-            {/* Modal Actions */}
             <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-3">
               {selectedProject.apkUrl && (
                 <a
                   href={selectedProject.apkUrl}
                   download="woods-cambodia.apk"
-                  className="refero-btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg"
+                  className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg"
                 >
                   <Download size={14} />
                   <span>Download Android APK</span>
@@ -653,7 +621,7 @@ export const Projects = () => {
                   href={selectedProject.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="refero-btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold text-white"
+                  className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-colors shadow-lg"
                 >
                   <ExternalLink size={14} />
                   <span>Launch Live Platform</span>
@@ -665,7 +633,7 @@ export const Projects = () => {
                   href={selectedProject.mobileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="refero-btn-secondary inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-indigo-300 hover:text-indigo-200 border-indigo-400/30 bg-indigo-500/10"
+                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-indigo-300 hover:text-indigo-200 border border-indigo-400/30 bg-indigo-500/10"
                 >
                   <Smartphone size={14} />
                   <span>Launch Expo Mobile</span>
@@ -677,7 +645,7 @@ export const Projects = () => {
                   href={selectedProject.backendUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="refero-btn-secondary inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-amber-300 hover:text-amber-200"
+                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-amber-300 hover:text-amber-200 border border-amber-400/30 bg-amber-500/10"
                 >
                   <Server size={14} />
                   <span>API Docs / Swagger</span>
@@ -689,7 +657,7 @@ export const Projects = () => {
                   href={selectedProject.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="refero-btn-secondary inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-slate-200 hover:text-white"
+                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-slate-200 hover:text-white border border-white/10 bg-white/5"
                 >
                   <Github size={14} />
                   <span>
@@ -703,12 +671,11 @@ export const Projects = () => {
                   href={selectedProject.backendGithubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="refero-btn-secondary inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-purple-300 hover:text-purple-200"
+                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-purple-300 hover:text-purple-200 border border-purple-400/30 bg-purple-500/10"
                 >
                   <Server size={14} />
                   <span>
-                    {selectedProject.backendGithubLabel ||
-                      "View Backend Source"}
+                    {selectedProject.backendGithubLabel || "View Backend Source"}
                   </span>
                 </a>
               )}
