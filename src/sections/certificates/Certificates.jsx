@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import {
   Award,
-  CalendarDays,
   CheckCircle2,
-  ExternalLink,
-  GraduationCap,
   X,
-  Sparkles,
   ShieldCheck,
-  ZoomIn,
+  Maximize2,
 } from "lucide-react";
 import LiquidCard from "../../components/ui/LiquidCard";
 
@@ -23,7 +19,7 @@ const certificates = [
     title: "Frontend Development",
     type: "Professional Certificate",
     issuer: "ETEC Center",
-    date: "January 2026",
+    date: "Jan 2026",
     image: frontendCertificate,
     description:
       "Certified mastery in responsive web architecture, semantic HTML5, CSS3, modern JavaScript ES6+, React.js, and component-driven applications.",
@@ -33,7 +29,7 @@ const certificates = [
     title: "Backend Development",
     type: "Professional Certificate",
     issuer: "ETEC Center",
-    date: "June 2026",
+    date: "Jun 2026",
     image: backendCertificate,
     description:
       "Certified expertise in PHP 8, Object-Oriented Programming, MySQL relational databases, Laravel framework, authentication, and REST API development.",
@@ -43,7 +39,7 @@ const certificates = [
     title: "Frontend Development Internship",
     type: "Internship Certificate",
     issuer: "KRU IT Solution & ETEC Center",
-    date: "July 15, 2026",
+    date: "Jul 2026",
     image: frontendInternshipCertificate,
     description:
       "Successfully completed an intensive frontend software engineering internship, demonstrating team collaboration, code quality, and delivery of production features.",
@@ -99,13 +95,12 @@ export const Certificates = () => {
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mb-14 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-amber-300 backdrop-blur-md mb-4 shadow-[0_0_15px_rgba(245,158,11,0.15)] font-mono">
+          <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-500/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300 backdrop-blur-md mb-4 font-mono">
             <Award size={14} />
             <span>VERIFIED CREDENTIALS</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
-            Certifications &amp;{" "}
-            <span className="refero-text-accent">Honors</span>
+            Certifications &amp; <span className="refero-text-accent">Honors</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base text-slate-400">
             Officially verified credentials from ETEC Center and the Royal University of Phnom Penh.
@@ -113,75 +108,69 @@ export const Certificates = () => {
         </div>
 
         {/* Certificates Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {certificates.map((cert, index) => (
             <LiquidCard
               key={index}
               glowColor={cert.glow}
-              className="p-4 sm:p-5 h-full flex flex-col justify-between"
-              contentClassName="flex flex-col justify-between h-full"
+              className="p-5 flex flex-col justify-between h-full bg-slate-900/60 border-slate-800"
+              contentClassName="flex flex-col h-full justify-between"
             >
               <div className="flex flex-col flex-1">
-                {/* Clean Header Badges Above Image */}
-                <div className="flex items-center justify-between gap-2 mb-3 shrink-0">
-                  <span className="rounded-lg bg-amber-500/15 border border-amber-400/30 px-2.5 py-1 text-[11px] font-bold font-mono uppercase tracking-wider text-amber-300">
-                    {cert.type}
-                  </span>
-                  <span className="rounded-lg bg-white/5 border border-white/10 px-2.5 py-1 text-[11px] font-mono text-slate-300">
-                    {cert.date}
-                  </span>
-                </div>
-
-                {/* Certificate Preview Thumbnail Frame */}
+                {/* Image & Interactive Container */}
                 <div
                   onClick={() => setSelected(cert)}
-                  className="relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-950/20 border border-white/10 cursor-pointer group/thumb shadow-md mb-4 shrink-0"
+                  className="relative group cursor-pointer overflow-hidden rounded-lg bg-slate-950/50 border border-white/10 mb-4 shadow-inner"
                 >
                   <img
                     src={cert.image}
                     alt={cert.title}
-                    className="h-full w-full object-cover object-center transition-transform duration-500 group-hover/thumb:scale-105"
+                    className="w-full h-48 object-contain bg-slate-950/80 p-2 transition-transform duration-500 group-hover:scale-105"
                   />
-
-                  {/* Zoom Overlay Trigger */}
-                  <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[2px] opacity-0 group-hover/thumb:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="rounded-xl bg-cyan-500 text-slate-950 px-3.5 py-2 text-xs font-bold shadow-xl flex items-center gap-1.5 transform translate-y-2 group-hover/thumb:translate-y-0 transition-transform">
-                      <ZoomIn size={14} />
-                      <span>Inspect Certificate</span>
-                    </div>
+                  <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="rounded-lg bg-cyan-500 text-slate-950 px-3 py-1.5 text-xs font-bold shadow-lg flex items-center gap-1.5">
+                      <Maximize2 size={13} /> Inspect
+                    </span>
                   </div>
                 </div>
 
-                {/* Body Content with Uniform Heights */}
-                <div className="flex flex-col flex-1 space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-semibold shrink-0">
-                    <ShieldCheck size={14} className="text-emerald-400 shrink-0" />
-                    <span>{cert.issuer}</span>
-                  </div>
+                {/* Metadata Badges */}
+                <div className="flex items-center justify-between gap-2 mb-2.5">
+                  <span className="rounded-md bg-amber-500/10 border border-amber-400/20 px-2 py-0.5 text-[10px] font-bold font-mono tracking-wide text-amber-300 uppercase">
+                    {cert.type}
+                  </span>
+                  <span className="text-[11px] font-mono text-slate-400">
+                    {cert.date}
+                  </span>
+                </div>
 
-                  <h3 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug min-h-[2.75rem] flex items-center">
+                {/* Content */}
+                <div className="space-y-1.5 mb-4">
+                  <div className="flex items-center gap-1.5 text-xs font-mono text-cyan-400 font-medium">
+                    <ShieldCheck size={13} className="text-emerald-400 shrink-0" />
+                    <span className="truncate">{cert.issuer}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-white tracking-tight leading-snug">
                     {cert.title}
                   </h3>
-
-                  <p className="text-xs leading-relaxed text-slate-400 line-clamp-3 min-h-[3.25rem]">
+                  <p className="text-xs leading-relaxed text-slate-400 line-clamp-2">
                     {cert.description}
                   </p>
                 </div>
               </div>
 
               {/* Card Footer */}
-              <div className="pt-4 border-t border-white/10 mt-4 flex items-center justify-between shrink-0">
+              <div className="pt-3 border-t border-white/5 flex items-center justify-between">
                 <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold flex items-center gap-1">
-                  <CheckCircle2 size={13} /> Verified Credential
+                  <CheckCircle2 size={12} /> Verified
                 </span>
-
                 <button
                   type="button"
                   onClick={() => setSelected(cert)}
-                  className="text-xs text-cyan-400 hover:text-cyan-300 font-mono font-semibold flex items-center gap-1 cursor-pointer"
+                  className="text-xs text-slate-300 hover:text-cyan-400 font-medium flex items-center gap-1 transition-colors"
                 >
-                  <span>View</span>
-                  <ZoomIn size={13} />
+                  <span>Expand</span>
+                  <Maximize2 size={12} />
                 </button>
               </div>
             </LiquidCard>
@@ -197,36 +186,36 @@ export const Certificates = () => {
             onClick={() => setSelected(null)}
           />
 
-          <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl refero-card-elevated p-6 sm:p-8 shadow-2xl border border-white/20 animate-in zoom-in-95 duration-200">
+          <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl bg-slate-900 border border-white/10 p-6 shadow-2xl animate-in zoom-in-95 duration-200">
             <button
               onClick={() => setSelected(null)}
-              className="absolute top-5 right-5 grid h-9 w-9 place-items-center rounded-xl bg-white/10 text-slate-300 hover:text-white hover:bg-white/20 transition-all cursor-pointer z-10"
+              className="absolute top-4 right-4 grid h-8 w-8 place-items-center rounded-lg bg-white/10 text-slate-300 hover:text-white hover:bg-white/20 transition-all z-10"
             >
-              <X size={18} />
+              <X size={16} />
             </button>
 
-            <div className="mb-4">
+            <div className="mb-4 pr-8">
               <div className="flex items-center gap-2 mb-1">
-                <span className="rounded-lg bg-amber-500/15 border border-amber-400/30 px-2.5 py-0.5 text-xs font-mono font-bold text-amber-300">
+                <span className="rounded-md bg-amber-500/15 border border-amber-400/30 px-2 py-0.5 text-[11px] font-mono font-bold text-amber-300">
                   {selected.type}
                 </span>
                 <span className="text-xs font-mono text-slate-400">
                   Issued: {selected.date}
                 </span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-white">
+              <h3 className="text-xl font-bold text-white leading-tight">
                 {selected.title}
               </h3>
-              <p className="text-xs font-mono text-cyan-300 mt-0.5">
-                Authority: {selected.issuer}
+              <p className="text-xs font-mono text-cyan-400 mt-1">
+                Issuer: {selected.issuer}
               </p>
             </div>
 
-            <div className="w-full overflow-hidden rounded-2xl bg-slate-950 border border-white/15 mb-4 shadow-xl">
+            <div className="w-full overflow-hidden rounded-xl bg-slate-950 border border-white/10 mb-4 p-2 shadow-inner">
               <img
                 src={selected.image}
                 alt={selected.title}
-                className="w-full h-auto object-contain max-h-[60vh] mx-auto"
+                className="w-full h-auto object-contain max-h-[60vh] mx-auto rounded"
               />
             </div>
 
