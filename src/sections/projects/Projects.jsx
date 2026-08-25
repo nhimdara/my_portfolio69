@@ -25,6 +25,7 @@ import WoodsAndroid from "../../assets/images/WoodsAndroid.webp";
 import IronManPortfolio from "../../assets/images/IronManPortfolio.webp";
 import CampusStudentManagement from "../../assets/images/CampusStudentManagement.webp";
 import roomfinder from "../../assets/images/roomfinder.webp";
+import CambodianSMEPOS from "../../assets/images/CambodianSMEPOS.webp";
 
 export const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -289,6 +290,26 @@ export const Projects = () => {
       featured: true,
       glow: "cyan",
     },
+    {
+      id: 13,
+      title: "Cambodian SME Inventory & POS",
+      image: CambodianSMEPOS,
+      description:
+        "Micro-business Point of Sale & inventory system with real-time USD/KHR dual currency exchange, Bakong KHQR 2.0 payment generator, and thermal receipt printing.",
+      highlights: [
+        "Real-time USD & KHR dual-currency pricing engine with automated exchange rate conversion",
+        "National Bakong KHQR 2.0 dynamic QR payment generator with audio confirmation triggers",
+        "Intelligent low-stock buffer alerts, barcode/SKU scanner search, and thermal receipt printing",
+      ],
+      tech: ["React 19", "TypeScript", "Tailwind CSS", "Vite", "Bakong KHQR", "Express"],
+      category: "Full Stack",
+      year: "2026",
+      liveUrl: "https://cambodian-sme-inventory-pos.vercel.app/",
+      githubUrl: "https://github.com/nhimdara/Cambodian-SME-Inventory-POS",
+      githubLabel: "GitHub",
+      featured: true,
+      glow: "emerald",
+    },
   ];
 
   const categories = ["All", "Full Stack", "Frontend", "Mobile", "AI & UI/UX"];
@@ -314,7 +335,7 @@ export const Projects = () => {
   });
 
   return (
-    <div className="relative py-20 px-4 sm:px-6 lg:px-8 bg-slate-950 min-h-screen">
+    <div className="relative py-20 px-4 sm:px-6 lg:px-8">
       {/* Ambient background glows */}
       <div className="pointer-events-none absolute top-1/4 -right-20 h-96 w-96 rounded-full bg-cyan-500/10 blur-[130px]" />
       <div className="pointer-events-none absolute bottom-1/3 -left-20 h-96 w-96 rounded-full bg-purple-600/10 blur-[130px]" />
@@ -447,6 +468,18 @@ export const Projects = () => {
               {/* Card Footer */}
               <div className="px-5 sm:px-6 py-3.5 border-t border-white/10 bg-slate-950/40 mt-auto flex items-center justify-between gap-2">
                 <div className="flex items-center gap-1.5">
+                  {project.apkUrl && (
+                    <a
+                      href={project.apkUrl}
+                      download="woods-cambodia.apk"
+                      className="inline-flex items-center gap-1 rounded-lg bg-emerald-500/15 border border-emerald-400/30 px-2.5 py-1.5 text-[11px] font-bold text-emerald-300 hover:bg-emerald-500/25 transition-all shadow-sm"
+                      title="Download Android APK"
+                    >
+                      <Download size={11} />
+                      <span>Download APK</span>
+                    </a>
+                  )}
+
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
