@@ -361,14 +361,14 @@ export const Projects = () => {
 
         {/* Search & Filter Bar */}
         <div className="mb-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-white/[0.03] border border-white/10 w-full md:w-auto justify-center md:justify-start backdrop-blur-md">
+          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl refero-card w-full md:w-auto justify-center md:justify-start backdrop-blur-md">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setActiveFilter(cat)}
                 className={`rounded-xl px-4 py-2 text-xs font-bold transition-all duration-200 cursor-pointer ${activeFilter === cat
-                    ? "bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]"
+                    ? "bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 shadow-[0_0_15px_rgba(6,182,212,0.2)] badge-cyan"
                     : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
                   }`}
               >
@@ -387,7 +387,7 @@ export const Projects = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by title, tech..."
-              className="w-full rounded-xl bg-white/[0.04] border border-white/10 pl-9 pr-8 py-2.5 text-sm text-slate-200 placeholder:text-slate-500 focus:border-cyan-400/50 focus:outline-none transition-colors"
+              className="w-full rounded-xl refero-pill pl-9 pr-8 py-2.5 text-sm text-slate-200 placeholder:text-slate-500 focus:border-cyan-400/50 focus:outline-none transition-colors"
             />
             {searchQuery && (
               <button
@@ -406,16 +406,16 @@ export const Projects = () => {
             <LiquidCard
               key={project.id}
               glowColor={project.glow || "cyan"}
-              className="p-0 h-full overflow-hidden border border-white/10 bg-slate-900/60 backdrop-blur-md rounded-2xl shadow-xl hover:border-white/20 transition-all duration-300 flex flex-col"
+              className="p-0 h-full overflow-hidden refero-card rounded-2xl shadow-xl hover:border-white/20 transition-all duration-300 flex flex-col"
               contentClassName="flex flex-col h-full"
             >
               <div className="flex flex-col flex-1 p-5 sm:p-6">
                 {/* Header Badges */}
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="rounded-lg bg-cyan-500/10 border border-cyan-400/30 px-2.5 py-1 text-[11px] font-bold font-mono uppercase tracking-wider text-cyan-300">
+                  <span className="rounded-lg bg-cyan-500/10 border border-cyan-400/30 px-2.5 py-1 text-[11px] font-bold font-mono uppercase tracking-wider text-cyan-300 badge-cyan">
                     {project.category}
                   </span>
-                  <span className="rounded-lg bg-white/5 border border-white/10 px-2.5 py-1 text-[11px] font-mono text-slate-400">
+                  <span className="rounded-lg px-2.5 py-1 text-[11px] font-mono refero-badge-year">
                     {project.year}
                   </span>
                 </div>
@@ -452,13 +452,13 @@ export const Projects = () => {
                   {(project.tech || []).slice(0, 4).map((t) => (
                     <span
                       key={t}
-                      className="rounded-md bg-white/[0.05] border border-white/10 px-2.5 py-1 text-[10px] font-mono text-slate-300 whitespace-nowrap"
+                      className="rounded-md px-2.5 py-1 text-[10px] font-mono whitespace-nowrap refero-tech-pill"
                     >
                       {t}
                     </span>
                   ))}
                   {(project.tech || []).length > 4 && (
-                    <span className="rounded-md bg-white/[0.05] border border-white/10 px-2 py-1 text-[10px] font-mono text-slate-400">
+                    <span className="rounded-md px-2 py-1 text-[10px] font-mono refero-tech-pill">
                       +{(project.tech || []).length - 4}
                     </span>
                   )}
@@ -466,13 +466,13 @@ export const Projects = () => {
               </div>
 
               {/* Card Footer */}
-              <div className="px-5 sm:px-6 py-3.5 border-t border-white/10 bg-slate-950/40 mt-auto flex items-center justify-between gap-2">
+              <div className="px-5 sm:px-6 py-3.5 mt-auto flex items-center justify-between gap-2 refero-card-footer">
                 <div className="flex items-center gap-1.5">
                   {project.apkUrl && (
                     <a
                       href={project.apkUrl}
                       download="woods-cambodia.apk"
-                      className="inline-flex items-center gap-1 rounded-lg bg-emerald-500/15 border border-emerald-400/30 px-2.5 py-1.5 text-[11px] font-bold text-emerald-300 hover:bg-emerald-500/25 transition-all shadow-sm"
+                      className="inline-flex items-center gap-1 rounded-lg bg-emerald-500/15 border border-emerald-400/30 px-2.5 py-1.5 text-[11px] font-bold text-emerald-300 badge-emerald hover:bg-emerald-500/25 transition-all shadow-sm"
                       title="Download Android APK"
                     >
                       <Download size={11} />
@@ -485,7 +485,7 @@ export const Projects = () => {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-1.5 text-[11px] font-bold text-cyan-300 hover:bg-cyan-500/25 transition-all shadow-sm"
+                      className="inline-flex items-center gap-1 rounded-lg bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-1.5 text-[11px] font-bold text-cyan-300 badge-cyan hover:bg-cyan-500/25 transition-all shadow-sm"
                     >
                       <span>Live Demo</span>
                       <ArrowUpRight size={11} />
@@ -497,7 +497,7 @@ export const Projects = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+                      className="p-1.5 rounded-lg refero-icon-btn transition-colors"
                       title={project.githubLabel || "GitHub Repo"}
                     >
                       <Github size={13} />
@@ -509,7 +509,7 @@ export const Projects = () => {
                       href={project.backendGithubUrl || project.backendUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-1.5 rounded-lg bg-purple-500/10 border border-purple-400/20 text-purple-300 hover:bg-purple-500/20 transition-colors"
+                      className="p-1.5 rounded-lg badge-purple transition-colors"
                       title={project.backendGithubLabel || "Backend API"}
                     >
                       <Server size={13} />
@@ -521,7 +521,7 @@ export const Projects = () => {
                       href={project.mobileUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-1.5 rounded-lg bg-indigo-500/10 border border-indigo-400/20 text-indigo-300 hover:bg-indigo-500/20 transition-colors"
+                      className="p-1.5 rounded-lg badge-indigo transition-colors"
                       title="Expo Mobile App"
                     >
                       <Smartphone size={13} />
@@ -562,17 +562,17 @@ export const Projects = () => {
             onClick={() => setSelectedProject(null)}
           />
 
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-slate-900 border border-white/20 p-6 sm:p-8 shadow-2xl animate-in zoom-in-95 duration-200">
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl refero-card-elevated p-6 sm:p-8 shadow-2xl animate-in zoom-in-95 duration-200">
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-5 right-5 grid h-9 w-9 place-items-center rounded-xl bg-white/10 text-slate-300 hover:text-white hover:bg-white/20 transition-all cursor-pointer z-10"
+              className="absolute top-5 right-5 grid h-9 w-9 place-items-center rounded-xl refero-icon-btn transition-all cursor-pointer z-10"
             >
               <X size={18} />
             </button>
 
             <div className="mb-4">
               <div className="flex items-center gap-2 mb-2">
-                <span className="rounded-lg bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-0.5 text-xs font-mono font-bold text-cyan-300">
+                <span className="rounded-lg bg-cyan-500/15 border border-cyan-400/30 px-2.5 py-0.5 text-xs font-mono font-bold text-cyan-300 badge-cyan">
                   {selectedProject.category}
                 </span>
                 <span className="text-xs font-mono text-slate-400">
@@ -629,7 +629,7 @@ export const Projects = () => {
                 {(selectedProject.tech || []).map((t) => (
                   <span
                     key={t}
-                    className="rounded-lg bg-white/5 border border-white/10 px-3 py-1 text-xs font-mono text-cyan-200"
+                    className="rounded-lg px-3 py-1 text-xs font-mono refero-tech-pill"
                   >
                     {t}
                   </span>
@@ -666,7 +666,7 @@ export const Projects = () => {
                   href={selectedProject.mobileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-indigo-300 hover:text-indigo-200 border border-indigo-400/30 bg-indigo-500/10"
+                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-indigo-300 hover:text-indigo-200 border border-indigo-400/30 bg-indigo-500/10 badge-indigo"
                 >
                   <Smartphone size={14} />
                   <span>Launch Expo Mobile</span>
@@ -690,7 +690,7 @@ export const Projects = () => {
                   href={selectedProject.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-slate-200 hover:text-white border border-white/10 bg-white/5"
+                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold refero-icon-btn"
                 >
                   <Github size={14} />
                   <span>
@@ -704,7 +704,7 @@ export const Projects = () => {
                   href={selectedProject.backendGithubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-purple-300 hover:text-purple-200 border border-purple-400/30 bg-purple-500/10"
+                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-purple-300 hover:text-purple-200 border border-purple-400/30 bg-purple-500/10 badge-purple"
                 >
                   <Server size={14} />
                   <span>

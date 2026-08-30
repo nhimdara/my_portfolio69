@@ -243,6 +243,91 @@ body[data-theme="light"] {
     0 18px 40px -8px rgba(15, 23, 42, 0.12);
 }
 
+/* Card Footer Styling */
+.refero-card-footer {
+  background-color: rgba(2, 6, 23, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] .refero-card-footer {
+  background-color: rgba(241, 245, 249, 0.85) !important;
+  border-top: 1px solid rgba(226, 232, 240, 0.9) !important;
+}
+
+/* Tech Pills Styling */
+.refero-tech-pill {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+}
+
+[data-theme="light"] .refero-tech-pill {
+  background-color: rgba(241, 245, 249, 0.9) !important;
+  border: 1px solid rgba(203, 213, 225, 0.8) !important;
+  color: #1e293b !important;
+  font-weight: 600 !important;
+}
+
+/* Icon Buttons Styling */
+.refero-icon-btn {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+}
+
+.refero-icon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+[data-theme="light"] .refero-icon-btn {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(203, 213, 225, 0.8) !important;
+  color: #334155 !important;
+}
+
+[data-theme="light"] .refero-icon-btn:hover {
+  background-color: #ffffff !important;
+  border-color: rgba(2, 132, 199, 0.5) !important;
+  color: #020617 !important;
+}
+
+/* Year Badge Styling */
+.refero-badge-year {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+}
+
+[data-theme="light"] .refero-badge-year {
+  background-color: rgba(241, 245, 249, 0.9) !important;
+  border: 1px solid rgba(203, 213, 225, 0.8) !important;
+  color: #475569 !important;
+  font-weight: 600 !important;
+}
+
+/* Category & Action Badge Light Theme Contrast Overrides */
+[data-theme="light"] .badge-cyan {
+  background-color: rgba(224, 242, 254, 0.9) !important;
+  border-color: rgba(56, 189, 248, 0.6) !important;
+  color: #0369a1 !important;
+}
+[data-theme="light"] .badge-emerald {
+  background-color: rgba(209, 250, 229, 0.9) !important;
+  border-color: rgba(52, 211, 153, 0.6) !important;
+  color: #047857 !important;
+}
+[data-theme="light"] .badge-purple {
+  background-color: rgba(243, 232, 255, 0.9) !important;
+  border-color: rgba(192, 132, 252, 0.6) !important;
+  color: #6d28d9 !important;
+}
+[data-theme="light"] .badge-indigo {
+  background-color: rgba(224, 231, 255, 0.9) !important;
+  border-color: rgba(129, 140, 248, 0.6) !important;
+  color: #4338ca !important;
+}
+
 .refero-card-elevated {
   background: rgba(15, 19, 32, 0.88);
   backdrop-filter: blur(28px) saturate(200%);
