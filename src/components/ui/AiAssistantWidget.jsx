@@ -250,9 +250,9 @@ export const AiAssistantWidget = ({ isOpen: controlledIsOpen, setIsOpen: control
         />
       )}
 
-      {/* Floating Trigger Widget Button (Bottom Left) */}
+      {/* Floating Trigger Widget Button (Bottom Left on Desktop) */}
       <div
-        className="fixed bottom-3 left-3 sm:bottom-6 sm:left-6 z-40 flex items-center gap-3 max-w-[calc(100vw-5rem)]"
+        className="hidden sm:flex fixed bottom-6 left-6 z-40 items-center gap-3"
       >
         {!isOpen && (
           <button

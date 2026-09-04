@@ -53,7 +53,10 @@ export const App = () => {
       <ScrollEffects />
 
       {/* Floating Glass Navigation Bar */}
-      <Navbar onOpenCommandPalette={() => setIsCommandPaletteOpen(true)} />
+      <Navbar
+        onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
+        onOpenAi={() => setIsAiOpen(true)}
+      />
 
       {/* Floating Action Buttons (with coordinated mobile visibility) */}
       <ContactFAB isAiOpen={isAiOpen} />

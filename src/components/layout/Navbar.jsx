@@ -6,6 +6,7 @@ import {
   X,
   Search,
   FileDown,
+  Sparkles,
 } from "lucide-react";
 import profilePicture from "../../assets/images/myPicture1.webp";
 
@@ -19,7 +20,7 @@ const navItems = [
   { id: "contact", label: "Contact" },
 ];
 
-export const Navbar = ({ onOpenCommandPalette }) => {
+export const Navbar = ({ onOpenCommandPalette, onOpenAi }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -171,6 +172,17 @@ export const Navbar = ({ onOpenCommandPalette }) => {
               </kbd>
             </button>
 
+            {/* Ask AI Trigger */}
+            <button
+              type="button"
+              onClick={onOpenAi}
+              aria-label="Open Dara AI Assistant"
+              className="grid h-8 w-8 place-items-center rounded-xl bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 hover:text-white hover:border-cyan-400/60 transition-all cursor-pointer shadow-sm"
+              title="Ask Dara AI"
+            >
+              <Sparkles size={14} className="animate-pulse" />
+            </button>
+
             {/* Theme Toggle */}
             <button
               type="button"
@@ -238,6 +250,18 @@ export const Navbar = ({ onOpenCommandPalette }) => {
             </div>
 
             <div className="mt-4 pt-4 border-t border-white/10 flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  if (onOpenAi) onOpenAi();
+                }}
+                className="flex items-center justify-center gap-2 rounded-xl py-2.5 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-400/30 text-xs font-bold text-cyan-300 hover:text-white cursor-pointer shadow-md"
+              >
+                <Sparkles size={14} className="text-cyan-400" />
+                <span>Ask Dara AI Assistant</span>
+              </button>
+
               <a
                 href={cvUrl}
                 download="CV-Nhim-Dara.pdf"

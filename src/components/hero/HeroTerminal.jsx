@@ -28,12 +28,12 @@ export const HeroTerminal = () => {
   };
 
   return (
-    <div className="relative group max-w-xl lg:max-w-2xl w-full mx-auto">
+    <div className="relative group max-w-xl lg:max-w-2xl w-full mx-auto max-w-full overflow-hidden">
       {/* Ambient background glow aura */}
       <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-cyan-500/20 via-indigo-500/20 to-purple-500/20 blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
       {/* Main Glass Workspace Window (Dark IDE Theme) */}
-      <div className="hero-terminal-window relative rounded-2xl overflow-hidden border border-white/15 bg-[#090d16] shadow-2xl backdrop-blur-2xl text-slate-100">
+      <div className="hero-terminal-window relative rounded-2xl overflow-hidden border border-white/15 bg-[#090d16] shadow-2xl backdrop-blur-2xl text-slate-100 max-w-full">
         {/* Window Chrome / Titlebar */}
         <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 bg-[#0d1220] border-b border-white/10 gap-2">
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">

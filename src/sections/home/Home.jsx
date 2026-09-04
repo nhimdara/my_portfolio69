@@ -44,7 +44,7 @@ export const Home = ({ onCopyEmail }) => {
             </div>
 
             {/* Main Full-Screen Headline */}
-            <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-[4.5rem] font-black tracking-tight leading-[1.08] text-white break-words">
+            <h1 className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-black tracking-tight leading-[1.1] text-white break-words">
               Building Digital{" "}
               <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent animate-gradient-text">
                 Experiences That Matter.
@@ -52,19 +52,19 @@ export const Home = ({ onCopyEmail }) => {
             </h1>
 
             {/* Supporting Text */}
-            <p className="max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-slate-300/90 font-normal">
+            <p className="max-w-2xl text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed text-slate-300/90 font-normal break-words">
               I'm <span className="text-white font-semibold">Nhim Dara</span>, an IT Engineering student and Full-Stack Web Developer focused on building modern, scalable, and user-friendly web applications.
             </p>
 
             {/* Location & University Chips */}
-            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs sm:text-sm font-mono">
-              <div className="refero-pill flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full shadow-sm">
+            <div className="flex flex-col xs:flex-row flex-wrap items-start xs:items-center gap-2 sm:gap-3 text-xs sm:text-sm font-mono w-full max-w-full">
+              <div className="refero-pill flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full shadow-sm max-w-full">
                 <MapPin size={14} className="text-cyan-400 shrink-0" />
-                <span>Phnom Penh, Cambodia</span>
+                <span className="truncate">Phnom Penh, Cambodia</span>
               </div>
-              <div className="refero-pill flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full shadow-sm">
+              <div className="refero-pill flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full shadow-sm max-w-full">
                 <Terminal size={14} className="text-purple-400 shrink-0" />
-                <span>RUPP IT Engineering</span>
+                <span className="truncate">RUPP IT Engineering</span>
               </div>
             </div>
 
