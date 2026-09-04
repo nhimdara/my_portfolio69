@@ -23,25 +23,26 @@ export const LiquidCard = ({
   };
 
   const handleMouseLeave = () => {
-    setMousePos((prev) => ({ ...prev, active: false }));
+    setMousePos({ x: 0, y: 0, active: false });
   };
 
+  // Subtle, refined glass spotlights (reduced intensity to prevent overpowering blobs)
   const glowGradients = {
-    cyan: "radial-gradient(380px circle at var(--mouse-x) var(--mouse-y), rgba(6, 182, 212, 0.15), transparent 80%)",
-    purple: "radial-gradient(380px circle at var(--mouse-x) var(--mouse-y), rgba(168, 85, 247, 0.15), transparent 80%)",
-    emerald: "radial-gradient(380px circle at var(--mouse-x) var(--mouse-y), rgba(16, 185, 129, 0.15), transparent 80%)",
-    amber: "radial-gradient(380px circle at var(--mouse-x) var(--mouse-y), rgba(245, 158, 11, 0.15), transparent 80%)",
-    blue: "radial-gradient(380px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.15), transparent 80%)",
-    rose: "radial-gradient(380px circle at var(--mouse-x) var(--mouse-y), rgba(244, 63, 94, 0.15), transparent 80%)",
+    cyan: "radial-gradient(240px circle at var(--mouse-x) var(--mouse-y), rgba(34, 211, 238, 0.08), transparent 75%)",
+    purple: "radial-gradient(240px circle at var(--mouse-x) var(--mouse-y), rgba(168, 85, 247, 0.08), transparent 75%)",
+    emerald: "radial-gradient(240px circle at var(--mouse-x) var(--mouse-y), rgba(16, 185, 129, 0.08), transparent 75%)",
+    amber: "radial-gradient(240px circle at var(--mouse-x) var(--mouse-y), rgba(245, 158, 11, 0.08), transparent 75%)",
+    blue: "radial-gradient(240px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.08), transparent 75%)",
+    rose: "radial-gradient(240px circle at var(--mouse-x) var(--mouse-y), rgba(244, 63, 94, 0.08), transparent 75%)",
   };
 
   const borderGradients = {
-    cyan: "radial-gradient(260px circle at var(--mouse-x) var(--mouse-y), rgba(34, 211, 238, 0.65), transparent 70%)",
-    purple: "radial-gradient(260px circle at var(--mouse-x) var(--mouse-y), rgba(192, 132, 252, 0.65), transparent 70%)",
-    emerald: "radial-gradient(260px circle at var(--mouse-x) var(--mouse-y), rgba(52, 211, 153, 0.65), transparent 70%)",
-    amber: "radial-gradient(260px circle at var(--mouse-x) var(--mouse-y), rgba(251, 191, 36, 0.65), transparent 70%)",
-    blue: "radial-gradient(260px circle at var(--mouse-x) var(--mouse-y), rgba(96, 165, 250, 0.65), transparent 70%)",
-    rose: "radial-gradient(260px circle at var(--mouse-x) var(--mouse-y), rgba(251, 113, 133, 0.65), transparent 70%)",
+    cyan: "radial-gradient(200px circle at var(--mouse-x) var(--mouse-y), rgba(34, 211, 238, 0.45), transparent 70%)",
+    purple: "radial-gradient(200px circle at var(--mouse-x) var(--mouse-y), rgba(192, 132, 252, 0.45), transparent 70%)",
+    emerald: "radial-gradient(200px circle at var(--mouse-x) var(--mouse-y), rgba(52, 211, 153, 0.45), transparent 70%)",
+    amber: "radial-gradient(200px circle at var(--mouse-x) var(--mouse-y), rgba(251, 191, 36, 0.45), transparent 70%)",
+    blue: "radial-gradient(200px circle at var(--mouse-x) var(--mouse-y), rgba(96, 165, 250, 0.45), transparent 70%)",
+    rose: "radial-gradient(200px circle at var(--mouse-x) var(--mouse-y), rgba(251, 113, 133, 0.45), transparent 70%)",
   };
 
   return (
@@ -60,7 +61,9 @@ export const LiquidCard = ({
       {/* Specular Edge Highlight on Mouse Position */}
       {interactive && (
         <div
-          className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className={`pointer-events-none absolute -inset-px rounded-2xl transition-opacity duration-300 ${
+            mousePos.active ? "opacity-100" : "opacity-0"
+          }`}
           style={{
             background: borderGradients[glowColor] || borderGradients.cyan,
             maskImage: "linear-gradient(black, black) content-box, linear-gradient(black, black)",
@@ -72,10 +75,12 @@ export const LiquidCard = ({
         />
       )}
 
-      {/* Internal Liquid Glass Spotlight */}
+      {/* Internal Subtle Liquid Glass Spotlight (Only when actively hovering) */}
       {interactive && (
         <div
-          className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          className={`pointer-events-none absolute inset-0 rounded-2xl transition-opacity duration-300 ${
+            mousePos.active ? "opacity-100" : "opacity-0"
+          }`}
           style={{
             background: glowGradients[glowColor] || glowGradients.cyan,
           }}

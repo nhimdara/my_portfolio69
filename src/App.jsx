@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import ContactFAB from "./components/ui/ContactFAB";
+import AiAssistantWidget from "./components/ui/AiAssistantWidget";
 import ScrollEffects from "./components/ui/ScrollEffects";
 import LiquidBackground from "./components/ui/LiquidBackground";
 import CommandPalette from "./components/ui/CommandPalette";
 import Toast from "./components/ui/Toast";
+import DeveloperStats from "./components/ui/DeveloperStats";
 import useSmoothScroll from "./hooks/useSmoothScroll";
 import About from "./sections/about/About";
 import Certificates from "./sections/certificates/Certificates";
@@ -44,47 +46,57 @@ export const App = () => {
   }, []);
 
   return (
-    <div className="app relative min-h-screen text-slate-100 overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200 pt-20 sm:pt-24">
+    <div className="app relative min-h-screen text-slate-100 overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200 pt-16 sm:pt-20">
       <LiquidBackground />
       <ScrollEffects />
-      
-      {/* Navigation Header */}
+
+      {/* Floating Glass Navigation Bar */}
       <Navbar onOpenCommandPalette={() => setIsCommandPaletteOpen(true)} />
-      
-      {/* Floating Action Button */}
+
+      {/* Floating Action Buttons */}
       <ContactFAB />
+      <AiAssistantWidget />
 
       {/* Main Sections */}
       <main id="main-content">
-        <section id="home" aria-label="Introduction and Overview">
+        {/* 1. Hero & Tech Stack */}
+        <section id="home" className="scroll-mt-24 sm:scroll-mt-28 min-h-[calc(100vh-80px)] flex flex-col justify-between" aria-label="Introduction, Hero & Tech Stack">
           <Home onCopyEmail={handleCopyEmail} />
         </section>
 
-        <section id="about" aria-label="About Nhim Dara and Engineering DNA">
+        {/* 2. Developer Statistics Strip */}
+        <DeveloperStats />
+
+        {/* 3. About Section */}
+        <section id="about" className="scroll-mt-24 sm:scroll-mt-28" aria-label="About Nhim Dara and Engineering DNA">
           <About />
         </section>
 
-        <section id="experience" aria-label="Education and Practical Experience">
-          <Experience />
+        {/* 4. Skills Section */}
+        <section id="skills" className="scroll-mt-24 sm:scroll-mt-28" aria-label="Technical Skills and Matrix">
+          <SkillsSection />
         </section>
 
-        <section id="project" aria-label="Featured Projects and Platforms">
+        {/* 5. Featured Projects */}
+        <section id="projects" className="scroll-mt-24 sm:scroll-mt-28" aria-label="Featured Projects and Platforms">
           <Projects />
         </section>
 
-        <section id="certificates" aria-label="Verified Professional Certificates">
-          <Certificates />
+        {/* 6. Experience & Education Timeline */}
+        <section id="experience" className="scroll-mt-24 sm:scroll-mt-28" aria-label="Education and Practical Experience">
+          <Experience />
         </section>
 
-        <section id="skill" aria-label="Technical Skills and Matrix">
-          <SkillsSection />
+        {/* 7. Verified Professional Certificates */}
+        <section id="certificates" className="scroll-mt-24 sm:scroll-mt-28" aria-label="Verified Professional Certificates">
+          <Certificates />
         </section>
       </main>
 
-      {/* Footer & Contact Hub */}
+      {/* 8. Contact & Footer Hub */}
       <Footer onCopyEmail={handleCopyEmail} />
 
-      {/* Command Palette (⌘K) Modal */}
+      {/* Global Command Palette (⌘K) Modal */}
       <CommandPalette
         isOpen={isCommandPaletteOpen}
         onClose={() => setIsCommandPaletteOpen(false)}

@@ -108,17 +108,7 @@ export const CommandPalette = ({
       category: "Navigation",
       icon: <Layers size={16} className="text-blue-400" />,
       action: () => {
-        document.getElementById("project")?.scrollIntoView({ behavior: "smooth" });
-        handleClose();
-      },
-    },
-    {
-      id: "nav-certificates",
-      title: "Go to Verified Certificates",
-      category: "Navigation",
-      icon: <Award size={16} className="text-amber-400" />,
-      action: () => {
-        document.getElementById("certificates")?.scrollIntoView({ behavior: "smooth" });
+        (document.getElementById("projects") || document.getElementById("project"))?.scrollIntoView({ behavior: "smooth" });
         handleClose();
       },
     },
@@ -128,7 +118,17 @@ export const CommandPalette = ({
       category: "Navigation",
       icon: <Code2 size={16} className="text-pink-400" />,
       action: () => {
-        document.getElementById("skill")?.scrollIntoView({ behavior: "smooth" });
+        (document.getElementById("skills") || document.getElementById("skill"))?.scrollIntoView({ behavior: "smooth" });
+        handleClose();
+      },
+    },
+    {
+      id: "nav-contact",
+      title: "Go to Contact & Inquiries",
+      category: "Navigation",
+      icon: <Send size={16} className="text-emerald-400" />,
+      action: () => {
+        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
         handleClose();
       },
     },

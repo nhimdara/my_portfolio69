@@ -1,214 +1,254 @@
-import React from "react";
-import myPicture from "../../assets/images/myPicture1.webp";
+import React, { useState, useEffect } from "react";
 import {
-  Calendar,
-  MapPin,
   GraduationCap,
-  Code,
-  Target,
-  Sparkles,
-  Cpu,
+  MapPin,
   Compass,
-  CheckCircle2,
-  Terminal,
-  FileText,
-  ExternalLink,
-  Layers,
+  Code2,
+  Rocket,
+  ShieldCheck,
+  Clock,
+  Activity,
+  Radio,
 } from "lucide-react";
 import LiquidCard from "../../components/ui/LiquidCard";
+import myPicture from "../../assets/images/myPicture1.webp";
 
 export const About = () => {
-  const details = [
-    {
-      icon: Calendar,
-      label: "Age",
-      value: "21 Years Old",
-      glow: "cyan",
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "Phnom Penh, Cambodia",
-      glow: "purple",
-    },
-    {
-      icon: GraduationCap,
-      label: "Education",
-      value: "IT Engineering (RUPP)",
-      glow: "emerald",
-    },
-    {
-      icon: Code,
-      label: "Primary Focus",
-      value: "Full-Stack Web Engineering",
-      glow: "blue",
-    },
-  ];
+  // Live Phnom Penh (UTC+7) clock
+  const [timeString, setTimeString] = useState("");
 
-  const pillars = [
-    {
-      icon: <Cpu className="w-5 h-5 text-cyan-300" />,
-      title: "Full-Stack Engineering",
-      description:
-        "Architecting resilient applications from modular React & Next.js frontends to secure Laravel & Express REST API services.",
-      glow: "cyan",
-    },
-    {
-      icon: <Sparkles className="w-5 h-5 text-purple-300" />,
-      title: "Modern UI/UX & High Craft",
-      description:
-        "Building tactile, responsive digital experiences with meticulous attention to motion, typography, accessibility, and visual depth.",
-      glow: "purple",
-    },
-    {
-      icon: <Target className="w-5 h-5 text-emerald-300" />,
-      title: "Database & Clean Architecture",
-      description:
-        "Designing scalable relational database schemas (MySQL, PostgreSQL), normalized queries, authentication pipelines, and robust workflows.",
-      glow: "emerald",
-    },
-  ];
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const options = {
+        timeZone: "Asia/Phnom_Penh",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      };
+      setTimeString(now.toLocaleTimeString("en-US", options));
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="relative py-20 px-4 sm:px-6 lg:px-8">
-      {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute top-1/2 left-10 h-80 w-80 rounded-full bg-cyan-500/10 blur-[110px]" />
-      <div className="pointer-events-none absolute bottom-10 right-10 h-80 w-80 rounded-full bg-purple-500/10 blur-[110px]" />
+    <div className="relative pt-6 pb-20 px-4 sm:px-6 lg:px-8 scroll-mt-28">
+      {/* Background ambient accents */}
+      <div className="pointer-events-none absolute top-1/3 left-10 h-72 w-72 rounded-full bg-cyan-500/10 blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-10 right-10 h-72 w-72 rounded-full bg-purple-500/10 blur-[120px]" />
 
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="mb-14 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-md mb-4 shadow-[0_0_15px_rgba(6,182,212,0.15)] font-mono">
-            <Compass size={14} className="animate-spin-slow" />
-            <span>ABOUT &amp; DNA</span>
+        <div className="mb-12">
+          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-cyan-300 font-mono mb-3">
+            <Compass size={13} className="animate-spin-slow" />
+            <span>01 // ABOUT THE DEVELOPER</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
-            Engineering Foundations &amp;{" "}
-            <span className="refero-text-accent">Vision</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+            Engineering Precision Meets{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
+              Modern Product Design
+            </span>
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base text-slate-400">
-            Combining rigorous IT engineering principles from university with industry-standard web development practices.
+          <p className="mt-2 text-base sm:text-lg text-slate-400 max-w-2xl">
+            Bridging academic computer science rigor with high-impact production web development.
           </p>
         </div>
 
-        {/* Asymmetric Refero Bento Grid */}
-        <div className="grid lg:grid-cols-12 gap-6 mb-12">
-          {/* Bento Card 1: Visual Identity & Key Bio (7 cols) */}
-          <LiquidCard glowColor="cyan" className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
-            <div className="flex flex-col sm:flex-row gap-6 items-start">
-              <div className="relative shrink-0 group">
-                <div className="relative h-28 w-28 sm:h-36 sm:w-36 rounded-2xl overflow-hidden ring-2 ring-cyan-400/30 bg-slate-950">
-                  <img
-                    src={myPicture}
-                    alt="Nhim Dara"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
-                </div>
-                <span className="absolute -bottom-2 -right-2 rounded-lg bg-cyan-500 text-slate-950 px-2 py-0.5 text-[10px] font-extrabold font-mono uppercase tracking-wider shadow-lg">
-                  RUPP &apos;28
-                </span>
-              </div>
-
-              <div className="space-y-3 min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="refero-tagline text-cyan-400 text-xs">
-                    BACKGROUND &amp; PHILOSOPHY
-                  </span>
-                </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                  Hi, I&apos;m <span className="refero-text-cyan">Nhim Dara</span>
-                </h3>
-                <p className="text-xs sm:text-sm leading-relaxed text-slate-300">
-                  A software developer and 2nd-year Information Technology Engineering student at the 
-                  <strong> Royal University of Phnom Penh (RUPP)</strong>. Trained in full-stack web development at 
-                  <strong> ETEC Center</strong>, I focus on turning complex product concepts into clean, accessible, and high-performance digital systems.
-                </p>
-              </div>
-            </div>
-
-            {/* Micro Coordinates Grid */}
-            <div className="mt-6 pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {details.map((d, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-xl p-3 bg-white/[0.03] border border-white/[0.06] hover:border-cyan-400/30 transition-colors"
-                >
-                  <div className="flex items-center gap-1.5 text-slate-400 mb-1">
-                    <d.icon size={13} className="text-cyan-400" />
-                    <span className="text-[10px] font-mono uppercase tracking-wider">{d.label}</span>
-                  </div>
-                  <p className="text-xs font-bold text-white truncate">{d.value}</p>
-                </div>
-              ))}
-            </div>
-          </LiquidCard>
-
-          {/* Bento Card 2: Academic Credential & University Focus (5 cols) */}
-          <LiquidCard glowColor="purple" className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between">
+        {/* Editorial Asymmetric Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
+          {/* Card 1: Personal Introduction & Academic Journey with Photo (7 cols) */}
+          <LiquidCard
+            glowColor="cyan"
+            className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between"
+          >
             <div>
-              <div className="flex items-center justify-between gap-2 mb-4">
-                <div className="flex items-center gap-2">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-purple-500/20 text-purple-400">
-                    <GraduationCap size={18} />
+              <div className="flex items-center justify-between mb-5">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-md border border-cyan-400/20">
+                  Profile &amp; Roots
+                </span>
+                <span className="text-xs text-slate-400 font-mono">RUPP • IT Engineering</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-6 items-start mb-4">
+                {/* Developer Profile Image Frame */}
+                <div className="relative shrink-0 group mx-auto sm:mx-0">
+                  <div className="relative h-28 w-28 sm:h-32 sm:w-32 rounded-2xl overflow-hidden ring-2 ring-cyan-400/30 bg-slate-950 shadow-xl">
+                    <img
+                      src={myPicture}
+                      alt="Nhim Dara"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
                   </div>
-                  <span className="text-xs font-mono uppercase tracking-wider text-purple-300 font-bold">
-                    University Degree
+                  <span className="absolute -bottom-2 -right-2 rounded-lg bg-cyan-500 text-slate-950 px-2.5 py-0.5 text-[10px] font-black font-mono uppercase tracking-wider shadow-lg">
+                    RUPP &apos;28
                   </span>
                 </div>
-                <span className="rounded-full bg-purple-500/15 border border-purple-400/30 px-2.5 py-0.5 text-[10px] font-mono text-purple-300">
-                  2024 - 2028
+
+                <div className="space-y-3 min-w-0 flex-1">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white leading-snug">
+                    Hello, I'm <span className="text-cyan-300">Nhim Dara</span>.
+                  </h3>
+
+                  <div className="space-y-2.5 text-xs sm:text-sm leading-relaxed text-slate-300">
+                    <p>
+                      I am an Information Technology Engineering student at the{" "}
+                      <strong className="text-white">Royal University of Phnom Penh (RUPP)</strong> and
+                      a certified Full-Stack Web Developer.
+                    </p>
+                    <p>
+                      My engineering focus spans building reactive frontend interfaces with <span className="text-cyan-300 font-semibold">React.js &amp; TypeScript</span> and resilient backend REST APIs with <span className="text-purple-300 font-semibold">Laravel, PHP, Spring Boot, and Node.js</span>.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="h-9 w-9 rounded-xl bg-cyan-500/10 border border-cyan-400/30 grid place-items-center text-cyan-300 font-mono text-xs font-bold shadow-inner">
+                  RUPP
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-white">Bachelor of IT Engineering</p>
+                  <p className="text-[11px] text-slate-400 font-mono">Class of 2024 - 2028</p>
+                </div>
+              </div>
+
+              <span className="text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-400/30 px-3 py-1 rounded-full flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                Active Student &amp; Builder
+              </span>
+            </div>
+          </LiquidCard>
+
+          {/* Card 2: Development Philosophy (5 cols) */}
+          <LiquidCard
+            glowColor="purple"
+            className="md:col-span-5 p-6 sm:p-8 flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center gap-2 mb-4 text-purple-400">
+                <ShieldCheck size={18} />
+                <span className="text-xs font-mono uppercase tracking-wider text-purple-300">
+                  Development Philosophy
                 </span>
               </div>
 
-              <h3 className="text-lg font-bold text-white mb-2">
-                Bachelor of IT Engineering
-              </h3>
-              <p className="text-xs text-purple-200/80 mb-4 font-medium">
-                Royal University of Phnom Penh (RUPP) — Department of ITE
-              </p>
-              <p className="text-xs leading-relaxed text-slate-300 mb-4">
-                Core coursework encompasses Data Structures &amp; Algorithms, Object-Oriented Software Design, Relational Database Management Systems (RDBMS), Computer Networks, and Cloud Systems.
+              <blockquote className="text-xl sm:text-2xl font-bold text-white leading-snug mb-3">
+                "Architecture over quick fixes. Speed as a first-class feature. Code written for humans first."
+              </blockquote>
+
+              <p className="text-sm text-slate-300 leading-relaxed">
+                Modern software must be more than visually attractive. It must be accessible, strictly typed, resilient to network drops, and engineered with maintainable modular structures.
               </p>
             </div>
 
-            <div className="space-y-2 pt-4 border-t border-white/10">
-              <div className="flex items-center gap-2 text-xs text-slate-300">
-                <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
-                <span>Practicum Leader in Full-Stack E-Learning Project</span>
+            <div className="mt-6 pt-4 border-t border-white/10 grid grid-cols-2 gap-2.5 text-xs font-mono text-slate-300">
+              <div className="bg-white/[0.03] p-2.5 rounded-xl border border-white/10">
+                <span className="text-purple-400 font-bold block mb-0.5">01. DRY &amp; SOLID</span>
+                <span className="text-slate-400 text-[11px]">Clean maintainability</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-slate-300">
-                <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
-                <span>Consistent high academic standing across math &amp; engineering</span>
+              <div className="bg-white/[0.03] p-2.5 rounded-xl border border-white/10">
+                <span className="text-cyan-400 font-bold block mb-0.5">02. LATENCY</span>
+                <span className="text-slate-400 text-[11px]">Sub-100ms API targets</span>
               </div>
             </div>
           </LiquidCard>
-        </div>
 
-        {/* Three Core Engineering Pillars */}
-        <div className="grid sm:grid-cols-3 gap-6">
-          {pillars.map((p, idx) => (
-            <LiquidCard key={idx} glowColor={p.glow} className="p-6">
-              <div className="flex flex-col h-full justify-between space-y-4">
-                <div className="space-y-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.05] border border-white/10">
-                    {p.icon}
-                  </div>
-                  <h4 className="text-base font-bold text-white tracking-tight">
-                    {p.title}
+          {/* Card 3: Career Goals & Vision (5 cols) */}
+          <LiquidCard
+            glowColor="amber"
+            className="md:col-span-5 p-6 sm:p-8 flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center gap-2 mb-3 text-amber-400">
+                <Rocket size={18} />
+                <span className="text-xs font-mono uppercase tracking-wider text-amber-300">
+                  Career Goals
+                </span>
+              </div>
+
+              <h4 className="text-lg sm:text-xl font-bold text-white mb-2">
+                Engineering for Scalable Impact
+              </h4>
+
+              <p className="text-sm text-slate-300 leading-relaxed">
+                My objective is to join forward-thinking engineering teams as a Full-Stack or Frontend Software Engineer. I am deeply interested in distributed systems, real-time web applications, payment gateways, and contributing to Cambodia's rising tech ecosystem.
+              </p>
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+              <span>Primary Goal:</span>
+              <span className="text-amber-300 font-semibold bg-amber-500/10 px-2.5 py-1 rounded-md border border-amber-400/20">
+                Software Engineering Internship
+              </span>
+            </div>
+          </LiquidCard>
+
+          {/* Card 4: Location & Live Telemetry (7 cols - replaces awkward photo with high-tech live clock) */}
+          <LiquidCard
+            glowColor="cyan"
+            className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2 text-cyan-400 text-xs font-mono uppercase tracking-wider">
+                  <MapPin size={16} />
+                  <span>Base Location</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-400/30">
+                  <Radio size={12} className="animate-pulse" />
+                  <span>LIVE TELEMETRY</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                <div>
+                  <h4 className="text-2xl font-bold text-white">
+                    Phnom Penh, Cambodia
                   </h4>
-                  <p className="text-xs leading-relaxed text-slate-400">
-                    {p.description}
+                  <p className="text-xs text-slate-400 font-mono mt-0.5">
+                    Coordinates: 11.5564° N, 104.9282° E
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-500">
-                  <span>CORE PILLAR</span>
-                  <span className="text-cyan-400 font-semibold">ACTIVE</span>
+                {/* Live Phnom Penh Digital Clock */}
+                <div className="px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/15 text-left sm:text-right shadow-inner">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">
+                    LOCAL TIME (ICT / UTC+7)
+                  </span>
+                  <span className="text-base sm:text-lg font-mono font-black text-cyan-300 tracking-wider">
+                    {timeString || "12:00:00 PM"}
+                  </span>
                 </div>
               </div>
-            </LiquidCard>
-          ))}
+
+              <p className="text-sm text-slate-300 leading-relaxed">
+                Operating from Cambodia's capital city, collaborating across global timezones with asynchronous discipline and real-time agility.
+              </p>
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+              <div className="flex items-center gap-2 text-emerald-300">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                </span>
+                <span className="font-semibold">Ready for Remote &amp; On-Site Collaborations</span>
+              </div>
+
+              <div className="flex items-center gap-2 text-slate-400">
+                <Activity size={13} className="text-cyan-400" />
+                <span>Network Ping &lt; 24ms</span>
+              </div>
+            </div>
+          </LiquidCard>
         </div>
       </div>
     </div>

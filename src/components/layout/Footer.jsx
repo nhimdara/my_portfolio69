@@ -1,32 +1,35 @@
 import React, { useState } from "react";
 import {
-  ArrowUp,
-  Heart,
   Mail,
-  MapPin,
-  Phone,
   Send,
   Sparkles,
-  Github,
   Copy,
   Check,
+  ArrowUp,
+  MapPin,
   ExternalLink,
-  MessageSquare,
 } from "lucide-react";
 import {
-  FaFacebook,
-  FaInstagram,
+  FaGithub,
+  FaLinkedin,
   FaTelegramPlane,
-  FaTwitter,
+  FaFacebook,
 } from "react-icons/fa";
-import profilePicture from "../../assets/images/myPicture1.webp";
+import LiquidCard from "../ui/LiquidCard";
 
 export const Footer = ({ onCopyEmail }) => {
   const [copied, setCopied] = useState(false);
   const [formSent, setFormSent] = useState(false);
-  const [formState, setFormState] = useState({ name: "", email: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const email = "daracombodia54@gmail.com";
   const currentYear = new Date().getFullYear();
-  const email = "nhimdara565@gmail.com";
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -39,249 +42,283 @@ export const Footer = ({ onCopyEmail }) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formState.name || !formState.message) return;
-    // Build Telegram message link or mailto
-    const text = encodeURIComponent(
-      `Hello Dara, I am ${formState.name} (${formState.email}).\n\nMessage: ${formState.message}`
-    );
-    window.open(`https://t.me/dara_nhim?text=${text}`, "_blank");
-    setFormSent(true);
+    if (!formData.name || !formData.message) return;
+
+    setIsSubmitting(true);
+
     setTimeout(() => {
-      setFormSent(false);
-      setFormState({ name: "", email: "", message: "" });
-    }, 4000);
+      // Build Telegram quick dispatch or mailto
+      const text = encodeURIComponent(
+        `Hello Dara, I am ${formData.name} (${formData.email || "No email"}).\nSubject: ${
+          formData.subject || "Collaboration"
+        }\n\nMessage: ${formData.message}`
+      );
+      window.open(`https://t.me/dara_nhim?text=${text}`, "_blank");
+
+      setIsSubmitting(false);
+      setFormSent(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setFormSent(false), 4000);
+    }, 600);
   };
 
   const socialLinks = [
     {
-      name: "Telegram",
-      icon: <FaTelegramPlane size={17} />,
-      url: "https://t.me/dara_nhim",
-      color: "hover:text-cyan-300 hover:border-cyan-400/50",
+      name: "GitHub",
+      icon: <FaGithub size={18} />,
+      url: "https://github.com/nhimdara",
     },
     {
-      name: "GitHub",
-      icon: <Github size={17} />,
-      url: "https://github.com/nhimdara",
-      color: "hover:text-white hover:border-white/50",
+      name: "LinkedIn",
+      icon: <FaLinkedin size={18} />,
+      url: "https://linkedin.com",
+    },
+    {
+      name: "Telegram",
+      icon: <FaTelegramPlane size={18} />,
+      url: "https://t.me/dara_nhim",
     },
     {
       name: "Facebook",
-      icon: <FaFacebook size={17} />,
+      icon: <FaFacebook size={18} />,
       url: "https://facebook.com/dara.nhim.865637",
-      color: "hover:text-blue-400 hover:border-blue-400/50",
-    },
-    {
-      name: "Instagram",
-      icon: <FaInstagram size={17} />,
-      url: "https://instagram.com/ra_zee109",
-      color: "hover:text-pink-400 hover:border-pink-400/50",
-    },
-    {
-      name: "Twitter",
-      icon: <FaTwitter size={17} />,
-      url: "https://x.com/william57378",
-      color: "hover:text-cyan-400 hover:border-cyan-400/50",
     },
   ];
 
   return (
-    <footer id="contact" className="relative mt-20 px-4 sm:px-6 lg:px-8 pb-12">
-      {/* Ambient background glow */}
-      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-96 w-full max-w-5xl rounded-full bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-blue-500/10 blur-[140px]" />
+    <footer id="contact" className="relative pt-20 pb-12 border-t border-white/10 bg-slate-950/60 overflow-hidden">
+      {/* Background ambient lighting */}
+      <div className="pointer-events-none absolute bottom-10 left-1/4 h-96 w-96 rounded-full bg-cyan-500/10 blur-[150px]" />
+      <div className="pointer-events-none absolute top-10 right-1/4 h-96 w-96 rounded-full bg-purple-500/10 blur-[150px]" />
 
-      <div className="mx-auto max-w-7xl">
-        {/* Big Refero Contact Hub Card */}
-        <div className="refero-card-elevated mb-16 rounded-3xl p-8 sm:p-12 lg:p-14 relative overflow-hidden shadow-2xl border border-white/20">
-          <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-48 w-96 rounded-full bg-cyan-400/20 blur-3xl" />
-
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* Left Column: Direct CTA & Quick Reach */}
-            <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-md shadow-[0_0_15px_rgba(6,182,212,0.2)] font-mono">
-                <Sparkles size={14} className="text-amber-300 animate-pulse" />
-                <span>CONNECT &amp; COLLABORATE</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
-                Have a project or looking for a{" "}
-                <span className="refero-text-accent">Full-Stack Engineer?</span>
-              </h2>
-
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                I&apos;m currently available for full-time engineering roles, freelance contracts, and software collaborations. Feel free to message me anytime!
-              </p>
-
-              {/* Direct Info Pills */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-white/5 border border-white/10 text-cyan-400">
-                    <Mail size={16} />
-                  </div>
-                  <span>nhimdara565@gmail.com</span>
-                  <button
-                    onClick={handleCopyEmail}
-                    className="refero-pill rounded-lg px-2.5 py-1 text-[11px] font-mono text-cyan-300 hover:text-white transition-colors cursor-pointer"
-                  >
-                    {copied ? "Copied!" : "Copy"}
-                  </button>
-                </div>
-
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-white/5 border border-white/10 text-purple-400">
-                    <Phone size={16} />
-                  </div>
-                  <a href="tel:+855969923931" className="hover:text-cyan-300 transition-colors">
-                    +855 96 992 3931 / +855 60 762 135
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-white/5 border border-white/10 text-emerald-400">
-                    <MapPin size={16} />
-                  </div>
-                  <span>Phnom Penh, Cambodia</span>
-                </div>
-              </div>
-
-              {/* Direct Action Buttons */}
-              <div className="flex flex-wrap gap-3 pt-2">
-                <a
-                  href="https://t.me/dara_nhim"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="refero-btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-3 text-xs font-bold text-white shadow-xl"
-                >
-                  <Send size={15} />
-                  <span>Message on Telegram</span>
-                </a>
-
-                <button
-                  type="button"
-                  onClick={handleCopyEmail}
-                  className="refero-btn-secondary inline-flex items-center gap-2 rounded-xl px-4 py-3 text-xs font-semibold text-slate-200 hover:text-white"
-                >
-                  {copied ? <Check size={15} className="text-emerald-400" /> : <Copy size={15} />}
-                  <span>{copied ? "Email Copied!" : "Copy Email"}</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Right Column: Quick Interactive Message Box */}
-            <div className="lg:col-span-6">
-              <div className="rounded-2xl p-6 border transition-colors bg-white/[0.03] border-white/10 [data-theme=light]:bg-slate-100/90 [data-theme=light]:border-slate-200 shadow-inner">
-                <div className="flex items-center gap-2 mb-4">
-                  <MessageSquare size={16} className="text-cyan-400" />
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-100 [data-theme=light]:text-slate-900">
-                    Direct Dispatch to Telegram
-                  </span>
-                </div>
-
-                {formSent ? (
-                  <div className="py-8 text-center space-y-2">
-                    <div className="inline-grid h-12 w-12 place-items-center rounded-full bg-emerald-500/20 text-emerald-400 mx-auto">
-                      <Check size={24} />
-                    </div>
-                    <p className="text-sm font-bold text-white [data-theme=light]:text-slate-900">Opening Telegram chat...</p>
-                    <p className="text-xs text-slate-400 [data-theme=light]:text-slate-600">Thank you for reaching out!</p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-3.5">
-                    <div>
-                      <label className="block text-[11px] font-mono font-semibold text-slate-300 [data-theme=light]:text-slate-700 mb-1">
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={formState.name}
-                        onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                        placeholder="John Doe"
-                        className="w-full rounded-xl px-3.5 py-2.5 text-xs text-slate-100 [data-theme=light]:text-slate-900 bg-white/[0.06] border border-white/15 [data-theme=light]:bg-white [data-theme=light]:border-slate-300 placeholder:text-slate-500 [data-theme=light]:placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none [data-theme=light]:shadow-sm transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-[11px] font-mono font-semibold text-slate-300 [data-theme=light]:text-slate-700 mb-1">
-                        Your Email or Contact Handle
-                      </label>
-                      <input
-                        type="text"
-                        value={formState.email}
-                        onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                        placeholder="johndoe@example.com / @telegram"
-                        className="w-full rounded-xl px-3.5 py-2.5 text-xs text-slate-100 [data-theme=light]:text-slate-900 bg-white/[0.06] border border-white/15 [data-theme=light]:bg-white [data-theme=light]:border-slate-300 placeholder:text-slate-500 [data-theme=light]:placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none [data-theme=light]:shadow-sm transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-[11px] font-mono font-semibold text-slate-300 [data-theme=light]:text-slate-700 mb-1">
-                        Message / Project Brief
-                      </label>
-                      <textarea
-                        required
-                        rows={3}
-                        value={formState.message}
-                        onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                        placeholder="Hi Dara, I would like to discuss a web development project..."
-                        className="w-full rounded-xl px-3.5 py-2.5 text-xs text-slate-100 [data-theme=light]:text-slate-900 bg-white/[0.06] border border-white/15 [data-theme=light]:bg-white [data-theme=light]:border-slate-300 placeholder:text-slate-500 [data-theme=light]:placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none resize-none [data-theme=light]:shadow-sm transition-colors"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full refero-btn-primary rounded-xl py-3 text-xs font-bold text-white flex items-center justify-center gap-2 cursor-pointer shadow-lg mt-2"
-                    >
-                      <Send size={14} />
-                      <span>Send Direct Message</span>
-                    </button>
-                  </form>
-                )}
-              </div>
-            </div>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Contact Header Section */}
+        <div className="mb-14 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-cyan-300 font-mono mb-4">
+            <Mail size={13} />
+            <span>05 // GET IN TOUCH</span>
           </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white">
+            Have an idea?{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
+              Let's build something great.
+            </span>
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-slate-400">
+            Open for internships, full-stack engineering roles, and innovative freelance collaborations.
+          </p>
         </div>
 
-        {/* Footer Bottom Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-white/10 text-xs text-slate-400">
-          <div className="flex items-center gap-3">
-            <img
-              src={profilePicture}
-              alt="Nhim Dara"
-              className="h-7 w-7 rounded-lg object-cover ring-1 ring-white/20"
-            />
-            <span>
-              &copy; {currentYear} <strong>Nhim Dara</strong>. All rights reserved.
-            </span>
+        {/* Contact Canvas Grid */}
+        <div className="grid lg:grid-cols-12 gap-8 mb-20">
+          {/* Coordinates & Social Channels (5 cols) */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+            <LiquidCard glowColor="cyan" className="p-6 sm:p-8 space-y-6">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  Direct Communications
+                </h3>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Feel free to send an email, message via Telegram, or connect on professional channels. I respond quickly.
+                </p>
+              </div>
+
+              {/* Email Chip with Copy Action */}
+              <div className="refero-pill p-4 rounded-2xl space-y-2">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">
+                  PRIMARY EMAIL
+                </span>
+                <div className="flex items-center justify-between gap-3">
+                  <a
+                    href={`mailto:${email}`}
+                    className="text-sm sm:text-base font-mono font-bold text-cyan-400 hover:underline truncate"
+                  >
+                    {email}
+                  </a>
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="refero-icon-btn p-2 rounded-xl text-slate-300 transition-colors cursor-pointer"
+                    title="Copy email"
+                  >
+                    {copied ? (
+                      <Check size={16} className="text-emerald-400" />
+                    ) : (
+                      <Copy size={16} />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {/* Location Card */}
+              <div className="refero-pill p-4 rounded-2xl flex items-center gap-3 font-mono">
+                <div className="refero-icon-btn grid h-10 w-10 place-items-center rounded-xl text-cyan-400 shrink-0">
+                  <MapPin size={18} />
+                </div>
+                <div>
+                  <p className="text-xs sm:text-sm font-bold text-white">Phnom Penh, Cambodia</p>
+                  <p className="text-xs text-slate-400 font-medium">UTC+7 (Indochina Time)</p>
+                </div>
+              </div>
+
+              {/* Social Channels */}
+              <div className="pt-4 border-t border-white/10">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold block mb-3">
+                  CONNECT ACROSS PLATFORMS
+                </span>
+                <div className="flex items-center gap-2">
+                  {socialLinks.map((s) => (
+                    <a
+                      key={s.name}
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="refero-icon-btn grid h-11 w-11 place-items-center rounded-xl text-slate-300 hover:scale-110 transition-all"
+                      aria-label={s.name}
+                    >
+                      {s.icon}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </LiquidCard>
           </div>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-2">
-            {socialLinks.map((s) => (
-              <a
-                key={s.name}
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.name}
-                className={`grid h-8 w-8 place-items-center rounded-lg bg-white/5 border border-white/10 text-slate-400 transition-colors ${s.color}`}
-              >
-                {s.icon}
-              </a>
-            ))}
+          {/* Contact Form (7 cols) */}
+          <LiquidCard glowColor="purple" className="lg:col-span-7 p-6 sm:p-8">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <h3 className="text-xl font-bold text-white mb-2">
+                Send a Message
+              </h3>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-mono text-slate-400 mb-1">
+                    YOUR NAME *
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="e.g. Sokha"
+                    className="refero-input w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors font-sans"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-slate-400 mb-1">
+                    EMAIL ADDRESS
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="sokha@example.com"
+                    className="refero-input w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors font-sans"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono text-slate-400 mb-1">
+                  SUBJECT / TOPIC
+                </label>
+                <input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="Internship / Freelance Project / Inquiry"
+                  className="refero-input w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors font-sans"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono text-slate-400 mb-1">
+                  YOUR MESSAGE *
+                </label>
+                <textarea
+                  name="message"
+                  required
+                  rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell me about your project, timeline, or engineering opportunity..."
+                  className="refero-input w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors font-sans resize-none"
+                />
+              </div>
+
+              <div className="pt-2 flex items-center justify-between">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="refero-btn-primary flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs font-bold text-white shadow-xl cursor-pointer"
+                >
+                  <Send size={15} />
+                  <span>{isSubmitting ? "Sending..." : "Dispatch Message ⚡"}</span>
+                </button>
+
+                {formSent && (
+                  <span className="text-xs font-mono text-emerald-300 flex items-center gap-1.5 animate-in fade-in">
+                    <Check size={14} />
+                    Message sent via Telegram!
+                  </span>
+                )}
+              </div>
+            </form>
+          </LiquidCard>
+        </div>
+
+        {/* Minimal Footer */}
+        <div className="pt-10 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-slate-400">
+          <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+            <span className="font-bold text-white text-sm">Nhim Dara</span>
+            <span className="hidden sm:inline text-slate-600">•</span>
+            <span>Building Digital Experiences That Matter.</span>
           </div>
 
-          {/* Back to Top */}
-          <button
-            type="button"
-            onClick={scrollToTop}
-            className="refero-pill inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs text-slate-300 hover:text-white cursor-pointer"
-          >
-            <span>Back to top</span>
-            <ArrowUp size={13} />
-          </button>
+          {/* Navigation Anchors */}
+          <div className="flex items-center gap-4 text-xs">
+            <a href="#home" className="hover:text-cyan-300 transition-colors">
+              Home
+            </a>
+            <a href="#about" className="hover:text-cyan-300 transition-colors">
+              About
+            </a>
+            <a href="#skills" className="hover:text-cyan-300 transition-colors">
+              Skills
+            </a>
+            <a href="#projects" className="hover:text-cyan-300 transition-colors">
+              Projects
+            </a>
+            <a href="#experience" className="hover:text-cyan-300 transition-colors">
+              Experience
+            </a>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className="flex items-center gap-1 hover:text-white transition-colors cursor-pointer"
+            >
+              <span>Back to Top</span>
+              <ArrowUp size={13} />
+            </button>
+            <span className="text-slate-600">|</span>
+            <span className="font-mono">© {currentYear}</span>
+          </div>
         </div>
       </div>
     </footer>

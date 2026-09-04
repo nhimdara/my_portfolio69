@@ -1,228 +1,340 @@
 import React, { useState } from "react";
 import {
   Code,
-  Database,
-  Globe,
-  Layout,
   Server,
-  Settings,
-  Sparkles,
-  Terminal,
-  Cpu,
-  Layers,
+  Database,
   Wrench,
-  CheckCircle,
+  Sparkles,
+  Layers,
+  CheckCircle2,
+  Cpu,
 } from "lucide-react";
 import {
   FaReact,
   FaLaravel,
   FaPhp,
+  FaJava,
+  FaNodeJs,
+  FaGitAlt,
+  FaGithub,
   FaHtml5,
   FaCss3Alt,
   FaJsSquare,
-  FaGitAlt,
-  FaGithub,
-  FaFigma,
-  FaNodeJs,
-  FaDocker,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
-  SiBootstrap,
-  SiPostgresql,
-  SiMysql,
-  SiFastapi,
-  SiPostman,
-  SiVite,
   SiTypescript,
+  SiSpringboot,
+  SiExpress,
+  SiMysql,
+  SiMongodb,
+  SiVite,
+  SiPostman,
 } from "react-icons/si";
 import LiquidCard from "../../components/ui/LiquidCard";
 
 export const SkillsSection = () => {
-  const [selectedDomain, setSelectedDomain] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("All");
 
-  const techIcons = [
-    { name: "React 19", icon: <FaReact className="text-cyan-400" /> },
-    { name: "TypeScript", icon: <SiTypescript className="text-blue-400" /> },
-    { name: "Laravel 12", icon: <FaLaravel className="text-red-500" /> },
-    { name: "PHP 8", icon: <FaPhp className="text-indigo-400" /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-300" /> },
-    { name: "MySQL", icon: <SiMysql className="text-blue-500" /> },
-    { name: "PostgreSQL", icon: <SiPostgresql className="text-sky-400" /> },
-    { name: "FastAPI", icon: <SiFastapi className="text-emerald-400" /> },
-    { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
-    { name: "Vite", icon: <SiVite className="text-purple-400" /> },
-    { name: "Git & GitHub", icon: <FaGithub className="text-slate-300" /> },
-    { name: "Postman", icon: <SiPostman className="text-orange-400" /> },
-  ];
+  const categories = ["All", "Frontend", "Backend", "Database", "Tools"];
 
-  const skillDomains = [
+  const skillsData = [
+    // Frontend
     {
-      category: "Frontend Engineering",
-      icon: Layout,
+      name: "React.js",
+      category: "Frontend",
+      icon: <FaReact className="text-cyan-400" />,
+      experience: "Advanced / Daily",
+      percent: 95,
+      description: "Hooks, Context, State Architecture, Virtual DOM & Next.js ecosystem",
       glow: "cyan",
-      description:
-        "Building responsive, high-performance web applications with modern state management, component architecture, and fluid design systems.",
-      skills: [
-        { name: "React.js / Next.js", level: 92, note: "Hooks, Context, Router, State" },
-        { name: "Tailwind CSS & Modern CSS", level: 95, note: "Liquid Glass, Flex/Grid, Animations" },
-        { name: "JavaScript (ES6+) & TypeScript", level: 88, note: "Async, DOM, Generics, Types" },
-        { name: "Responsive & Adaptive UI", level: 94, note: "Mobile First, Accessible, Touch" },
-        { name: "Framer Motion & Micro-animations", level: 86, note: "Spring Physics & Smooth Layouts" },
-      ],
     },
     {
-      category: "Backend & Database",
-      icon: Server,
+      name: "JavaScript",
+      category: "Frontend",
+      icon: <FaJsSquare className="text-amber-400" />,
+      experience: "Core Specialty",
+      percent: 95,
+      description: "ES6+, Async/Await, Event Loop, Closures, DOM Manipulation",
+      glow: "amber",
+    },
+    {
+      name: "TypeScript",
+      category: "Frontend",
+      icon: <SiTypescript className="text-blue-400" />,
+      experience: "Production Ready",
+      percent: 90,
+      description: "Strong Typing, Generics, Interfaces, Union Types, Rigorous Safety",
+      glow: "blue",
+    },
+    {
+      name: "HTML5",
+      category: "Frontend",
+      icon: <FaHtml5 className="text-orange-500" />,
+      experience: "Mastered",
+      percent: 98,
+      description: "Semantic Markups, Accessible Landmarks (ARIA), SEO Optimization",
+      glow: "amber",
+    },
+    {
+      name: "CSS3",
+      category: "Frontend",
+      icon: <FaCss3Alt className="text-sky-400" />,
+      experience: "Mastered",
+      percent: 95,
+      description: "Flexbox, CSS Grid, Keyframe Animations, Responsive Viewports",
+      glow: "cyan",
+    },
+    {
+      name: "Tailwind CSS",
+      category: "Frontend",
+      icon: <SiTailwindcss className="text-cyan-300" />,
+      experience: "Design Engine",
+      percent: 95,
+      description: "Utility-first design systems, modern v4, custom theme variables",
+      glow: "cyan",
+    },
+
+    // Backend
+    {
+      name: "Laravel",
+      category: "Backend",
+      icon: <FaLaravel className="text-rose-500" />,
+      experience: "Core Specialty",
+      percent: 92,
+      description: "Eloquent ORM, Middleware, Sanctum Authentication, Migrations, MVC",
       glow: "purple",
-      description:
-        "Architecting secure RESTful endpoints, relational schemas, authentication flows, and data processing services.",
-      skills: [
-        { name: "PHP 8 & Object-Oriented", level: 88, note: "OOP, MVC, Design Patterns" },
-        { name: "Laravel Framework", level: 90, note: "Eloquent, Sanctum, Migrations, Policies" },
-        { name: "MySQL & PostgreSQL", level: 86, note: "Schema Design, Indexing, Transactions" },
-        { name: "RESTful API Engineering", level: 92, note: "JSON Schemas, JWT, Status Handlers" },
-        { name: "Python / FastAPI", level: 82, note: "Pydantic, SQLAlchemy, Async Routers" },
-      ],
     },
     {
-      category: "Workflow & Engineering Tools",
-      icon: Wrench,
+      name: "PHP",
+      category: "Backend",
+      icon: <FaPhp className="text-indigo-400" />,
+      experience: "Advanced",
+      percent: 90,
+      description: "Modern PHP 8+, OOP Principles, Server Lifecycle, Data Sanitization",
+      glow: "purple",
+    },
+    {
+      name: "Node.js",
+      category: "Backend",
+      icon: <FaNodeJs className="text-green-500" />,
+      experience: "Proficient",
+      percent: 85,
+      description: "Non-blocking I/O runtime, NPM modules, microservice backends",
       glow: "emerald",
-      description:
-        "Employing industry-standard developer toolchains for version control, continuous deployment, debugging, and API testing.",
-      skills: [
-        { name: "Git & GitHub Workflows", level: 90, note: "Branching, Pull Requests, Actions" },
-        { name: "Postman API Testing", level: 88, note: "Automated Collections, Environments" },
-        { name: "Vite & Build Tooling", level: 92, note: "HMR, Bundling, Asset Optimization" },
-        { name: "Figma to Code Precision", level: 85, note: "Pixel-perfect Responsive Specs" },
-        { name: "Cloud Deployment (Vercel, Render)", level: 88, note: "CI/CD Pipelines & Serverless" },
-      ],
+    },
+    {
+      name: "Express.js",
+      category: "Backend",
+      icon: <SiExpress className="text-slate-300" />,
+      experience: "Proficient",
+      percent: 88,
+      description: "RESTful endpoints, error middleware, JWT auth, request routing",
+      glow: "blue",
+    },
+    {
+      name: "Java",
+      category: "Backend",
+      icon: <FaJava className="text-red-400" />,
+      experience: "Academic Rigor",
+      percent: 82,
+      description: "Object-oriented structures, design patterns, robust typing",
+      glow: "amber",
+    },
+    {
+      name: "Spring Boot",
+      category: "Backend",
+      icon: <SiSpringboot className="text-emerald-400" />,
+      experience: "Enterprise Stack",
+      percent: 85,
+      description: "Spring MVC, Dependency Injection, REST services, JPA Entities",
+      glow: "emerald",
+    },
+
+    // Database
+    {
+      name: "MySQL",
+      category: "Database",
+      icon: <SiMysql className="text-blue-400" />,
+      experience: "Core Specialty",
+      percent: 90,
+      description: "Schema design, relational foreign keys, indexing, normalized queries",
+      glow: "blue",
+    },
+    {
+      name: "MongoDB",
+      category: "Database",
+      icon: <SiMongodb className="text-emerald-400" />,
+      experience: "Document Store",
+      percent: 82,
+      description: "NoSQL document collections, BSON aggregation pipelines, Mongoose",
+      glow: "emerald",
+    },
+
+    // Tools
+    {
+      name: "Git",
+      category: "Tools",
+      icon: <FaGitAlt className="text-orange-500" />,
+      experience: "Daily Driver",
+      percent: 92,
+      description: "Branch management, rebasing, conflict resolution, version control",
+      glow: "amber",
+    },
+    {
+      name: "GitHub",
+      category: "Tools",
+      icon: <FaGithub className="text-slate-200" />,
+      experience: "Collaboration",
+      percent: 94,
+      description: "CI/CD Actions, Pull Requests, Code Reviews, Release Tracking",
+      glow: "blue",
+    },
+    {
+      name: "Vite",
+      category: "Tools",
+      icon: <SiVite className="text-purple-400" />,
+      experience: "Build Tool",
+      percent: 90,
+      description: "Lightning HMR, optimized ESM bundling, modern dev server",
+      glow: "purple",
+    },
+    {
+      name: "REST API",
+      category: "Tools",
+      icon: <Server className="text-cyan-400" />,
+      experience: "Architecture",
+      percent: 95,
+      description: "Stateless protocols, standard HTTP verbs, clean JSON payload design",
+      glow: "cyan",
+    },
+    {
+      name: "Postman",
+      category: "Tools",
+      icon: <SiPostman className="text-orange-400" />,
+      experience: "API Testing",
+      percent: 88,
+      description: "Endpoint contract testing, automated test collections, auth headers",
+      glow: "amber",
     },
   ];
 
-  const filteredDomains =
-    selectedDomain === "All"
-      ? skillDomains
-      : skillDomains.filter((d) => d.category.toLowerCase().includes(selectedDomain.toLowerCase()));
+  // Calculate skill category counts
+  const categoryCounts = categories.reduce((acc, cat) => {
+    if (cat === "All") {
+      acc[cat] = skillsData.length;
+    } else {
+      acc[cat] = skillsData.filter((s) => s.category === cat).length;
+    }
+    return acc;
+  }, {});
+
+  const filteredSkills =
+    activeCategory === "All"
+      ? skillsData
+      : skillsData.filter((s) => s.category === activeCategory);
 
   return (
-    <div className="relative py-20 px-4 sm:px-6 lg:px-8">
-      {/* Ambient background glows */}
-      <div className="pointer-events-none absolute top-1/3 -left-20 h-96 w-96 rounded-full bg-cyan-500/10 blur-[130px]" />
-      <div className="pointer-events-none absolute bottom-1/4 -right-20 h-96 w-96 rounded-full bg-emerald-500/10 blur-[130px]" />
+    <div className="relative pt-28 sm:pt-32 pb-24 px-4 sm:px-6 lg:px-8">
+      {/* Background ambient lighting */}
+      <div className="pointer-events-none absolute top-1/4 right-1/4 h-96 w-96 rounded-full bg-cyan-500/10 blur-[150px]" />
+      <div className="pointer-events-none absolute bottom-1/3 left-1/4 h-96 w-96 rounded-full bg-purple-500/10 blur-[150px]" />
 
       <div className="mx-auto max-w-7xl">
-        {/* Section Header */}
-        <div className="mb-14 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-md mb-4 shadow-[0_0_15px_rgba(6,182,212,0.15)] font-mono">
-            <Cpu size={14} />
-            <span>TECHNICAL MATRIX</span>
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-cyan-300 font-mono mb-4 shadow-[0_0_20px_rgba(6,182,212,0.15)]">
+            <Cpu size={13} />
+            <span>02 // TECHNICAL ARSENAL</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
-            Skills &amp; Technology{" "}
-            <span className="refero-text-accent">Stack</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+            Skills &amp;{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
+              Architectural Competencies
+            </span>
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base text-slate-400">
-            A comprehensive overview of programming languages, frameworks, databases, and engineering workflows I build with daily.
+          <p className="mt-3 text-base sm:text-lg text-slate-400 max-w-2xl mx-auto">
+            17 core technical competencies across full-stack web development, backend frameworks, relational databases, and dev toolchains.
           </p>
         </div>
 
-        {/* Tech Badges Grid */}
-        <div className="mb-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-          {techIcons.map((tech, idx) => (
-            <div
-              key={idx}
-              className="refero-card p-3 rounded-2xl flex items-center gap-3 border border-white/10 hover:border-cyan-400/40 transition-all hover:scale-[1.02] cursor-default"
-            >
-              <div className="text-xl shrink-0">{tech.icon}</div>
-              <span className="text-xs font-bold text-slate-200 truncate">
-                {tech.name}
-              </span>
-            </div>
-          ))}
-        </div>
+        {/* Glass Category Filter Toolbar */}
+        <div className="refero-card flex flex-wrap items-center justify-center gap-2 mb-12 p-2 rounded-2xl backdrop-blur-xl w-fit mx-auto shadow-2xl">
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat;
+            const count = categoryCounts[cat] || 0;
 
-        {/* Domain Filter Pills */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex flex-wrap items-center gap-2 p-1.5 rounded-2xl refero-card border border-white/10">
-            {["All", "Frontend", "Backend", "Workflow"].map((d) => (
+            return (
               <button
-                key={d}
+                key={cat}
                 type="button"
-                onClick={() => setSelectedDomain(d)}
-                className={`rounded-xl px-4 py-2 text-xs font-bold transition-all cursor-pointer ${
-                  selectedDomain === d
-                    ? "bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]"
-                    : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
+                onClick={() => setActiveCategory(cat)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                  isActive
+                    ? "refero-pill-active shadow-md"
+                    : "refero-pill text-slate-400 hover:text-white"
                 }`}
               >
-                {d}
+                <span>{cat}</span>
+                <span
+                  className={`text-[10px] font-mono px-1.5 py-0.2 rounded-md ${
+                    isActive
+                      ? "bg-cyan-400/20 text-cyan-200"
+                      : "bg-white/[0.06] text-slate-400"
+                  }`}
+                >
+                  {count}
+                </span>
               </button>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
-        {/* Domains Breakdown Grid */}
-        <div className="grid lg:grid-cols-3 gap-6">
-          {filteredDomains.map((domain, idx) => (
+        {/* Animated Skill Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
+          {filteredSkills.map((skill, idx) => (
             <LiquidCard
-              key={idx}
-              glowColor={domain.glow}
-              className="p-6 sm:p-7 flex flex-col justify-between"
+              key={`${skill.name}-${idx}`}
+              glowColor={skill.glow}
+              className="p-5 flex flex-col justify-between group hover:-translate-y-1.5 transition-all duration-300 border border-white/[0.08] hover:border-white/20 rounded-2xl bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-950/90 shadow-xl"
             >
               <div>
-                {/* Header */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 border border-white/10 text-cyan-300">
-                    <domain.icon size={20} />
+                {/* Icon Pod & Category Tag */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="relative grid h-12 w-12 place-items-center rounded-2xl bg-slate-950 border border-white/15 text-2xl group-hover:scale-110 group-hover:border-cyan-400/50 shadow-lg transition-all duration-300">
+                    {skill.icon}
                   </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white tracking-tight">
-                      {domain.category}
-                    </h3>
-                    <span className="text-[10px] font-mono text-slate-400 uppercase">
-                      Core Domain
-                    </span>
-                  </div>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-300 bg-cyan-500/10 px-2.5 py-1 rounded-lg border border-cyan-400/25">
+                    {skill.category}
+                  </span>
                 </div>
 
-                <p className="text-xs leading-relaxed text-slate-400 mb-6">
-                  {domain.description}
+                {/* Skill Name & Description */}
+                <h3 className="text-lg font-extrabold text-white mb-1.5 group-hover:text-cyan-300 transition-colors tracking-tight">
+                  {skill.name}
+                </h3>
+                <p className="text-xs text-slate-400 leading-relaxed font-sans mb-4">
+                  {skill.description}
                 </p>
-
-                {/* Skill Bars */}
-                <div className="space-y-4">
-                  {domain.skills.map((skill, sIdx) => (
-                    <div key={sIdx} className="space-y-1.5">
-                      <div className="flex items-center justify-between text-xs">
-                        <span className="font-semibold text-slate-200">
-                          {skill.name}
-                        </span>
-                        <span className="font-mono text-[11px] text-cyan-400 font-bold">
-                          {skill.level}%
-                        </span>
-                      </div>
-
-                      {/* Progress Track */}
-                      <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/5 border border-white/10">
-                        <div
-                          className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-1000"
-                          style={{ width: `${skill.level}%` }}
-                        />
-                      </div>
-
-                      <p className="text-[10px] font-mono text-slate-500 truncate">
-                        {skill.note}
-                      </p>
-                    </div>
-                  ))}
-                </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-500">
-                <span>VERIFIED PROFICIENCY</span>
-                <span className="text-cyan-400 font-bold">PRO LEVEL</span>
+              {/* Telemetry Progress Bar & Level Footer */}
+              <div className="pt-3 border-t border-white/10">
+                <div className="flex items-center justify-between text-[11px] font-mono mb-1.5">
+                  <span className="text-slate-400 flex items-center gap-1">
+                    <CheckCircle2 size={12} className="text-emerald-400" />
+                    {skill.experience}
+                  </span>
+                  <span className="text-cyan-300 font-bold">{skill.percent}%</span>
+                </div>
+
+                {/* Glowing Telemetry Level Bar */}
+                <div className="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-400 rounded-full transition-all duration-700 shadow-[0_0_8px_rgba(34,211,238,0.4)]"
+                    style={{ width: `${skill.percent}%` }}
+                  />
+                </div>
               </div>
             </LiquidCard>
           ))}
