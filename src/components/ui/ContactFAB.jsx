@@ -19,7 +19,7 @@ const ContactFAB = ({ isAiOpen = false }) => {
 
   return (
     <div
-      className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 sm:z-50 transition-all duration-500 ${
+      className={`fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40 transition-all duration-500 ${
         isActuallyVisible
           ? "opacity-100 translate-y-0 scale-100"
           : "opacity-0 translate-y-8 scale-90 pointer-events-none"

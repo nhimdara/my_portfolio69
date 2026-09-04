@@ -252,21 +252,20 @@ export const AiAssistantWidget = ({ isOpen: controlledIsOpen, setIsOpen: control
 
       {/* Floating Trigger Widget Button (Bottom Left) */}
       <div
-        className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 flex items-center gap-3"
-        style={{ position: "fixed" }}
+        className="fixed bottom-3 left-3 sm:bottom-6 sm:left-6 z-40 flex items-center gap-3 max-w-[calc(100vw-5rem)]"
       >
         {!isOpen && (
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="refero-card-elevated group relative flex items-center gap-2 rounded-full p-1 sm:p-1.5 sm:pr-5 border border-cyan-500/40 shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
+            className="refero-card-elevated group relative flex items-center gap-2 rounded-full p-1 sm:p-1.5 sm:pr-4 border border-cyan-500/40 shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
             aria-label="Open Dara AI Assistant"
           >
             {/* Ambient glowing aura */}
             <span className="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-500 opacity-60 blur-[8px] group-hover:opacity-100 transition-opacity animate-pulse" />
 
-            <div className="relative flex items-center gap-2.5">
-              <div className="relative h-10 w-10 rounded-full overflow-hidden border border-cyan-400/50 shadow-md shrink-0 bg-slate-950">
+            <div className="relative flex items-center gap-2">
+              <div className="relative h-9 w-9 sm:h-10 sm:w-10 rounded-full overflow-hidden border border-cyan-400/50 shadow-md shrink-0 bg-slate-950">
                 <img src={avatarPic} alt="Nhim Dara AI" className="h-full w-full object-cover" />
                 <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-400 border-2 border-slate-950 animate-pulse" />
               </div>

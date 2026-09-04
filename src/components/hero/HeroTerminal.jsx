@@ -148,13 +148,13 @@ export const HeroTerminal = () => {
                   <p className="pl-4">
                     <span className="text-slate-400">coreStack:</span> [
                   </p>
-                  <p className="pl-6 sm:pl-8 text-cyan-200 break-words">
+                  <p className="pl-4 sm:pl-8 text-cyan-200 break-words">
                     "React.js", "TypeScript", "Tailwind CSS", "Laravel", "Spring Boot", "MySQL"
                   </p>
                   <p className="pl-4">],</p>
                   <p className="pl-4">
                     <span className="text-slate-400">status:</span>{" "}
-                    <span className="text-emerald-400 font-bold">"INTERNSHIP_&amp;_FREELANCE_READY"</span>,
+                    <span className="text-emerald-400 font-bold break-all sm:break-normal">"INTERNSHIP_&amp;_FREELANCE_READY"</span>,
                   </p>
                   <p>&#125;;</p>
                 </div>

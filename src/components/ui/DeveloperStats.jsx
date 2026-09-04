@@ -209,8 +209,8 @@ export const DeveloperStats = () => {
             </div>
 
             {/* Visual GitHub Commit Heatmap Matrix */}
-            <div className="mt-5 pt-4 border-t border-white/10">
-              <div className="flex flex-col gap-1">
+            <div className="mt-5 pt-4 border-t border-white/10 overflow-x-auto no-scrollbar">
+              <div className="flex flex-col gap-1 min-w-[180px]">
                 {commitGrid.map((row, rIdx) => (
                   <div key={rIdx} className="flex gap-1 justify-between">
                     {row.map((lvl, cIdx) => (
