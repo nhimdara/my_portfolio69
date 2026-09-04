@@ -123,7 +123,7 @@ export const Certificates = () => {
       : certificates.filter((c) => c.category === activeCategory);
 
   return (
-    <div className="relative pt-28 sm:pt-32 pb-24 px-4 sm:px-6 lg:px-8">
+    <div className="relative pt-28 sm:pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background ambient lighting */}
       <div className="pointer-events-none absolute top-1/3 -right-20 h-96 w-96 rounded-full bg-cyan-500/10 blur-[140px]" />
       <div className="pointer-events-none absolute bottom-1/4 -left-20 h-96 w-96 rounded-full bg-indigo-600/10 blur-[140px]" />
@@ -148,7 +148,7 @@ export const Certificates = () => {
           </div>
 
           {/* Category Filter Toolbar with Count Badges */}
-          <div className="refero-card flex flex-wrap items-center gap-2 p-1.5 rounded-2xl backdrop-blur-xl shadow-xl">
+          <div className="refero-card flex flex-wrap items-center gap-1.5 sm:gap-2 p-1.5 rounded-2xl backdrop-blur-xl shadow-xl max-w-full overflow-x-auto no-scrollbar">
             {categories.map((cat) => {
               const isActive = activeCategory === cat;
               const count = categoryCounts[cat] || 0;
@@ -157,7 +157,7 @@ export const Certificates = () => {
                   key={cat}
                   type="button"
                   onClick={() => setActiveCategory(cat)}
-                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                  className={`flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer shrink-0 whitespace-nowrap ${
                     isActive
                       ? "refero-pill-active shadow-sm"
                       : "refero-pill text-slate-400 hover:text-white"
@@ -277,27 +277,27 @@ export const Certificates = () => {
 
       {/* Lightbox Zoom Modal */}
       {selected && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6">
           <div
             className="fixed inset-0 bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200"
             onClick={() => setSelected(null)}
           />
 
-          <div className="refero-card-elevated relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl p-6 sm:p-8 shadow-2xl animate-in zoom-in-95 duration-200 z-10 border border-white/20">
+          <div className="refero-card-elevated relative w-full max-w-3xl max-h-[90dvh] sm:max-h-[90vh] overflow-y-auto rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-2xl animate-in zoom-in-95 duration-200 z-10 border border-white/20 no-scrollbar">
             {/* Top specular shine */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-amber-400/40 to-cyan-400/40" />
 
             <button
               onClick={() => setSelected(null)}
-              className="absolute top-5 right-5 grid h-9 w-9 place-items-center rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-all cursor-pointer z-20 border border-white/10"
+              className="absolute top-3 right-3 sm:top-5 sm:right-5 grid h-8 w-8 sm:h-9 sm:w-9 place-items-center rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-all cursor-pointer z-20 border border-white/10"
               aria-label="Close modal"
             >
-              <X size={18} />
+              <X size={16} />
             </button>
 
             <div className="mb-5 pr-10">
-              <div className="flex flex-wrap items-center gap-2.5 mb-2">
-                <span className="rounded-lg bg-amber-500/15 border border-amber-400/30 px-3 py-1 text-xs font-mono font-bold text-amber-300">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 mb-2">
+                <span className="rounded-lg bg-amber-500/15 border border-amber-400/30 px-2.5 sm:px-3 py-0.5 sm:py-1 text-xs font-mono font-bold text-amber-300">
                   {selected.type}
                 </span>
                 <span className="text-xs font-mono text-slate-400 flex items-center gap-1">
@@ -309,7 +309,7 @@ export const Certificates = () => {
                   Verified Credential
                 </span>
               </div>
-              <h3 className="text-2xl font-black text-white leading-tight tracking-tight">
+              <h3 className="text-xl sm:text-2xl font-black text-white leading-tight tracking-tight">
                 {selected.title}
               </h3>
               <p className="text-xs font-mono text-cyan-400 font-semibold mt-1 flex items-center gap-1.5">
@@ -318,16 +318,16 @@ export const Certificates = () => {
               </p>
             </div>
 
-            <div className="w-full overflow-hidden rounded-2xl bg-slate-950 border border-white/15 mb-5 p-3 shadow-inner flex items-center justify-center">
+            <div className="w-full overflow-hidden rounded-xl sm:rounded-2xl bg-slate-950 border border-white/15 mb-4 sm:mb-5 p-2 sm:p-3 shadow-inner flex items-center justify-center">
               <img
                 src={selected.image}
                 alt={selected.title}
-                className="w-full h-auto object-contain max-h-[58vh] mx-auto rounded-xl shadow-2xl"
+                className="w-full h-auto object-contain max-h-[50vh] sm:max-h-[58vh] mx-auto rounded-lg sm:rounded-xl shadow-2xl"
               />
             </div>
 
-            <div className="rounded-xl bg-white/5 border border-white/10 p-4">
-              <p className="text-xs sm:text-sm leading-relaxed text-slate-200 border-l-2 border-amber-400 pl-3.5">
+            <div className="rounded-xl bg-white/5 border border-white/10 p-3 sm:p-4">
+              <p className="text-xs sm:text-sm leading-relaxed text-slate-200 border-l-2 border-amber-400 pl-3 sm:pl-3.5">
                 {selected.description}
               </p>
             </div>

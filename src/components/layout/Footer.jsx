@@ -121,7 +121,7 @@ export const Footer = ({ onCopyEmail }) => {
         <div className="grid lg:grid-cols-12 gap-8 mb-20">
           {/* Coordinates & Social Channels (5 cols) */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
-            <LiquidCard glowColor="cyan" className="p-6 sm:p-8 space-y-6">
+            <LiquidCard glowColor="cyan" className="p-5 sm:p-8 space-y-6">
               <div>
                 <h3 className="text-xl font-bold text-white mb-2">
                   Direct Communications
@@ -132,21 +132,21 @@ export const Footer = ({ onCopyEmail }) => {
               </div>
 
               {/* Email Chip with Copy Action */}
-              <div className="refero-pill p-4 rounded-2xl space-y-2">
+              <div className="refero-pill p-3.5 sm:p-4 rounded-2xl space-y-2">
                 <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">
                   PRIMARY EMAIL
                 </span>
                 <div className="flex items-center justify-between gap-3">
                   <a
                     href={`mailto:${email}`}
-                    className="text-sm sm:text-base font-mono font-bold text-cyan-400 hover:underline truncate"
+                    className="text-xs sm:text-base font-mono font-bold text-cyan-400 hover:underline truncate"
                   >
                     {email}
                   </a>
                   <button
                     type="button"
                     onClick={handleCopyEmail}
-                    className="refero-icon-btn p-2 rounded-xl text-slate-300 transition-colors cursor-pointer"
+                    className="refero-icon-btn p-2 rounded-xl text-slate-300 transition-colors cursor-pointer shrink-0"
                     title="Copy email"
                   >
                     {copied ? (
@@ -159,7 +159,7 @@ export const Footer = ({ onCopyEmail }) => {
               </div>
 
               {/* Location Card */}
-              <div className="refero-pill p-4 rounded-2xl flex items-center gap-3 font-mono">
+              <div className="refero-pill p-3.5 sm:p-4 rounded-2xl flex items-center gap-3 font-mono">
                 <div className="refero-icon-btn grid h-10 w-10 place-items-center rounded-xl text-cyan-400 shrink-0">
                   <MapPin size={18} />
                 </div>
@@ -174,7 +174,7 @@ export const Footer = ({ onCopyEmail }) => {
                 <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold block mb-3">
                   CONNECT ACROSS PLATFORMS
                 </span>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   {socialLinks.map((s) => (
                     <a
                       key={s.name}
@@ -193,7 +193,7 @@ export const Footer = ({ onCopyEmail }) => {
           </div>
 
           {/* Contact Form (7 cols) */}
-          <LiquidCard glowColor="purple" className="lg:col-span-7 p-6 sm:p-8">
+          <LiquidCard glowColor="purple" className="lg:col-span-7 p-5 sm:p-8">
             <form onSubmit={handleSubmit} className="space-y-4">
               <h3 className="text-xl font-bold text-white mb-2">
                 Send a Message
@@ -259,18 +259,18 @@ export const Footer = ({ onCopyEmail }) => {
                 />
               </div>
 
-              <div className="pt-2 flex items-center justify-between">
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="refero-btn-primary flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs font-bold text-white shadow-xl cursor-pointer"
+                  className="refero-btn-primary flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-xs font-bold text-white shadow-xl cursor-pointer w-full sm:w-auto"
                 >
                   <Send size={15} />
                   <span>{isSubmitting ? "Sending..." : "Dispatch Message ⚡"}</span>
                 </button>
 
                 {formSent && (
-                  <span className="text-xs font-mono text-emerald-300 flex items-center gap-1.5 animate-in fade-in">
+                  <span className="text-xs font-mono text-emerald-300 flex items-center justify-center gap-1.5 animate-in fade-in">
                     <Check size={14} />
                     Message sent via Telegram!
                   </span>
@@ -282,14 +282,14 @@ export const Footer = ({ onCopyEmail }) => {
 
         {/* Minimal Footer */}
         <div className="pt-10 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-slate-400">
-          <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
             <span className="font-bold text-white text-sm">Nhim Dara</span>
             <span className="hidden sm:inline text-slate-600">•</span>
             <span>Building Digital Experiences That Matter.</span>
           </div>
 
           {/* Navigation Anchors */}
-          <div className="flex items-center gap-4 text-xs">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs">
             <a href="#home" className="hover:text-cyan-300 transition-colors">
               Home
             </a>

@@ -129,7 +129,7 @@ export const Navbar = ({ onOpenCommandPalette }) => {
               <span className="text-sm font-bold text-white tracking-tight leading-none group-hover:text-cyan-300 transition-colors">
                 Nhim Dara
               </span>
-              <span className="text-[10px] font-mono text-cyan-400 font-semibold tracking-wider mt-0.5">
+              <span className="hidden xs:inline text-[10px] font-mono text-cyan-400 font-semibold tracking-wider mt-0.5">
                 FULL-STACK DEVELOPER
               </span>
             </div>
@@ -156,17 +156,17 @@ export const Navbar = ({ onOpenCommandPalette }) => {
           </div>
 
           {/* Right Controls: Quick Search + Theme Switcher + Resume Button */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-1.5 sm:gap-2.5">
             {/* Command Palette Trigger */}
             <button
               type="button"
               onClick={onOpenCommandPalette}
               aria-label="Open command palette"
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs text-slate-300 hover:text-white hover:border-cyan-400/30 transition-all cursor-pointer"
+              className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs text-slate-300 hover:text-white hover:border-cyan-400/30 transition-all cursor-pointer"
             >
-              <Search size={13} className="text-cyan-400" />
+              <Search size={14} className="text-cyan-400 shrink-0" />
               <span className="hidden lg:inline text-[11px] text-slate-400">Search</span>
-              <kbd className="font-mono text-[10px] bg-white/10 px-1.5 py-0.5 rounded text-slate-300">
+              <kbd className="hidden sm:inline font-mono text-[10px] bg-white/10 px-1.5 py-0.5 rounded text-slate-300">
                 ⌘K
               </kbd>
             </button>
@@ -208,52 +208,59 @@ export const Navbar = ({ onOpenCommandPalette }) => {
         </div>
       </nav>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer with Backdrop */}
       {isOpen && (
-        <div className="md:hidden fixed inset-x-4 top-20 z-50 rounded-2xl bg-slate-950/95 backdrop-blur-2xl p-5 border border-white/15 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-200">
-          <div className="flex flex-col space-y-1">
-            {navItems.map((item) => {
-              const isActive = activeSection === item.id;
-              return (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={() => setIsOpen(false)}
-                  className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium transition-all ${
-                    isActive
-                      ? "bg-cyan-500/15 text-cyan-300 border border-cyan-400/30 font-semibold"
-                      : "text-slate-300 hover:bg-white/5"
-                  }`}
-                >
-                  <span>{item.label}</span>
-                </a>
-              );
-            })}
-          </div>
+        <>
+          <div
+            className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-40 md:hidden animate-fade-in"
+            onClick={() => setIsOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="md:hidden fixed inset-x-4 top-20 z-50 rounded-2xl bg-slate-950/95 backdrop-blur-2xl p-5 border border-white/15 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-200 max-h-[calc(100dvh-6rem)] overflow-y-auto">
+            <div className="flex flex-col space-y-1">
+              {navItems.map((item) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    onClick={() => setIsOpen(false)}
+                    className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium transition-all ${
+                      isActive
+                        ? "bg-cyan-500/15 text-cyan-300 border border-cyan-400/30 font-semibold"
+                        : "text-slate-300 hover:bg-white/5"
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                  </a>
+                );
+              })}
+            </div>
 
-          <div className="mt-4 pt-4 border-t border-white/10 flex flex-col gap-2">
-            <a
-              href={cvUrl}
-              download="CV-Nhim-Dara.pdf"
-              className="flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-md"
-            >
-              <FileDown size={14} />
-              <span>Download Resume</span>
-            </a>
+            <div className="mt-4 pt-4 border-t border-white/10 flex flex-col gap-2">
+              <a
+                href={cvUrl}
+                download="CV-Nhim-Dara.pdf"
+                className="flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-md"
+              >
+                <FileDown size={14} />
+                <span>Download Resume</span>
+              </a>
 
-            <button
-              type="button"
-              onClick={() => {
-                setIsOpen(false);
-                if (onOpenCommandPalette) onOpenCommandPalette();
-              }}
-              className="flex items-center justify-center gap-2 rounded-xl py-2 bg-white/[0.05] border border-white/10 text-xs font-semibold text-slate-300 hover:text-white"
-            >
-              <Search size={13} className="text-cyan-400" />
-              <span>Command Palette (⌘K)</span>
-            </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  if (onOpenCommandPalette) onOpenCommandPalette();
+                }}
+                className="flex items-center justify-center gap-2 rounded-xl py-2 bg-white/[0.05] border border-white/10 text-xs font-semibold text-slate-300 hover:text-white cursor-pointer"
+              >
+                <Search size={13} className="text-cyan-400" />
+                <span>Command Palette (⌘K)</span>
+              </button>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );

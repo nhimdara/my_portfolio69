@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Phone, Send, MessageCircle, X } from "lucide-react";
 import { FaTelegramPlane } from "react-icons/fa";
 
-const ContactFAB = () => {
+const ContactFAB = ({ isAiOpen = false }) => {
   const [visible, setVisible] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
@@ -14,17 +14,20 @@ const ContactFAB = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // If AI chat is active, hide FAB on mobile to avoid covering chat controls
+  const isActuallyVisible = visible && !isAiOpen;
+
   return (
     <div
-      className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ${
-        visible
+      className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 sm:z-50 transition-all duration-500 ${
+        isActuallyVisible
           ? "opacity-100 translate-y-0 scale-100"
           : "opacity-0 translate-y-8 scale-90 pointer-events-none"
       }`}
     >
       {/* Expanded Quick Contact Floating Dock */}
       {expanded && (
-        <div className="absolute bottom-16 right-0 mb-2 flex flex-col gap-1.5 min-w-[225px] liquid-glass-elevated p-2.5 rounded-2xl shadow-2xl border border-white/20 animate-fade-in whitespace-nowrap">
+        <div className="absolute bottom-14 sm:bottom-16 right-0 mb-2 flex flex-col gap-1.5 min-w-[210px] sm:min-w-[225px] liquid-glass-elevated p-2.5 rounded-2xl shadow-2xl border border-white/20 animate-fade-in whitespace-nowrap">
           <a
             href="https://t.me/dara_nhim"
             target="_blank"
@@ -58,17 +61,17 @@ const ContactFAB = () => {
             onClick={() => setExpanded(!expanded)}
             aria-expanded={expanded}
             aria-label="Toggle contact options"
-            className="liquid-btn-primary flex items-center gap-2.5 rounded-full px-5 py-3 text-xs sm:text-sm font-bold text-white shadow-2xl hover:scale-105 active:scale-95 transition-all"
+            className="liquid-btn-primary flex items-center justify-center gap-2 rounded-full p-3 sm:px-5 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
           >
             {expanded ? (
               <>
-                <X size={17} />
-                <span>Close</span>
+                <X size={18} />
+                <span className="hidden sm:inline">Close</span>
               </>
             ) : (
               <>
-                <MessageCircle size={17} className="animate-wiggle" />
-                <span>Quick Contact</span>
+                <MessageCircle size={18} className="animate-wiggle" />
+                <span className="hidden sm:inline">Quick Contact</span>
               </>
             )}
           </button>

@@ -96,7 +96,7 @@ export const Experience = () => {
       : timelineData.filter((item) => item.type === filter);
 
   return (
-    <div className="relative pt-28 sm:pt-32 pb-24 px-4 sm:px-6 lg:px-8">
+    <div className="relative pt-28 sm:pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background ambient glow */}
       <div className="pointer-events-none absolute top-1/2 left-1/3 h-96 w-96 rounded-full bg-cyan-500/10 blur-[150px]" />
       <div className="pointer-events-none absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-indigo-500/10 blur-[150px]" />
@@ -119,7 +119,7 @@ export const Experience = () => {
           </p>
 
           {/* Glass Filter Toolbar with Count Badges */}
-          <div className="refero-card flex flex-wrap items-center justify-center gap-2 mt-8 p-2 rounded-2xl backdrop-blur-xl w-fit mx-auto shadow-2xl">
+          <div className="refero-card flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mt-8 p-1.5 sm:p-2 rounded-2xl backdrop-blur-xl w-fit max-w-full mx-auto shadow-2xl">
             {categories.map((cat) => {
               const isActive = filter === cat;
               const count = categoryCounts[cat] || 0;
@@ -129,7 +129,7 @@ export const Experience = () => {
                   key={cat}
                   type="button"
                   onClick={() => setFilter(cat)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                  className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
                     isActive
                       ? "refero-pill-active shadow-md"
                       : "refero-pill text-slate-400 hover:text-white"
@@ -152,9 +152,9 @@ export const Experience = () => {
         </div>
 
         {/* Modern Vertical Timeline */}
-        <div className="relative border-l-2 border-white/15 ml-4 sm:ml-32 space-y-10">
+        <div className="relative border-l-2 border-white/15 ml-3 sm:ml-32 space-y-8 sm:space-y-10">
           {filteredData.map((item, idx) => (
-            <div key={idx} className="relative pl-6 sm:pl-10 group">
+            <div key={idx} className="relative pl-5 sm:pl-10 group">
               {/* Timeline Illuminated Node */}
               <div className="absolute -left-[17px] top-6 h-8 w-8 rounded-xl bg-slate-950 border border-white/20 group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(34,211,238,0.4)] grid place-items-center shadow-lg transition-all duration-300">
                 {item.icon}
@@ -170,7 +170,7 @@ export const Experience = () => {
               {/* Obsidian Glass Card Container */}
               <LiquidCard
                 glowColor={item.glow}
-                className="p-6 sm:p-7 border border-white/[0.08] hover:border-white/20 rounded-2xl bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-950/90 shadow-xl"
+                className="p-4 sm:p-7 border border-white/[0.08] hover:border-white/20 rounded-2xl bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-950/90 shadow-xl"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                   <span className="sm:hidden text-xs font-mono font-bold text-cyan-400">

@@ -36,7 +36,7 @@ export const About = () => {
   }, []);
 
   return (
-    <div className="relative pt-6 pb-20 px-4 sm:px-6 lg:px-8 scroll-mt-28">
+    <div className="relative pt-6 pb-20 px-4 sm:px-6 lg:px-8 scroll-mt-28 overflow-hidden">
       {/* Background ambient accents */}
       <div className="pointer-events-none absolute top-1/3 left-10 h-72 w-72 rounded-full bg-cyan-500/10 blur-[120px]" />
       <div className="pointer-events-none absolute bottom-10 right-10 h-72 w-72 rounded-full bg-purple-500/10 blur-[120px]" />
@@ -64,7 +64,7 @@ export const About = () => {
           {/* Card 1: Personal Introduction & Academic Journey with Photo (7 cols) */}
           <LiquidCard
             glowColor="cyan"
-            className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between"
+            className="md:col-span-7 p-5 sm:p-8 flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-5">
@@ -130,7 +130,7 @@ export const About = () => {
           {/* Card 2: Development Philosophy (5 cols) */}
           <LiquidCard
             glowColor="purple"
-            className="md:col-span-5 p-6 sm:p-8 flex flex-col justify-between"
+            className="md:col-span-5 p-5 sm:p-8 flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center gap-2 mb-4 text-purple-400">
@@ -164,7 +164,7 @@ export const About = () => {
           {/* Card 3: Career Goals & Vision (5 cols) */}
           <LiquidCard
             glowColor="amber"
-            className="md:col-span-5 p-6 sm:p-8 flex flex-col justify-between"
+            className="md:col-span-5 p-5 sm:p-8 flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center gap-2 mb-3 text-amber-400">
@@ -194,7 +194,7 @@ export const About = () => {
           {/* Card 4: Location & Live Telemetry (7 cols - replaces awkward photo with high-tech live clock) */}
           <LiquidCard
             glowColor="cyan"
-            className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between"
+            className="md:col-span-7 p-5 sm:p-8 flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-3">

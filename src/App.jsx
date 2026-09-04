@@ -45,6 +45,8 @@ export const App = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  const [isAiOpen, setIsAiOpen] = useState(false);
+
   return (
     <div className="app relative min-h-screen text-slate-100 overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200 pt-16 sm:pt-20">
       <LiquidBackground />
@@ -53,9 +55,9 @@ export const App = () => {
       {/* Floating Glass Navigation Bar */}
       <Navbar onOpenCommandPalette={() => setIsCommandPaletteOpen(true)} />
 
-      {/* Floating Action Buttons */}
-      <ContactFAB />
-      <AiAssistantWidget />
+      {/* Floating Action Buttons (with coordinated mobile visibility) */}
+      <ContactFAB isAiOpen={isAiOpen} />
+      <AiAssistantWidget isOpen={isAiOpen} setIsOpen={setIsAiOpen} />
 
       {/* Main Sections */}
       <main id="main-content">

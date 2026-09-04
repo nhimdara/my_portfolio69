@@ -44,7 +44,7 @@ export const DeveloperStats = () => {
   };
 
   return (
-    <div className="relative pt-4 pb-14 px-4 sm:px-6 lg:px-8">
+    <div className="relative pt-4 pb-14 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background ambient lighting */}
       <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-32 bg-cyan-500/5 blur-[120px]" />
 

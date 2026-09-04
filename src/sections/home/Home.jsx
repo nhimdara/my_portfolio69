@@ -23,7 +23,7 @@ export const Home = ({ onCopyEmail }) => {
   };
 
   return (
-    <div className="relative min-h-[calc(100vh-90px)] flex flex-col justify-between pt-2 sm:pt-4">
+    <div className="relative min-h-[calc(100vh-90px)] flex flex-col justify-between pt-2 sm:pt-4 overflow-hidden">
       {/* Ambient background light orbs */}
       <div className="pointer-events-none absolute -top-10 left-1/4 h-[500px] w-[500px] rounded-full bg-cyan-500/12 blur-[150px]" />
       <div className="pointer-events-none absolute top-1/3 right-10 h-[500px] w-[500px] rounded-full bg-indigo-600/12 blur-[150px]" />
@@ -32,18 +32,19 @@ export const Home = ({ onCopyEmail }) => {
       <div className="relative mx-auto max-w-[1440px] w-full px-4 sm:px-6 lg:px-10 flex-1 flex items-center justify-center py-6 lg:py-10">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
           {/* Left Column: Narrative & Actions */}
-          <div className="lg:col-span-7 flex flex-col space-y-6 lg:space-y-8 text-left">
+          <div className="lg:col-span-7 flex flex-col space-y-5 sm:space-y-6 lg:space-y-8 text-left">
             {/* Small Badge */}
-            <div className="badge-emerald inline-flex items-center gap-2.5 rounded-full border px-4 py-2 text-xs sm:text-sm font-semibold backdrop-blur-md shadow-sm w-fit">
-              <span className="relative flex h-2.5 w-2.5">
+            <div className="badge-emerald inline-flex items-center gap-2 sm:gap-2.5 rounded-full border px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold backdrop-blur-md shadow-sm w-fit max-w-full">
+              <span className="relative flex h-2.5 w-2.5 shrink-0">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
               </span>
-              <span>Available for Internship / Freelance Opportunities</span>
+              <span className="hidden xs:inline">Available for Internship / Freelance Opportunities</span>
+              <span className="xs:hidden">Available for Opportunities</span>
             </div>
 
             {/* Main Full-Screen Headline */}
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[4.5rem] font-black tracking-tight leading-[1.08] text-white">
+            <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-[4.5rem] font-black tracking-tight leading-[1.08] text-white break-words">
               Building Digital{" "}
               <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent animate-gradient-text">
                 Experiences That Matter.
@@ -51,27 +52,27 @@ export const Home = ({ onCopyEmail }) => {
             </h1>
 
             {/* Supporting Text */}
-            <p className="max-w-2xl text-lg sm:text-xl md:text-2xl leading-relaxed text-slate-300/90 font-normal">
+            <p className="max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-slate-300/90 font-normal">
               I'm <span className="text-white font-semibold">Nhim Dara</span>, an IT Engineering student and Full-Stack Web Developer focused on building modern, scalable, and user-friendly web applications.
             </p>
 
             {/* Location & University Chips */}
-            <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm font-mono">
-              <div className="refero-pill flex items-center gap-2 px-3.5 py-1.5 rounded-full shadow-sm">
-                <MapPin size={14} className="text-cyan-400" />
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs sm:text-sm font-mono">
+              <div className="refero-pill flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full shadow-sm">
+                <MapPin size={14} className="text-cyan-400 shrink-0" />
                 <span>Phnom Penh, Cambodia</span>
               </div>
-              <div className="refero-pill flex items-center gap-2 px-3.5 py-1.5 rounded-full shadow-sm">
-                <Terminal size={14} className="text-purple-400" />
+              <div className="refero-pill flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full shadow-sm">
+                <Terminal size={14} className="text-purple-400 shrink-0" />
                 <span>RUPP IT Engineering</span>
               </div>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full sm:w-auto">
               <a
                 href="#projects"
-                className="refero-btn-primary flex items-center justify-center gap-2.5 rounded-2xl px-7 py-4 text-sm sm:text-base font-bold text-white shadow-xl hover:shadow-cyan-500/25 transition-all"
+                className="refero-btn-primary flex items-center justify-center gap-2.5 rounded-2xl px-6 py-3.5 sm:px-7 sm:py-4 text-sm sm:text-base font-bold text-white shadow-xl hover:shadow-cyan-500/25 transition-all text-center"
               >
                 <span>View My Work</span>
                 <ArrowUpRight size={18} />
@@ -80,7 +81,7 @@ export const Home = ({ onCopyEmail }) => {
               <a
                 href={cvUrl}
                 download="CV-Nhim-Dara.pdf"
-                className="refero-btn-secondary flex items-center justify-center gap-2.5 rounded-2xl px-7 py-4 text-sm sm:text-base font-bold text-slate-200 hover:text-white"
+                className="refero-btn-secondary flex items-center justify-center gap-2.5 rounded-2xl px-6 py-3.5 sm:px-7 sm:py-4 text-sm sm:text-base font-bold text-slate-200 hover:text-white text-center"
               >
                 <FileDown size={18} className="text-cyan-400" />
                 <span>Download Resume</span>
@@ -89,7 +90,7 @@ export const Home = ({ onCopyEmail }) => {
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className="refero-btn-secondary flex items-center justify-center gap-2 rounded-2xl px-5 py-4 text-xs sm:text-sm font-semibold text-slate-400 hover:text-white cursor-pointer"
+                className="refero-btn-secondary flex items-center justify-center gap-2 rounded-2xl px-5 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold text-slate-400 hover:text-white cursor-pointer"
                 title="Copy email to clipboard"
               >
                 {copied ? (

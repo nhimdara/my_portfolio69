@@ -247,7 +247,7 @@ export const CommandPalette = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 sm:px-6">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-20 px-3 sm:px-6">
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity animate-in fade-in"
@@ -257,7 +257,7 @@ export const CommandPalette = ({
       {/* Command Palette Card */}
       <div className="relative w-full max-w-xl overflow-hidden rounded-2xl border border-white/15 bg-slate-900/95 shadow-2xl shadow-cyan-500/10 backdrop-blur-2xl animate-in zoom-in-95 duration-200">
         {/* Search Header */}
-        <div className="flex items-center gap-3 border-b border-white/10 px-4 py-3.5">
+        <div className="flex items-center gap-3 border-b border-white/10 px-3.5 sm:px-4 py-3 sm:py-3.5">
           <Search size={18} className="text-cyan-400 shrink-0" />
           <input
             ref={inputRef}
@@ -268,12 +268,12 @@ export const CommandPalette = ({
               setSelectedIndex(0);
             }}
             placeholder="Type a command, section, or action..."
-            className="w-full bg-transparent text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none"
+            className="w-full bg-transparent text-xs sm:text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none"
           />
           {query && (
             <button
               onClick={() => setQuery("")}
-              className="text-slate-400 hover:text-slate-200"
+              className="text-slate-400 hover:text-slate-200 cursor-pointer p-1"
             >
               <X size={16} />
             </button>
@@ -284,9 +284,9 @@ export const CommandPalette = ({
         </div>
 
         {/* Command List */}
-        <div className="max-h-80 overflow-y-auto p-2">
+        <div className="max-h-[60dvh] sm:max-h-80 overflow-y-auto p-1.5 sm:p-2 no-scrollbar">
           {filteredCommands.length === 0 ? (
-            <div className="py-8 text-center text-sm text-slate-500">
+            <div className="py-8 text-center text-xs sm:text-sm text-slate-500">
               No matching commands found for &ldquo;{query}&rdquo;
             </div>
           ) : (
@@ -297,18 +297,18 @@ export const CommandPalette = ({
                   key={cmd.id}
                   onClick={cmd.action}
                   onMouseEnter={() => setSelectedIndex(idx)}
-                  className={`flex cursor-pointer items-center justify-between rounded-xl px-3 py-2.5 transition-colors ${
+                  className={`flex cursor-pointer items-center justify-between rounded-xl px-2.5 sm:px-3 py-2 sm:py-2.5 transition-colors ${
                     isSelected
                       ? "bg-cyan-500/15 text-cyan-200 border border-cyan-400/30"
                       : "text-slate-300 hover:bg-white/5 border border-transparent"
                   }`}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="grid h-7 w-7 place-items-center rounded-lg bg-white/5 border border-white/10">
+                  <div className="flex items-center gap-2.5 sm:gap-3">
+                    <div className="grid h-7 w-7 place-items-center rounded-lg bg-white/5 border border-white/10 shrink-0">
                       {cmd.icon}
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-slate-200">
+                      <p className="text-xs font-semibold text-slate-200 line-clamp-1">
                         {cmd.title}
                       </p>
                       <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">
@@ -319,7 +319,7 @@ export const CommandPalette = ({
 
                   <ArrowRight
                     size={14}
-                    className={`transition-transform ${
+                    className={`transition-transform shrink-0 ${
                       isSelected ? "translate-x-0 opacity-100 text-cyan-400" : "-translate-x-2 opacity-0"
                     }`}
                   />
@@ -330,13 +330,13 @@ export const CommandPalette = ({
         </div>
 
         {/* Footer shortcuts helper */}
-        <div className="flex items-center justify-between border-t border-white/10 bg-slate-950/60 px-4 py-2.5 text-[11px] text-slate-400 font-mono">
-          <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1">
-              <kbd className="rounded bg-white/10 px-1.5 py-0.5 text-[10px]">↑↓</kbd> to navigate
+        <div className="flex items-center justify-between border-t border-white/10 bg-slate-950/60 px-3 sm:px-4 py-2 sm:py-2.5 text-[10px] sm:text-[11px] text-slate-400 font-mono">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <span className="hidden sm:inline-flex items-center gap-1">
+              <kbd className="rounded bg-white/10 px-1.5 py-0.5 text-[10px]">↑↓</kbd> navigate
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="rounded bg-white/10 px-1.5 py-0.5 text-[10px]">↵</kbd> to select
+              <kbd className="rounded bg-white/10 px-1.5 py-0.5 text-[10px]">↵</kbd> select
             </span>
           </div>
           <span className="text-cyan-400 font-semibold flex items-center gap-1">

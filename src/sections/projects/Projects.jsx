@@ -393,7 +393,7 @@ export const Projects = () => {
   const featuredList = projects.filter((p) => p.featured);
 
   return (
-    <div className="relative pt-32 sm:pt-36 pb-28 px-4 sm:px-6 lg:px-8">
+    <div className="relative pt-32 sm:pt-36 pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Ambient background lighting */}
       <div className="pointer-events-none absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-cyan-500/10 blur-[150px]" />
       <div className="pointer-events-none absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-purple-500/10 blur-[150px]" />
@@ -418,11 +418,11 @@ export const Projects = () => {
           </div>
 
           {/* View Mode Switcher: Showcase vs Grid Matrix */}
-          <div className="refero-card flex items-center gap-1.5 p-1.5 rounded-2xl self-start md:self-auto shadow-xl">
+          <div className="refero-card flex items-center gap-1.5 p-1.5 rounded-2xl self-start md:self-auto shadow-xl max-w-full overflow-x-auto no-scrollbar">
             <button
               type="button"
               onClick={() => setViewMode("grid")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 whitespace-nowrap ${
                 viewMode === "grid"
                   ? "refero-pill-active shadow-sm"
                   : "text-slate-400 hover:text-white"
@@ -434,7 +434,7 @@ export const Projects = () => {
             <button
               type="button"
               onClick={() => setViewMode("showcase")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 whitespace-nowrap ${
                 viewMode === "showcase"
                   ? "refero-pill-active shadow-sm"
                   : "text-slate-400 hover:text-white"
@@ -952,19 +952,19 @@ export const Projects = () => {
 
       {/* Deep-Dive Case Study Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6">
           <div
             className="fixed inset-0 bg-slate-950/85 backdrop-blur-md animate-in fade-in"
             onClick={() => setSelectedProject(null)}
           />
 
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl refero-card-elevated p-6 sm:p-8 shadow-2xl animate-in zoom-in-95 duration-200 border border-white/20 z-10">
+          <div className="relative w-full max-w-2xl max-h-[90dvh] sm:max-h-[90vh] overflow-y-auto rounded-2xl sm:rounded-3xl refero-card-elevated p-4 sm:p-8 shadow-2xl animate-in zoom-in-95 duration-200 border border-white/20 z-10 no-scrollbar">
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-5 right-5 grid h-9 w-9 place-items-center rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-all cursor-pointer z-10 border border-white/10"
+              className="absolute top-3 right-3 sm:top-5 sm:right-5 grid h-8 w-8 sm:h-9 sm:w-9 place-items-center rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-all cursor-pointer z-20 border border-white/10"
               aria-label="Close modal"
             >
-              <X size={18} />
+              <X size={16} />
             </button>
 
             <div className="mb-4 pr-10">
@@ -976,12 +976,12 @@ export const Projects = () => {
                   Released {selectedProject.year}
                 </span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              <h3 className="text-xl sm:text-3xl font-black text-white tracking-tight">
                 {selectedProject.title}
               </h3>
             </div>
 
-            <div className="aspect-[16/9] w-full overflow-hidden rounded-2xl bg-slate-950 border border-white/15 mb-6 shadow-inner flex items-center justify-center">
+            <div className="aspect-[16/9] w-full overflow-hidden rounded-xl sm:rounded-2xl bg-slate-950 border border-white/15 mb-5 sm:mb-6 shadow-inner flex items-center justify-center">
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
@@ -997,7 +997,7 @@ export const Projects = () => {
               <h4 className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">
                 Project Overview &amp; Architecture
               </h4>
-              <p className="text-sm leading-relaxed text-slate-200">
+              <p className="text-xs sm:text-sm leading-relaxed text-slate-200">
                 {selectedProject.description}
               </p>
 
@@ -1026,11 +1026,11 @@ export const Projects = () => {
               <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold mb-2">
                 Technologies Used
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {(selectedProject.tech || []).map((t) => (
                   <span
                     key={t}
-                    className="rounded-lg px-3 py-1 text-xs font-mono bg-white/[0.05] border border-white/10 text-slate-300"
+                    className="rounded-lg px-2.5 sm:px-3 py-1 text-xs font-mono bg-white/[0.05] border border-white/10 text-slate-300"
                   >
                     {t}
                   </span>
@@ -1038,13 +1038,13 @@ export const Projects = () => {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-3">
+            <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
               {selectedProject.liveUrl && (
                 <a
                   href={selectedProject.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-colors shadow-lg shadow-cyan-500/20"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-colors shadow-lg shadow-cyan-500/20"
                 >
                   <ExternalLink size={14} />
                   <span>Launch Live Platform</span>
@@ -1055,7 +1055,7 @@ export const Projects = () => {
                 <a
                   href={selectedProject.apkUrl}
                   download="woods-cambodia.apk"
-                  className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg"
                 >
                   <Download size={14} />
                   <span>Download Android APK</span>
@@ -1067,7 +1067,7 @@ export const Projects = () => {
                   href={selectedProject.mobileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-indigo-300 hover:text-indigo-200 border border-indigo-400/30 bg-indigo-500/10"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-indigo-300 hover:text-indigo-200 border border-indigo-400/30 bg-indigo-500/10"
                 >
                   <Smartphone size={14} />
                   <span>Launch Expo Mobile</span>
@@ -1079,7 +1079,7 @@ export const Projects = () => {
                   href={selectedProject.backendUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-amber-300 hover:text-amber-200 border border-amber-400/30 bg-amber-500/10"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-amber-300 hover:text-amber-200 border border-amber-400/30 bg-amber-500/10"
                 >
                   <Server size={14} />
                   <span>API Docs / Swagger</span>
@@ -1091,7 +1091,7 @@ export const Projects = () => {
                   href={selectedProject.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold bg-white/10 hover:bg-white/20 text-white border border-white/15"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold bg-white/10 hover:bg-white/20 text-white border border-white/15"
                 >
                   <Github size={14} />
                   <span>{selectedProject.githubLabel || "View Source"}</span>
@@ -1103,9 +1103,9 @@ export const Projects = () => {
                   href={selectedProject.backendGithubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold text-purple-300 hover:text-purple-200 border border-purple-400/30 bg-purple-500/10"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold bg-white/10 hover:bg-white/20 text-white border border-white/15"
                 >
-                  <Server size={14} />
+                  <Github size={14} />
                   <span>{selectedProject.backendGithubLabel || "Backend Source"}</span>
                 </a>
               )}

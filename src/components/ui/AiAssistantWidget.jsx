@@ -128,8 +128,11 @@ const FormattedAiMessage = ({ text }) => {
   );
 };
 
-export const AiAssistantWidget = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export const AiAssistantWidget = ({ isOpen: controlledIsOpen, setIsOpen: controlledSetIsOpen }) => {
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
+  const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
+  const setIsOpen = controlledSetIsOpen || setInternalIsOpen;
+
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -241,7 +244,7 @@ export const AiAssistantWidget = () => {
       {/* Mobile Backdrop Overlay when AI Chat is Open */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-slate-950/40 backdrop-blur-xs z-40 sm:hidden animate-fade-in"
+          className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-40 sm:hidden animate-fade-in"
           onClick={() => setIsOpen(false)}
           aria-hidden="true"
         />
@@ -249,14 +252,14 @@ export const AiAssistantWidget = () => {
 
       {/* Floating Trigger Widget Button (Bottom Left) */}
       <div
-        className="fixed bottom-6 left-6 z-50 flex items-center gap-3"
+        className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 flex items-center gap-3"
         style={{ position: "fixed" }}
       >
         {!isOpen && (
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="refero-card-elevated group relative flex items-center gap-2.5 rounded-full p-1.5 pr-5 border border-cyan-500/40 shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
+            className="refero-card-elevated group relative flex items-center gap-2 rounded-full p-1 sm:p-1.5 sm:pr-5 border border-cyan-500/40 shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
             aria-label="Open Dara AI Assistant"
           >
             {/* Ambient glowing aura */}
@@ -267,7 +270,7 @@ export const AiAssistantWidget = () => {
                 <img src={avatarPic} alt="Nhim Dara AI" className="h-full w-full object-cover" />
                 <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-400 border-2 border-slate-950 animate-pulse" />
               </div>
-              <div className="flex flex-col text-left">
+              <div className="hidden sm:flex flex-col text-left">
                 <div className="flex items-center gap-1.5">
                   <span className="text-xs font-bold text-slate-900 dark:text-white tracking-tight">Ask Dara AI</span>
                   <Sparkles size={12} className="text-cyan-500 dark:text-cyan-400" />
@@ -279,10 +282,10 @@ export const AiAssistantWidget = () => {
         )}
       </div>
 
-      {/* Main AI Chat Drawer Window (Bottom Left) */}
+      {/* Main AI Chat Drawer Window (Bottom Left on desktop, responsive card on mobile) */}
       {isOpen && (
         <div
-          className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 w-[calc(100vw-32px)] sm:w-[420px] h-[520px] sm:h-[600px] max-h-[85vh] flex flex-col"
+          className="fixed inset-x-3 bottom-3 top-16 sm:top-auto sm:inset-x-auto sm:bottom-6 sm:left-6 z-50 w-auto sm:w-[420px] sm:h-[600px] max-h-[85dvh] sm:max-h-[85vh] flex flex-col"
           style={{ position: "fixed" }}
         >
           <div className="refero-card-elevated relative flex flex-col h-full w-full rounded-2xl sm:rounded-3xl border border-slate-200/90 dark:border-white/20 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">

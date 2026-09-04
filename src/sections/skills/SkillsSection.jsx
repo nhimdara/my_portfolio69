@@ -235,7 +235,7 @@ export const SkillsSection = () => {
       : skillsData.filter((s) => s.category === activeCategory);
 
   return (
-    <div className="relative pt-28 sm:pt-32 pb-24 px-4 sm:px-6 lg:px-8">
+    <div className="relative pt-28 sm:pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background ambient lighting */}
       <div className="pointer-events-none absolute top-1/4 right-1/4 h-96 w-96 rounded-full bg-cyan-500/10 blur-[150px]" />
       <div className="pointer-events-none absolute bottom-1/3 left-1/4 h-96 w-96 rounded-full bg-purple-500/10 blur-[150px]" />
@@ -259,7 +259,7 @@ export const SkillsSection = () => {
         </div>
 
         {/* Glass Category Filter Toolbar */}
-        <div className="refero-card flex flex-wrap items-center justify-center gap-2 mb-12 p-2 rounded-2xl backdrop-blur-xl w-fit mx-auto shadow-2xl">
+        <div className="refero-card flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-12 p-1.5 sm:p-2 rounded-2xl backdrop-blur-xl w-fit max-w-full mx-auto shadow-2xl">
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
             const count = categoryCounts[cat] || 0;
@@ -269,7 +269,7 @@ export const SkillsSection = () => {
                 key={cat}
                 type="button"
                 onClick={() => setActiveCategory(cat)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
                   isActive
                     ? "refero-pill-active shadow-md"
                     : "refero-pill text-slate-400 hover:text-white"

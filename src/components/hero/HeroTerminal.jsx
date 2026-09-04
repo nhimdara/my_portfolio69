@@ -35,55 +35,55 @@ export const HeroTerminal = () => {
       {/* Main Glass Workspace Window (Dark IDE Theme) */}
       <div className="hero-terminal-window relative rounded-2xl overflow-hidden border border-white/15 bg-[#090d16] shadow-2xl backdrop-blur-2xl text-slate-100">
         {/* Window Chrome / Titlebar */}
-        <div className="flex items-center justify-between px-4 py-3 bg-[#0d1220] border-b border-white/10">
-          <div className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-rose-500/80 inline-block" />
-            <span className="h-3 w-3 rounded-full bg-amber-500/80 inline-block" />
-            <span className="h-3 w-3 rounded-full bg-emerald-500/80 inline-block" />
-            <span className="ml-2 text-[11px] font-mono text-slate-400 font-semibold tracking-wider">
-              nhim-dara@workspace:~
+        <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 bg-[#0d1220] border-b border-white/10 gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-rose-500/80 inline-block" />
+            <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-amber-500/80 inline-block" />
+            <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-emerald-500/80 inline-block" />
+            <span className="ml-1 sm:ml-2 text-[10px] sm:text-[11px] font-mono text-slate-400 font-semibold tracking-wider truncate max-w-[105px] xs:max-w-none">
+              nhim-dara<span className="hidden xs:inline">@workspace:~</span>
             </span>
           </div>
 
           {/* Mode Switcher: Telemetry vs Profile View */}
-          <div className="flex items-center gap-1 bg-white/[0.06] p-1 rounded-xl border border-white/10">
+          <div className="flex items-center gap-1 bg-white/[0.06] p-1 rounded-xl border border-white/10 shrink-0">
             <button
               type="button"
               onClick={() => setViewMode("telemetry")}
               title="Interactive Telemetry Workspace"
-              className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
+              className={`px-2 sm:px-2.5 py-1 rounded-lg text-[10px] sm:text-[11px] font-semibold flex items-center gap-1 sm:gap-1.5 transition-all cursor-pointer ${
                 viewMode === "telemetry"
                   ? "bg-cyan-500/20 text-cyan-300 shadow-sm border border-cyan-400/40"
                   : "text-slate-400 hover:text-slate-200"
               }`}
             >
               <Code2 size={13} />
-              <span>Telemetry</span>
+              <span className="hidden xs:inline">Telemetry</span>
             </button>
             <button
               type="button"
               onClick={() => setViewMode("avatar")}
               title="Developer Profile Card"
-              className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
+              className={`px-2 sm:px-2.5 py-1 rounded-lg text-[10px] sm:text-[11px] font-semibold flex items-center gap-1 sm:gap-1.5 transition-all cursor-pointer ${
                 viewMode === "avatar"
                   ? "bg-purple-500/20 text-purple-300 shadow-sm border border-purple-400/40"
                   : "text-slate-400 hover:text-slate-200"
               }`}
             >
               <User size={13} />
-              <span>Profile</span>
+              <span className="hidden xs:inline">Profile</span>
             </button>
           </div>
         </div>
 
         {viewMode === "telemetry" ? (
           <div>
-            {/* Editor Tabs */}
-            <div className="flex items-center border-b border-white/10 bg-[#0a0e19] text-xs font-mono">
+            {/* Editor Tabs (horizontal scrollable on narrow viewports) */}
+            <div className="flex items-center border-b border-white/10 bg-[#0a0e19] text-xs font-mono overflow-x-auto no-scrollbar">
               <button
                 type="button"
                 onClick={() => setActiveTab("profile")}
-                className={`flex items-center gap-1.5 px-4 py-2.5 border-r border-white/10 transition-colors cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 border-r border-white/10 transition-colors cursor-pointer shrink-0 whitespace-nowrap text-[11px] sm:text-xs ${
                   activeTab === "profile"
                     ? "text-cyan-300 bg-cyan-500/10 border-b-2 border-b-cyan-400 font-bold"
                     : "text-slate-400 hover:text-slate-200"
@@ -96,7 +96,7 @@ export const HeroTerminal = () => {
               <button
                 type="button"
                 onClick={() => setActiveTab("architecture")}
-                className={`flex items-center gap-1.5 px-4 py-2.5 border-r border-white/10 transition-colors cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 border-r border-white/10 transition-colors cursor-pointer shrink-0 whitespace-nowrap text-[11px] sm:text-xs ${
                   activeTab === "architecture"
                     ? "text-purple-300 bg-purple-500/10 border-b-2 border-b-purple-400 font-bold"
                     : "text-slate-400 hover:text-slate-200"
@@ -109,7 +109,7 @@ export const HeroTerminal = () => {
               <button
                 type="button"
                 onClick={() => setActiveTab("terminal")}
-                className={`flex items-center gap-1.5 px-4 py-2.5 border-r border-white/10 transition-colors cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 border-r border-white/10 transition-colors cursor-pointer shrink-0 whitespace-nowrap text-[11px] sm:text-xs ${
                   activeTab === "terminal"
                     ? "text-emerald-300 bg-emerald-500/10 border-b-2 border-b-emerald-400 font-bold"
                     : "text-slate-400 hover:text-slate-200"
@@ -121,9 +121,9 @@ export const HeroTerminal = () => {
             </div>
 
             {/* Code Body */}
-            <div className="p-4 sm:p-5 font-mono text-xs text-slate-300 bg-[#090d16] min-h-[380px] flex flex-col justify-between">
+            <div className="p-3.5 sm:p-5 font-mono text-[11px] sm:text-xs text-slate-300 bg-[#090d16] min-h-[360px] sm:min-h-[380px] flex flex-col justify-between overflow-x-auto">
               {activeTab === "profile" && (
-                <div className="space-y-1.5 leading-relaxed">
+                <div className="space-y-1.5 leading-relaxed break-words">
                   <p className="text-slate-500">// Developer Profile Configuration</p>
                   <p>
                     <span className="text-purple-400">export const</span>{" "}
@@ -148,7 +148,7 @@ export const HeroTerminal = () => {
                   <p className="pl-4">
                     <span className="text-slate-400">coreStack:</span> [
                   </p>
-                  <p className="pl-8 text-cyan-200">
+                  <p className="pl-6 sm:pl-8 text-cyan-200 break-words">
                     "React.js", "TypeScript", "Tailwind CSS", "Laravel", "Spring Boot", "MySQL"
                   </p>
                   <p className="pl-4">],</p>
@@ -229,8 +229,8 @@ export const HeroTerminal = () => {
           </div>
         ) : (
           /* Profile Hologram Alternative (Refined Portrait Fit) */
-          <div className="p-3 sm:p-4 bg-[#090d16]">
-            <div className="relative aspect-[4/5] min-h-[460px] sm:min-h-[520px] max-h-[600px] w-full mx-auto rounded-2xl overflow-hidden bg-[#0d1220] border border-white/15 shadow-2xl">
+          <div className="p-2.5 sm:p-4 bg-[#090d16]">
+            <div className="relative aspect-[4/5] min-h-[340px] sm:min-h-[480px] max-h-[560px] w-full mx-auto rounded-2xl overflow-hidden bg-[#0d1220] border border-white/15 shadow-2xl">
               <img
                 src={myPic}
                 alt="Nhim Dara"
@@ -240,25 +240,25 @@ export const HeroTerminal = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#090d16]/95 via-[#090d16]/30 to-transparent pointer-events-none" />
 
               {/* Badges on Top */}
-              <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                <span className="px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-[#070a12]/90 backdrop-blur-md text-cyan-300 border border-white/15 shadow-md">
+              <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                <span className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-bold bg-[#070a12]/90 backdrop-blur-md text-cyan-300 border border-white/15 shadow-md truncate">
                   RUPP IT Engineering
                 </span>
-                <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 backdrop-blur-md flex items-center gap-1.5">
+                <span className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 backdrop-blur-md flex items-center gap-1.5 shrink-0">
                   <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
                   Active
                 </span>
               </div>
 
               {/* Glass Details Bar at Bottom */}
-              <div className="absolute bottom-3 left-3 right-3 p-4 rounded-xl bg-[#090d16]/90 backdrop-blur-xl border border-white/20 shadow-2xl flex items-center justify-between text-slate-100">
+              <div className="absolute bottom-3 left-3 right-3 p-3 sm:p-4 rounded-xl bg-[#090d16]/90 backdrop-blur-xl border border-white/20 shadow-2xl flex flex-wrap items-center justify-between gap-2 text-slate-100">
                 <div>
-                  <h4 className="text-base font-extrabold text-white">Nhim Dara</h4>
-                  <p className="text-xs text-slate-400 font-mono">Full-Stack Web Developer</p>
+                  <h4 className="text-sm sm:text-base font-extrabold text-white">Nhim Dara</h4>
+                  <p className="text-[11px] sm:text-xs text-slate-400 font-mono">Full-Stack Web Developer</p>
                 </div>
                 <div className="flex gap-1.5 text-xs font-mono text-cyan-300">
-                  <span className="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 font-bold">React</span>
-                  <span className="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 font-bold">Laravel</span>
+                  <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md bg-white/10 border border-white/15 font-bold">React</span>
+                  <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md bg-white/10 border border-white/15 font-bold">Laravel</span>
                 </div>
               </div>
             </div>
