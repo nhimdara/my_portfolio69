@@ -67,7 +67,7 @@ const parseInlineBold = (str) => {
   return parts.map((part, index) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       return (
-        <strong key={index} className="font-extrabold text-cyan-300">
+        <strong key={index} className="font-extrabold text-cyan-600 dark:text-cyan-300">
           {part.slice(2, -2)}
         </strong>
       );
@@ -95,8 +95,8 @@ const FormattedAiMessage = ({ text }) => {
           const content = trimmed.substring(2);
           return (
             <div key={idx} className="flex items-start gap-2 pl-1 py-0.5">
-              <span className="text-cyan-400 font-bold shrink-0 mt-0.5">•</span>
-              <div className="flex-1 leading-relaxed text-slate-200">
+              <span className="text-cyan-600 dark:text-cyan-400 font-bold shrink-0 mt-0.5">•</span>
+              <div className="flex-1 leading-relaxed text-slate-800 dark:text-slate-200">
                 {parseInlineBold(content)}
               </div>
             </div>
@@ -109,8 +109,8 @@ const FormattedAiMessage = ({ text }) => {
           const num = trimmed.match(/^\d+/)[0];
           return (
             <div key={idx} className="flex items-start gap-2 pl-1 py-0.5">
-              <span className="text-cyan-400 font-mono text-[11px] font-bold shrink-0 mt-0.5">{num}.</span>
-              <div className="flex-1 leading-relaxed text-slate-200">
+              <span className="text-cyan-600 dark:text-cyan-400 font-mono text-[11px] font-bold shrink-0 mt-0.5">{num}.</span>
+              <div className="flex-1 leading-relaxed text-slate-800 dark:text-slate-200">
                 {parseInlineBold(content)}
               </div>
             </div>
@@ -119,7 +119,7 @@ const FormattedAiMessage = ({ text }) => {
 
         // Normal paragraph lines
         return (
-          <p key={idx} className="leading-relaxed">
+          <p key={idx} className="leading-relaxed text-slate-800 dark:text-slate-200">
             {parseInlineBold(trimmed)}
           </p>
         );
@@ -238,13 +238,26 @@ export const AiAssistantWidget = () => {
 
   return (
     <>
+      {/* Mobile Backdrop Overlay when AI Chat is Open */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-slate-950/40 backdrop-blur-xs z-40 sm:hidden animate-fade-in"
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
       {/* Floating Trigger Widget Button (Bottom Left) */}
-      <div className="fixed bottom-6 left-6 z-50 flex items-center gap-3">
+      <div
+        className="fixed bottom-6 left-6 z-50 flex items-center gap-3"
+        style={{ position: "fixed" }}
+      >
         {!isOpen && (
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="refero-card-elevated group relative flex items-center gap-2.5 rounded-full p-1.5 pr-5 border border-cyan-400/40 shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
+            className="refero-card-elevated group relative flex items-center gap-2.5 rounded-full p-1.5 pr-5 border border-cyan-500/40 shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
+            aria-label="Open Dara AI Assistant"
           >
             {/* Ambient glowing aura */}
             <span className="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-500 opacity-60 blur-[8px] group-hover:opacity-100 transition-opacity animate-pulse" />
@@ -256,10 +269,10 @@ export const AiAssistantWidget = () => {
               </div>
               <div className="flex flex-col text-left">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-xs font-bold text-white tracking-tight">Ask Dara AI</span>
-                  <Sparkles size={12} className="text-cyan-400" />
+                  <span className="text-xs font-bold text-slate-900 dark:text-white tracking-tight">Ask Dara AI</span>
+                  <Sparkles size={12} className="text-cyan-500 dark:text-cyan-400" />
                 </div>
-                <span className="text-[10px] font-mono text-cyan-400 font-bold">● Online &amp; Ready</span>
+                <span className="text-[10px] font-mono text-cyan-600 dark:text-cyan-400 font-bold">● Online &amp; Ready</span>
               </div>
             </div>
           </button>
@@ -268,171 +281,176 @@ export const AiAssistantWidget = () => {
 
       {/* Main AI Chat Drawer Window (Bottom Left) */}
       {isOpen && (
-        <div className="refero-card-elevated fixed inset-0 sm:inset-auto sm:bottom-6 sm:left-6 sm:w-[420px] sm:h-[620px] z-50 flex flex-col rounded-none sm:rounded-3xl border-0 sm:border border-white/20 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-          {/* Header Bar */}
-          <div className="refero-card-footer px-4 py-3.5 border-b border-white/10 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="relative h-10 w-10 rounded-full overflow-hidden border border-cyan-400/50 shadow-md shrink-0 bg-slate-950">
-                <img src={avatarPic} alt="Nhim Dara" className="h-full w-full object-cover" />
-                <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-400 border-2 border-slate-950" />
-              </div>
-              <div>
-                <div className="flex items-center gap-1.5">
-                  <h3 className="text-sm font-bold text-white tracking-tight">Dara AI Assistant</h3>
-                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">v2.0</span>
+        <div
+          className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 w-[calc(100vw-32px)] sm:w-[420px] h-[520px] sm:h-[600px] max-h-[85vh] flex flex-col"
+          style={{ position: "fixed" }}
+        >
+          <div className="refero-card-elevated relative flex flex-col h-full w-full rounded-2xl sm:rounded-3xl border border-slate-200/90 dark:border-white/20 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            {/* Header Bar */}
+            <div className="refero-card-footer px-4 py-3.5 border-b border-slate-200/80 dark:border-white/10 flex items-center justify-between shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="relative h-10 w-10 rounded-full overflow-hidden border border-cyan-400/50 shadow-md shrink-0 bg-slate-950">
+                  <img src={avatarPic} alt="Nhim Dara" className="h-full w-full object-cover" />
+                  <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-400 border-2 border-slate-950" />
                 </div>
-                <p className="text-[11px] text-slate-400 font-mono">Ask anything or connect to chat</p>
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <h3 className="text-sm font-bold text-slate-900 dark:text-white tracking-tight">Dara AI Assistant</h3>
+                    <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30 font-bold">v2.0</span>
+                  </div>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">Ask anything or connect to chat</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-1">
+                <button
+                  type="button"
+                  onClick={() => setMessages([messages[0]])}
+                  className="refero-icon-btn p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+                  title="Clear conversation"
+                >
+                  <RefreshCw size={14} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  className="refero-icon-btn p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors cursor-pointer"
+                  aria-label="Close assistant"
+                >
+                  <X size={18} />
+                </button>
               </div>
             </div>
 
-            <div className="flex items-center gap-1">
-              <button
-                type="button"
-                onClick={() => setMessages([messages[0]])}
-                className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
-                title="Clear conversation"
-              >
-                <RefreshCw size={14} />
-              </button>
-              <button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-                aria-label="Close assistant"
-              >
-                <X size={18} />
-              </button>
-            </div>
-          </div>
-
-          {/* Messages Body Scroll Area */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-4 font-sans text-xs">
-            {messages.map((msg) => (
-              <div
-                key={msg.id}
-                className={`flex gap-2.5 ${
-                  msg.sender === "user" ? "flex-row-reverse" : "flex-row"
-                }`}
-              >
-                {msg.sender === "bot" && (
-                  <div className="h-7 w-7 rounded-full bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center shrink-0 mt-1 text-cyan-300">
-                    <Bot size={14} />
-                  </div>
-                )}
-
-                <div className={`max-w-[85%] space-y-2`}>
-                  <div
-                    className={`p-3.5 rounded-2xl text-xs leading-relaxed ${
-                      msg.sender === "user"
-                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-tr-none shadow-md font-semibold"
-                        : "bg-white/[0.05] border border-white/10 text-slate-200 rounded-tl-none"
-                    }`}
-                  >
-                    <FormattedAiMessage text={msg.text} />
-                  </div>
-
-                  {/* Direct Contact Card inside Chat Stream */}
-                  {msg.hasContactCard && (
-                    <div className="p-3.5 rounded-2xl bg-gradient-to-b from-cyan-950/40 via-slate-900 to-slate-950 border border-cyan-400/30 shadow-xl space-y-2.5">
-                      <div className="flex items-center gap-2 text-cyan-300 font-bold text-xs">
-                        <Sparkles size={14} />
-                        <span>Direct Chat Coordinates:</span>
-                      </div>
-
-                      <div className="grid grid-cols-1 gap-2">
-                        <a
-                          href={DARA_KNOWLEDGE.telegram}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-between p-2.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-400/40 text-cyan-200 font-bold text-xs transition-all group"
-                        >
-                          <div className="flex items-center gap-2">
-                            <FaTelegramPlane className="text-cyan-400 text-sm" />
-                            <span>Chat on Telegram (@dara_nhim)</span>
-                          </div>
-                          <ExternalLink size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                        </a>
-
-                        <a
-                          href={`tel:${DARA_KNOWLEDGE.phone}`}
-                          className="flex items-center gap-2 p-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-slate-200 text-xs font-semibold transition-all"
-                        >
-                          <Phone size={13} className="text-purple-400" />
-                          <span>Call Direct: {DARA_KNOWLEDGE.phone}</span>
-                        </a>
-
-                        <a
-                          href={`mailto:${DARA_KNOWLEDGE.email}`}
-                          className="flex items-center gap-2 p-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-slate-200 text-xs font-semibold transition-all"
-                        >
-                          <Mail size={13} className="text-emerald-400" />
-                          <span>Email: {DARA_KNOWLEDGE.email}</span>
-                        </a>
-                      </div>
+            {/* Messages Body Scroll Area */}
+            <div className="flex-1 p-4 overflow-y-auto space-y-4 font-sans text-xs">
+              {messages.map((msg) => (
+                <div
+                  key={msg.id}
+                  className={`flex gap-2.5 ${
+                    msg.sender === "user" ? "flex-row-reverse" : "flex-row"
+                  }`}
+                >
+                  {msg.sender === "bot" && (
+                    <div className="refero-icon-btn h-7 w-7 rounded-full text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0 mt-1">
+                      <Bot size={14} />
                     </div>
                   )}
 
-                  <span className="text-[9px] font-mono text-slate-500 block text-right px-1">
-                    {msg.time}
-                  </span>
+                  <div className="max-w-[85%] space-y-2">
+                    <div
+                      className={`p-3.5 rounded-2xl text-xs leading-relaxed ${
+                        msg.sender === "user"
+                          ? "refero-btn-primary text-white rounded-tr-none shadow-md font-semibold"
+                          : "refero-pill rounded-tl-none shadow-sm text-slate-800 dark:text-slate-200"
+                      }`}
+                    >
+                      <FormattedAiMessage text={msg.text} />
+                    </div>
+
+                    {/* Direct Contact Card inside Chat Stream */}
+                    {msg.hasContactCard && (
+                      <div className="refero-card p-3.5 rounded-2xl border border-cyan-500/40 shadow-xl space-y-2.5">
+                        <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 font-bold text-xs">
+                          <Sparkles size={14} />
+                          <span>Direct Chat Coordinates:</span>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-2">
+                          <a
+                            href={DARA_KNOWLEDGE.telegram}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="refero-pill flex items-center justify-between p-2.5 rounded-xl text-cyan-700 dark:text-cyan-300 font-bold text-xs transition-all group hover:border-cyan-400/60"
+                          >
+                            <div className="flex items-center gap-2">
+                              <FaTelegramPlane className="text-cyan-500 dark:text-cyan-400 text-sm" />
+                              <span>Chat on Telegram (@dara_nhim)</span>
+                            </div>
+                            <ExternalLink size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                          </a>
+
+                          <a
+                            href={`tel:${DARA_KNOWLEDGE.phone}`}
+                            className="refero-pill flex items-center gap-2 p-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 transition-all hover:border-purple-400/60"
+                          >
+                            <Phone size={13} className="text-purple-500 dark:text-purple-400" />
+                            <span>Call Direct: {DARA_KNOWLEDGE.phone}</span>
+                          </a>
+
+                          <a
+                            href={`mailto:${DARA_KNOWLEDGE.email}`}
+                            className="refero-pill flex items-center gap-2 p-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 transition-all hover:border-emerald-400/60"
+                          >
+                            <Mail size={13} className="text-emerald-500 dark:text-emerald-400" />
+                            <span>Email: {DARA_KNOWLEDGE.email}</span>
+                          </a>
+                        </div>
+                      </div>
+                    )}
+
+                    <span className="text-[9px] font-mono text-slate-400 dark:text-slate-500 block text-right px-1">
+                      {msg.time}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
 
-            {/* Typing Indicator */}
-            {isTyping && (
-              <div className="flex gap-2 items-center text-slate-400 text-xs font-mono">
-                <div className="h-7 w-7 rounded-full bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center shrink-0 text-cyan-300">
-                  <Bot size={14} />
+              {/* Typing Indicator */}
+              {isTyping && (
+                <div className="flex gap-2 items-center text-slate-500 dark:text-slate-400 text-xs font-mono">
+                  <div className="refero-icon-btn h-7 w-7 rounded-full text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+                    <Bot size={14} />
+                  </div>
+                  <div className="refero-pill flex gap-1.5 items-center px-3 py-2 rounded-2xl">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 animate-bounce" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 animate-bounce delay-100" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 animate-bounce delay-200" />
+                  </div>
                 </div>
-                <div className="flex gap-1 items-center px-3 py-2 rounded-2xl bg-white/[0.05] border border-white/10">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-bounce" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-bounce delay-100" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-bounce delay-200" />
-                </div>
-              </div>
-            )}
+              )}
 
-            <div ref={messagesEndRef} />
-          </div>
+              <div ref={messagesEndRef} />
+            </div>
 
-          {/* Quick Prompts Bar */}
-          <div className="refero-card-footer p-2.5 border-t border-white/10 overflow-x-auto flex gap-1.5 no-scrollbar">
-            {QUICK_PROMPTS.map((prompt, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => handleSendMessage(prompt)}
-                className="refero-pill whitespace-nowrap px-3 py-1 rounded-full text-[11px] text-slate-300 hover:text-cyan-300 transition-all cursor-pointer shrink-0"
-              >
-                {prompt}
-              </button>
-            ))}
-          </div>
+            {/* Quick Prompts Bar */}
+            <div className="refero-card-footer p-2.5 border-t border-slate-200/80 dark:border-white/10 overflow-x-auto flex gap-1.5 no-scrollbar shrink-0">
+              {QUICK_PROMPTS.map((prompt, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => handleSendMessage(prompt)}
+                  className="refero-pill whitespace-nowrap px-3 py-1.5 rounded-full text-[11px] font-semibold text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-300 hover:border-cyan-400/50 transition-all cursor-pointer shrink-0"
+                >
+                  {prompt}
+                </button>
+              ))}
+            </div>
 
-          {/* Input Footer Form */}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSendMessage();
-            }}
-            className="refero-card-footer p-3 border-t border-white/10 flex items-center gap-2"
-          >
-            <input
-              type="text"
-              value={inputQuery}
-              onChange={(e) => setInputQuery(e.target.value)}
-              placeholder="Ask AI about Nhim Dara, skills, or projects..."
-              className="refero-pill flex-1 px-3.5 py-2.5 rounded-xl text-xs text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400/60 transition-colors"
-            />
-            <button
-              type="submit"
-              disabled={!inputQuery.trim()}
-              className="p-2.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 disabled:opacity-40 text-slate-950 transition-all cursor-pointer font-bold shrink-0"
+            {/* Input Footer Form */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSendMessage();
+              }}
+              className="refero-card-footer p-3 border-t border-slate-200/80 dark:border-white/10 flex items-center gap-2 shrink-0"
             >
-              <Send size={15} />
-            </button>
-          </form>
+              <input
+                type="text"
+                value={inputQuery}
+                onChange={(e) => setInputQuery(e.target.value)}
+                placeholder="Ask AI about Nhim Dara, skills, or projects..."
+                className="refero-input flex-1 px-3.5 py-2.5 rounded-xl text-xs font-medium focus:outline-none focus:border-cyan-500 transition-colors"
+              />
+              <button
+                type="submit"
+                disabled={!inputQuery.trim()}
+                className="refero-btn-primary p-2.5 rounded-xl disabled:opacity-40 text-white transition-all cursor-pointer font-bold shrink-0 hover:scale-105 active:scale-95"
+              >
+                <Send size={15} />
+              </button>
+            </form>
+          </div>
         </div>
       )}
     </>

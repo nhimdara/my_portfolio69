@@ -34,7 +34,7 @@ export const Home = ({ onCopyEmail }) => {
           {/* Left Column: Narrative & Actions */}
           <div className="lg:col-span-7 flex flex-col space-y-6 lg:space-y-8 text-left">
             {/* Small Badge */}
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-2 text-xs sm:text-sm font-semibold text-emerald-300 backdrop-blur-md shadow-[0_0_20px_rgba(16,185,129,0.2)] w-fit">
+            <div className="badge-emerald inline-flex items-center gap-2.5 rounded-full border px-4 py-2 text-xs sm:text-sm font-semibold backdrop-blur-md shadow-sm w-fit">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
@@ -56,12 +56,12 @@ export const Home = ({ onCopyEmail }) => {
             </p>
 
             {/* Location & University Chips */}
-            <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-slate-400 font-mono">
-              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 shadow-sm">
+            <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm font-mono">
+              <div className="refero-pill flex items-center gap-2 px-3.5 py-1.5 rounded-full shadow-sm">
                 <MapPin size={14} className="text-cyan-400" />
                 <span>Phnom Penh, Cambodia</span>
               </div>
-              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 shadow-sm">
+              <div className="refero-pill flex items-center gap-2 px-3.5 py-1.5 rounded-full shadow-sm">
                 <Terminal size={14} className="text-purple-400" />
                 <span>RUPP IT Engineering</span>
               </div>

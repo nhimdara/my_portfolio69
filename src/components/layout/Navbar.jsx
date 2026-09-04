@@ -32,6 +32,11 @@ export const Navbar = ({ onOpenCommandPalette }) => {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
     localStorage.setItem("portfolio-theme", theme);
   }, [theme]);
 
@@ -184,7 +189,7 @@ export const Navbar = ({ onOpenCommandPalette }) => {
             <a
               href={cvUrl}
               download="CV-Nhim-Dara.pdf"
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all cursor-pointer"
+              className="refero-btn-primary hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white shadow-md cursor-pointer"
             >
               <FileDown size={14} />
               <span>Resume</span>
